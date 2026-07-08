@@ -8,27 +8,26 @@ import {
   Inbox,
   BarChart3,
   CheckCircle2,
-  Zap,
-  Globe,
   Users,
-  TrendingUp,
+  Globe,
   Mail,
   Phone,
   MessageSquare,
 } from "lucide-react";
 import { SITE_CONFIG, PRICING_PLANS, FAQS } from "@/lib/utils";
+import { HomeJsonLd } from "@/components/seo/json-ld";
 
 export default function HomePage() {
   return (
     <>
+      <HomeJsonLd />
       <Hero />
       <SocialProof />
-      <ProblemSolution />
+      <TheShift />
       <Engines />
       <HowItWorks />
-      <Pipeline />
-      <Features />
-      <PricingPreview />
+      <WhatYouGet />
+      <PlansPreview />
       <FAQPreview />
       <FinalCTA />
     </>
@@ -44,22 +43,15 @@ function Hero() {
       <div className="absolute inset-0 bg-grid opacity-40" />
       <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pb-28 lg:pt-32">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-6 flex justify-center">
-            <span className="badge">
-              <Sparkles className="h-3.5 w-3.5" />
-              The all-in-one platform for outbound sales
-            </span>
-          </div>
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-[var(--color-foreground)] sm:text-5xl lg:text-6xl">
             Find real buyers.
             <br />
             <span className="text-gradient">Skip the ghost towns.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)] sm:text-xl">
-            Bad Decision scans the live internet to find businesses who actually want what
-            you sell. Every email is verified before you pay. Every message is drafted in
-            proven copywriting styles. Every send is throttled, warmed up, and tracked from
-            your own mailboxes.
+            Tell us who you want to reach. Bad Decision finds them, checks every email,
+            writes the message, and sends it from your inbox. You show up to booked
+            meetings.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -74,7 +66,7 @@ function Hero() {
             </Link>
           </div>
           <p className="mt-4 text-sm text-[var(--color-text-muted)]">
-            Free forever. No credit card. 50 leads + 100 verifications on the house.
+            Free forever. No credit card needed.
           </p>
         </div>
 
@@ -90,7 +82,7 @@ function Hero() {
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Leads found", value: "1,247", icon: Search, color: "text-[var(--color-primary)]" },
+                  { label: "Leads found", value: "1,247", icon: Search, color: "text-[#5ee5ff]" },
                   { label: "Verified emails", value: "1,089", icon: ShieldCheck, color: "text-green-400" },
                   { label: "Replies this week", value: "83", icon: Inbox, color: "text-yellow-400" },
                 ].map((stat) => (
@@ -133,15 +125,12 @@ function SocialProof() {
   return (
     <section className="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">
-          Built for the way modern teams actually sell
-        </p>
-        <div className="mt-8 grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {[
-            { value: "4 engines", label: "Live lead sources" },
-            { value: "6 styles", label: "AI copywriting frameworks" },
-            { value: "99.2%", label: "Email verification accuracy" },
-            { value: "30 days", label: "Free trial on every paid plan" },
+            { value: "4 engines", label: "Ways to find buyers" },
+            { value: "6 styles", label: "AI message frameworks" },
+            { value: "99.2%", label: "Email check accuracy" },
+            { value: "7 days", label: "Money-back guarantee" },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="text-3xl font-bold text-[var(--color-foreground)]">{stat.value}</div>
@@ -155,70 +144,51 @@ function SocialProof() {
 }
 
 /* ============================================================
-   PROBLEM / SOLUTION
+   THE SHIFT — value-focused, not problem/solution
    ============================================================ */
-function ProblemSolution() {
+function TheShift() {
   return (
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Buying lead lists is a{" "}
-            <span className="text-[var(--color-danger)]">bad decision</span>.
-            <br />
-            We built the opposite.
+            The way people find customers has changed.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Most lead tools sell you a stale CSV of 10,000 "verified" emails. By the time
-            you send your first campaign, 30% bounce, 20% complain, and your sender
-            reputation is dead. Bad Decision fixes every step of that broken pipeline.
+            You used to buy a list, guess which emails worked, and hope for the best.
+            Now you can find the exact people who need what you sell, know their email
+            is real before you send, and reach them this week.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {/* The old way */}
-          <div className="card-premium p-8 border-[var(--color-danger)]/30 bg-[var(--color-danger-soft)]/30">
-            <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-foreground)]">
-              <span className="text-2xl">💩</span> The old way
-            </h3>
-            <ul className="mt-6 space-y-3 text-[var(--color-text-secondary)]">
-              {[
-                "Buy a stale list of 10,000 emails from a marketplace",
-                "Send a blast from a cold domain you just registered",
-                "30% bounce rate kills your sender reputation overnight",
-                "Gmail flags you as spam — every future email lands in junk",
-                "You spend $500 on credits and book 0 meetings",
-                "Switch tools, repeat the cycle, blame the next vendor",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1 text-[var(--color-danger)]">✕</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* The Bad Decision way */}
-          <div className="card-premium p-8 border-[var(--color-primary)]/40 bg-[var(--color-violet-soft)]/30">
-            <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-foreground)]">
-              <CheckCircle2 className="h-6 w-6 text-[var(--color-primary)]" /> The Bad Decision way
-            </h3>
-            <ul className="mt-6 space-y-3 text-[var(--color-text-secondary)]">
-              {[
-                "Pull fresh leads straight from the live internet — no stale lists",
-                "Verify every email with MyEmailVerifier-grade SMTP checks before you pay",
-                "Draft each message in Dan Kennedy / Donald Miller / Gary Halbert style",
-                "Send from your own warmed-up mailboxes (Gmail, Outlook, custom SMTP)",
-                "Throttle, rotate, and pause automatically to protect reputation",
-                "Track opens, clicks, replies — break sequences when someone responds",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {[
+            {
+              icon: Search,
+              title: "Find the right people",
+              body: "Tell us who you want to reach. We search the live internet and bring back real businesses with real contact info. No stale lists. No dead ends.",
+            },
+            {
+              icon: ShieldCheck,
+              title: "Know every email works",
+              body: "Every email is checked before you send. You see which ones are safe, which are risky, and which will bounce. You only pay for the good ones.",
+            },
+            {
+              icon: Inbox,
+              title: "Book more meetings",
+              body: "We write the message, send it from your inbox at the right time, and tell you the moment someone replies. You spend your time talking to people who said yes.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="card-premium p-8">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-violet-soft)]">
+                <item.icon className="h-6 w-6 text-[var(--color-primary)]" />
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-[var(--color-foreground)]">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-[var(--color-text-secondary)]">{item.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -235,17 +205,17 @@ function Engines() {
       icon: Users,
       status: "Live",
       description:
-        "Find local businesses and professionals by industry, location, and radius. Pulls from Google Maps, OSM, Yelp Fusion, and direct website scraping for emails, phones, and socials.",
+        "Find local businesses and pros by industry and location. Every lead comes with name, website, email, phone, and social links.",
       examples: ["Real estate agents in Lagos", "Dentists in Brooklyn", "Coaches in Austin"],
       available: true,
     },
     {
       name: "Ads Running",
-      icon: TrendingUp,
+      icon: BarChart3,
       status: "Coming soon",
       description:
-        "Find businesses actively running Google or Meta ads. Identifies the ad platform, ad creative, and landing page — perfect for pitching competing or complementary services.",
-      examples: ["Shopify stores running Meta ads", "SaaS companies on Google Ads"],
+        "Find businesses already paying for ads. If they are spending money on ads, they have budget to spend on you too.",
+      examples: ["Stores running social ads", "SaaS companies on search ads"],
       available: false,
     },
     {
@@ -253,8 +223,8 @@ function Engines() {
       icon: Globe,
       status: "Coming soon",
       description:
-        "Find online stores by platform (Shopify, WooCommerce, BigCommerce, Magento) and detect their tech stack (Klaviyo, Recharge, Gorgias). 2,000 leads per search on Pro tier.",
-      examples: ["Shopify skincare stores", "WooCommerce coffee shops in the US"],
+        "Find online stores by platform and tech stack. Know what tools they use before you reach out.",
+      examples: ["Skincare stores on Shopify", "Coffee shops selling online"],
       available: false,
     },
     {
@@ -262,8 +232,8 @@ function Engines() {
       icon: Search,
       status: "Coming soon",
       description:
-        "Find businesses that don't have a website yet — only listed on Yelp, Houzz, Etsy, Facebook. The perfect wedge for selling web design, marketing, or branding services.",
-      examples: ["Plumbers without websites in Texas", "Caterers in London on Yelp only"],
+        "Find businesses with no website. Perfect if you sell web design, marketing, or branding services.",
+      examples: ["Plumbers with no site", "Caterers only on review sites"],
       available: false,
     },
   ];
@@ -272,16 +242,12 @@ function Engines() {
     <section className="bg-[var(--color-surface)] py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="badge">
-            <Search className="h-3.5 w-3.5" />
-            4 lead engines
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Four engines. One search bar.
+          <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
+            Four ways to find your next customer
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Tell us who you want to reach. We pull fresh leads from the live internet — not
-            from a stale database. Each engine is tuned for a specific ICP.
+            Pick the one that fits who you are looking for. Each one searches the live
+            internet and brings back fresh leads in minutes.
           </p>
         </div>
 
@@ -314,7 +280,7 @@ function Engines() {
                     key={ex}
                     className="rounded-md bg-[var(--color-muted)] px-3 py-1.5 text-xs text-[var(--color-text-secondary)]"
                   >
-                    "{ex}"
+                    &ldquo;{ex}&rdquo;
                   </div>
                 ))}
               </div>
@@ -327,7 +293,7 @@ function Engines() {
 }
 
 /* ============================================================
-   HOW IT WORKS
+   HOW IT WORKS (preview)
    ============================================================ */
 function HowItWorks() {
   const steps = [
@@ -335,25 +301,25 @@ function HowItWorks() {
       icon: Search,
       title: "1. Find leads",
       description:
-        "Pick an engine, type your query (industry + location + filters), and we scrape the live internet for matching businesses. Each lead comes with company name, website, email, phone, socials, and tech stack.",
+        "Pick an engine, type who you want to reach, and we search the live internet. Every lead comes with contact info and company details.",
     },
     {
       icon: ShieldCheck,
-      title: "2. Verify emails",
+      title: "2. Check emails",
       description:
-        "Every email goes through a 7-layer verification pipeline (syntax → DNS → MX → SMTP → disposable → catch-all → role). You see Valid / Risky / Invalid for each. You only pay for verified emails.",
+        "Every email goes through a deep check. You see which are safe, which are risky, and which will bounce. You only pay for the safe ones.",
     },
     {
       icon: Sparkles,
-      title: "3. Draft messages",
+      title: "3. Write messages",
       description:
-        "Pick a copywriting style — Dan Kennedy, Donald Miller, Ray Edwards, David Ogilvy, Jay Abraham, or Gary Halbert. DeepSeek generates a 500-530 character message tailored to each lead. Edit or regenerate.",
+        "Pick a writing style. We write a short, personal message for each lead. Edit it, or send it as is. No more staring at a blank screen.",
     },
     {
       icon: Send,
-      title: "4. Send & track",
+      title: "4. Send and track",
       description:
-        "Connect your mailboxes (Gmail App Password, Outlook, custom SMTP). We warm them up, rotate sends, throttle per provider limits, and pull replies via IMAP. Sequence breaks when someone responds.",
+        "Connect your email inbox. We warm it up, send at the right time, and tell you the moment someone opens, clicks, or replies.",
     },
   ];
 
@@ -361,15 +327,12 @@ function HowItWorks() {
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="badge">
-            <Zap className="h-3.5 w-3.5" />
-            Four steps
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            From zero to first reply in 14 days
+          <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
+            Four steps. One subscription.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            No setup. No integration. No Zapier glue. Sign up, search, verify, draft, send.
+            From "who should I contact?" to "they replied!" in about 14 days. No setup.
+            No extra tools. No guesswork.
           </p>
         </div>
 
@@ -401,137 +364,63 @@ function HowItWorks() {
 }
 
 /* ============================================================
-   PIPELINE (vertical)
+   WHAT YOU GET (value outcomes, not feature lists)
    ============================================================ */
-function Pipeline() {
-  return (
-    <section className="bg-[var(--color-card)] py-20 text-[var(--color-card-foreground)] sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            The full pipeline — one subscription
-          </h2>
-          <p className="mt-4 text-lg text-[var(--color-card-foreground)]/75">
-            Stop paying for Apollo + Hunter + NeverBounce + Instantly + Smartlead. Bad
-            Decision replaces all of them.
-          </p>
-        </div>
-
-        <div className="mt-16 space-y-4">
-          {[
-            { tool: "Apollo / Clay", cost: "$99/mo", replaced: "Lead scraping + enrichment" },
-            { tool: "Hunter.io", cost: "$49/mo", replaced: "Email finding" },
-            { tool: "NeverBounce / ZeroBounce", cost: "$50/mo", replaced: "Email verification" },
-            { tool: "Instantly.ai", cost: "$30-97/mo", replaced: "Cold email sending + warmup" },
-            { tool: "Smartlead.ai", cost: "$39-97/mo", replaced: "Same as above (alternative)" },
-            { tool: "Total monthly cost", cost: "$228+", replaced: "Bad Decision Growth: $97/mo" },
-          ].map((row, i) => (
-            <div
-              key={row.tool}
-              className={`flex flex-col items-start justify-between gap-3 rounded-lg p-4 sm:flex-row sm:items-center ${
-                i === 5 ? "bg-[var(--color-primary)] text-white" : "bg-white/5"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className={`text-sm font-semibold ${
-                    i === 5 ? "text-white" : "text-[var(--color-card-foreground)]/90"
-                  }`}
-                >
-                  {row.tool}
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span
-                  className={`text-sm ${
-                    i === 5 ? "text-white/80" : "text-[var(--color-card-foreground)]/60"
-                  }`}
-                >
-                  {row.replaced}
-                </span>
-                <span
-                  className={`text-sm font-bold ${
-                    i === 5 ? "text-white" : "text-[var(--color-primary)]"
-                  }`}
-                >
-                  {row.cost}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   FEATURES
-   ============================================================ */
-function Features() {
-  const features = [
+function WhatYouGet() {
+  const outcomes = [
     {
       icon: ShieldCheck,
-      title: "Email verification you can trust",
-      description:
-        "Multi-provider verification pipeline (MyEmailVerifier, BillionVerify, Reoon, MailboxValidator) with 99.2% accuracy. Catch-all detection, role address filtering, disposable domain blocking. You only pay for verified emails.",
+      title: "Protect your sender reputation",
+      body: "Every email is checked before you send. Bad emails are caught and removed. Your inbox stays healthy, your messages land in the inbox (not spam), and your domain stays trusted.",
     },
     {
       icon: Sparkles,
-      title: "AI copywriting that doesn't sound like AI",
-      description:
-        "Six proven frameworks: Dan Kennedy, Donald Miller (StoryBrand), Ray Edwards, David Ogilvy, Jay Abraham, Gary Halbert. Strict 500-530 character enforcement so emails look hand-written. Each lead gets a unique draft.",
+      title: "Messages that sound like you wrote them",
+      body: "Pick from six proven writing styles. Each lead gets a unique message that fits their business. Short, personal, and ready to send. No generic templates. No robot-sounding copy.",
     },
     {
       icon: Send,
-      title: "Mailbox warmup, rotation, and throttle",
-      description:
-        "Peer-to-peer warmup ramps your mailbox from cold to warm in 7-15 days. Send rotation across multiple mailboxes. Per-provider throttle (Gmail: 50/day, Outlook: 30/day). Automatic pause on bounce streaks.",
+      title: "Send from your own inbox, safely",
+      body: "Connect your email account. We warm it up slowly, send at the right times, and rotate across your inboxes. Your reputation stays in your hands, which is exactly where it should be.",
     },
     {
       icon: Inbox,
-      title: "Unified inbox with reply classification",
-      description:
-        "Every reply is auto-classified: Interested, Not Interested, OOO, Unsubscribe, Bounce. Sequences break on interest. OOO auto-pauses and resumes. Unsubscribes sync to your suppression list instantly.",
+      title: "Never miss a reply",
+      body: "Every reply lands in one inbox. We sort them: interested, not now, out of office, unsubscribe. You see the interested ones first and reach back before they go cold.",
     },
     {
       icon: BarChart3,
-      title: "Per-campaign analytics",
-      description:
-        "Open rate, click rate, reply rate, bounce rate, sentiment breakdown. Funnel view: total → sent → opened → clicked → replied. 30-day trend charts. A/B variant performance (Coming soon).",
+      title: "Know what is working",
+      body: "See your open rate, reply rate, and bounce rate at a glance. Know which messages get replies and which need a rewrite. Make better decisions with real numbers, not guesses.",
     },
     {
       icon: Globe,
-      title: "Bring your own API keys (community members)",
-      description:
-        "Plug in your own Apollo, Hunter, MyEmailVerifier, ScrapingBee, or DeepSeek keys. We use them instead of our pooled infrastructure. You pay $0 in credits for those operations. Available to invited community members only.",
+      title: "Bring your own keys, save more",
+      body: "If you are part of our community, plug in your own keys for finding leads, checking emails, and writing messages. You pay nothing for those tasks. Invite-only, controlled by you.",
     },
   ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="bg-[var(--color-surface)] py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="badge">
-            <Zap className="h-3.5 w-3.5" />
-            Built for serious outbound
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Every feature you'd expect from a $300/mo tool
+          <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
+            What you actually get
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            We didn't cut corners. This is production-grade cold outreach infrastructure.
+            Not a list of features. Real outcomes that help you book more meetings and
+            waste less money.
           </p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <div key={f.title} className="card-premium p-6">
+          {outcomes.map((o) => (
+            <div key={o.title} className="card-premium p-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-violet-soft)]">
-                <f.icon className="h-5 w-5 text-[var(--color-primary)]" />
+                <o.icon className="h-5 w-5 text-[var(--color-primary)]" />
               </div>
-              <h3 className="mt-4 text-lg font-bold text-[var(--color-foreground)]">{f.title}</h3>
-              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">{f.description}</p>
+              <h3 className="mt-4 text-lg font-bold text-[var(--color-foreground)]">{o.title}</h3>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">{o.body}</p>
             </div>
           ))}
         </div>
@@ -541,71 +430,49 @@ function Features() {
 }
 
 /* ============================================================
-   PRICING PREVIEW
+   PLANS PREVIEW (plan names only, no prices)
    ============================================================ */
-function PricingPreview() {
+function PlansPreview() {
   return (
-    <section className="bg-[var(--color-surface)] py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="badge">
-            <Sparkles className="h-3.5 w-3.5" />
-            Pricing
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            One subscription. Every tool you need.
+          <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
+            One subscription. Everything you need.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Cancel anytime. 30-day money-back guarantee on first paid subscription.
+            Start free. Upgrade when you are ready to send real campaigns. Cancel anytime.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PRICING_PLANS.map((plan) => (
             <div
               key={plan.name}
-              className={`card-premium relative p-6 ${
+              className={`card-premium p-6 text-center ${
                 plan.highlight
-                  ? "border-[var(--color-primary)] shadow-lg ring-2 ring-[var(--color-primary)]/20"
+                  ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/20"
                   : ""
               }`}
             >
-              {plan.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
-                  Most popular
-                </span>
-              )}
               <h3 className="text-lg font-bold text-[var(--color-foreground)]">{plan.name}</h3>
-              <p className="mt-1 text-sm text-[var(--color-text-muted)]">{plan.description}</p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-[var(--color-foreground)]">
-                  ${plan.price}
-                </span>
-                <span className="text-sm text-[var(--color-text-muted)]">/{plan.period}</span>
-              </div>
-              <ul className="mt-6 space-y-2">
-                {plan.features.slice(0, 5).map((feat) => (
-                  <li key={feat} className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-2 text-sm text-[var(--color-text-muted)]">{plan.description}</p>
               <Link
                 href={plan.ctaHref}
-                className={`mt-6 block w-full text-center text-sm font-semibold ${
-                  plan.highlight ? "btn-primary" : "btn-secondary"
-                }`}
+                className={`mt-4 block text-sm font-semibold ${
+                  plan.highlight ? "text-[var(--color-primary)]" : "text-[var(--color-foreground)]"
+                } hover:underline`}
               >
-                {plan.cta}
+                {plan.cta} →
               </Link>
             </div>
           ))}
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/pricing" className="text-sm font-semibold text-[var(--color-primary)] hover:underline">
-            Compare all features →
+          <Link href="/pricing" className="btn-secondary">
+            See full pricing
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
@@ -618,19 +485,19 @@ function PricingPreview() {
    ============================================================ */
 function FAQPreview() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="bg-[var(--color-surface)] py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Frequently asked questions
+            Questions, answered
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            The short version. See the full FAQ for more.
+            The short version. See the full page for more.
           </p>
         </div>
 
         <div className="mt-12 space-y-3">
-          {FAQS.slice(0, 6).map((faq) => (
+          {FAQS.slice(0, 5).map((faq) => (
             <details
               key={faq.q}
               className="card-premium group cursor-pointer p-6 [&_summary]:list-none"
@@ -648,7 +515,7 @@ function FAQPreview() {
 
         <div className="mt-12 text-center">
           <Link href="/faq" className="btn-secondary">
-            See all FAQs
+            See all questions
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -665,13 +532,13 @@ function FinalCTA() {
     <section className="bg-[var(--color-card)] py-20 text-[var(--color-card-foreground)] sm:py-28">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-          Stop buying lists.
+          Stop guessing.
           <br />
           Start finding buyers.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-card-foreground)]/75">
-          Free forever plan. No credit card required. 50 leads + 100 verifications on us.
-          Upgrade only when you're ready to send real campaigns.
+          Free forever plan. No credit card. Upgrade only when you are ready to send real
+          campaigns.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
@@ -685,18 +552,18 @@ function FinalCTA() {
             href="/contact"
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 sm:w-auto"
           >
-            Talk to sales
+            Talk to us
           </Link>
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[var(--color-card-foreground)]/60">
           <span className="flex items-center gap-1.5">
-            <Mail className="h-3.5 w-3.5" /> 7-day refund on first subscription
+            <Mail className="h-3.5 w-3.5" /> Money-back guarantee
           </span>
           <span className="flex items-center gap-1.5">
             <Phone className="h-3.5 w-3.5" /> Cancel anytime
           </span>
           <span className="flex items-center gap-1.5">
-            <MessageSquare className="h-3.5 w-3.5" /> Email + chat support
+            <MessageSquare className="h-3.5 w-3.5" /> Real human support
           </span>
         </div>
       </div>

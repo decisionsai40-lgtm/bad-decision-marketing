@@ -15,9 +15,8 @@ export default function GuaranteePage() {
   return (
     <>
       <PageHeader
-        badge="Guarantee"
         title="7-day money-back. No questions asked."
-        subtitle="We're confident Bad Decision works. But if it doesn't work for you in the first week, you shouldn't pay. Here's our promise in plain English."
+        subtitle="We are confident Bad Decision works. But if it does not work for you in the first week, you should not pay. Here is our promise in plain English."
       />
 
       <section className="py-16 sm:py-24">
@@ -28,9 +27,9 @@ export default function GuaranteePage() {
               The Bad Decision Guarantee
             </h2>
             <p className="mt-3 text-lg text-[var(--color-text-secondary)]">
-              If you cancel within 7 days of your first paid subscription and haven't sent
-              more than 100 campaign emails, we'll refund 100% — no questions, no friction,
-              no retention scripts, no "are you sure?" modals.
+              If you cancel within 7 days of your first paid subscription and have not sent
+              more than 100 campaign emails, we will refund 100 percent. No questions, no
+              friction, no retention scripts, no "are you sure?" pop-ups.
             </p>
           </div>
 

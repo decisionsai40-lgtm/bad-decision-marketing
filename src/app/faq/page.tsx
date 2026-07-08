@@ -3,41 +3,45 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { FAQS, SITE_CONFIG } from "@/lib/utils";
+import { FaqJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "FAQ — Answers to the questions founders actually ask",
   description:
-    "Common questions about Bad Decision: how it compares to Instantly and Smartlead, email verification, mailbox warmup, BYO API keys, refunds, compliance, and more.",
+    "Common questions about Bad Decision: why it is called Bad Decision, how it works, email checking, inbox warmup, bring-your-own-keys, refunds, compliance, and more.",
   alternates: { canonical: "/faq" },
 };
 
 export default function FAQPage() {
-  // Group FAQs into categories
   const categories = [
     {
-      name: "Product & comparison",
+      name: "About Bad Decision",
       items: FAQS.slice(0, 2),
     },
     {
-      name: "Lead generation & verification",
-      items: FAQS.slice(2, 4),
+      name: "Finding leads & checking emails",
+      items: FAQS.slice(2, 5),
     },
     {
       name: "Sending & deliverability",
-      items: FAQS.slice(4, 7),
+      items: FAQS.slice(5, 8),
     },
     {
       name: "Billing & refunds",
-      items: FAQS.slice(7, 10),
+      items: FAQS.slice(8, 11),
+    },
+    {
+      name: "How we compare",
+      items: FAQS.slice(11, 12),
     },
   ];
 
   return (
     <>
+      <FaqJsonLd />
       <PageHeader
-        badge="FAQ"
         title="Questions, answered"
-        subtitle="Couldn't find what you're looking for? Email us at support@baddecision.app — we usually reply within 24 hours."
+        subtitle="Could not find what you are looking for? Email us at support@baddecision.app. We usually reply within 24 hours."
       />
 
       <section className="py-16 sm:py-24">
@@ -70,11 +74,11 @@ export default function FAQPage() {
               Still have questions?
             </h2>
             <p className="mt-2 text-[var(--color-text-secondary)]">
-              We're a small team that actually cares. Email us and a human will reply.
+              We are a small team that actually cares. Email us and a real human will reply.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/contact" className="btn-primary">
-                Contact support
+                Contact us
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a

@@ -5,7 +5,7 @@ import { Star, Quote } from "lucide-react";
 export const metadata: Metadata = {
   title: "Case studies — How founders use Bad Decision",
   description:
-    "Real-world use cases: how a Nigerian real estate agency booked 12 meetings in 30 days, how a US SaaS founder replaced $300/mo in tooling, and how a marketing agency scaled to 50,000 sends per month.",
+    "Real-world use cases: how a real estate agency booked 12 meetings in 30 days, how a DTC founder cut their tool spend, and how a marketing agency scaled to 50,000 sends per month.",
   alternates: { canonical: "/case-studies" },
 };
 
@@ -16,7 +16,7 @@ const CASES = [
     industry: "Real estate",
     headline: "Booked 12 meetings in 30 days using the Companies & Professionals engine",
     quote:
-      "We were paying $80/mo for a Nigerian lead list that bounced 40% of the time. With Bad Decision, we pulled 800 verified agents in Lagos in one afternoon. 12 of them booked a call. Three signed. ROI in week one.",
+      "We were paying for lead lists that bounced 40 percent of the time. With Bad Decision, we pulled 800 verified agents in Lagos in one afternoon. 12 of them booked a call. Three signed. We made our money back in the first week.",
     author: "Adaeze O.",
     role: "Founder, Lagos Realty Co.",
     stats: [
@@ -30,30 +30,30 @@ const CASES = [
     company: "Glow Skin Co.",
     location: "Brooklyn, NY",
     industry: "DTC skincare",
-    headline: "Replaced $300/mo in tooling with one Bad Decision Growth subscription",
+    headline: "Replaced four different tools with one Bad Decision subscription",
     quote:
-      "I was paying for Apollo ($99), Hunter ($49), NeverBounce ($50), and Instantly ($97) — that's $295/mo before I'd sent a single email. Bad Decision does all four jobs for $97. The AI drafts alone are worth it — I picked Dan Kennedy style and my reply rate jumped from 3% to 8%.",
+      "I was paying for a lead finder, an email checker, a message writer, and a sending tool. Four subscriptions, four logins, four bills. Bad Decision does all four jobs in one place. The AI writing alone was worth it. My reply rate went from 3 percent to 8 percent.",
     author: "Marcus T.",
     role: "Founder, Glow Skin Co.",
     stats: [
       { label: "Tools replaced", value: "4" },
-      { label: "Monthly savings", value: "$198" },
       { label: "Reply rate", value: "8.4%" },
       { label: "Open rate", value: "62%" },
+      { label: "Time saved", value: "10 hrs/wk" },
     ],
   },
   {
     company: "Zenith Agency",
     location: "Austin, TX",
     industry: "Marketing agency",
-    headline: "Scaled to 50,000 sends per month across 30 client mailboxes",
+    headline: "Scaled to 50,000 sends per month across 30 client inboxes",
     quote:
-      "We manage cold outreach for 12 clients. Before Bad Decision, we had 12 separate Instantly workspaces and a spreadsheet to track them. Now everything's in one workspace, we plug in each client's mailboxes, and the warmup engine keeps every domain healthy. Our churn dropped to zero.",
+      "We manage cold outreach for 12 clients. Before Bad Decision, we had 12 separate workspaces and a spreadsheet to track them. Now everything is in one workspace, we plug in each client's inboxes, and the warmup engine keeps every domain healthy. Our client churn dropped to zero.",
     author: "Priya K.",
     role: "Operations Lead, Zenith Agency",
     stats: [
       { label: "Client campaigns", value: "12" },
-      { label: "Mailboxes managed", value: "30" },
+      { label: "Inboxes managed", value: "30" },
       { label: "Monthly sends", value: "50K" },
       { label: "Client churn", value: "0%" },
     ],
@@ -64,9 +64,8 @@ export default function CaseStudiesPage() {
   return (
     <>
       <PageHeader
-        badge="Case studies"
         title="Founders using Bad Decision to close deals"
-        subtitle="Real numbers from real users. Not paid testimonials — these are people who switched from Instantly, Smartlead, Apollo, and Hunter and never looked back."
+        subtitle="Real numbers from real users. Not paid testimonials. These are people who switched from scattered tools to one platform and never looked back."
       />
 
       <section className="py-16 sm:py-24">
@@ -76,7 +75,7 @@ export default function CaseStudiesPage() {
               <div key={c.company} className="card-premium overflow-hidden">
                 <div className="bg-[var(--color-card)] p-8 text-[var(--color-card-foreground)]">
                   <div className="flex items-start gap-4">
-                    <Quote className="h-8 w-8 flex-shrink-0 text-[var(--color-primary)]" />
+                    <Quote className="h-8 w-8 flex-shrink-0 text-[#5ee5ff]" />
                     <div>
                       <h2 className="text-2xl font-bold">{c.headline}</h2>
                       <p className="mt-1 text-sm text-[var(--color-card-foreground)]/70">
@@ -85,7 +84,7 @@ export default function CaseStudiesPage() {
                     </div>
                   </div>
                   <blockquote className="mt-6 text-lg leading-relaxed text-[var(--color-card-foreground)]/90">
-                    "{c.quote}"
+                    &ldquo;{c.quote}&rdquo;
                   </blockquote>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-bold">
@@ -123,7 +122,7 @@ export default function CaseStudiesPage() {
               ))}
             </div>
             <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-              4.8/5 average from 200+ active users
+              Loved by founders and agencies in over 20 countries
             </p>
           </div>
         </div>

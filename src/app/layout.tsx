@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE_CONFIG } from "@/lib/utils";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
+import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/json-ld";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -29,15 +30,20 @@ export const metadata: Metadata = {
     "cold outreach",
     "cold email",
     "sales leads",
-    "scraping leads",
+    "lead scraping",
     "outbound sales",
-    "Instantly alternative",
-    "Smartlead alternative",
-    "Apollo alternative",
     "email warmup",
     "deliverability",
     "sales engagement",
     "SDR tools",
+    "cold email software",
+    "outreach platform",
+    "lead finder",
+    "B2B lead generation",
+    "cold email tool",
+    "email campaign software",
+    "sales pipeline",
+    "outbound lead generation",
   ],
   alternates: {
     canonical: SITE_CONFIG.url,
@@ -49,21 +55,12 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     title: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
     description: SITE_CONFIG.description,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
     description: SITE_CONFIG.description,
     creator: SITE_CONFIG.social.twitter,
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -91,6 +88,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={plusJakarta.variable}>
       <body className="font-sans antialiased">
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
         <Navbar />
         <main>{children}</main>
         <Footer />

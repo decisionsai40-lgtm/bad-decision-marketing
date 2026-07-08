@@ -4,64 +4,65 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { PRICING_PLANS, SITE_CONFIG } from "@/lib/utils";
+import { PricingJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Pricing — Simple, transparent, scalable",
   description:
-    "Bad Decision pricing: Free forever, Starter $39/mo, Growth $97/mo, Pro $297/mo. Cancel anytime. 7-day money-back guarantee on first subscription. No setup fees, no contracts.",
+    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Cancel anytime. 7-day money-back guarantee on first subscription. No setup fees, no contracts. See full feature comparison.",
   alternates: { canonical: "/pricing" },
 };
 
 const COMPARISON_FEATURES = [
   {
-    category: "Lead generation",
+    category: "Finding leads",
     rows: [
       { feature: "Leads per month", values: ["50/search", "1,000", "5,000", "25,000"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
       { feature: "Ads Running engine", values: [false, true, true, true] },
       { feature: "Ecommerce engine", values: [false, true, true, true] },
       { feature: "Web Absent engine", values: [false, true, true, true] },
-      { feature: "Lead collections (save searches)", values: [true, true, true, true] },
+      { feature: "Save your searches", values: [true, true, true, true] },
     ],
   },
   {
-    category: "Email verification",
+    category: "Email checking",
     rows: [
-      { feature: "Verifications per month", values: ["100", "1,000", "5,000", "25,000"] },
-      { feature: "Multi-provider verification", values: [true, true, true, true] },
+      { feature: "Email checks per month", values: ["100", "1,000", "5,000", "25,000"] },
+      { feature: "Deep email verification", values: [true, true, true, true] },
       { feature: "Catch-all detection", values: [true, true, true, true] },
       { feature: "Disposable email blocking", values: [true, true, true, true] },
       { feature: "Risk toggle per campaign", values: [true, true, true, true] },
     ],
   },
   {
-    category: "AI outreach drafting",
+    category: "AI message drafting",
     rows: [
       { feature: "AI drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
-      { feature: "6 copywriting styles", values: [true, true, true, true] },
-      { feature: "Per-lead personalization", values: [true, true, true, true] },
+      { feature: "6 writing styles", values: [true, true, true, true] },
+      { feature: "Personal message for each lead", values: [true, true, true, true] },
       { feature: "Batch generation", values: [false, true, true, true] },
     ],
   },
   {
     category: "Campaign sending",
     rows: [
-      { feature: "Mailboxes", values: ["1", "3", "10", "30"] },
+      { feature: "Email inboxes", values: ["1", "3", "10", "30"] },
       { feature: "Campaign sends per month", values: ["—", "1,500", "10,000", "50,000"] },
-      { feature: "Mailbox warmup (peer-to-peer)", values: [false, true, true, true] },
+      { feature: "Inbox warmup", values: [false, true, true, true] },
       { feature: "Send rotation + throttle", values: [false, true, true, true] },
-      { feature: "Sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
-      { feature: "A/B variant testing", values: [false, false, true, true] },
-      { feature: "Unified inbox + reply classification", values: [false, true, true, true] },
-      { feature: "Suppression list", values: [true, true, true, true] },
+      { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
+      { feature: "A/B testing", values: [false, false, true, true] },
+      { feature: "Unified inbox + reply sorting", values: [false, true, true, true] },
+      { feature: "Block list", values: [true, true, true, true] },
     ],
   },
   {
-    category: "Team & integrations",
+    category: "Team & extras",
     rows: [
       { feature: "Workspace + team members", values: [false, false, true, true] },
       { feature: "Webhooks + API access", values: [false, false, false, true] },
-      { feature: "CRM sync (HubSpot, Pipedrive)", values: [false, false, false, true] },
+      { feature: "CRM sync", values: [false, false, false, true] },
       { feature: "Dedicated success manager", values: [false, false, false, true] },
       { feature: "Priority support", values: [false, false, true, true] },
     ],
@@ -71,9 +72,9 @@ const COMPARISON_FEATURES = [
 export default function PricingPage() {
   return (
     <>
+      <PricingJsonLd />
       <PageHeader
-        badge="Pricing"
-        title="One subscription. Every tool you need."
+        title="One subscription. Everything you need."
         subtitle="Cancel anytime. 7-day money-back guarantee on first paid subscription. No setup fees, no contracts, no hidden costs."
       />
 
@@ -127,8 +128,8 @@ export default function PricingPage() {
           </div>
 
           <p className="mt-8 text-center text-sm text-[var(--color-text-muted)]">
-            All plans include 99.2% verification accuracy, CAN-SPAM compliant sending,
-            GDPR-ready data handling, and the Bad Decision dashboard. Need something custom?{" "}
+            All plans include deep email verification, spam-law compliant sending, and the
+            full Bad Decision dashboard. Need something custom?{" "}
             <Link href="/contact?topic=enterprise" className="text-[var(--color-primary)] hover:underline">
               Talk to us
             </Link>
@@ -215,7 +216,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Guarantee + FAQ link */}
+      {/* Guarantee + CTA */}
       <section className="py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <div className="card-premium p-8">
@@ -224,12 +225,12 @@ export default function PricingPage() {
               7-day money-back guarantee
             </h2>
             <p className="mt-2 text-[var(--color-text-secondary)]">
-              If you cancel within 7 days of your first paid subscription and haven't sent
-              more than 100 campaign emails, we'll refund 100%. No questions asked. See our{" "}
+              If you cancel within 7 days of your first paid subscription and have not sent
+              more than 100 campaign emails, we will refund 100 percent. No questions asked.{" "}
               <Link href="/refund" className="text-[var(--color-primary)] hover:underline">
-                refund policy
-              </Link>{" "}
-              for full details.
+                See full refund policy
+              </Link>
+              .
             </p>
             <Link
               href={`${SITE_CONFIG.dashboardUrl}/sign-up`}

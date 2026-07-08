@@ -96,8 +96,6 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
           <p className="text-xs text-[var(--color-card-foreground)]/60">
             © {new Date().getFullYear()} {SITE_CONFIG.legalEntityName}. All rights reserved.
-            {" "}
-            Made in {SITE_CONFIG.legalJurisdiction}.
           </p>
           <p className="text-xs text-[var(--color-card-foreground)]/60">
             Built for founders who refuse to waste another dollar on dead lead lists.

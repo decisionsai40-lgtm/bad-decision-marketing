@@ -24,9 +24,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        badge="Contact"
         title="Talk to a human"
-        subtitle="We're a small team that actually reads every email. Most replies come within 24 hours. No bots, no tiers, no escalation queues."
+        subtitle="We are a small team that actually reads every email. Most replies come within 24 hours. No bots, no tiers, no escalation queues."
       />
 
       <section className="py-16 sm:py-24">

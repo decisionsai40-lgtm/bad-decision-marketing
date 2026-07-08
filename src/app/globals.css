@@ -213,22 +213,24 @@
   }
 
   /* === Buttons === */
+  /* Note: --color-primary (#00a8cc) is too light for white text (2.8:1 contrast).
+     .btn-primary uses --color-teal-deep for background to achieve 11.8:1 contrast. */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--color-primary);
-    color: var(--color-primary-foreground);
+    background: var(--color-teal-deep);
+    color: #ffffff;
     font-weight: 600;
     border-radius: 0.625rem;
     transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 168, 204, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 61, 77, 0.2);
   }
   .btn-primary:hover {
-    background: var(--color-primary-hover);
-    box-shadow: 0 4px 12px rgba(0, 168, 204, 0.3);
+    background: var(--color-teal-darker);
+    box-shadow: 0 4px 12px rgba(0, 61, 77, 0.3);
   }
   .btn-primary:active {
     transform: translateY(1px);
@@ -396,6 +398,15 @@
 }
 .card-premium .text-muted-foreground {
   color: #5a6a70;
+}
+
+/* On dark teal backgrounds, brighten the primary accent color for readability.
+   #00a8cc on #003d4d gives only 4.2:1 — brighten to #5ee5ff for 7:1+ on dark sections. */
+.bg-card .text-\[var\(--color-primary\)\] {
+  color: #5ee5ff;
+}
+.bg-card .text-primary {
+  color: #5ee5ff;
 }
 
 /* ============================================================

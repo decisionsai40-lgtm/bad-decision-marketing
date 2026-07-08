@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "How it works — From zero to first reply in 14 days",
   description:
-    "The Bad Decision pipeline in 4 steps: find leads with our 4 engines, verify every email with multi-provider SMTP checks, draft messages in 6 copywriting styles, send from your own warmed-up mailboxes with full tracking.",
+    "The Bad Decision pipeline in 4 steps: find leads, check every email, write messages in 6 styles, send from your own inbox with warmup and tracking. See the full walkthrough with examples.",
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -15,9 +15,8 @@ export default function HowItWorksPage() {
   return (
     <>
       <PageHeader
-        badge="How it works"
         title="From zero to first reply in 14 days"
-        subtitle="No setup. No integration. No Zapier glue. Sign up, search, verify, draft, send. The full pipeline runs inside one dashboard."
+        subtitle="No setup. No extra tools. Sign up, search, check, write, send. The full pipeline runs inside one dashboard."
       />
 
       {/* The 4 steps in detail */}
@@ -29,17 +28,17 @@ export default function HowItWorksPage() {
               number="01"
               icon={Search}
               title="Find leads"
-              description="Pick an engine, type your query, and we scrape the live internet for matching businesses. Every lead comes with company name, website, email, phone, social links, and tech stack."
+              description="Pick an engine, type who you want to reach, and we search the live internet. Every lead comes with company name, website, email, phone, and social links."
               bullets={[
-                "4 engines: Companies & Professionals (live), Ads Running, Ecommerce, Web Absent",
-                "Industry-specific query generation (e.g. 'coaches' triggers LinkedIn search, 'real estate' triggers Zillow)",
-                "Up to 2,000 leads per search on Pro tier (Ecommerce engine)",
-                "Auto-deduplication against your previous searches and saved collections",
-                "30-day query cache — if you search the same query twice, the second search is free",
+                "Four engines: Companies & Professionals (live now), plus Ads Running, Ecommerce, and Web Absent coming soon",
+                "Smart search that knows where to look for each type of business",
+                "Up to 2,000 leads per search on the Pro plan",
+                "Automatic deduplication against your past searches",
+                "30-day memory: if you search the same thing twice, the second search is free",
               ]}
               example={{
-                query: '"Shopify skincare stores in the US with Klaviyo installed"',
-                result: "Returns 1,247 verified leads with email, social, and tech stack",
+                query: '"Skincare stores in the US using a known ecommerce platform"',
+                result: "Returns 1,247 leads with email, social links, and tech stack details",
               }}
             />
 
@@ -47,20 +46,20 @@ export default function HowItWorksPage() {
             <StepBlock
               number="02"
               icon={ShieldCheck}
-              title="Verify emails"
-              description="Every email goes through a 7-layer verification pipeline. You only pay for verified emails. Risky catch-all addresses are flagged, not silently included."
+              title="Check emails"
+              description="Every email goes through a deep check. You only pay for the good ones. Risky emails are flagged, not silently included."
               bullets={[
-                "Syntax check (RFC-compliant regex)",
-                "DNS A + MX record validation (dnspython)",
-                "SMTP mailbox check via MyEmailVerifier / BillionVerify / Reoon / MailboxValidator (multi-provider router with fallback)",
-                "Disposable email domain blocking (10,000+ known domains)",
-                "Catch-all detection (tests random local part against domain)",
+                "Format check to catch typos and fake addresses",
+                "Domain and mail server check to make sure the email can receive mail",
+                "Live mailbox check to confirm the address is real and active",
+                "Disposable email blocking (we know which domains are throwaway)",
+                "Catch-all detection (some servers say yes to everything, we catch that)",
                 "Role address detection (info@, sales@, support@, etc.)",
-                "Per-lead score: Valid / Risky / Invalid — you decide whether to include Risky in campaigns",
+                "Clear score for each email: Safe, Risky, or Will Bounce",
               ]}
               example={{
-                query: "Verify 1,247 emails from the previous step",
-                result: "1,089 Valid, 87 Risky, 71 Invalid. Cost: 1,089 credits (not 1,247).",
+                query: "Check 1,247 emails from the previous step",
+                result: "1,089 Safe, 87 Risky, 71 Will Bounce. You only pay for the 1,089 safe ones.",
               }}
             />
 
@@ -68,19 +67,19 @@ export default function HowItWorksPage() {
             <StepBlock
               number="03"
               icon={Sparkles}
-              title="Draft messages"
-              description="Pick a copywriting style. We generate a 500-530 character message tailored to each lead. Strict length enforcement so emails look hand-written, not AI-generated."
+              title="Write messages"
+              description="Pick a writing style. We write a short, personal message for each lead. Strict length control so every email looks hand-written, not robot-generated."
               bullets={[
-                "6 proven frameworks: Dan Kennedy, Donald Miller (StoryBrand), Ray Edwards, David Ogilvy, Jay Abraham, Gary Halbert",
-                "Per-lead personalization (company name, industry, tech stack, location woven in)",
-                "Strict 500-530 character limit — too short looks lazy, too long gets truncated",
-                "Generate single-lead or batch-generate for entire campaigns",
-                "Edit any draft inline. Regenerate with one click if you don't like the angle.",
-                "Output: email subject + email body + social DM + cold call script (4 variants per lead)",
+                "Six proven writing styles to choose from",
+                "Each lead gets a unique message that fits their business",
+                "Strict length control: short enough to look hand-written, long enough to say something",
+                "Write one at a time, or write for your whole campaign at once",
+                "Edit any message before sending, or click to rewrite",
+                "You get four versions per lead: email subject, email body, social message, and call script",
               ]}
               example={{
-                query: "Generate Dan Kennedy-style outreach for 1,089 verified leads",
-                result: "1,089 personalized emails in ~3 minutes. Cost: 2,178 credits.",
+                query: "Write messages for 1,089 leads using one of our six styles",
+                result: "1,089 personal emails ready to send, in about 3 minutes.",
               }}
             />
 
@@ -88,21 +87,21 @@ export default function HowItWorksPage() {
             <StepBlock
               number="04"
               icon={Send}
-              title="Send & track"
-              description="Connect your mailboxes (Gmail App Password, Outlook, Hostinger, any custom SMTP/IMAP). We warm them up, rotate sends, throttle per provider limits, and pull replies via IMAP. Sequences break when someone responds."
+              title="Send and track"
+              description="Connect your email inbox. We warm it up, send at the right time, and tell you the moment someone replies. Campaigns stop automatically when someone responds."
               bullets={[
-                "Peer-to-peer mailbox warmup (7-15 days from cold to warm)",
-                "Send rotation across multiple mailboxes — humanized random subset picker",
-                "Per-provider throttle: Gmail 50/day, Outlook 30/day, custom SMTP configurable",
-                "Per-campaign sending windows (9am-5pm in lead's timezone, exclude weekends)",
-                "Reply ingestion via IMAP polling (every 5 min) — Gmail Pub/Sub coming soon",
-                "Reply classification: Interested / Not Interested / OOO / Unsubscribe / Bounce",
-                "Sequence breaker: any reply auto-cancels queued follow-ups for that lead",
-                "Suppression list: bounces and unsubscribes never get emailed again",
+                "Peer-to-peer inbox warmup: your inbox goes from cold to warm in 7 to 15 days",
+                "Smart send rotation across all your inboxes",
+                "Per-inbox throttle: we never send too much from one address",
+                "Sending windows: send only during business hours in the lead's timezone",
+                "Reply tracking: every reply is pulled into one inbox",
+                "Reply sorting: Interested, Not Interested, Out of Office, Unsubscribe, Bounce",
+                "Auto-stop: any reply stops the rest of the campaign for that lead",
+                "Block list: bounces and unsubscribes are never contacted again",
               ]}
               example={{
-                query: "Start a 3-step campaign to 1,000 leads from 5 warmed mailboxes",
-                result: "Day 0: 50 sends. Day 3: 50 follow-ups. Day 7: 50 final touches. Replies flow into your unified inbox.",
+                query: "Start a 3-step campaign to 1,000 leads from 5 warmed inboxes",
+                result: "Day 1: first emails go out. Day 3: follow-ups. Day 7: final touches. Replies flow into your inbox.",
               }}
             />
           </div>
@@ -114,28 +113,24 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="badge bg-white/10 text-white">
-                <BarChart3 className="h-3.5 w-3.5" />
-                Analytics
-              </span>
-              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-                Every send, every reply, every bounce — tracked
+              <h2 className="text-3xl font-bold sm:text-4xl">
+                Know exactly what is working
               </h2>
               <p className="mt-4 text-lg text-[var(--color-card-foreground)]/75">
-                Per-campaign dashboards show you exactly what's working. Funnel view,
-                sentiment breakdown, 30-day trends. No more guessing if your campaign is
-                healthy.
+                Every send, every reply, every bounce, tracked. You see your open rate,
+                reply rate, and bounce rate at a glance. No more guessing if your campaign
+                is healthy.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  "Funnel: Total → Sent → Opened → Clicked → Replied",
-                  "Rate cards: Open rate, click rate, reply rate, bounce rate",
-                  "Sentiment breakdown: Interested / Not Interested / Neutral / OOO",
-                  "Per-mailbox health: warmup status, daily cap progress, failure streak",
-                  "Lead status breakdown: pending / step-1 sent / replied / bounced / unsubscribed",
+                  "Funnel view: total sent, opened, clicked, replied",
+                  "Rate cards: open rate, reply rate, bounce rate",
+                  "Reply sorting: interested, not interested, out of office, unsubscribe",
+                  "Per-inbox health: warmup status, daily progress, failure alerts",
+                  "Lead status: pending, step 1 sent, replied, bounced, unsubscribed",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <Inbox className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" />
+                    <Inbox className="mt-1 h-4 w-4 flex-shrink-0 text-[#5ee5ff]" />
                     <span className="text-[var(--color-card-foreground)]/90">{item}</span>
                   </li>
                 ))}
@@ -144,7 +139,7 @@ export default function HowItWorksPage() {
             <div className="rounded-2xl bg-white/5 p-6">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: "Open rate", value: "62%", color: "text-[var(--color-primary)]" },
+                  { label: "Open rate", value: "62%", color: "text-[#5ee5ff]" },
                   { label: "Reply rate", value: "8.4%", color: "text-green-400" },
                   { label: "Bounce rate", value: "0.3%", color: "text-yellow-400" },
                   { label: "Interested", value: "23", color: "text-blue-400" },
@@ -171,7 +166,7 @@ export default function HowItWorksPage() {
                       </div>
                       <div className="mt-1 h-2 overflow-hidden rounded-full bg-white/10">
                         <div
-                          className="h-full bg-[var(--color-primary)]"
+                          className="h-full bg-[#5ee5ff]"
                           style={{ width: `${s.pct}%` }}
                         />
                       </div>
@@ -191,7 +186,8 @@ export default function HowItWorksPage() {
             Ready to try the full pipeline?
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Free forever plan. No credit card. 50 leads + 100 verifications + 50 AI drafts included.
+            Free forever plan. No credit card. 50 leads, 100 email checks, and 50 message
+            drafts included.
           </p>
           <Link
             href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
@@ -246,11 +242,11 @@ function StepBlock({
           Example
         </div>
         <div className="mt-2 rounded-lg bg-[var(--color-muted)] p-4">
-          <div className="text-sm font-medium text-[var(--color-foreground)]">Query</div>
+          <div className="text-sm font-medium text-[var(--color-foreground)]">What you type</div>
           <div className="mt-1 text-sm text-[var(--color-text-secondary)]">{example.query}</div>
         </div>
         <div className="mt-3 rounded-lg bg-[var(--color-violet-soft)] p-4">
-          <div className="text-sm font-medium text-[var(--color-foreground)]">Result</div>
+          <div className="text-sm font-medium text-[var(--color-foreground)]">What you get</div>
           <div className="mt-1 text-sm text-[var(--color-text-secondary)]">{example.result}</div>
         </div>
       </div>

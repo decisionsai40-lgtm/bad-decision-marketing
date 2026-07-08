@@ -1,13 +1,12 @@
 import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
-  badge?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
 }
 
-export function PageHeader({ badge, title, subtitle, align = "center" }: PageHeaderProps) {
+export function PageHeader({ title, subtitle, align = "center" }: PageHeaderProps) {
   return (
     <section className="bg-radial-glow py-16 sm:py-20">
       <div
@@ -16,11 +15,6 @@ export function PageHeader({ badge, title, subtitle, align = "center" }: PageHea
           align === "center" ? "text-center" : "text-left"
         )}
       >
-        {badge && (
-          <div className={cn("mb-4", align === "center" && "flex justify-center")}>
-            <span className="badge">{badge}</span>
-          </div>
-        )}
         <h1 className="text-4xl font-bold tracking-tight text-[var(--color-foreground)] sm:text-5xl">
           {title}
         </h1>

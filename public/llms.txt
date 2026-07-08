@@ -1,0 +1,77 @@
+# Bad Decision
+
+> Find real buyers. Skip the ghost towns. The all-in-one platform for outbound sales.
+
+Bad Decision is a SaaS platform that helps founders, agencies, and sales teams find customers, verify emails, write outreach messages, and send cold email campaigns from their own inboxes. It replaces the typical stack of 4-5 separate tools (lead finder, email verifier, AI writer, email sender) with one subscription.
+
+## What it does
+
+1. **Finds leads**: Searches the live internet (not stale databases) for businesses matching your criteria. Four engines available: Companies & Professionals (live), Ads Running, Ecommerce, Web Absent (coming soon).
+2. **Verifies emails**: Every email goes through a deep check (format, domain, mail server, live mailbox, disposable detection, catch-all detection, role address detection). You only pay for verified emails.
+3. **Writes messages**: AI generates short, personalized outreach messages in six proven writing styles. Each lead gets a unique message.
+4. **Sends campaigns**: Connect your own email inboxes (Gmail, Outlook, custom SMTP). The platform warms them up, rotates sends, throttles per provider limits, and tracks opens, clicks, and replies.
+5. **Tracks everything**: Unified inbox with reply classification (interested, not interested, OOO, unsubscribe, bounce). Per-campaign analytics with open rate, reply rate, bounce rate.
+
+## Who it is for
+
+- Founders and solopreneurs doing cold outreach for the first time
+- Sales teams and SDRs who need a steady pipeline of leads
+- Marketing agencies managing cold outreach for multiple clients
+- B2B businesses in any country (global payment support, not US-only)
+
+## Key differentiators
+
+- **All-in-one**: Find, verify, write, send, track in one platform (vs. paying for 4-5 separate tools)
+- **Fresh leads**: Searches the live internet, not a stale database
+- **Bring-your-own keys**: Community members can plug in their own API keys for lead finding, email verification, and AI writing to reduce costs to zero
+- **Global payments**: Accepts payments from 220+ countries, not limited to one region
+- **Sender reputation stays yours**: Never sends from platform servers. Users connect their own inboxes.
+
+## Pricing
+
+- Free: $0 forever (50 leads/search, 100 email checks/mo, 50 AI drafts/mo, 1 inbox)
+- Starter: $39/mo (1,000 leads, 1,500 sends, 3 inboxes)
+- Growth: $97/mo (5,000 leads, 10,000 sends, 10 inboxes, A/B testing, team workspace)
+- Pro: $297/mo (25,000 leads, 50,000 sends, 30 inboxes, API access, CRM sync)
+- 7-day money-back guarantee on first paid subscription
+
+## Pages
+
+- [Home](https://baddecision.app/) — Overview and value proposition
+- [Pricing](https://baddecision.app/pricing) — Full pricing and feature comparison
+- [How it works](https://baddecision.app/how-it-works) — 4-step walkthrough with examples
+- [Case studies](https://baddecision.app/case-studies) — Real user results
+- [FAQ](https://baddecision.app/faq) — Common questions including "Why is it called Bad Decision?"
+- [About](https://baddecision.app/about) — Company story
+- [Contact](https://baddecision.app/contact) — Contact form and support info
+- [Guarantee](https://baddecision.app/guarantee) — 7-day money-back guarantee details
+- [Privacy Policy](https://baddecision.app/privacy) — GDPR, CCPA, NDPA compliant
+- [Terms of Service](https://baddecision.app/terms) — Including acceptable use policy
+- [Refund Policy](https://baddecision.app/refund) — Full refund terms
+- [Cookie Policy](https://baddecision.app/cookie-policy) — Cookie usage details
+- [DPA](https://baddecision.app/dpa) — Data Processing Addendum (GDPR Article 28)
+
+## Dashboard
+
+- User dashboard: https://dashboard.baddecision.app
+- Sign up: https://dashboard.baddecision.app/sign-up
+
+## Contact
+
+- Support email: support@baddecision.app
+- Support response time: Within 24 hours, Monday-Friday
+
+## Technical
+
+- Built with Next.js 15 (App Router, static generation)
+- Deployed on Vercel
+- DNS and CDN via Cloudflare
+- All pages are statically prerendered for fast load times
+- WCAG AA compliant color contrast
+- Mobile-first responsive design
+
+## Company
+
+- Founded: 2025
+- Legal entity: Bad Decision
+- Support email: support@baddecision.app
