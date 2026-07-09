@@ -113,7 +113,7 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="text-3xl font-bold sm:text-4xl text-[var(--color-card-foreground)]">
                 Know exactly what is working
               </h2>
               <p className="mt-4 text-lg text-[var(--color-card-foreground)]/75">

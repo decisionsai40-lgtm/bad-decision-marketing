@@ -94,10 +94,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
-          <p className="text-xs text-[var(--color-card-foreground)]/60">
+          <p className="text-xs text-[var(--color-card-foreground)]/75">
             © {new Date().getFullYear()} {SITE_CONFIG.legalEntityName}. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--color-card-foreground)]/60">
+          <p className="text-xs text-[var(--color-card-foreground)]/75">
             Built for founders who refuse to waste another dollar on dead lead lists.
           </p>
         </div>

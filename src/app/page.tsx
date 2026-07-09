@@ -531,7 +531,7 @@ function FinalCTA() {
   return (
     <section className="bg-[var(--color-card)] py-20 text-[var(--color-card-foreground)] sm:py-28">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-[var(--color-card-foreground)]">
           Stop guessing.
           <br />
           Start finding buyers.
@@ -555,7 +555,7 @@ function FinalCTA() {
             Talk to us
           </Link>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[var(--color-card-foreground)]/60">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[var(--color-card-foreground)]/75">
           <span className="flex items-center gap-1.5">
             <Mail className="h-3.5 w-3.5" /> Money-back guarantee
           </span>

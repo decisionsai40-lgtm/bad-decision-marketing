@@ -77,7 +77,7 @@ export default function CaseStudiesPage() {
                   <div className="flex items-start gap-4">
                     <Quote className="h-8 w-8 flex-shrink-0 text-[#5ee5ff]" />
                     <div>
-                      <h2 className="text-2xl font-bold">{c.headline}</h2>
+                      <h2 className="text-2xl font-bold text-[var(--color-card-foreground)]">{c.headline}</h2>
                       <p className="mt-1 text-sm text-[var(--color-card-foreground)]/70">
                         {c.company} · {c.location} · {c.industry}
                       </p>
