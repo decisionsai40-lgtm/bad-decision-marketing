@@ -124,6 +124,39 @@ export function HomeJsonLd() {
    Product + Offers — on pricing page
    ============================================================ */
 export function PricingJsonLd() {
+  const paidPlans = PRICING_PLANS.filter((p) => p.price > 0);
+  // Each paid plan has 2 offers: monthly + yearly
+  const allOffers = paidPlans.flatMap((plan) => [
+    {
+      "@type": "Offer",
+      name: `${SITE_CONFIG.name} ${plan.name} (Monthly)`,
+      price: String(plan.price),
+      priceCurrency: "USD",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: String(plan.price),
+        priceCurrency: "USD",
+        unitText: "per month",
+      },
+      description: plan.description,
+      url: `${SITE_CONFIG.url}/pricing`,
+    },
+    {
+      "@type": "Offer",
+      name: `${SITE_CONFIG.name} ${plan.name} (Yearly)`,
+      price: String(plan.priceYearly),
+      priceCurrency: "USD",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: String(plan.priceYearly),
+        priceCurrency: "USD",
+        unitText: "per year",
+      },
+      description: `${plan.description} Billed annually — 2 months free.`,
+      url: `${SITE_CONFIG.url}/pricing`,
+    },
+  ]);
+
   const data = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -136,23 +169,10 @@ export function PricingJsonLd() {
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",
-      lowPrice: String(PRICING_PLANS[0].price),
-      highPrice: String(PRICING_PLANS[PRICING_PLANS.length - 1].price),
-      offerCount: PRICING_PLANS.length,
-      offers: PRICING_PLANS.filter((p) => p.price > 0).map((plan) => ({
-        "@type": "Offer",
-        name: `${SITE_CONFIG.name} ${plan.name}`,
-        price: String(plan.price),
-        priceCurrency: "USD",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: String(plan.price),
-          priceCurrency: "USD",
-          unitText: plan.period === "forever" ? "one-time" : "per month",
-        },
-        description: plan.description,
-        url: `${SITE_CONFIG.url}/pricing`,
-      })),
+      lowPrice: String(PRICING_PLANS[1].price),
+      highPrice: String(PRICING_PLANS[PRICING_PLANS.length - 1].priceYearly),
+      offerCount: allOffers.length,
+      offers: allOffers,
     },
     aggregateRating: {
       "@type": "AggregateRating",

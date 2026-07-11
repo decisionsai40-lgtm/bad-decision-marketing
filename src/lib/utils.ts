@@ -24,8 +24,10 @@ export const SITE_CONFIG = {
 
 export const PRICING_PLANS = [
   {
+    planId: "free",
     name: "Free",
     price: 0,
+    priceYearly: 0,
     period: "forever",
     description: "Test the waters. No credit card.",
     features: [
@@ -37,12 +39,14 @@ export const PRICING_PLANS = [
       "Community support",
     ],
     cta: "Start free",
-    ctaHref: "/sign-up",
+    ctaHref: "/sign-up?plan=free",
     highlight: false,
   },
   {
+    planId: "starter",
     name: "Starter",
     price: 39,
+    priceYearly: 390,
     period: "month",
     description: "For solopreneurs running their first campaigns.",
     features: [
@@ -60,8 +64,10 @@ export const PRICING_PLANS = [
     highlight: false,
   },
   {
+    planId: "growth",
     name: "Growth",
     price: 97,
+    priceYearly: 970,
     period: "month",
     description: "For small teams scaling outbound.",
     features: [
@@ -80,8 +86,10 @@ export const PRICING_PLANS = [
     highlight: true,
   },
   {
+    planId: "pro",
     name: "Pro",
     price: 297,
+    priceYearly: 2970,
     period: "month",
     description: "For agencies running campaigns at scale.",
     features: [
@@ -92,14 +100,31 @@ export const PRICING_PLANS = [
       "30 email inboxes with warmup",
       "Advanced analytics + deliverability",
       "Webhooks + API access",
-      "CRM sync",
+      "CRM sync (HubSpot, Pipedrive, Salesforce)",
       "Dedicated success manager",
     ],
-    cta: "Talk to sales",
-    ctaHref: "/contact?topic=sales",
+    cta: "Start Pro",
+    ctaHref: "/sign-up?plan=pro",
     highlight: false,
   },
 ] as const;
+
+// Enterprise — sales-led, shown in a separate strip below the 4-plan grid
+export const ENTERPRISE_PLAN = {
+  name: "Enterprise",
+  price: "Custom",
+  description: "For high-volume teams that need a custom deal.",
+  features: [
+    "100,000+ leads / month",
+    "500,000+ campaign sends / month",
+    "Dedicated infrastructure",
+    "SLA + priority support",
+    "Custom integrations",
+    "Invoiced billing",
+  ],
+  cta: "Talk to sales",
+  ctaHref: "/contact?topic=enterprise",
+} as const;
 
 export const FAQS = [
   {

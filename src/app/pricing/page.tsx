@@ -3,13 +3,18 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
-import { PRICING_PLANS, SITE_CONFIG } from "@/lib/utils";
+import {
+  PRICING_PLANS,
+  ENTERPRISE_PLAN,
+  SITE_CONFIG,
+} from "@/lib/utils";
 import { PricingJsonLd } from "@/components/seo/json-ld";
+import { PricingCards } from "./_pricing-cards";
 
 export const metadata: Metadata = {
   title: "Pricing — Simple, transparent, scalable",
   description:
-    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Cancel anytime. 7-day money-back guarantee on first subscription. No setup fees, no contracts. See full feature comparison.",
+    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Monthly or yearly billing (2 months free). Cancel anytime. 7-day money-back guarantee. No setup fees, no contracts.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -69,6 +74,33 @@ const COMPARISON_FEATURES = [
   },
 ];
 
+const PRICING_FAQS = [
+  {
+    q: "Do my monthly quotas roll over if I don't use them?",
+    a: "No — quotas reset on your billing date each month. This keeps the platform fair for everyone and lets us keep prices low.",
+  },
+  {
+    q: "What happens if I hit my limit mid-month?",
+    a: "You can upgrade to a higher plan instantly from your dashboard billing settings. The new limits take effect immediately, and we prorate the price difference.",
+  },
+  {
+    q: "How does yearly billing work?",
+    a: "Pay upfront for 10 months, get 12 months of access (2 months free). Your quotas still reset monthly. If you cancel mid-year, you keep access until the end of your prepaid period — no refunds for unused months.",
+  },
+  {
+    q: "Can I switch between monthly and yearly?",
+    a: "Yes — you can switch from monthly to yearly at any time from your billing settings. Switching from yearly back to monthly takes effect at the end of your current yearly period.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "Visa, Mastercard, American Express, and local cards via Flutterwave. All prices are in USD.",
+  },
+  {
+    q: "Do you offer refunds?",
+    a: "Yes — if you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. No questions asked. See our full refund policy for details.",
+  },
+];
+
 export default function PricingPage() {
   return (
     <>
@@ -78,63 +110,48 @@ export default function PricingPage() {
         subtitle="Cancel anytime. 7-day money-back guarantee on first paid subscription. No setup fees, no contracts, no hidden costs."
       />
 
-      {/* Plan cards */}
-      <section className="py-12 sm:py-16">
+      {/* Plan cards (client component with billing toggle) */}
+      <PricingCards />
+
+      {/* Enterprise strip — sales-led */}
+      <section className="pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {PRICING_PLANS.map((plan) => (
-              <div
-                key={plan.name}
-                className={`card-premium relative flex flex-col p-6 ${
-                  plan.highlight
-                    ? "border-[var(--color-primary)] shadow-lg ring-2 ring-[var(--color-primary)]/20"
-                    : ""
-                }`}
-              >
-                {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
-                    Most popular
-                  </span>
-                )}
-                <h3 className="text-lg font-bold text-[var(--color-foreground)]">{plan.name}</h3>
-                <p className="mt-1 text-sm text-[var(--color-text-muted)]">{plan.description}</p>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-[var(--color-foreground)]">
-                    ${plan.price}
-                  </span>
-                  <span className="text-sm text-[var(--color-text-muted)]">/{plan.period}</span>
+          <div className="card-premium p-8 sm:p-10">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-3">
+              <div className="lg:col-span-1">
+                <h3 className="text-2xl font-bold text-[var(--color-foreground)]">
+                  {ENTERPRISE_PLAN.name}
+                </h3>
+                <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+                  {ENTERPRISE_PLAN.description}
+                </p>
+                <div className="mt-4 text-3xl font-bold text-[var(--color-foreground)]">
+                  {ENTERPRISE_PLAN.price}
                 </div>
-                <ul className="mt-6 flex-1 space-y-2">
-                  {plan.features.map((feat) => (
+              </div>
+              <div className="lg:col-span-1">
+                <ul className="space-y-2">
+                  {ENTERPRISE_PLAN.features.map((feat) => (
                     <li
                       key={feat}
                       className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]"
                     >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-success)]" />
                       <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className="flex justify-center lg:col-span-1 lg:justify-end">
                 <Link
-                  href={plan.ctaHref}
-                  className={`mt-6 block w-full text-center text-sm font-semibold ${
-                    plan.highlight ? "btn-primary" : "btn-secondary"
-                  }`}
+                  href={ENTERPRISE_PLAN.ctaHref}
+                  className="btn-secondary"
                 >
-                  {plan.cta}
+                  {ENTERPRISE_PLAN.cta}
                 </Link>
               </div>
-            ))}
+            </div>
           </div>
-
-          <p className="mt-8 text-center text-sm text-[var(--color-text-muted)]">
-            All plans include deep email verification, spam-law compliant sending, and the
-            full Bad Decision dashboard. Need something custom?{" "}
-            <Link href="/contact?topic=enterprise" className="text-[var(--color-primary)] hover:underline">
-              Talk to us
-            </Link>
-            .
-          </p>
         </div>
       </section>
 
@@ -145,7 +162,8 @@ export default function PricingPage() {
             Full feature comparison
           </h2>
           <p className="mt-2 text-center text-[var(--color-text-secondary)]">
-            Every feature, side by side. No hidden upsells.
+            Every feature, side by side. No hidden upsells. Monthly prices shown
+            — yearly saves 2 months.
           </p>
 
           <div className="mt-12 overflow-x-auto">
@@ -166,7 +184,9 @@ export default function PricingPage() {
                     >
                       {plan.name}
                       <div className="text-xs font-normal text-[var(--color-text-muted)]">
-                        ${plan.price}/{plan.period === "forever" ? "" : "mo"}
+                        {plan.price === 0
+                          ? "Free"
+                          : `$${plan.price}/mo`}
                       </div>
                     </th>
                   ))}
@@ -216,6 +236,27 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-[var(--color-foreground)]">
+            Pricing FAQ
+          </h2>
+          <div className="mt-10 space-y-6">
+            {PRICING_FAQS.map((faq) => (
+              <div key={faq.q} className="card-premium p-6">
+                <h3 className="text-base font-bold text-[var(--color-foreground)]">
+                  {faq.q}
+                </h3>
+                <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Guarantee + CTA */}
       <section className="py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
@@ -225,8 +266,9 @@ export default function PricingPage() {
               7-day money-back guarantee
             </h2>
             <p className="mt-2 text-[var(--color-text-secondary)]">
-              If you cancel within 7 days of your first paid subscription and have not sent
-              more than 100 campaign emails, we will refund 100 percent. No questions asked.{" "}
+              If you cancel within 7 days of your first paid subscription and
+              have not sent more than 100 campaign emails, we will refund 100
+              percent. No questions asked.{" "}
               <Link href="/refund" className="text-[var(--color-primary)] hover:underline">
                 See full refund policy
               </Link>
