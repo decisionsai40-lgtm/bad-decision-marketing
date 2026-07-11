@@ -87,7 +87,7 @@ export default function AffiliatesPage() {
           <h2 className="text-center text-3xl font-bold">Affiliate FAQ</h2>
           <div className="mt-12 space-y-6">
             {[
-              { q: "When do I get paid?", a: "Commissions are held for 30 days (chargeback protection), then become available. Minimum payout is $50. Payouts are processed via Dodo Payments." },
+              { q: "When do I get paid?", a: "Commissions are held for 30 days (chargeback protection), then become available. Minimum payout is $50. Payouts are processed via Flutterwave." },
               { q: "Can I see who signed up via my link?", a: "No. For privacy reasons, you only see aggregate stats: total clicks, signups, and conversions. You never see individual user data." },
               { q: "Is the commission recurring?", a: "Yes. You earn every month the referred user stays subscribed. If they cancel, your commission stops for that user." },
               { q: "Can I refer myself?", a: "No. Self-referrals are blocked. IP and device fingerprinting prevent fraud." },

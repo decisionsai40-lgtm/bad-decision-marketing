@@ -212,7 +212,7 @@ export default function DPAPage() {
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Dodo Payments</td>
+            <td>Flutterwave</td>
             <td>Payment processing</td>
             <td>Global</td>
             <td>SCCs / DPF</td>

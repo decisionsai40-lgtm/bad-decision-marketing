@@ -29,7 +29,7 @@ export default function RefundPage() {
       </p>
       <ul>
         <li>Applies to your first paid subscription only (Starter, Growth, or Pro).</li>
-        <li>The 7-day window starts the moment your payment is processed by Dodo Payments.</li>
+        <li>The 7-day window starts the moment your payment is processed by Flutterwave.</li>
         <li>You must have sent fewer than 100 campaign emails.</li>
         <li>Your account must be in good standing (no abuse, no ToS violations).</li>
       </ul>
@@ -140,7 +140,7 @@ export default function RefundPage() {
         payment method. We cannot refund to a different card or bank account.
       </p>
       <p>
-        If your original payment method is no longer valid (e.g. expired card), Dodo
+        If your original payment method is no longer valid (e.g. expired card), Flutterwave
         Payments will work with your bank to issue the refund to your new card on file with
         the bank.
       </p>

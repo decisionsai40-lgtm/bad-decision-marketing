@@ -40,7 +40,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Payment information:</strong> When you subscribe to a paid plan, our
-          payment processor (Dodo Payments) collects and processes your card details. We
+          payment processor (Flutterwave) collects and processes your card details. We
           never see or store your full card number — only the last 4 digits, card brand,
           and expiration date for display purposes.
         </li>
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
           and campaign data. (United States / EU regions available)
         </li>
         <li>
-          <strong>Dodo Payments:</strong> Payment processing. Processes your card details
+          <strong>Flutterwave:</strong> Payment processing. Processes your card details
           and billing information. (United States / global)
         </li>
         <li>

@@ -144,9 +144,9 @@ export default function CookiePolicyPage() {
           .
         </li>
         <li>
-          <strong>Dodo Payments:</strong> Sets session cookies during checkout. See{" "}
-          <a href="https://dodopayments.com/privacy" target="_blank" rel="noopener noreferrer">
-            Dodo Payments Privacy Policy
+          <strong>Flutterwave:</strong> Sets session cookies during checkout. See{" "}
+          <a href="https://flutterwave.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Flutterwave Privacy Policy
           </a>
           .
         </li>
@@ -258,16 +258,10 @@ export default function CookiePolicyPage() {
         </thead>
         <tbody>
           <tr>
-            <td><code>__clerk_db_jwt</code></td>
-            <td>Authentication session</td>
+            <td><code>wos-session</code></td>
+            <td>Authentication session (WorkOS)</td>
             <td>Strictly necessary</td>
             <td>7 days</td>
-          </tr>
-          <tr>
-            <td><code>__client_uat</code></td>
-            <td>Authentication refresh</td>
-            <td>Strictly necessary</td>
-            <td>1 hour</td>
           </tr>
           <tr>
             <td><code>csrf_token</code></td>

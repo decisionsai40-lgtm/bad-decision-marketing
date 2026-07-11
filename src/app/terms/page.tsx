@@ -152,10 +152,10 @@ export default function TermsPage() {
 
       <h3>5.2 Payment</h3>
       <p>
-        We use Dodo Payments as our Merchant of Record. Dodo Payments processes all
-        payments, handles currency conversion, and remits sales tax / VAT on our behalf.
-        Your payment is processed by Dodo Payments under their terms — we never see or
-        store your full card details.
+        We use Flutterwave as our payment processor. Flutterwave processes all
+        payments and handles currency conversion. Your payment is processed by
+        Flutterwave under their terms — we never see or store your full card
+        details. Bad Decision is the merchant of record for all subscriptions.
       </p>
 
       <h3>5.3 Renewal</h3>
@@ -174,8 +174,11 @@ export default function TermsPage() {
 
       <h3>5.5 Taxes</h3>
       <p>
-        Dodo Payments (as Merchant of Record) handles sales tax, VAT, and GST. The price
-        you see at checkout is the price you pay — no surprise tax charges later.
+        You are responsible for any applicable sales tax, VAT, or GST on your
+        subscription, as required by the laws of your jurisdiction. The price you
+        see at checkout is the base subscription price — local taxes may be added
+        at checkout depending on your location and Flutterwave&apos;s tax
+        configuration.
       </p>
 
       <h3>5.6 Credits</h3>
@@ -237,7 +240,7 @@ export default function TermsPage() {
       <p>
         We strive for 99.9% uptime but do not guarantee uninterrupted service. We may
         experience outages due to maintenance, infrastructure failures, third-party
-        dependency failures (e.g. AWS, Supabase, Dodo Payments), or events beyond our
+        dependency failures (e.g. AWS, Supabase, Flutterwave), or events beyond our
         control. We are not liable for any downtime or data loss resulting from such events.
       </p>
       <p>
