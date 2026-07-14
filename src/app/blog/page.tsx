@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
-import { Footer } from "@/components/sections/footer";
-import { Navbar } from "@/components/sections/navbar";
 import Link from "next/link";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
@@ -47,7 +45,6 @@ export default async function BlogPage() {
 
   return (
     <>
-      <Navbar />
       <PageHeader
         title="Blog"
         subtitle="Guides, comparisons, and tutorials on cold email, lead generation, and outbound sales."
@@ -134,7 +131,6 @@ export default async function BlogPage() {
           )}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

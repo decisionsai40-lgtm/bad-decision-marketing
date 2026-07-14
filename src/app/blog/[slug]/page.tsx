@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/utils";
-import { Navbar } from "@/components/sections/navbar";
-import { Footer } from "@/components/sections/footer";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -59,7 +57,6 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <Navbar />
       <article className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {/* Back link */}
@@ -201,8 +198,6 @@ export default async function BlogPostPage({
           </div>
         </section>
       )}
-
-      <Footer />
     </>
   );
 }
