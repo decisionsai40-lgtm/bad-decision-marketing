@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Twitter, Github } from "lucide-react";
+import { Mail, Twitter, Github, Linkedin } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
 
 const FOOTER_LINKS = {
@@ -7,6 +7,7 @@ const FOOTER_LINKS = {
     { href: "/how-it-works", label: "How it works" },
     { href: "/pricing", label: "Pricing" },
     { href: "/case-studies", label: "Case studies" },
+    { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQ" },
     { href: "/guarantee", label: "Guarantee" },
   ],
@@ -67,6 +68,17 @@ export function Footer() {
               >
                 <Github className="h-4 w-4" />
               </a>
+              {SITE_CONFIG.social.linkedin && (
+                <a
+                  href={SITE_CONFIG.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow on LinkedIn"
+                  className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 transition-colors hover:bg-white/20"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+              )}
             </div>
           </div>
 
