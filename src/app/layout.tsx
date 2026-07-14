@@ -15,35 +15,33 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
+    default: "Bad Decision — Cold Email & Lead Generation Platform",
     template: "%s | Bad Decision",
   },
-  description: SITE_CONFIG.description,
+  description: "Bad Decision is the all-in-one outbound sales platform. Find leads with 4 engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. Instantly and Smartlead alternative.",
   applicationName: SITE_CONFIG.name,
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
   keywords: [
+    "cold email software",
     "lead generation",
-    "B2B leads",
+    "Instantly alternative",
+    "Smartlead alternative",
     "email verification",
     "cold outreach",
-    "cold email",
-    "sales leads",
-    "lead scraping",
     "outbound sales",
     "email warmup",
     "deliverability",
     "sales engagement",
     "SDR tools",
-    "cold email software",
-    "outreach platform",
-    "lead finder",
-    "B2B lead generation",
     "cold email tool",
+    "B2B lead generation",
     "email campaign software",
-    "sales pipeline",
     "outbound lead generation",
+    "lead finder",
+    "sales pipeline",
+    "outreach platform",
   ],
   alternates: {
     canonical: SITE_CONFIG.url,
@@ -53,13 +51,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
-    title: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
-    description: SITE_CONFIG.description,
+    title: "Bad Decision — Cold Email & Lead Generation Platform",
+    description: "Find leads, verify emails, write with AI, and send from your inbox. The Instantly and Smartlead alternative with built-in lead generation.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bad Decision — Find Real Buyers. Skip The Ghost Towns.",
-    description: SITE_CONFIG.description,
+    title: "Bad Decision — Cold Email & Lead Generation Platform",
+    description: "Find leads, verify emails, write with AI, and send from your inbox.",
     creator: SITE_CONFIG.social.twitter,
   },
   robots: {
@@ -74,6 +72,11 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
+  // Google Search Console verification — replace with your verification code
+  // Format: google-site-verification=YOUR_CODE_HERE
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+  },
 };
 
 export const viewport = {

@@ -12,13 +12,14 @@ export const SITE_CONFIG = {
   dashboardUrl: process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://dashboard.baddecision.app",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@baddecision.app",
   description:
-    "Bad Decision finds the businesses who need what you sell, checks every email before you send, writes the message, and sends it from your inbox. Find real buyers. Skip the ghost towns.",
+    "Bad Decision is the all-in-one outbound sales platform. Find leads with 4 engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. The Instantly and Smartlead alternative.",
   social: {
     twitter: "@baddecisionapp",
     github: "https://github.com/decisionsai40-lgtm",
+    linkedin: "https://www.linkedin.com/company/bad-decision-app",
   },
   foundedYear: 2025,
-  legalEntityName: "Bad Decision",
+  legalEntityName: "Germaine 50 Technologies",
   legalJurisdiction: "Lagos, Nigeria",
 };
 

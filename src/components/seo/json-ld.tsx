@@ -14,6 +14,7 @@ export function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_CONFIG.name,
+    alternateName: "Germaine 50 Technologies",
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/icon.svg`,
     description: SITE_CONFIG.description,
@@ -22,7 +23,8 @@ export function OrganizationJsonLd() {
     sameAs: [
       `https://twitter.com/${SITE_CONFIG.social.twitter.replace("@", "")}`,
       SITE_CONFIG.social.github,
-    ],
+      SITE_CONFIG.social.linkedin || "",
+    ].filter(Boolean),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
