@@ -36,7 +36,7 @@ export function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }
@@ -56,17 +56,12 @@ export function WebsiteJsonLd() {
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_CONFIG.url}/faq?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }
@@ -91,13 +86,6 @@ export function HomeJsonLd() {
       priceCurrency: "USD",
       description: "Free forever plan with 50 leads, 100 email checks, and 50 AI drafts per month.",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "200",
-      bestRating: "5",
-      worstRating: "1",
-    },
     featureList: [
       "Lead generation from the live internet (4 engines)",
       "Deep email verification with 99.2% accuracy",
@@ -117,7 +105,7 @@ export function HomeJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }
@@ -176,17 +164,12 @@ export function PricingJsonLd() {
       offerCount: allOffers.length,
       offers: allOffers,
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "200",
-    },
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }
@@ -211,7 +194,7 @@ export function FaqJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }
@@ -234,7 +217,7 @@ export function BreadcrumbJsonLd({ items }: { items: { name: string; url: string
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
     />
   );
 }

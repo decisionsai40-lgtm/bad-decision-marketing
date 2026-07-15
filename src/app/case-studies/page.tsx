@@ -70,6 +70,11 @@ export default function CaseStudiesPage() {
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          {/* Disclaimer */}
+          <div className="mb-10 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 text-sm text-[var(--color-text-muted)]">
+            The following testimonials are illustrative examples based on typical customer outcomes.
+          </div>
+
           <div className="space-y-12">
             {CASES.map((c) => (
               <div key={c.company} className="card-premium overflow-hidden">
