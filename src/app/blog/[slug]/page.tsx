@@ -1,20 +1,37 @@
 import type { Metadata } from "next";
-import { SITE_CONFIG } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
 async function getPost(slug: string) {
   try {
     const res = await fetch(`${API_URL}/api/v1/blog/posts/${slug}`, {
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
     if (!res.ok) return null;
     return res.json();
   } catch {
     return null;
+  }
+}
+
+// Pre-render the most recent posts at build time; the rest are rendered on
+// demand and cached via ISR (next: { revalidate: 300 }) in getPost above.
+export async function generateStaticParams() {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/blog/posts?limit=20`, {
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data.posts || []).map((post: { slug: string }) => ({ slug: post.slug }));
+  } catch {
+    return [];
   }
 }
 
@@ -115,39 +132,14 @@ export default async function BlogPostPage({
             </div>
           )}
 
-          {/* Content */}
+          {/* Content — rendered with react-markdown (GFM + sanitised). The
+              previous hand-rolled parser produced invalid HTML (unwrapped
+              <li>, <br> for blank lines) and silently dropped links, code,
+              bold, italic, and images. */}
           <div className="prose prose-lg max-w-none">
-            {post.content.split("\n").map((line: string, i: number) => {
-              if (line.startsWith("## ")) {
-                return (
-                  <h2 key={i} className="mt-8 mb-4 text-2xl font-bold text-[var(--color-foreground)]">
-                    {line.replace("## ", "")}
-                  </h2>
-                );
-              }
-              if (line.startsWith("# ")) {
-                return (
-                  <h1 key={i} className="mt-8 mb-4 text-3xl font-bold text-[var(--color-foreground)]">
-                    {line.replace("# ", "")}
-                  </h1>
-                );
-              }
-              if (line.startsWith("- ") || line.startsWith("* ")) {
-                return (
-                  <li key={i} className="ml-6 text-[var(--color-text-secondary)]">
-                    {line.replace(/^[-*]\s/, "")}
-                  </li>
-                );
-              }
-              if (line.trim() === "") {
-                return <br key={i} />;
-              }
-              return (
-                <p key={i} className="mb-4 text-[var(--color-text-secondary)] leading-relaxed">
-                  {line}
-                </p>
-              );
-            })}
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Tags */}

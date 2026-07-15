@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog — Cold Email, Lead Generation & Outbound Sales Guides",
@@ -13,11 +12,12 @@ export const metadata: Metadata = {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
-async function getPosts() {
+async function getPosts(category?: string) {
   try {
-    const res = await fetch(`${API_URL}/api/v1/blog/posts?limit=24`, {
-      cache: "no-store",
-    });
+    const fetchUrl = `${API_URL}/api/v1/blog/posts?limit=24${
+      category ? `&category=${encodeURIComponent(category)}` : ""
+    }`;
+    const res = await fetch(fetchUrl, { next: { revalidate: 300 } });
     if (!res.ok) return { posts: [], total: 0 };
     return res.json();
   } catch {
@@ -28,7 +28,7 @@ async function getPosts() {
 async function getCategories() {
   try {
     const res = await fetch(`${API_URL}/api/v1/blog/categories`, {
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
     if (!res.ok) return { categories: [] };
     return res.json();
@@ -37,9 +37,14 @@ async function getCategories() {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
   const [{ posts, total }, { categories }] = await Promise.all([
-    getPosts(),
+    getPosts(category),
     getCategories(),
   ]);
 
@@ -57,19 +62,30 @@ export default async function BlogPage() {
             <div className="mb-10 flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white"
+                className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                  !category
+                    ? "bg-[var(--color-primary)] text-white"
+                    : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                }`}
               >
                 All
               </Link>
-              {categories.map((cat: { name: string; count: number }) => (
-                <Link
-                  key={cat.name}
-                  href={`/blog?category=${cat.name}`}
-                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm font-semibold text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
-                >
-                  {cat.name} ({cat.count})
-                </Link>
-              ))}
+              {categories.map((cat: { name: string; count: number }) => {
+                const isActive = category === cat.name;
+                return (
+                  <Link
+                    key={cat.name}
+                    href={`/blog?category=${encodeURIComponent(cat.name)}`}
+                    className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                      isActive
+                        ? "bg-[var(--color-primary)] text-white"
+                        : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                    }`}
+                  >
+                    {cat.name} ({cat.count})
+                  </Link>
+                );
+              })}
             </div>
           )}
 
