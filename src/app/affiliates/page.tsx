@@ -26,7 +26,7 @@ export default function AffiliatesPage() {
             {[
               { plan: "Starter & Growth", rate: "20%", desc: "$7.80/mo on Starter, $19.40/mo on Growth. Recurring every month.", highlight: true },
               { plan: "Pro", rate: "15%", desc: "$44.55/mo per Pro referral. Recurring every month.", highlight: false },
-              { plan: "Enterprise", rate: "10%", desc: "$99.70/mo per Enterprise referral. Recurring every month.", highlight: false },
+              { plan: "Enterprise", rate: "10%", desc: "10% recurring commission on the monthly contract value. Recurring every month.", highlight: false },
             ].map((tier) => (
               <div key={tier.plan} className={`card-premium p-8 text-center ${tier.highlight ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/20" : ""}`}>
                 <p className="text-sm text-[var(--color-text-muted)]">{tier.plan}</p>
