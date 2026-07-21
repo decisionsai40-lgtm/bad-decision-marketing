@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/faq",
+    "/affiliates",
     "/privacy",
     "/terms",
     "/refund",
@@ -31,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Dynamically add published blog posts
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
   try {
-    const res = await fetch(`${API_URL}/api/v1/blog/posts?limit=500`, {
+    const res = await fetch(`${API_URL}/api/v1/blog/posts?limit=100`, {
       cache: "no-store",
     });
     if (res.ok) {

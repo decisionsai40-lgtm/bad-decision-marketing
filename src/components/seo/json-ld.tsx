@@ -91,15 +91,8 @@ export function HomeJsonLd() {
       priceCurrency: "USD",
       description: "Free forever plan with 50 leads, 100 email checks, and 50 AI drafts per month.",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "200",
-      bestRating: "5",
-      worstRating: "1",
-    },
     featureList: [
-      "Lead generation from the live internet (4 engines)",
+      "Lead generation from the live internet (multiple engines)",
       "Deep email verification with 99.2% accuracy",
       "AI outreach message drafting in 6 proven writing styles",
       "Cold email campaign sending with inbox warmup",
@@ -175,11 +168,6 @@ export function PricingJsonLd() {
       highPrice: String(PRICING_PLANS[PRICING_PLANS.length - 1].priceYearly),
       offerCount: allOffers.length,
       offers: allOffers,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "200",
     },
   };
 

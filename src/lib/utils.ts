@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   dashboardUrl: process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://dashboard.baddecision.app",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@baddecision.app",
   description:
-    "Bad Decision is the all-in-one outbound sales platform. Find leads with 4 engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. The Instantly and Smartlead alternative.",
+    "Bad Decision is the all-in-one outbound sales platform. Find leads with multiple search engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. The Instantly and Smartlead alternative.",
   social: {
     twitter: "@baddecisionapp",
     github: "https://github.com/decisionsai40-lgtm",
