@@ -127,7 +127,7 @@ function SocialProof() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {[
-            { value: "1 engine + 3 coming", label: "Ways to find buyers" },
+            { value: "4 engines live", label: "Ways to find buyers" },
             { value: "6 styles", label: "AI message frameworks" },
             { value: "99.2%", label: "Email check accuracy" },
             { value: "7 days", label: "Money-back guarantee" },
@@ -212,29 +212,29 @@ function Engines() {
     {
       name: "Ads Running",
       icon: BarChart3,
-      status: "Coming soon",
+      status: "Live",
       description:
         "Find businesses already paying for ads. If they are spending money on ads, they have budget to spend on you too.",
       examples: ["Stores running social ads", "SaaS companies on search ads"],
-      available: false,
+      available: true,
     },
     {
       name: "Ecommerce",
       icon: Globe,
-      status: "Coming soon",
+      status: "Live",
       description:
         "Find online stores by platform and tech stack. Know what tools they use before you reach out.",
       examples: ["Skincare stores on Shopify", "Coffee shops selling online"],
-      available: false,
+      available: true,
     },
     {
       name: "Web Absent",
       icon: Search,
-      status: "Coming soon",
+      status: "Live",
       description:
         "Find businesses with no website. Perfect if you sell web design, marketing, or branding services.",
       examples: ["Plumbers with no site", "Caterers only on review sites"],
-      available: false,
+      available: true,
     },
   ];
 
@@ -243,7 +243,7 @@ function Engines() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Find your next customer (1 engine live, 3 coming soon)
+            Find your next customer (4 engines live)
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
             Pick the one that fits who you are looking for. Each one searches the live
