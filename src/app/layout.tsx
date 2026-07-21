@@ -5,6 +5,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/json-ld";
+import { PostHogProvider } from "@/components/posthog-provider";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -93,9 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         <OrganizationJsonLd />
         <WebsiteJsonLd />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <PostHogProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   );
