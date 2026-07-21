@@ -35,6 +35,13 @@ export default function AffiliatesPage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 text-center">
+            <Link href="https://affiliate.baddecision.app/sign-in" className="btn-primary inline-flex">
+              Start earning today
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -78,6 +85,13 @@ export default function AffiliatesPage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 text-center">
+            <Link href="https://affiliate.baddecision.app/sign-in" className="btn-primary inline-flex">
+              Join the affiliate program
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -87,10 +101,10 @@ export default function AffiliatesPage() {
           <h2 className="text-center text-3xl font-bold">Affiliate FAQ</h2>
           <div className="mt-12 space-y-6">
             {[
-              { q: "When do I get paid?", a: "Commissions are held for 30 days (chargeback protection), then become available. Minimum payout is $50. Payouts are processed via Flutterwave." },
+              { q: "When do I get paid?", a: "Commissions are held for 30 days (chargeback protection), then become available. Minimum payout is $50. Payouts are sent directly to your bank account." },
               { q: "Can I see who signed up via my link?", a: "No. For privacy reasons, you only see aggregate stats: total clicks, signups, and conversions. You never see individual user data." },
               { q: "Is the commission recurring?", a: "Yes. You earn every month the referred user stays subscribed. If they cancel, your commission stops for that user." },
-              { q: "Can I refer myself?", a: "No. Self-referrals are blocked. IP and device fingerprinting prevent fraud." },
+              { q: "Can I refer myself?", a: "No. Self-referrals are blocked to keep the program fair for everyone." },
               { q: "Do I need to be a Bad Decision customer to be an affiliate?", a: "No. Affiliate accounts are separate from user accounts. You can promote Bad Decision without using it yourself." },
             ].map((faq) => (
               <details key={faq.q} className="card-premium group cursor-pointer p-6 [&_summary]:list-none">
