@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "Bad Decision — Cold Email & Lead Generation Platform",
     template: "%s | Bad Decision",
   },
-  description: "Bad Decision is the all-in-one outbound sales platform. Find leads with 4 engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. Instantly and Smartlead alternative.",
+  description: "Bad Decision is the all-in-one outbound sales platform. Find leads with multiple search engines, verify emails with 6-layer accuracy, write messages with AI, and send from your inbox with warmup. Instantly and Smartlead alternative.",
   applicationName: SITE_CONFIG.name,
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,

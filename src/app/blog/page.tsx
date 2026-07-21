@@ -4,18 +4,28 @@ import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
+export const revalidate = 3600; // ISR: revalidate every hour
+
 export const metadata: Metadata = {
   title: "Blog — Cold Email, Lead Generation & Outbound Sales Guides",
   description:
     "Guides, comparisons, and tutorials on cold email, lead generation, email verification, and outbound sales. Learn how Bad Decision compares to Instantly and Smartlead.",
   alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog — Cold Email, Lead Generation & Outbound Sales Guides",
+    description:
+      "Guides, comparisons, and tutorials on cold email, lead generation, email verification, and outbound sales.",
+  },
 };
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
-async function getPosts() {
+async function getPosts(category?: string) {
   try {
-    const res = await fetch(`${API_URL}/api/v1/blog/posts?limit=24`, {
+    const url = category
+      ? `${API_URL}/api/v1/blog/posts?limit=24&category=${encodeURIComponent(category)}`
+      : `${API_URL}/api/v1/blog/posts?limit=24`;
+    const res = await fetch(url, {
       cache: "no-store",
     });
     if (!res.ok) return { posts: [], total: 0 };
@@ -37,9 +47,14 @@ async function getCategories() {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
   const [{ posts, total }, { categories }] = await Promise.all([
-    getPosts(),
+    getPosts(category),
     getCategories(),
   ]);
 
@@ -57,15 +72,23 @@ export default async function BlogPage() {
             <div className="mb-10 flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white"
+                className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                  !category
+                    ? "bg-[var(--color-primary)] text-white"
+                    : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                }`}
               >
                 All
               </Link>
               {categories.map((cat: { name: string; count: number }) => (
                 <Link
                   key={cat.name}
-                  href={`/blog?category=${cat.name}`}
-                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm font-semibold text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                  href={`/blog?category=${encodeURIComponent(cat.name)}`}
+                  className={`rounded-full border px-4 py-2 text-sm font-semibold ${
+                    category === cat.name
+                      ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
+                      : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                  }`}
                 >
                   {cat.name} ({cat.count})
                 </Link>

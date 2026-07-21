@@ -3,6 +3,11 @@ import { SITE_CONFIG } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
+
+export const revalidate = 3600; // ISR: revalidate every hour
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
@@ -117,37 +122,12 @@ export default async function BlogPostPage({
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            {post.content.split("\n").map((line: string, i: number) => {
-              if (line.startsWith("## ")) {
-                return (
-                  <h2 key={i} className="mt-8 mb-4 text-2xl font-bold text-[var(--color-foreground)]">
-                    {line.replace("## ", "")}
-                  </h2>
-                );
-              }
-              if (line.startsWith("# ")) {
-                return (
-                  <h1 key={i} className="mt-8 mb-4 text-3xl font-bold text-[var(--color-foreground)]">
-                    {line.replace("# ", "")}
-                  </h1>
-                );
-              }
-              if (line.startsWith("- ") || line.startsWith("* ")) {
-                return (
-                  <li key={i} className="ml-6 text-[var(--color-text-secondary)]">
-                    {line.replace(/^[-*]\s/, "")}
-                  </li>
-                );
-              }
-              if (line.trim() === "") {
-                return <br key={i} />;
-              }
-              return (
-                <p key={i} className="mb-4 text-[var(--color-text-secondary)] leading-relaxed">
-                  {line}
-                </p>
-              );
-            })}
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeSanitize]}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Tags */}

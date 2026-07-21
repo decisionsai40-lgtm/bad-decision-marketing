@@ -24,9 +24,9 @@ const COMPARISON_FEATURES = [
     rows: [
       { feature: "Leads per month", values: ["50/search", "1,000", "5,000", "25,000"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
-      { feature: "Ads Running engine", values: [false, true, true, true] },
-      { feature: "Ecommerce engine", values: [false, true, true, true] },
-      { feature: "Web Absent engine", values: [false, true, true, true] },
+      { feature: "Ads Running engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
+      { feature: "Ecommerce engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
+      { feature: "Web Absent engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
       { feature: "Save your searches", values: [true, true, true, true] },
     ],
   },

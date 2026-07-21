@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { PRICING_PLANS } from "@/lib/utils";
+import { PRICING_PLANS, SITE_CONFIG } from "@/lib/utils";
 
 type BillingPeriod = "monthly" | "yearly";
 
@@ -55,8 +55,8 @@ export function PricingCards() {
               plan.price > 0 ? plan.price * 12 - plan.priceYearly : 0;
             const ctaHref =
               plan.price === 0
-                ? plan.ctaHref
-                : `${plan.ctaHref}&billing=${billing}`;
+                ? `${SITE_CONFIG.dashboardUrl}${plan.ctaHref}`
+                : `${SITE_CONFIG.dashboardUrl}${plan.ctaHref}&billing=${billing}`;
 
             return (
               <div

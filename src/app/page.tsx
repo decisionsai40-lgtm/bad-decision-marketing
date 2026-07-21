@@ -127,7 +127,7 @@ function SocialProof() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {[
-            { value: "4 engines", label: "Ways to find buyers" },
+            { value: "1 engine + 3 coming", label: "Ways to find buyers" },
             { value: "6 styles", label: "AI message frameworks" },
             { value: "99.2%", label: "Email check accuracy" },
             { value: "7 days", label: "Money-back guarantee" },
@@ -243,7 +243,7 @@ function Engines() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Four ways to find your next customer
+            Find your next customer (1 engine live, 3 coming soon)
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
             Pick the one that fits who you are looking for. Each one searches the live
@@ -458,7 +458,7 @@ function PlansPreview() {
               <h3 className="text-lg font-bold text-[var(--color-foreground)]">{plan.name}</h3>
               <p className="mt-2 text-sm text-[var(--color-text-muted)]">{plan.description}</p>
               <Link
-                href={plan.ctaHref}
+                href={`${SITE_CONFIG.dashboardUrl}${plan.ctaHref}`}
                 className={`mt-4 block text-sm font-semibold ${
                   plan.highlight ? "text-[var(--color-primary)]" : "text-[var(--color-foreground)]"
                 } hover:underline`}
