@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "How it works — From zero to first reply in 14 days",
   description:
-    "The Bad Decision pipeline in 4 steps: find leads, check every email, write messages in 6 styles, send from your own inbox with warmup and tracking. See the full walkthrough with examples.",
+    "The Bad Decision process in 4 steps: find leads, check every email, write messages in 6 styles, and send from your own inbox with trust building and tracking. See the full walkthrough with examples.",
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -16,7 +16,7 @@ export default function HowItWorksPage() {
     <>
       <PageHeader
         title="From zero to first reply in 14 days"
-        subtitle="No setup. No extra tools. Sign up, search, check, write, send. The full pipeline runs inside one dashboard."
+        subtitle="There is no setup and you need no extra tools. Just sign up, search, check, write, and send. The full process runs inside one dashboard."
       />
 
       {/* The 4 steps in detail */}
@@ -28,17 +28,17 @@ export default function HowItWorksPage() {
               number="01"
               icon={Search}
               title="Find leads"
-              description="Pick an engine, type who you want to reach, and we search the live internet. Every lead comes with company name, website, email, phone, and social links."
+              description="Pick a search method, type who you want to reach, and we search the live web. Every lead comes with company name, website, email, phone, and social links."
               bullets={[
-                "Four engines: Companies & Professionals (live now), plus Ads Running, Ecommerce, and Web Absent coming soon",
-                "Smart search that knows where to look for each type of business",
+                "Four search methods: Companies & Professionals, Ads Running, Ecommerce, and Web Absent — all live now",
+                "Search that knows where to look for each type of business",
                 "Up to 2,000 leads per search on the Pro plan",
-                "Automatic deduplication against your past searches",
+                "No repeat results from your past searches",
                 "30-day memory: if you search the same thing twice, the second search is free",
               ]}
               example={{
                 query: '"Skincare stores in the US using a known ecommerce platform"',
-                result: "Returns 1,247 leads with email, social links, and tech stack details",
+                result: "Returns 1,247 leads with email, social links, and shop platform details",
               }}
             />
 
@@ -47,14 +47,14 @@ export default function HowItWorksPage() {
               number="02"
               icon={ShieldCheck}
               title="Check emails"
-              description="Every email goes through a deep check. You only pay for the good ones. Risky emails are flagged, not silently included."
+              description="Every email gets a careful check. You only pay for the good ones. Risky emails are flagged instead of being silently included."
               bullets={[
                 "Format check to catch typos and fake addresses",
                 "Domain and mail server check to make sure the email can receive mail",
                 "Live mailbox check to confirm the address is real and active",
-                "Disposable email blocking (we know which domains are throwaway)",
-                "Catch-all detection (some servers say yes to everything, we catch that)",
-                "Role address detection (info@, sales@, support@, etc.)",
+                "Throwaway email blocking (we know which domains are temporary)",
+                "Catch-all detection (some servers say yes to everything, and we catch that)",
+                "Role address detection (info@, sales@, support@, and more)",
                 "Clear score for each email: Safe, Risky, or Will Bounce",
               ]}
               example={{
@@ -68,13 +68,13 @@ export default function HowItWorksPage() {
               number="03"
               icon={Sparkles}
               title="Write messages"
-              description="Pick a writing style. We write a short, personal message for each lead. Strict length control so every email looks hand-written, not robot-generated."
+              description="Pick a writing style and we write a short, personal message for each lead. We keep every message short so it looks like you wrote it by hand, not like a computer made it."
               bullets={[
-                "Six proven writing styles to choose from",
+                "Six ways to write messages that work, so you can pick the one that fits your voice",
                 "Each lead gets a unique message that fits their business",
-                "Strict length control: short enough to look hand-written, long enough to say something",
-                "Write one at a time, or write for your whole campaign at once",
-                "Edit any message before sending, or click to rewrite",
+                "Short enough to look hand-written, long enough to say something real",
+                "Write one at a time, or write messages for your whole campaign at once",
+                "Edit any message before sending, or click to rewrite it",
                 "You get four versions per lead: email subject, email body, social message, and call script",
               ]}
               example={{
@@ -88,19 +88,19 @@ export default function HowItWorksPage() {
               number="04"
               icon={Send}
               title="Send and track"
-              description="Connect your email inbox. We warm it up, send at the right time, and tell you the moment someone replies. Campaigns stop automatically when someone responds."
+              description="Connect your email inbox and we slowly build trust for it. We send at the right time and tell you the moment someone replies. Campaigns stop on their own when a person responds."
               bullets={[
-                "Peer-to-peer inbox warmup: your inbox goes from cold to warm in 7 to 15 days",
-                "Smart send rotation across all your inboxes",
-                "Per-inbox throttle: we never send too much from one address",
-                "Sending windows: send only during business hours in the lead's timezone",
-                "Reply tracking: every reply is pulled into one inbox",
+                "Trust building for your inbox: it goes from cold to trusted in 7 to 15 days",
+                "Smart switching between all your inboxes so no single one gets overworked",
+                "We never send too many emails from one address in a single day",
+                "Sending windows: we send only during business hours in the lead's time zone",
+                "Reply tracking: every reply is pulled into one inbox for you",
                 "Reply sorting: Interested, Not Interested, Out of Office, Unsubscribe, Bounce",
                 "Auto-stop: any reply stops the rest of the campaign for that lead",
-                "Block list: bounces and unsubscribes are never contacted again",
+                "Block list: bounced emails and unsubscribes are never contacted again",
               ]}
               example={{
-                query: "Start a 3-step campaign to 1,000 leads from 5 warmed inboxes",
+                query: "Start a 3-step campaign to 1,000 leads from 5 trusted inboxes",
                 result: "Day 1: first emails go out. Day 3: follow-ups. Day 7: final touches. Replies flow into your inbox.",
               }}
             />
@@ -117,16 +117,16 @@ export default function HowItWorksPage() {
                 Know exactly what is working
               </h2>
               <p className="mt-4 text-lg text-[var(--color-card-foreground)]/75">
-                Every send, every reply, every bounce, tracked. You see your open rate,
-                reply rate, and bounce rate at a glance. No more guessing if your campaign
-                is healthy.
+                Every send, every reply, and every bounce is tracked so you can see your
+                open rate, reply rate, and bounce rate at a glance. No more guessing if your
+                campaign is healthy.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  "Funnel view: total sent, opened, clicked, replied",
-                  "Rate cards: open rate, reply rate, bounce rate",
+                  "Full view of every step: total sent, opened, clicked, replied",
+                  "Quick cards: open rate, reply rate, bounce rate",
                   "Reply sorting: interested, not interested, out of office, unsubscribe",
-                  "Per-inbox health: warmup status, daily progress, failure alerts",
+                  "Per-inbox health: trust building status, daily progress, trouble alerts",
                   "Lead status: pending, step 1 sent, replied, bounced, unsubscribed",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -183,11 +183,11 @@ export default function HowItWorksPage() {
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Ready to try the full pipeline?
+            Ready to try the full process?
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Free forever plan. No credit card. 50 leads, 100 email checks, and 50 message
-            drafts included.
+            Start with a free forever plan that needs no credit card. You get 50 leads,
+            100 email checks, and 50 message drafts included.
           </p>
           <Link
             href={`${SITE_CONFIG.dashboardUrl}/sign-up`}

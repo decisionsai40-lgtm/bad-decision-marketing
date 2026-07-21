@@ -100,10 +100,10 @@ export default async function BlogPage({
           {posts.length === 0 ? (
             <div className="card-premium p-12 text-center">
               <p className="text-lg font-semibold text-[var(--color-foreground)]">
-                Articles coming soon.
+                Check back for new articles every week.
               </p>
               <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-                We are writing in-depth guides on cold email, lead generation, and outbound sales. Check back shortly.
+                We are writing guides on cold email, lead generation, and outbound sales. Come back soon for fresh reads.
               </p>
             </div>
           ) : (

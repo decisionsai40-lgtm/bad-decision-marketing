@@ -124,7 +124,7 @@ export function PricingCards() {
         </div>
 
         <p className="mt-8 text-center text-sm text-[var(--color-text-muted)]">
-          All plans include deep email verification, spam-law compliant sending,
+          All plans include careful email checks, spam-law friendly sending,
           and the full Bad Decision dashboard.
         </p>
       </div>

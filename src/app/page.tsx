@@ -44,14 +44,14 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pb-28 lg:pt-32">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-[var(--color-foreground)] sm:text-5xl lg:text-6xl">
-            Find real buyers.
+            Find real buyers
             <br />
-            <span className="text-gradient">Skip the ghost towns.</span>
+            <span className="text-gradient">instead of empty places where nobody answers.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)] sm:text-xl">
-            Tell us who you want to reach. Bad Decision finds them, checks every email,
-            writes the message, and sends it from your inbox. You show up to booked
-            meetings.
+            Tell us who you want to reach and we find them for you. We check every email,
+            write the message, and send it from your inbox. All you do is show up to the
+            meetings people booked with you.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -127,8 +127,8 @@ function SocialProof() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {[
-            { value: "4 engines live", label: "Ways to find buyers" },
-            { value: "6 styles", label: "AI message frameworks" },
+            { value: "4 ways to search", label: "Ways to find buyers" },
+            { value: "6 styles", label: "Message writing styles" },
             { value: "99.2%", label: "Email check accuracy" },
             { value: "7 days", label: "Money-back guarantee" },
           ].map((stat) => (
@@ -166,7 +166,7 @@ function TheShift() {
             {
               icon: Search,
               title: "Find the right people",
-              body: "Tell us who you want to reach. We search the live internet and bring back real businesses with real contact info. No stale lists. No dead ends.",
+              body: "Tell us who you want to reach and we search the live web to bring back real businesses with real contact info. You get fresh leads instead of stale lists full of dead ends.",
             },
             {
               icon: ShieldCheck,
@@ -213,8 +213,8 @@ function Engines() {
       name: "Ads Running",
       icon: BarChart3,
       status: "Live",
-      description:
-        "Find businesses already paying for ads. If they are spending money on ads, they have budget to spend on you too.",
+        description:
+              "Find businesses already paying for ads. If they are spending money on ads, they have money to spend on what you sell too.",
       examples: ["Stores running social ads", "SaaS companies on search ads"],
       available: true,
     },
@@ -222,8 +222,8 @@ function Engines() {
       name: "Ecommerce",
       icon: Globe,
       status: "Live",
-      description:
-        "Find online stores by platform and tech stack. Know what tools they use before you reach out.",
+        description:
+              "Find online stores by the tools and platforms they use. Know what runs their shop before you reach out.",
       examples: ["Skincare stores on Shopify", "Coffee shops selling online"],
       available: true,
     },
@@ -243,11 +243,11 @@ function Engines() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
-            Find your next customer (4 engines live)
+            Find your next customer (4 ways to search)
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
             Pick the one that fits who you are looking for. Each one searches the live
-            internet and brings back fresh leads in minutes.
+            web and brings back fresh leads in minutes.
           </p>
         </div>
 
@@ -301,13 +301,13 @@ function HowItWorks() {
       icon: Search,
       title: "1. Find leads",
       description:
-        "Pick an engine, type who you want to reach, and we search the live internet. Every lead comes with contact info and company details.",
+        "Pick a search method, type who you want to reach, and we search the live web. Every lead comes with contact info and company details.",
     },
     {
       icon: ShieldCheck,
       title: "2. Check emails",
       description:
-        "Every email goes through a deep check. You see which are safe, which are risky, and which will bounce. You only pay for the safe ones.",
+        "Every email goes through a careful check. You see which are safe, which are risky, and which will bounce. You only pay for the safe ones.",
     },
     {
       icon: Sparkles,
@@ -319,7 +319,7 @@ function HowItWorks() {
       icon: Send,
       title: "4. Send and track",
       description:
-        "Connect your email inbox. We warm it up, send at the right time, and tell you the moment someone opens, clicks, or replies.",
+        "Connect your email inbox. We slowly build its trust, send at the right time, and tell you the moment someone opens, clicks, or replies.",
     },
   ];
 
@@ -331,8 +331,8 @@ function HowItWorks() {
             Four steps. One subscription.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            From "who should I contact?" to "they replied!" in about 14 days. No setup.
-            No extra tools. No guesswork.
+            From "who should I contact?" to "they replied!" in about 14 days, with no
+            setup, no extra tools, and no guessing.
           </p>
         </div>
 
@@ -370,33 +370,33 @@ function WhatYouGet() {
   const outcomes = [
     {
       icon: ShieldCheck,
-      title: "Protect your sender reputation",
-      body: "Every email is checked before you send. Bad emails are caught and removed. Your inbox stays healthy, your messages land in the inbox (not spam), and your domain stays trusted.",
+      title: "Your email stays trusted",
+      body: "Every email is checked before you send. Bad emails are caught and removed. Your inbox stays healthy, your messages land in the main inbox (not spam), and your good name with email providers stays safe.",
     },
     {
       icon: Sparkles,
       title: "Messages that sound like you wrote them",
-      body: "Pick from six proven writing styles. Each lead gets a unique message that fits their business. Short, personal, and ready to send. No generic templates. No robot-sounding copy.",
+      body: "Pick from six ways to write messages that work. Each lead gets a unique message that fits their business. Short, personal, and ready to send. No cookie-cutter templates and no robot-sounding copy.",
     },
     {
       icon: Send,
-      title: "Send from your own inbox, safely",
-      body: "Connect your email account. We warm it up slowly, send at the right times, and rotate across your inboxes. Your reputation stays in your hands, which is exactly where it should be.",
+      title: "Send from your own inbox the safe way",
+      body: "Connect your email account and we slowly build trust for it. We send at the right times and switch between your inboxes so no single one gets overused. Your email stays trusted because it stays in your hands, right where it belongs.",
     },
     {
       icon: Inbox,
       title: "Never miss a reply",
-      body: "Every reply lands in one inbox. We sort them: interested, not now, out of office, unsubscribe. You see the interested ones first and reach back before they go cold.",
+      body: "Every reply lands in one inbox. We sort them into groups: interested, not now, out of office, and unsubscribe. You see the interested ones first and reach back before they go cold.",
     },
     {
       icon: BarChart3,
       title: "Know what is working",
-      body: "See your open rate, reply rate, and bounce rate at a glance. Know which messages get replies and which need a rewrite. Make better decisions with real numbers, not guesses.",
+      body: "See your open rate, reply rate, and bounce rate at a glance. Know which messages get replies and which need a rewrite. Make better choices with real numbers instead of guesses.",
     },
     {
       icon: Globe,
-      title: "Bring your own keys, save more",
-      body: "If you are part of our community, plug in your own keys for finding leads, checking emails, and writing messages. You pay nothing for those tasks. Invite-only, controlled by you.",
+      title: "Use your own accounts and save money",
+      body: "If you are part of our community, connect your own accounts for finding leads, checking emails, and writing messages. You pay nothing for those tasks. Invite-only, controlled by you.",
     },
   ];
 
@@ -408,8 +408,8 @@ function WhatYouGet() {
             What you actually get
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Not a list of features. Real outcomes that help you book more meetings and
-            waste less money.
+            These are not just a list of features. These are real outcomes that help you
+            book more meetings and waste less money.
           </p>
         </div>
 
@@ -441,7 +441,8 @@ function PlansPreview() {
             One subscription. Everything you need.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            Start free. Upgrade when you are ready to send real campaigns. Cancel anytime.
+            Start free and upgrade when you are ready to send real campaigns. You can
+            cancel anytime.
           </p>
         </div>
 
@@ -492,7 +493,7 @@ function FAQPreview() {
             Questions, answered
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-            The short version. See the full page for more.
+            Here is the short version. See the full page for more answers.
           </p>
         </div>
 
@@ -532,13 +533,13 @@ function FinalCTA() {
     <section className="bg-[var(--color-card)] py-20 text-[var(--color-card-foreground)] sm:py-28">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-[var(--color-card-foreground)]">
-          Stop guessing.
+          Stop guessing
           <br />
-          Start finding buyers.
+          and start finding real buyers.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-card-foreground)]/75">
-          Free forever plan. No credit card. Upgrade only when you are ready to send real
-          campaigns.
+          Start with a free forever plan that needs no credit card. Upgrade only when
+          you are ready to send real campaigns.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link

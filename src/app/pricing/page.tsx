@@ -12,9 +12,9 @@ import { PricingJsonLd } from "@/components/seo/json-ld";
 import { PricingCards } from "./_pricing-cards";
 
 export const metadata: Metadata = {
-  title: "Pricing — Simple, transparent, scalable",
+  title: "Pricing — Simple and clear",
   description:
-    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Monthly or yearly billing (2 months free). Cancel anytime. 7-day money-back guarantee. No setup fees, no contracts.",
+    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Pay monthly or yearly (get 2 months free). Cancel anytime. 7-day money-back promise. No setup fees and no contracts.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -24,9 +24,9 @@ const COMPARISON_FEATURES = [
     rows: [
       { feature: "Leads per month", values: ["50/search", "1,000", "5,000", "25,000"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
-      { feature: "Ads Running engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
-      { feature: "Ecommerce engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
-      { feature: "Web Absent engine", values: ["Coming soon", "Coming soon", "Coming soon", "Coming soon"] },
+      { feature: "Ads Running engine", values: ["Coming soon", true, true, true] },
+      { feature: "Ecommerce engine", values: ["Coming soon", true, true, true] },
+      { feature: "Web Absent engine", values: ["Coming soon", true, true, true] },
       { feature: "Save your searches", values: [true, true, true, true] },
     ],
   },
@@ -34,19 +34,19 @@ const COMPARISON_FEATURES = [
     category: "Email checking",
     rows: [
       { feature: "Email checks per month", values: ["100", "1,000", "5,000", "25,000"] },
-      { feature: "Deep email verification", values: [true, true, true, true] },
+      { feature: "Careful email check", values: [true, true, true, true] },
       { feature: "Catch-all detection", values: [true, true, true, true] },
       { feature: "Disposable email blocking", values: [true, true, true, true] },
       { feature: "Risk toggle per campaign", values: [true, true, true, true] },
     ],
   },
   {
-    category: "AI message drafting",
+    category: "Message writing",
     rows: [
-      { feature: "AI drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "Message drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "6 writing styles", values: [true, true, true, true] },
       { feature: "Personal message for each lead", values: [true, true, true, true] },
-      { feature: "Batch generation", values: [false, true, true, true] },
+      { feature: "Write many messages at once", values: [false, true, true, true] },
     ],
   },
   {
@@ -54,11 +54,11 @@ const COMPARISON_FEATURES = [
     rows: [
       { feature: "Email inboxes", values: ["1", "3", "10", "30"] },
       { feature: "Campaign sends per month", values: ["—", "1,500", "10,000", "50,000"] },
-      { feature: "Inbox warmup", values: [false, true, true, true] },
-      { feature: "Send rotation + throttle", values: [false, true, true, true] },
+      { feature: "Inbox trust building", values: [false, true, true, true] },
+      { feature: "Smart sending across inboxes", values: [false, true, true, true] },
       { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
       { feature: "A/B testing", values: [false, false, true, true] },
-      { feature: "Unified inbox + reply sorting", values: [false, true, true, true] },
+      { feature: "One inbox for all replies", values: [false, true, true, true] },
       { feature: "Block list", values: [true, true, true, true] },
     ],
   },
@@ -77,11 +77,11 @@ const COMPARISON_FEATURES = [
 const PRICING_FAQS = [
   {
     q: "Do my monthly quotas roll over if I don't use them?",
-    a: "No — quotas reset on your billing date each month. This keeps the platform fair for everyone and lets us keep prices low.",
+    a: "No — quotas reset on your billing date each month. This keeps things fair for everyone and lets us keep prices low.",
   },
   {
     q: "What happens if I hit my limit mid-month?",
-    a: "You can upgrade to a higher plan instantly from your dashboard billing settings. The new limits take effect immediately, and we prorate the price difference.",
+    a: "You can upgrade to a higher plan instantly from your dashboard billing settings. The new limits take effect right away, and we adjust the price for the days left in your billing period.",
   },
   {
     q: "How does yearly billing work?",
@@ -107,7 +107,7 @@ export default function PricingPage() {
       <PricingJsonLd />
       <PageHeader
         title="One subscription. Everything you need."
-        subtitle="Cancel anytime. 7-day money-back guarantee on first paid subscription. No setup fees, no contracts, no hidden costs."
+        subtitle="Cancel anytime with a 7-day money-back promise on your first paid plan. There are no setup fees, no contracts, and no hidden costs."
       />
 
       {/* Plan cards (client component with billing toggle) */}
@@ -162,8 +162,8 @@ export default function PricingPage() {
             Full feature comparison
           </h2>
           <p className="mt-2 text-center text-[var(--color-text-secondary)]">
-            Every feature, side by side. No hidden upsells. Monthly prices shown
-            — yearly saves 2 months.
+            Every feature side by side with no hidden upsells. Monthly prices are shown,
+            and yearly billing saves you 2 months.
           </p>
 
           <div className="mt-12 overflow-x-auto">
