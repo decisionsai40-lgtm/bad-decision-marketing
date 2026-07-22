@@ -26,7 +26,7 @@ async function getPosts(category?: string) {
       ? `${API_URL}/api/v1/blog/posts?limit=24&category=${encodeURIComponent(category)}`
       : `${API_URL}/api/v1/blog/posts?limit=24`;
     const res = await fetch(url, {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return { posts: [], total: 0 };
     return res.json();

@@ -14,7 +14,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app"
 async function getPost(slug: string) {
   try {
     const res = await fetch(`${API_URL}/api/v1/blog/posts/${slug}`, {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return null;
     return res.json();
