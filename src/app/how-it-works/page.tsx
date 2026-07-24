@@ -108,6 +108,32 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Additional channels */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-[var(--color-foreground)]">Reach people wherever they are</h2>
+            <p className="mt-4 text-[var(--color-text-secondary)]">
+              Email is just the start. Bad Decision also lets you send campaigns through WhatsApp and text message, so you can connect with customers on the channels they actually use.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+            <div className="card-premium p-6">
+              <h3 className="font-bold text-lg">WhatsApp campaigns</h3>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+                Connect your WhatsApp Business number and send template messages to contacts. Track who received, read, and replied to every message — all from your dashboard.
+              </p>
+            </div>
+            <div className="card-premium p-6">
+              <h3 className="font-bold text-lg">Text message campaigns</h3>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+                Send SMS campaigns to mobile numbers with automatic sender rotation for better delivery. Every number is validated before sending so you never pay for invalid contacts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Analytics */}
       <section className="bg-[var(--color-card)] py-20 text-[var(--color-card-foreground)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

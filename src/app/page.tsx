@@ -50,7 +50,8 @@ function Hero() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)] sm:text-xl">
             Tell us who you want to reach and we find them for you. We check every email,
-            write the message, and send it from your inbox. All you do is show up to the
+            write the message, and send it from your inbox, WhatsApp, or text message.
+            All you do is show up to the
             meetings people booked with you.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
