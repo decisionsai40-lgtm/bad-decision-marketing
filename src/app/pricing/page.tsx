@@ -22,7 +22,7 @@ const COMPARISON_FEATURES = [
   {
     category: "Finding leads",
     rows: [
-      { feature: "Leads per month", values: ["50/search", "1,000", "5,000", "25,000"] },
+      { feature: "Lead discoveries per month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
       { feature: "Ads Running engine", values: [false, true, true, true] },
       { feature: "Ecommerce engine", values: [false, true, true, true] },
@@ -33,7 +33,7 @@ const COMPARISON_FEATURES = [
   {
     category: "Email checking",
     rows: [
-      { feature: "Email checks per month", values: ["100", "1,000", "5,000", "25,000"] },
+      { feature: "Email verifications per month", values: ["100", "1,000", "5,000", "25,000"] },
       { feature: "Careful email check", values: [true, true, true, true] },
       { feature: "Catch-all detection", values: [true, true, true, true] },
       { feature: "Disposable email blocking", values: [true, true, true, true] },
@@ -43,7 +43,7 @@ const COMPARISON_FEATURES = [
   {
     category: "Message writing",
     rows: [
-      { feature: "Message drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "AI message drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "6 writing styles", values: [true, true, true, true] },
       { feature: "Personal message for each lead", values: [true, true, true, true] },
       { feature: "Write many messages at once", values: [false, true, true, true] },
@@ -53,7 +53,7 @@ const COMPARISON_FEATURES = [
     category: "Campaign sending",
     rows: [
       { feature: "Email inboxes", values: ["1", "3", "10", "30"] },
-      { feature: "Campaign sends per month", values: ["—", "1,500", "10,000", "50,000"] },
+      { feature: "Email campaign sends per month", values: ["—", "1,500", "10,000", "50,000"] },
       { feature: "Inbox trust building", values: [false, true, true, true] },
       { feature: "Smart sending across inboxes", values: [false, true, true, true] },
       { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
@@ -112,6 +112,19 @@ export default function PricingPage() {
 
       {/* Plan cards (client component with billing toggle) */}
       <PricingCards />
+
+      {/* How credits work */}
+      <section className="pb-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="card-premium p-6 text-center">
+            <h3 className="text-sm font-bold text-[var(--color-foreground)]">How credits work</h3>
+            <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+              Every plan includes monthly credits. 1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
+              Unused credits roll over one month. Buy additional credits anytime from your dashboard.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Enterprise strip — sales-led */}
       <section className="pb-16">

@@ -32,12 +32,12 @@ export const PRICING_PLANS = [
     period: "forever",
     description: "Try it out. No credit card.",
     features: [
-      "50 leads per search",
-      "100 email checks / month",
-      "50 message drafts / month",
+      "50 lead discoveries / month",
+      "100 email verifications / month",
+      "50 AI message drafts / month",
       "1 email inbox",
       "Save your searches",
-      "Community support",
+      "Community support + 50 credits",
     ],
     cta: "Start free",
     ctaHref: "/sign-up?plan=free",
@@ -51,10 +51,10 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For people running their first outreach.",
     features: [
-      "1,000 leads / month",
-      "1,500 campaign sends / month",
-      "1,000 email checks / month",
-      "1,000 message drafts / month",
+      "1,000 lead discoveries / month",
+      "1,500 email campaign sends / month",
+      "1,000 email verifications / month",
+      "1,000 AI message drafts / month",
       "3 email inboxes with trust building",
       "3-step campaign sequences",
       "One inbox for all replies + tracking",
@@ -72,10 +72,10 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For small teams doing more outreach.",
     features: [
-      "5,000 leads / month",
-      "10,000 campaign sends / month",
-      "5,000 email checks / month",
-      "5,000 message drafts / month",
+      "5,000 lead discoveries / month",
+      "10,000 email campaign sends / month",
+      "5,000 email verifications / month",
+      "5,000 AI message drafts / month",
       "10 email inboxes with trust building",
       "Unlimited campaign sequences",
       "A/B testing per step",
@@ -94,10 +94,10 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For agencies running lots of campaigns.",
     features: [
-      "25,000 leads / month",
-      "50,000 campaign sends / month",
-      "25,000 email checks / month",
-      "25,000 message drafts / month",
+      "25,000 lead discoveries / month",
+      "50,000 email campaign sends / month",
+      "25,000 email verifications / month",
+      "25,000 AI message drafts / month",
       "30 email inboxes with trust building",
       "Advanced analytics + deliverability",
       "Webhooks + API access",
@@ -125,6 +125,28 @@ export const ENTERPRISE_PLAN = {
   ],
   cta: "Talk to sales",
   ctaHref: "/contact?topic=enterprise",
+} as const;
+
+// Channel add-ons — SMS and WhatsApp campaign add-ons for any paid plan
+export const CHANNEL_ADDONS = {
+  sms: {
+    name: "SMS Campaigns",
+    description: "Send text message campaigns with automatic number rotation and delivery tracking.",
+    starter:   { price: 29, includes: "1,000 SMS / month + 2 sender numbers" },
+    growth:    { price: 49, includes: "5,000 SMS / month + 5 sender numbers" },
+    pro:       { price: 0,  includes: "15,000 SMS / month + 10 numbers — included in Pro" },
+    enterprise:{ price: 0,  includes: "Custom volume — included in Enterprise" },
+    overage: "$0.015 per SMS beyond your allocation",
+  },
+  whatsapp: {
+    name: "WhatsApp Campaigns",
+    description: "Send WhatsApp template messages with read receipts, reply tracking, and analytics.",
+    starter:   { price: 49, includes: "500 messages / month + 1 phone number" },
+    growth:    { price: 79, includes: "1,500 messages / month + 3 phone numbers" },
+    pro:       { price: 99, includes: "5,000 messages / month + 5 phone numbers" },
+    enterprise:{ price: 0,  includes: "Custom volume — included in Enterprise" },
+    overage: "$0.05 per WhatsApp message beyond your allocation",
+  },
 } as const;
 
 export const FAQS = [
