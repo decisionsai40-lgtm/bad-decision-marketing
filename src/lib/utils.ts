@@ -127,27 +127,46 @@ export const ENTERPRISE_PLAN = {
   ctaHref: "/contact?topic=enterprise",
 } as const;
 
-// Channel add-ons — SMS and WhatsApp campaign add-ons for any paid plan
-export const CHANNEL_ADDONS = {
-  sms: {
-    name: "SMS Campaigns",
-    description: "Send text message campaigns with automatic number rotation and delivery tracking.",
-    starter:   { price: 29, includes: "1,000 SMS / month + 2 sender numbers" },
-    growth:    { price: 49, includes: "5,000 SMS / month + 5 sender numbers" },
-    pro:       { price: 0,  includes: "15,000 SMS / month + 10 numbers — included in Pro" },
-    enterprise:{ price: 0,  includes: "Custom volume — included in Enterprise" },
-    overage: "$0.015 per SMS beyond your allocation",
-  },
-  whatsapp: {
+// Feature-unlock add-ons — available on Growth + Pro ONLY.
+// Separate monthly payment, bundled with the plan at checkout,
+// but each can be cancelled independently without affecting the base plan.
+export type AddonSlug = "whatsapp_campaign" | "sms_campaign";
+
+export interface Addon {
+  slug: AddonSlug;
+  name: string;
+  description: string;
+  price: number; // USD / month
+  eligiblePlans: string[];
+}
+
+export const ADDONS: Addon[] = [
+  {
+    slug: "whatsapp_campaign",
     name: "WhatsApp Campaigns",
-    description: "Send WhatsApp template messages with read receipts, reply tracking, and analytics.",
-    starter:   { price: 49, includes: "500 messages / month + 1 phone number" },
-    growth:    { price: 79, includes: "1,500 messages / month + 3 phone numbers" },
-    pro:       { price: 99, includes: "5,000 messages / month + 5 phone numbers" },
-    enterprise:{ price: 0,  includes: "Custom volume — included in Enterprise" },
-    overage: "$0.05 per WhatsApp message beyond your allocation",
+    description:
+      "Connect a WhatsApp Business number, import contacts, send template campaigns with delivery + reply analytics.",
+    price: 49,
+    eligiblePlans: ["growth", "pro"],
   },
-} as const;
+  {
+    slug: "sms_campaign",
+    name: "SMS Campaigns",
+    description:
+      "Brand registration, sender number purchase, campaign dispatch with delivery tracking.",
+    price: 39,
+    eligiblePlans: ["growth", "pro"],
+  },
+];
+
+export const ADDON_BY_SLUG: Record<AddonSlug, Addon> = ADDONS.reduce(
+  (acc, a) => { acc[a.slug] = a; return acc; },
+  {} as Record<AddonSlug, Addon>,
+);
+
+export function addonsTotal(addons: AddonSlug[]): number {
+  return addons.reduce((sum, slug) => sum + (ADDON_BY_SLUG[slug]?.price ?? 0), 0);
+}
 
 export const FAQS = [
   {
