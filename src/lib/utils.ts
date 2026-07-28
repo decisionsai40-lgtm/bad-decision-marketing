@@ -23,6 +23,12 @@ export const SITE_CONFIG = {
   legalJurisdiction: "Lagos, Nigeria",
 };
 
+// Feature type: `quota: true` means it's a monthly quota — show "/ month" on yearly view
+export interface PlanFeature {
+  text: string;
+  quota?: boolean;
+}
+
 export const PRICING_PLANS = [
   {
     planId: "free",
@@ -31,13 +37,14 @@ export const PRICING_PLANS = [
     priceYearly: 0,
     period: "forever",
     description: "Try it out. No credit card.",
+    contactUploads: 0,
     features: [
-      "50 lead discoveries / month",
-      "50 AI message drafts / month",
-      "1 email inbox",
-      "Save your searches",
-      "Community support",
-      "+ 50 credits",
+      { text: "50 lead discoveries", quota: true },
+      { text: "50 AI message drafts", quota: true },
+      { text: "1 email inbox" },
+      { text: "Save your searches" },
+      { text: "Community support" },
+      { text: "+ 50 credits" },
     ],
     cta: "Start free",
     ctaHref: "/sign-up?plan=free",
@@ -50,17 +57,19 @@ export const PRICING_PLANS = [
     priceYearly: 390,
     period: "month",
     description: "For people running their first outreach.",
+    contactUploads: 50000,
     features: [
-      "15,000 email sends / month",
-      "Unlimited email inboxes",
-      "Unlimited warmups (100,000 emails/mo)",
-      "Unlimited campaigns",
-      "1,000 lead discoveries / month",
-      "1,000 email verifications / month",
-      "1,000 AI message drafts / month",
-      "3-step campaign sequences",
-      "One inbox for all replies + tracking",
-      "Email support",
+      { text: "15,000 email sends", quota: true },
+      { text: "Unlimited email inboxes" },
+      { text: "Unlimited warmups (100,000 emails/mo)" },
+      { text: "Unlimited campaigns" },
+      { text: "50,000 contact uploads" },
+      { text: "1,000 lead discoveries", quota: true },
+      { text: "1,000 email verifications", quota: true },
+      { text: "1,000 AI message drafts", quota: true },
+      { text: "3-step campaign sequences" },
+      { text: "One inbox for all replies + tracking" },
+      { text: "Email support" },
     ],
     cta: "Start Starter",
     ctaHref: "/sign-up?plan=starter",
@@ -73,19 +82,20 @@ export const PRICING_PLANS = [
     priceYearly: 970,
     period: "month",
     description: "For small teams doing more outreach.",
+    contactUploads: 100000,
     features: [
-      "Unlimited email sends",
-      "Unlimited email inboxes",
-      "Unlimited warmups",
-      "Unlimited campaigns",
-      "Unlimited contact uploads",
-      "5,000 lead discoveries / month",
-      "5,000 email verifications / month",
-      "5,000 AI message drafts / month",
-      "Unlimited campaign sequences",
-      "A/B testing per step",
-      "Workspace + team members",
-      "Priority support",
+      { text: "Unlimited email sends" },
+      { text: "Unlimited email inboxes" },
+      { text: "Unlimited warmups" },
+      { text: "Unlimited campaigns" },
+      { text: "100,000 contact uploads" },
+      { text: "5,000 lead discoveries", quota: true },
+      { text: "5,000 email verifications", quota: true },
+      { text: "5,000 AI message drafts", quota: true },
+      { text: "Unlimited campaign sequences" },
+      { text: "A/B testing per step" },
+      { text: "Workspace + team members" },
+      { text: "Priority support" },
     ],
     cta: "Start Growth",
     ctaHref: "/sign-up?plan=growth",
@@ -98,20 +108,21 @@ export const PRICING_PLANS = [
     priceYearly: 2970,
     period: "month",
     description: "For agencies running lots of campaigns.",
+    contactUploads: 250000,
     features: [
-      "Unlimited email sends",
-      "Unlimited email inboxes",
-      "Unlimited warmups",
-      "Unlimited campaigns",
-      "Unlimited contact uploads",
-      "25,000 lead discoveries / month",
-      "25,000 email verifications / month",
-      "25,000 AI message drafts / month",
-      "500 AI voice minutes included",
-      "Advanced analytics + deliverability",
-      "Webhooks + API access",
-      "CRM sync (HubSpot, Pipedrive, Salesforce)",
-      "Dedicated success manager",
+      { text: "Unlimited email sends" },
+      { text: "Unlimited email inboxes" },
+      { text: "Unlimited warmups" },
+      { text: "Unlimited campaigns" },
+      { text: "250,000 contact uploads" },
+      { text: "25,000 lead discoveries", quota: true },
+      { text: "25,000 email verifications", quota: true },
+      { text: "25,000 AI message drafts", quota: true },
+      { text: "500 AI voice minutes included" },
+      { text: "Advanced analytics + deliverability" },
+      { text: "Webhooks + API access" },
+      { text: "CRM sync (HubSpot, Pipedrive, Salesforce)" },
+      { text: "Dedicated success manager" },
     ],
     cta: "Start Pro",
     ctaHref: "/sign-up?plan=pro",
@@ -142,9 +153,11 @@ export const ENTERPRISE_PLAN = {
 
 // Feature-unlock add-ons — separate monthly payments, bundled with the plan
 // at checkout, but each can be cancelled independently without affecting the base plan.
-// WhatsApp + SMS: Growth and Pro only.
-// AI Voice: Pro only (high per-minute cost, requires compliance).
-export type AddonSlug = "whatsapp_campaign" | "sms_campaign" | "ai_voice";
+// Eligibility:
+//   SMS:        Starter, Growth, Pro
+//   WhatsApp:   Growth, Pro
+//   AI Voice:   Pro only (high per-minute cost, requires compliance)
+export type AddonSlug = "sms_campaign" | "whatsapp_campaign" | "ai_voice";
 
 export interface Addon {
   slug: AddonSlug;
@@ -157,6 +170,15 @@ export interface Addon {
 
 export const ADDONS: Addon[] = [
   {
+    slug: "sms_campaign",
+    name: "SMS Campaigns",
+    description:
+      "Brand registration, sender number purchase, campaign dispatch with delivery tracking.",
+    price: 39,
+    eligiblePlans: ["starter", "growth", "pro"],
+    meteredNote: "1,000 messages/mo included, then $0.015/msg",
+  },
+  {
     slug: "whatsapp_campaign",
     name: "WhatsApp Campaigns",
     description:
@@ -164,15 +186,6 @@ export const ADDONS: Addon[] = [
     price: 49,
     eligiblePlans: ["growth", "pro"],
     meteredNote: "1,000 messages/mo included, then $0.10/msg",
-  },
-  {
-    slug: "sms_campaign",
-    name: "SMS Campaigns",
-    description:
-      "Brand registration, sender number purchase, campaign dispatch with delivery tracking.",
-    price: 39,
-    eligiblePlans: ["growth", "pro"],
-    meteredNote: "1,000 messages/mo included, then $0.015/msg",
   },
   {
     slug: "ai_voice",
@@ -193,6 +206,62 @@ export const ADDON_BY_SLUG: Record<AddonSlug, Addon> = ADDONS.reduce(
 export function addonsTotal(addons: AddonSlug[]): number {
   return addons.reduce((sum, slug) => sum + (ADDON_BY_SLUG[slug]?.price ?? 0), 0);
 }
+
+// Credit packs — one-time purchases, never expire.
+// 1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
+// Tiered pricing: more credits = cheaper per credit.
+export interface CreditPack {
+  id: string;
+  name: string;
+  credits: number;
+  price: number; // USD one-time
+  perCredit: number; // USD
+  savingsPct: number; // vs the Starter pack (base tier)
+  popular?: boolean;
+  note?: string;
+}
+
+const BASE_PER_CREDIT = 0.019; // Starter pack rate
+
+export const CREDIT_PACKS: CreditPack[] = [
+  {
+    id: "starter",
+    name: "Starter",
+    credits: 1000,
+    price: 19,
+    perCredit: 0.019,
+    savingsPct: 0,
+    note: "Try it out",
+  },
+  {
+    id: "popular",
+    name: "Popular",
+    credits: 5000,
+    price: 79,
+    perCredit: 0.0158,
+    savingsPct: 17,
+    popular: true,
+    note: "Best for most",
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    credits: 15000,
+    price: 199,
+    perCredit: 0.0133,
+    savingsPct: 30,
+    note: "Best value",
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    credits: 50000,
+    price: 599,
+    perCredit: 0.012,
+    savingsPct: 37,
+    note: "High volume",
+  },
+];
 
 export const FAQS = [
   {

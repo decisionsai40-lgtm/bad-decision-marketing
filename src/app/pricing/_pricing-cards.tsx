@@ -1,83 +1,106 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, MessageSquare, Phone } from "lucide-react";
+import {
+  Check,
+  CheckCircle2,
+  MessageSquare,
+  Phone,
+  Mic,
+  Zap,
+  TrendingDown,
+} from "lucide-react";
 import {
   PRICING_PLANS,
   ENTERPRISE_PLAN,
   SITE_CONFIG,
   ADDONS,
-  addonsTotal,
+  CREDIT_PACKS,
   type AddonSlug,
 } from "@/lib/utils";
 
 type BillingPeriod = "monthly" | "yearly";
 
+// Per-plan addon selection (each plan tracks its own checkboxes independently)
+type AddonState = Record<string, Set<AddonSlug>>;
+
 export function PricingCards() {
   const [billing, setBilling] = useState<BillingPeriod>("monthly");
-  // Track selected add-ons (shared between Growth & Pro — user picks ONE plan)
-  const [selectedAddons, setSelectedAddons] = useState<Set<AddonSlug>>(new Set());
+  const [addonsByPlan, setAddonsByPlan] = useState<AddonState>({});
 
-  const toggleAddon = (slug: AddonSlug) => {
-    setSelectedAddons((prev) => {
-      const next = new Set(prev);
-      if (next.has(slug)) next.delete(slug);
-      else next.add(slug);
+  const toggleAddon = (planId: string, slug: AddonSlug) => {
+    setAddonsByPlan((prev) => {
+      const next = { ...prev };
+      const current = new Set(next[planId] ?? []);
+      if (current.has(slug)) current.delete(slug);
+      else current.add(slug);
+      next[planId] = current;
       return next;
     });
   };
 
-  const addonTotal = useMemo(() => addonsTotal([...selectedAddons]), [selectedAddons]);
+  // Addon yearly multiplier: 11 months (1 month free)
+  const ADDON_YEARLY_MULT = 11;
+  // Plan yearly multiplier: 10 months (2 months free)
+  const PLAN_YEARLY_MULT = 10;
+
+  const fmt = (n: number) => n.toLocaleString("en-US");
 
   return (
     <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Billing period toggle */}
-        <div className="mb-10 flex items-center justify-center gap-3">
+        <div className="mb-12 flex items-center justify-center gap-3">
           <button
             onClick={() => setBilling("monthly")}
-            className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${
+            className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
               billing === "monthly"
-                ? "bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/20"
-                : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                ? "bg-gray-900 text-white shadow-lg"
+                : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
             }`}
           >
             Monthly
           </button>
           <button
             onClick={() => setBilling("yearly")}
-            className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${
+            className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all flex items-center gap-2 ${
               billing === "yearly"
-                ? "bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/20"
-                : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
-            } flex items-center gap-2`}
+                ? "bg-gray-900 text-white shadow-lg"
+                : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+            }`}
           >
             Yearly
-            <span className="rounded bg-[var(--color-success)]/20 px-1.5 py-0.5 text-[11px] font-bold text-[var(--color-success)]">
-              2 MONTHS FREE
+            <span className="rounded-full bg-green-500 px-2 py-0.5 text-[10px] font-bold text-white">
+              SAVE 2 MONTHS
             </span>
           </button>
         </div>
 
         {/* Plan cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {PRICING_PLANS.map((plan) => {
             const isYearly = billing === "yearly" && plan.priceYearly > 0;
             const displayPrice = isYearly ? plan.priceYearly : plan.price;
-            const periodLabel =
-              plan.period === "forever" ? "forever" : isYearly ? "year" : "month";
-            const yearlySavings =
-              plan.price > 0 ? plan.price * 12 - plan.priceYearly : 0;
+            const periodLabel = plan.price === 0 ? "" : isYearly ? "year" : "month";
 
-            const canBuyAddons = plan.planId === "growth" || plan.planId === "pro";
-            const planAddonTotal = canBuyAddons ? addonTotal : 0;
-            const totalPrice = displayPrice + (isYearly ? planAddonTotal * 10 : planAddonTotal);
+            const planAddons = addonsByPlan[plan.planId] ?? new Set<AddonSlug>();
+            const eligibleAddons = ADDONS.filter((a) =>
+              a.eligiblePlans.includes(plan.planId)
+            );
+            const addonMonthlyTotal = [...planAddons].reduce(
+              (sum, slug) => sum + (ADDONS.find((a) => a.slug === slug)?.price ?? 0),
+              0
+            );
+            const addonYearlyTotal = addonMonthlyTotal * ADDON_YEARLY_MULT;
+            const addonTotal = isYearly ? addonYearlyTotal : addonMonthlyTotal;
+            const totalPrice = displayPrice + addonTotal;
 
-            // Build CTA href with addons if selected
-            const addonParam = canBuyAddons && selectedAddons.size > 0
-              ? `&addons=${[...selectedAddons].join(",")}`
-              : "";
+            // Build CTA href with this plan's addons
+            const addonParam =
+              planAddons.size > 0
+                ? `&addons=${[...planAddons].join(",")}`
+                : "";
             const ctaHref =
               plan.price === 0
                 ? `${SITE_CONFIG.dashboardUrl}${plan.ctaHref}`
@@ -85,104 +108,150 @@ export function PricingCards() {
 
             return (
               <div
-                key={plan.name}
-                className={`card-premium relative flex flex-col p-6 ${
+                key={plan.planId}
+                className={`relative flex flex-col rounded-2xl border-2 bg-white p-6 transition-all ${
                   plan.highlight
-                    ? "border-[var(--color-primary)] shadow-lg ring-2 ring-[var(--color-primary)]/20"
-                    : ""
-                } ${canBuyAddons && selectedAddons.size > 0 ? "ring-2 ring-[var(--color-primary)]/30" : ""}`}
+                    ? "border-gray-900 shadow-xl lg:-mt-4 lg:mb-4"
+                    : "border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md"
+                }`}
               >
                 {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-4 py-1 text-xs font-bold text-white">
                     Most popular
                   </span>
                 )}
-                <h3 className="text-lg font-bold text-[var(--color-foreground)]">
+
+                {/* Plan name + description */}
+                <h3 className="text-lg font-extrabold text-gray-900">
                   {plan.name}
                 </h3>
-                <p className="mt-1 text-sm text-[var(--color-text-muted)]">
+                <p className="mt-1 text-sm font-medium text-gray-600">
                   {plan.description}
                 </p>
+
+                {/* Price */}
                 <div className="mt-4 flex items-baseline gap-1">
                   {plan.price === 0 ? (
-                    <span className="text-4xl font-bold text-[var(--color-foreground)]">
+                    <span className="text-4xl font-extrabold text-gray-900">
                       Free
                     </span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold text-[var(--color-foreground)]">
-                        ${displayPrice.toLocaleString()}
+                      <span className="text-4xl font-extrabold text-gray-900">
+                        ${fmt(displayPrice)}
                       </span>
-                      <span className="text-sm text-[var(--color-text-muted)]">
+                      <span className="text-sm font-medium text-gray-500">
                         /{periodLabel}
                       </span>
                     </>
                   )}
                 </div>
-                {/* Live total when addons selected on Growth/Pro */}
-                {canBuyAddons && planAddonTotal > 0 && (
-                  <div className="mt-1.5 text-sm font-bold text-[var(--color-primary)]" aria-live="polite">
-                    Total: ${totalPrice.toLocaleString()}/{periodLabel}
+
+                {/* Addon total (if any selected) */}
+                {planAddons.size > 0 && (
+                  <div
+                    className="mt-2 rounded-lg bg-gray-900 px-3 py-1.5 text-sm font-bold text-white"
+                    aria-live="polite"
+                  >
+                    Total: ${fmt(totalPrice)}/{periodLabel}
                   </div>
                 )}
-                {isYearly && yearlySavings > 0 && planAddonTotal === 0 && (
-                  <div className="mt-1.5 text-xs font-semibold text-[var(--color-success)]">
-                    Save ${yearlySavings} per year
-                  </div>
+
+                {isYearly && plan.price > 0 && planAddons.size === 0 && (
+                  <p className="mt-2 text-xs font-bold text-green-600">
+                    Save ${(plan.price * 12 - plan.priceYearly).toLocaleString()} per year
+                  </p>
                 )}
-                <ul className="mt-6 flex-1 space-y-2">
-                  {plan.features.map((feat) => (
+
+                {/* CTA */}
+                <Link
+                  href={ctaHref}
+                  className={`mt-5 block w-full rounded-lg py-2.5 text-center text-sm font-bold transition-all ${
+                    plan.highlight
+                      ? "bg-gray-900 text-white hover:bg-gray-800"
+                      : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                  }`}
+                >
+                  {plan.cta}
+                </Link>
+
+                {/* Divider */}
+                <div className="my-5 border-t border-gray-100" />
+
+                {/* Features */}
+                <ul className="flex-1 space-y-2.5">
+                  {plan.features.map((feat, i) => {
+                    const f = feat as { text: string; quota?: boolean };
+                    return (
                     <li
-                      key={feat}
-                      className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]"
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-gray-700"
                     >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" />
-                      <span>{feat}</span>
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
+                      <span className="font-medium">
+                        {f.text}
+                        {isYearly && f.quota ? " / month" : ""}
+                      </span>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
 
-                {/* Inline add-on checkboxes — Growth & Pro ONLY */}
-                {canBuyAddons && (
-                  <div className="mt-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-muted)] p-4">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                {/* Inline add-on checkboxes (per-plan) */}
+                {eligibleAddons.length > 0 && (
+                  <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 p-4">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wide text-gray-500">
                       Add-ons (optional)
                     </p>
-                    <div className="space-y-3">
-                      {ADDONS.filter((a) => a.eligiblePlans.includes(plan.planId)).map((addon) => {
-                        const checked = selectedAddons.has(addon.slug);
+                    <div className="space-y-2">
+                      {eligibleAddons.map((addon) => {
+                        const checked = planAddons.has(addon.slug);
+                        const addonPrice = isYearly
+                          ? addon.price * ADDON_YEARLY_MULT
+                          : addon.price;
                         return (
                           <label
                             key={addon.slug}
                             htmlFor={`addon-${addon.slug}-${plan.planId}`}
-                            className="flex cursor-pointer items-start gap-3 rounded-md p-2 transition-colors hover:bg-[var(--color-surface)]"
+                            className={`flex cursor-pointer items-start gap-3 rounded-lg border p-2.5 transition-all ${
+                              checked
+                                ? "border-gray-900 bg-white shadow-sm"
+                                : "border-transparent hover:bg-white hover:shadow-sm"
+                            }`}
                           >
                             <input
                               type="checkbox"
                               id={`addon-${addon.slug}-${plan.planId}`}
                               checked={checked}
-                              onChange={() => toggleAddon(addon.slug)}
-                              className="mt-0.5 h-4 w-4 cursor-pointer rounded border-[var(--color-border)] accent-[var(--color-primary)]"
+                              onChange={() => toggleAddon(plan.planId, addon.slug)}
+                              className="mt-0.5 h-4 w-4 cursor-pointer rounded border-gray-300 accent-gray-900"
                             />
                             <div className="flex-1">
                               <div className="flex items-center gap-1.5">
-                                {addon.slug === "whatsapp_campaign" ? (
-                                  <MessageSquare className="h-3.5 w-3.5 text-[var(--color-text-muted)]" />
-                                ) : (
-                                  <Phone className="h-3.5 w-3.5 text-[var(--color-text-muted)]" />
+                                {addon.slug === "whatsapp_campaign" && (
+                                  <MessageSquare className="h-3.5 w-3.5 text-gray-500" />
                                 )}
-                                <span className="text-sm font-medium text-[var(--color-foreground)]">
+                                {addon.slug === "sms_campaign" && (
+                                  <Phone className="h-3.5 w-3.5 text-gray-500" />
+                                )}
+                                {addon.slug === "ai_voice" && (
+                                  <Mic className="h-3.5 w-3.5 text-gray-500" />
+                                )}
+                                <span className="text-sm font-bold text-gray-900">
                                   {addon.name}
                                 </span>
-                                <span className="ml-auto text-sm font-semibold text-[var(--color-foreground)]">
-                                  +${addon.price}/mo
+                                <span className="ml-auto text-sm font-extrabold text-gray-900">
+                                  +${fmt(addonPrice)}
+                                  <span className="text-xs font-medium text-gray-500">
+                                    /{isYearly ? "year" : "mo"}
+                                  </span>
                                 </span>
                               </div>
-                              <p className="mt-0.5 text-xs text-[var(--color-text-muted)]">
+                              <p className="mt-0.5 text-xs text-gray-600">
                                 {addon.description}
                               </p>
                               {addon.meteredNote && (
-                                <p className="mt-0.5 text-[11px] font-medium text-[var(--color-primary)]">
+                                <p className="mt-0.5 text-[11px] font-bold text-gray-900">
                                   {addon.meteredNote}
                                 </p>
                               )}
@@ -194,49 +263,118 @@ export function PricingCards() {
                   </div>
                 )}
 
-                {/* Non-eligible plans: note about addons */}
-                {(plan.planId === "free" || plan.planId === "starter") && (
-                  <p className="mt-4 text-xs text-[var(--color-text-muted)]">
-                    Add-ons available on Growth &amp; Pro
+                {/* Plans with no addons: note */}
+                {eligibleAddons.length === 0 && plan.price > 0 && (
+                  <p className="mt-4 text-xs font-medium text-gray-500">
+                    Add-ons available on higher plans
                   </p>
                 )}
-
-                <Link
-                  href={ctaHref}
-                  className={`mt-6 block w-full text-center text-sm font-semibold ${
-                    plan.highlight ? "btn-primary" : "btn-secondary"
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
               </div>
             );
           })}
         </div>
 
         {/* Enterprise strip */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-gray-200 bg-gray-900 p-6 sm:flex-row">
           <div>
-            <h3 className="text-lg font-bold text-[var(--color-foreground)]">
+            <h3 className="text-lg font-extrabold text-white">
               {ENTERPRISE_PLAN.name}
             </h3>
-            <p className="mt-1 text-sm text-[var(--color-text-muted)]">
-              {ENTERPRISE_PLAN.description} WhatsApp + SMS add-ons included.
+            <p className="mt-1 text-sm font-medium text-gray-300">
+              {ENTERPRISE_PLAN.description}
             </p>
           </div>
           <Link
             href={`${SITE_CONFIG.dashboardUrl}${ENTERPRISE_PLAN.ctaHref}`}
-            className="btn-secondary whitespace-nowrap text-sm font-semibold"
+            className="rounded-lg bg-white px-6 py-2.5 text-sm font-bold text-gray-900 hover:bg-gray-100"
           >
             {ENTERPRISE_PLAN.cta}
           </Link>
         </div>
 
-        <p className="mt-8 text-center text-sm text-[var(--color-text-muted)]">
-          All plans include careful email checks, spam-law friendly sending, and the
-          full Bad Decision dashboard. Add-ons can be cancelled anytime without
-          affecting your base plan.
-        </p>
+        {/* Credit packs section */}
+        <div className="mt-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              Need more credits?
+            </h2>
+            <p className="mt-2 text-sm font-medium text-gray-600">
+              1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
+              Credits never expire. Buy anytime — no subscription needed.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {CREDIT_PACKS.map((pack) => (
+              <div
+                key={pack.id}
+                className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 transition-all ${
+                  pack.popular
+                    ? "border-gray-900 shadow-lg"
+                    : "border-gray-200 shadow-sm hover:border-gray-300"
+                }`}
+              >
+                {pack.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-3 py-0.5 text-[10px] font-bold text-white">
+                    MOST POPULAR
+                  </span>
+                )}
+                <div className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-amber-500" />
+                  <span className="text-sm font-bold text-gray-900">
+                    {pack.name}
+                  </span>
+                </div>
+                {pack.note && (
+                  <p className="mt-0.5 text-xs font-medium text-gray-500">
+                    {pack.note}
+                  </p>
+                )}
+                <div className="mt-3 flex items-baseline gap-1">
+                  <span className="text-3xl font-extrabold text-gray-900">
+                    {fmt(pack.credits)}
+                  </span>
+                  <span className="text-sm font-medium text-gray-600">
+                    credits
+                  </span>
+                </div>
+                <div className="mt-1 flex items-baseline gap-1">
+                  <span className="text-2xl font-extrabold text-gray-900">
+                    ${fmt(pack.price)}
+                  </span>
+                  <span className="text-xs font-medium text-gray-500">
+                    one-time
+                  </span>
+                </div>
+                <div className="mt-1 text-xs font-bold text-gray-700">
+                  ${pack.perCredit.toFixed(4)} per credit
+                </div>
+                {pack.savingsPct > 0 && (
+                  <div className="mt-1 flex items-center gap-1 text-xs font-bold text-green-600">
+                    <TrendingDown className="h-3 w-3" />
+                    Save {pack.savingsPct}%
+                  </div>
+                )}
+                <Link
+                  href={`${SITE_CONFIG.dashboardUrl}/dashboard/credits?pack=${pack.id}`}
+                  className={`mt-4 block w-full rounded-lg py-2 text-center text-sm font-bold transition-all ${
+                    pack.popular
+                      ? "bg-gray-900 text-white hover:bg-gray-800"
+                      : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                  }`}
+                >
+                  Buy {fmt(pack.credits)} credits
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center text-xs font-medium text-gray-500">
+            Credits are used for lead discoveries, email verifications, and AI message
+            drafts. Unused credits never expire. Add-ons can be cancelled anytime without
+            affecting your base plan.
+          </p>
+        </div>
       </div>
     </section>
   );

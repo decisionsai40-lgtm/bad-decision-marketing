@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+import { CheckCircle2, ArrowRight, Sparkles, X } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import {
   PRICING_PLANS,
@@ -20,9 +20,23 @@ export const metadata: Metadata = {
 
 const COMPARISON_FEATURES = [
   {
+    category: "Email sending",
+    rows: [
+      { feature: "Email sends / month", values: ["—", "15,000", "Unlimited", "Unlimited"] },
+      { feature: "Email inboxes", values: ["1", "Unlimited", "Unlimited", "Unlimited"] },
+      { feature: "Warmup emails", values: ["—", "100,000", "Unlimited", "Unlimited"] },
+      { feature: "Campaigns", values: ["—", "Unlimited", "Unlimited", "Unlimited"] },
+      { feature: "Contact uploads", values: ["—", "50,000", "100,000", "250,000"] },
+      { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
+      { feature: "A/B testing", values: [false, false, true, true] },
+      { feature: "One inbox for all replies", values: [false, true, true, true] },
+      { feature: "Inbox trust building", values: [false, true, true, true] },
+    ],
+  },
+  {
     category: "Finding leads",
     rows: [
-      { feature: "Lead discoveries per month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "Lead discoveries / month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
       { feature: "Ads Running engine", values: [false, true, true, true] },
       { feature: "Ecommerce engine", values: [false, true, true, true] },
@@ -31,35 +45,22 @@ const COMPARISON_FEATURES = [
     ],
   },
   {
-    category: "Email checking",
+    category: "Email checking & AI",
     rows: [
-      { feature: "Email verifications per month", values: ["100", "1,000", "5,000", "25,000"] },
-      { feature: "Careful email check", values: [true, true, true, true] },
-      { feature: "Catch-all detection", values: [true, true, true, true] },
-      { feature: "Disposable email blocking", values: [true, true, true, true] },
+      { feature: "Email verifications / month", values: ["—", "1,000", "5,000", "25,000"] },
+      { feature: "AI message drafts / month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "6 writing styles", values: [true, true, true, true] },
+      { feature: "Personal message for each lead", values: [true, true, true, true] },
+      { feature: "Write many messages at once", values: [false, true, true, true] },
       { feature: "Risk toggle per campaign", values: [true, true, true, true] },
     ],
   },
   {
-    category: "Message writing",
+    category: "Add-ons (separate payment)",
     rows: [
-      { feature: "AI message drafts per month", values: ["50", "1,000", "5,000", "25,000"] },
-      { feature: "6 writing styles", values: [true, true, true, true] },
-      { feature: "Personal message for each lead", values: [true, true, true, true] },
-      { feature: "Write many messages at once", values: [false, true, true, true] },
-    ],
-  },
-  {
-    category: "Campaign sending",
-    rows: [
-      { feature: "Email inboxes", values: ["1", "3", "10", "30"] },
-      { feature: "Email campaign sends per month", values: ["—", "1,500", "10,000", "50,000"] },
-      { feature: "Inbox trust building", values: [false, true, true, true] },
-      { feature: "Smart sending across inboxes", values: [false, true, true, true] },
-      { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
-      { feature: "A/B testing", values: [false, false, true, true] },
-      { feature: "One inbox for all replies", values: [false, true, true, true] },
-      { feature: "Block list", values: [true, true, true, true] },
+      { feature: "SMS Campaigns ($39/mo)", values: [false, true, true, true] },
+      { feature: "WhatsApp Campaigns ($49/mo)", values: [false, false, true, true] },
+      { feature: "AI Voice Calling ($49/mo + $0.20/min)", values: [false, false, false, true] },
     ],
   },
   {
@@ -67,7 +68,7 @@ const COMPARISON_FEATURES = [
     rows: [
       { feature: "Workspace + team members", values: [false, false, true, true] },
       { feature: "Webhooks + API access", values: [false, false, false, true] },
-      { feature: "CRM sync", values: [false, false, false, true] },
+      { feature: "CRM sync (HubSpot, Pipedrive, Salesforce)", values: [false, false, false, true] },
       { feature: "Dedicated success manager", values: [false, false, false, true] },
       { feature: "Priority support", values: [false, false, true, true] },
     ],
@@ -76,16 +77,24 @@ const COMPARISON_FEATURES = [
 
 const PRICING_FAQS = [
   {
+    q: "What's included in the unlimited email sends?",
+    a: "On Growth and Pro, you can send as many cold emails as you want from your connected inboxes. You bring your own SMTP (Gmail, Outlook, or custom). We don't charge per email — we only meter lead discoveries, email verifications, and AI message drafts.",
+  },
+  {
+    q: "How do add-ons work?",
+    a: "Add-ons are separate monthly subscriptions you bundle with your plan. SMS Campaigns ($39/mo) is available on Starter, Growth, and Pro. WhatsApp Campaigns ($49/mo) is available on Growth and Pro. AI Voice Calling ($49/mo + $0.20/min) is Pro only. Each add-on can be cancelled independently without affecting your base plan.",
+  },
+  {
     q: "Do my monthly quotas roll over if I don't use them?",
-    a: "No — quotas reset on your billing date each month. This keeps things fair for everyone and lets us keep prices low.",
+    a: "No — quotas reset on your billing date each month. This keeps things fair for everyone and lets us keep prices low. Credits you purchase separately never expire.",
   },
   {
     q: "What happens if I hit my limit mid-month?",
-    a: "You can upgrade to a higher plan instantly from your dashboard billing settings. The new limits take effect right away, and we adjust the price for the days left in your billing period.",
+    a: "You can upgrade to a higher plan instantly from your dashboard billing settings. The new limits take effect right away, and we adjust the price for the days left in your billing period. You can also buy credit packs anytime.",
   },
   {
     q: "How does yearly billing work?",
-    a: "Pay upfront for 10 months, get 12 months of access (2 months free). Your quotas still reset monthly. If you cancel mid-year, you keep access until the end of your prepaid period — no refunds for unused months.",
+    a: "Pay upfront for 10 months, get 12 months of access (2 months free) on your plan. Add-ons on yearly billing get 1 month free (11 months charged). Your quotas still reset monthly. If you cancel mid-year, you keep access until the end of your prepaid period — no refunds for unused months.",
   },
   {
     q: "Can I switch between monthly and yearly?",
@@ -110,93 +119,35 @@ export default function PricingPage() {
         subtitle="Cancel anytime with a 7-day money-back promise on your first paid plan. There are no setup fees, no contracts, and no hidden costs."
       />
 
-      {/* Plan cards (client component with billing toggle) */}
+      {/* Plan cards + credit packs (client component with billing toggle) */}
       <PricingCards />
 
-      {/* How credits work */}
-      <section className="pb-8">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="card-premium p-6 text-center">
-            <h3 className="text-sm font-bold text-[var(--color-foreground)]">How credits work</h3>
-            <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
-              Every plan includes monthly credits. 1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
-              Unused credits roll over one month. Buy additional credits anytime from your dashboard.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprise strip — sales-led */}
-      <section className="pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="card-premium p-8 sm:p-10">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-3">
-              <div className="lg:col-span-1">
-                <h3 className="text-2xl font-bold text-[var(--color-foreground)]">
-                  {ENTERPRISE_PLAN.name}
-                </h3>
-                <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-                  {ENTERPRISE_PLAN.description}
-                </p>
-                <div className="mt-4 text-3xl font-bold text-[var(--color-foreground)]">
-                  {ENTERPRISE_PLAN.price}
-                </div>
-              </div>
-              <div className="lg:col-span-1">
-                <ul className="space-y-2">
-                  {ENTERPRISE_PLAN.features.map((feat) => (
-                    <li
-                      key={feat}
-                      className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-success)]" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex justify-center lg:col-span-1 lg:justify-end">
-                <Link
-                  href={ENTERPRISE_PLAN.ctaHref}
-                  className="btn-secondary"
-                >
-                  {ENTERPRISE_PLAN.cta}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Comparison table */}
-      <section className="bg-[var(--color-surface)] py-16 sm:py-24">
+      <section className="bg-gray-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-[var(--color-foreground)]">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
             Full feature comparison
           </h2>
-          <p className="mt-2 text-center text-[var(--color-text-secondary)]">
-            Every feature side by side with no hidden upsells. Monthly prices are shown,
-            and yearly billing saves you 2 months.
+          <p className="mt-2 text-center text-sm font-medium text-gray-600">
+            Every feature side by side. No hidden upsells. Yearly billing saves you 2 months.
           </p>
 
           <div className="mt-12 overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-[var(--color-border)]">
-                  <th className="py-4 text-left text-sm font-semibold text-[var(--color-text-muted)]">
+                <tr className="border-b-2 border-gray-900">
+                  <th className="py-4 text-left text-sm font-bold text-gray-900">
                     Feature
                   </th>
                   {PRICING_PLANS.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`px-4 py-4 text-center text-sm font-bold ${
-                        plan.highlight
-                          ? "text-[var(--color-primary)]"
-                          : "text-[var(--color-foreground)]"
+                      className={`px-4 py-4 text-center text-sm font-extrabold ${
+                        plan.highlight ? "text-gray-900" : "text-gray-700"
                       }`}
                     >
                       {plan.name}
-                      <div className="text-xs font-normal text-[var(--color-text-muted)]">
+                      <div className="text-xs font-medium text-gray-500">
                         {plan.price === 0
                           ? "Free"
                           : `$${plan.price}/mo`}
@@ -208,10 +159,10 @@ export default function PricingPage() {
               <tbody>
                 {COMPARISON_FEATURES.map((group) => (
                   <Fragment key={group.category}>
-                    <tr className="bg-[var(--color-muted)]">
+                    <tr className="bg-gray-100">
                       <td
                         colSpan={5}
-                        className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]"
+                        className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-gray-700"
                       >
                         {group.category}
                       </td>
@@ -219,21 +170,21 @@ export default function PricingPage() {
                     {group.rows.map((row) => (
                       <tr
                         key={row.feature}
-                        className="border-b border-[var(--color-border-light)]"
+                        className="border-b border-gray-200"
                       >
-                        <td className="py-3 text-sm text-[var(--color-text-secondary)]">
+                        <td className="py-3 text-sm font-medium text-gray-700">
                           {row.feature}
                         </td>
                         {row.values.map((val, i) => (
                           <td key={i} className="px-4 py-3 text-center text-sm">
                             {typeof val === "boolean" ? (
                               val ? (
-                                <CheckCircle2 className="mx-auto h-4 w-4 text-[var(--color-success)]" />
+                                <CheckCircle2 className="mx-auto h-5 w-5 text-green-500" />
                               ) : (
-                                <span className="text-[var(--color-text-dim)]">—</span>
+                                <X className="mx-auto h-4 w-4 text-gray-300" />
                               )
                             ) : (
-                              <span className="font-medium text-[var(--color-foreground)]">
+                              <span className="font-bold text-gray-900">
                                 {val}
                               </span>
                             )}
@@ -246,22 +197,47 @@ export default function PricingPage() {
               </tbody>
             </table>
           </div>
+
+          {/* Add-ons explanation */}
+          <div className="mt-8 rounded-xl border-2 border-gray-200 bg-white p-6">
+            <h3 className="text-sm font-extrabold text-gray-900">Add-ons at a glance</h3>
+            <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="rounded-lg bg-gray-50 p-4">
+                <p className="font-bold text-gray-900">SMS Campaigns</p>
+                <p className="text-sm text-gray-600">$39/mo · 1,000 msgs included, then $0.015/msg</p>
+                <p className="mt-1 text-xs font-bold text-gray-700">Starter · Growth · Pro</p>
+              </div>
+              <div className="rounded-lg bg-gray-50 p-4">
+                <p className="font-bold text-gray-900">WhatsApp Campaigns</p>
+                <p className="text-sm text-gray-600">$49/mo · 1,000 msgs included, then $0.10/msg</p>
+                <p className="mt-1 text-xs font-bold text-gray-700">Growth · Pro</p>
+              </div>
+              <div className="rounded-lg bg-gray-50 p-4">
+                <p className="font-bold text-gray-900">AI Voice Calling</p>
+                <p className="text-sm text-gray-600">$49/mo · 100 min included, then $0.20/min</p>
+                <p className="mt-1 text-xs font-bold text-gray-700">Pro only</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-[var(--color-foreground)]">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
             Pricing FAQ
           </h2>
-          <div className="mt-10 space-y-6">
+          <div className="mt-10 space-y-4">
             {PRICING_FAQS.map((faq) => (
-              <div key={faq.q} className="card-premium p-6">
-                <h3 className="text-base font-bold text-[var(--color-foreground)]">
+              <div
+                key={faq.q}
+                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+              >
+                <h3 className="text-base font-bold text-gray-900">
                   {faq.q}
                 </h3>
-                <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+                <p className="mt-2 text-sm font-medium text-gray-600">
                   {faq.a}
                 </p>
               </div>
@@ -271,28 +247,28 @@ export default function PricingPage() {
       </section>
 
       {/* Guarantee + CTA */}
-      <section className="py-16">
+      <section className="pb-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="card-premium p-8">
-            <Sparkles className="mx-auto h-10 w-10 text-[var(--color-primary)]" />
-            <h2 className="mt-4 text-2xl font-bold text-[var(--color-foreground)]">
+          <div className="rounded-2xl border-2 border-gray-900 bg-white p-8">
+            <Sparkles className="mx-auto h-10 w-10 text-gray-900" />
+            <h2 className="mt-4 text-2xl font-extrabold text-gray-900">
               7-day money-back guarantee
             </h2>
-            <p className="mt-2 text-[var(--color-text-secondary)]">
+            <p className="mt-2 text-sm font-medium text-gray-600">
               If you cancel within 7 days of your first paid subscription and
               have not sent more than 100 campaign emails, we will refund 100
               percent. No questions asked.{" "}
-              <Link href="/refund" className="text-[var(--color-primary)] hover:underline">
+              <Link href="/refund" className="font-bold text-gray-900 underline">
                 See full refund policy
               </Link>
               .
             </p>
             <Link
               href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-              className="btn-primary mt-6 inline-flex"
+              className="mt-6 inline-flex rounded-lg bg-gray-900 px-6 py-3 text-sm font-bold text-white hover:bg-gray-800"
             >
               Get started free
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
         </div>
