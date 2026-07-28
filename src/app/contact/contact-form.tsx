@@ -20,7 +20,7 @@ export function ContactForm({ topics }: ContactFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      `[${form.topic}] ${form.name} — Bad Decision contact form`
+      `[${form.topic}] ${form.name}, Bad Decision contact form`
     );
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\nTopic: ${form.topic}\n\n${form.message}`
@@ -32,17 +32,17 @@ export function ContactForm({ topics }: ContactFormProps) {
   if (submitted) {
     return (
       <div className="card-premium flex h-full flex-col items-center justify-center p-8 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-success-soft)]">
-          <Send className="h-6 w-6 text-[var(--color-success)]" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-50">
+          <Send className="h-6 w-6 text-green-600" />
         </div>
-        <h2 className="mt-4 text-xl font-bold text-[var(--color-foreground)]">
-          Thanks — your email client should have opened
+        <h2 className="mt-4 text-xl font-extrabold text-gray-900">
+          Thanks. Your email client should have opened.
         </h2>
-        <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
-          If it didn't, email us directly at{" "}
+        <p className="mt-2 text-sm font-medium text-gray-600">
+          If it did not, email us directly at{" "}
           <a
             href={`mailto:${SITE_CONFIG.supportEmail}`}
-            className="text-[var(--color-primary)] hover:underline"
+            className="font-bold text-gray-900 hover:underline"
           >
             {SITE_CONFIG.supportEmail}
           </a>
@@ -55,7 +55,7 @@ export function ContactForm({ topics }: ContactFormProps) {
     <div className="card-premium p-8">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-[var(--color-foreground)]">
+          <label className="block text-sm font-bold text-gray-900">
             Your name
           </label>
           <input
@@ -63,12 +63,12 @@ export function ContactForm({ topics }: ContactFormProps) {
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm text-[var(--color-foreground)] placeholder-[var(--color-text-muted)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20"
+            className="mt-1 block w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-gray-900 focus:outline-none"
             placeholder="Ada Obi"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-[var(--color-foreground)]">
+          <label className="block text-sm font-bold text-gray-900">
             Email
           </label>
           <input
@@ -76,18 +76,18 @@ export function ContactForm({ topics }: ContactFormProps) {
             required
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm text-[var(--color-foreground)] placeholder-[var(--color-text-muted)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20"
+            className="mt-1 block w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-gray-900 focus:outline-none"
             placeholder="ada@example.com"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-[var(--color-foreground)]">
+          <label className="block text-sm font-bold text-gray-900">
             Topic
           </label>
           <select
             value={form.topic}
             onChange={(e) => setForm({ ...form, topic: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm text-[var(--color-foreground)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20"
+            className="mt-1 block w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus:border-gray-900 focus:outline-none"
           >
             {topics.map((t) => (
               <option key={t.value} value={t.value}>
@@ -97,7 +97,7 @@ export function ContactForm({ topics }: ContactFormProps) {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-[var(--color-foreground)]">
+          <label className="block text-sm font-bold text-gray-900">
             Message
           </label>
           <textarea
@@ -105,7 +105,7 @@ export function ContactForm({ topics }: ContactFormProps) {
             rows={5}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm text-[var(--color-foreground)] placeholder-[var(--color-text-muted)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20"
+            className="mt-1 block w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-gray-900 focus:outline-none"
             placeholder="Tell us what you need..."
           />
         </div>
@@ -113,11 +113,11 @@ export function ContactForm({ topics }: ContactFormProps) {
           Send message
           <Send className="h-4 w-4" />
         </button>
-        <p className="text-center text-xs text-[var(--color-text-muted)]">
+        <p className="text-center text-xs font-medium text-gray-500">
           This opens your email client. If you prefer, email us directly at{" "}
           <a
             href={`mailto:${SITE_CONFIG.supportEmail}`}
-            className="text-[var(--color-primary)] hover:underline"
+            className="font-bold text-gray-900 hover:underline"
           >
             {SITE_CONFIG.supportEmail}
           </a>

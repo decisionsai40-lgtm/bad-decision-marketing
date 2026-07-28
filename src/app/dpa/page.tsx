@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Data Processing Addendum (DPA)",
-  description:
-    "Data Processing Addendum between Bad Decision and customers who process personal data through the Service. Incorporates GDPR Article 28 requirements and Standard Contractual Clauses.",
-  alternates: { canonical: "/dpa" },
-};
 
 export default function DPAPage() {
   return (
@@ -97,8 +89,8 @@ export default function DPAPage() {
       <ul>
         <li>Storing Lead Data (contact information, company information, social profiles).</li>
         <li>Verifying email addresses through third-party verification providers.</li>
-        <li>Generating AI-drafted outreach messages using DeepSeek.</li>
-        <li>Sending cold email campaigns through Customer-supplied SMTP mailboxes.</li>
+        <li>Generating AI-drafted outreach messages using our AI provider.</li>
+        <li>Sending cold email campaigns through Customer-supplied email accounts.</li>
         <li>Tracking email opens, clicks, replies, and bounces.</li>
         <li>Providing analytics dashboards and reporting.</li>
       </ul>
@@ -188,67 +180,67 @@ export default function DPAPage() {
         </thead>
         <tbody>
           <tr>
-            <td>WorkOS</td>
+            <td>Authentication provider</td>
             <td>Authentication</td>
             <td>United States</td>
             <td>SCCs</td>
           </tr>
           <tr>
-            <td>Supabase</td>
+            <td>Database provider</td>
             <td>Database hosting</td>
             <td>United States / EU</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Amazon Web Services</td>
+            <td>Cloud infrastructure provider</td>
             <td>Cloud infrastructure</td>
             <td>Multiple regions</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Vercel</td>
+            <td>Frontend hosting provider</td>
             <td>Frontend hosting</td>
             <td>Global edge</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Flutterwave</td>
+            <td>Payment processor</td>
             <td>Payment processing</td>
             <td>Global</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Resend</td>
+            <td>Transactional email provider</td>
             <td>Transactional email</td>
             <td>United States</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>Cloudflare</td>
+            <td>CDN and security provider</td>
             <td>CDN / DDoS protection</td>
             <td>Global edge</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>DeepSeek</td>
+            <td>AI provider</td>
             <td>AI drafting</td>
-            <td>China</td>
+            <td>Global</td>
             <td>SCCs</td>
           </tr>
           <tr>
-            <td>MyEmailVerifier / BillionVerify / Reoon / MailboxValidator</td>
+            <td>Email verification providers</td>
             <td>Email verification</td>
             <td>Various</td>
             <td>SCCs</td>
           </tr>
           <tr>
-            <td>Sentry</td>
+            <td>Error tracking provider</td>
             <td>Error tracking</td>
             <td>United States</td>
             <td>SCCs / DPF</td>
           </tr>
           <tr>
-            <td>PostHog (optional)</td>
+            <td>Product analytics provider (optional)</td>
             <td>Product analytics</td>
             <td>United States / EU</td>
             <td>SCCs / DPF</td>

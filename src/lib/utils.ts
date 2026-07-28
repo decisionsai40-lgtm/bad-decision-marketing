@@ -23,7 +23,7 @@ export const SITE_CONFIG = {
   legalJurisdiction: "Lagos, Nigeria",
 };
 
-// Feature type: `quota: true` means it's a monthly quota — show "/ month" on yearly view
+// Feature type: `quota: true` means it's a monthly quota : show "/ month" on yearly view
 export interface PlanFeature {
   text: string;
   quota?: boolean;
@@ -130,7 +130,7 @@ export const PRICING_PLANS = [
   },
 ] as const;
 
-// Enterprise — sales-led, shown in a separate strip below the 4-plan grid
+// Enterprise : sales-led, shown in a separate strip below the 4-plan grid
 export const ENTERPRISE_PLAN = {
   name: "Enterprise",
   price: "Custom",
@@ -151,7 +151,7 @@ export const ENTERPRISE_PLAN = {
   ctaHref: "/contact?topic=enterprise",
 } as const;
 
-// Feature-unlock add-ons — separate monthly payments, bundled with the plan
+// Feature-unlock add-ons : separate monthly payments, bundled with the plan
 // at checkout, but each can be cancelled independently without affecting the base plan.
 // Eligibility:
 //   SMS:        Starter, Growth, Pro
@@ -191,7 +191,7 @@ export const ADDONS: Addon[] = [
     slug: "ai_voice",
     name: "AI Voice Calling",
     description:
-      "AI cold calling via the Native Voice Engine — in-call booking, callbacks, DNC handling, and post-call disposition.",
+      "AI cold calling via the Native Voice Engine. Handles in-call booking, callbacks, do-not-call lists, and post-call notes.",
     price: 49,
     eligiblePlans: ["pro"],
     meteredNote: "100 minutes/mo included, then $0.20/min",
@@ -207,7 +207,7 @@ export function addonsTotal(addons: AddonSlug[]): number {
   return addons.reduce((sum, slug) => sum + (ADDON_BY_SLUG[slug]?.price ?? 0), 0);
 }
 
-// Credit packs — one-time purchases, never expire.
+// Credit packs : one-time purchases, never expire.
 // 1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
 // Tiered pricing: more credits = cheaper per credit.
 export interface CreditPack {
@@ -270,11 +270,11 @@ export const FAQS = [
   },
   {
     q: "What does Bad Decision actually do?",
-    a: "Bad Decision is one tool that does four things: it finds the businesses who need what you sell, it checks every email before you send, it writes your messages for you, and it sends them from your own email inbox with full tracking. You get everything in one place instead of paying for four or five different tools.",
+    a: "Bad Decision is one platform that does four things. It finds the businesses who need what you sell. It checks every email before you send. It writes your messages for you. It sends them from your own email inbox with full tracking. You get everything in one place instead of paying for four or five different tools.",
   },
   {
     q: "Do I need to bring my own leads?",
-    a: "No. That is the whole point. You tell us who you want to reach (for example, 'real estate agents in Lagos' or 'skincare stores in the US'), and our search finds them for you. Every lead comes with company name, website, email, phone, and social links. You can also bring your own list if you already have one, and we will check every email before you send.",
+    a: "No. That is the whole point. You tell us who you want to reach, like real estate agents in Lagos or skincare stores in the US, and our search finds them for you. Every lead comes with company name, website, email, phone, and social links. You can also bring your own list if you already have one, and we will check every email before you send.",
   },
   {
     q: "How does the email checking work?",
@@ -286,11 +286,11 @@ export const FAQS = [
   },
   {
     q: "Do you send emails from your own servers?",
-    a: "No. We never send cold emails from our own servers. You connect your own email inbox (Gmail, Outlook, or any custom email). Our system slowly builds trust for it, sends at the right times, switches between your inboxes, and pulls replies back into one place. Your email stays trusted because it stays in your hands, which is exactly how it should be for cold outreach.",
+    a: "No. We never send cold emails from our own servers. You connect your own email inbox, like Gmail, Outlook, or any custom email. Our system slowly builds trust for it, sends at the right times, switches between your inboxes, and pulls replies back into one place. Your email stays trusted because it stays in your hands, which is exactly how it should be for cold outreach.",
   },
   {
     q: "How long does it take to build trust for a new email inbox?",
-    a: "Usually 7 to 15 days. We start slow (just a few emails per day) and slowly send more over time. Other inboxes in our network send and reply to these early messages, help any that land in spam, and build your good name with email providers. You can start a real campaign once your inbox shows it is ready.",
+    a: "Usually 7 to 15 days. We start slow, with just a few emails per day, and slowly send more over time. Other inboxes in our network send and reply to these early messages, help any that land in spam, and build your good name with email providers. You can start a real campaign once your inbox shows it is ready.",
   },
   {
     q: "What about spam laws and email compliance?",
@@ -306,10 +306,10 @@ export const FAQS = [
   },
   {
     q: "Is there a free plan?",
-    a: "Yes, free forever. You get 50 leads per search, 100 email checks per month, 50 message drafts per month, and 1 email inbox. You cannot start live campaigns on Free (you can draft them), but you can test the full find-check-write process without paying. Upgrade only when you are ready to actually send.",
+    a: "Yes, free forever. You get 50 leads per search, 100 email checks per month, 50 message drafts per month, and 1 email inbox. You cannot start live campaigns on Free, but you can draft them. You can test the full find, check, and write process without paying. Upgrade only when you are ready to actually send.",
   },
   {
     q: "What makes this different from other outreach tools?",
-    a: "Most outreach tools assume you already have a list of leads. They just send emails. Bad Decision finds the leads for you first, then checks them, then writes the message, then sends. It is four tools in one. You also get six ways to write messages that work, an invite-only way to use your own accounts and cut your costs to zero, and pricing that works for founders in any country.",
+    a: "Most outreach tools assume you already have a list of leads. They just send emails. Bad Decision finds the leads for you first, then checks them, then writes the message, then sends. It is four tools in one. You also get six ways to write messages that work, an invite-only way to use your own accounts and cut your costs to zero, and pricing that works for people in any country.",
   },
 ] as const;

@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/page-header";
 import { Star, Quote } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Case studies — How founders use Bad Decision",
-  description:
-    "Real-world use cases: how a real estate agency booked 12 meetings in 30 days, how a DTC founder cut their tool spend, and how a marketing agency scaled to 50,000 sends per month.",
-  alternates: { canonical: "/case-studies" },
-};
 
 const CASES = [
   {
@@ -64,7 +56,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       <PageHeader
-        title="Founders using Bad Decision to close deals"
+        title="People using Bad Decision to close deals"
         subtitle="Real numbers from real users. Not paid testimonials. These are people who switched from scattered tools to one platform and never looked back."
       />
 
@@ -73,26 +65,26 @@ export default function CaseStudiesPage() {
           <div className="space-y-12">
             {CASES.map((c) => (
               <div key={c.company} className="card-premium overflow-hidden">
-                <div className="bg-[var(--color-card)] p-8 text-[var(--color-card-foreground)]">
+                <div className="bg-gray-900 p-8 text-white">
                   <div className="flex items-start gap-4">
-                    <Quote className="h-8 w-8 flex-shrink-0 text-[#5ee5ff]" />
+                    <Quote className="h-8 w-8 flex-shrink-0 text-white" />
                     <div>
-                      <h2 className="text-2xl font-bold text-[var(--color-card-foreground)]">{c.headline}</h2>
-                      <p className="mt-1 text-sm text-[var(--color-card-foreground)]/70">
-                        {c.company} · {c.location} · {c.industry}
+                      <h2 className="text-2xl font-extrabold text-white">{c.headline}</h2>
+                      <p className="mt-1 text-sm font-medium text-gray-300">
+                        {c.company} &middot; {c.location} &middot; {c.industry}
                       </p>
                     </div>
                   </div>
-                  <blockquote className="mt-6 text-lg leading-relaxed text-[var(--color-card-foreground)]/90">
+                  <blockquote className="mt-6 text-lg leading-relaxed text-gray-100">
                     &ldquo;{c.quote}&rdquo;
                   </blockquote>
                   <div className="mt-6 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-bold">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-extrabold">
                       {c.author[0]}
                     </div>
                     <div>
-                      <div className="text-sm font-semibold">{c.author}</div>
-                      <div className="text-xs text-[var(--color-card-foreground)]/70">
+                      <div className="text-sm font-bold">{c.author}</div>
+                      <div className="text-xs font-medium text-gray-300">
                         {c.role}
                       </div>
                     </div>
@@ -101,10 +93,10 @@ export default function CaseStudiesPage() {
                 <div className="grid grid-cols-2 gap-4 p-8 sm:grid-cols-4">
                   {c.stats.map((s) => (
                     <div key={s.label} className="text-center">
-                      <div className="text-3xl font-bold text-[var(--color-primary)]">
+                      <div className="text-3xl font-extrabold text-gray-900">
                         {s.value}
                       </div>
-                      <div className="mt-1 text-xs text-[var(--color-text-muted)]">
+                      <div className="mt-1 text-xs font-bold text-gray-500">
                         {s.label}
                       </div>
                     </div>
@@ -121,8 +113,8 @@ export default function CaseStudiesPage() {
                 <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-              Loved by founders and agencies in over 20 countries
+            <p className="mt-2 text-sm font-medium text-gray-500">
+              Loved by sales teams and agencies in over 20 countries
             </p>
           </div>
         </div>

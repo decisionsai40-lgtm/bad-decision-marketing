@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Refund Policy",
-  description:
-    "Bad Decision refund policy: 7-day money-back guarantee on first paid subscriptions, no refunds on consumed credit top-ups, pro-rata refunds if we discontinue the Service.",
-  alternates: { canonical: "/refund" },
-};
 
 export default function RefundPage() {
   return (
@@ -29,7 +21,7 @@ export default function RefundPage() {
       </p>
       <ul>
         <li>Applies to your first paid subscription only (Starter, Growth, or Pro).</li>
-        <li>The 7-day window starts the moment your payment is processed by Flutterwave.</li>
+        <li>The 7-day window starts the moment your payment is processed by our payment processor.</li>
         <li>You must have sent fewer than 100 campaign emails.</li>
         <li>Your account must be in good standing (no abuse, no ToS violations).</li>
       </ul>
@@ -37,7 +29,7 @@ export default function RefundPage() {
         <strong>How to claim:</strong> Email{" "}
         <a href={`mailto:${SITE_CONFIG.supportEmail}`}>{SITE_CONFIG.supportEmail}</a> with
         subject "Refund request" and your account email. We process refunds within 5
-        business days. The refund appears on your card within 5-10 business days after
+        business days. The refund appears on your card within 5 to 10 business days after
         processing, depending on your bank.
       </p>
 
@@ -45,7 +37,7 @@ export default function RefundPage() {
       <p>
         If you cancel after the 7-day window, your subscription remains active until the end
         of the current billing period, then downgrades to Free. No refund is issued for the
-        current period — you keep access to paid features until the period ends.
+        current period. You keep access to paid features until the period ends.
       </p>
       <p>
         Example: You subscribe to Growth ($97/mo) on July 1. You cancel on July 20. You keep
@@ -140,9 +132,9 @@ export default function RefundPage() {
         payment method. We cannot refund to a different card or bank account.
       </p>
       <p>
-        If your original payment method is no longer valid (e.g. expired card), Flutterwave
-        Payments will work with your bank to issue the refund to your new card on file with
-        the bank.
+        If your original payment method is no longer valid, like an expired card, our
+        payment processor will work with your bank to issue the refund to your new card on
+        file with the bank.
       </p>
 
       <h2>10. Refund Processing Time</h2>
@@ -155,12 +147,12 @@ export default function RefundPage() {
           days.
         </li>
         <li>
-          <strong>Bank processing:</strong> Refunds appear on your card within 5-10 business
-          days after processing (varies by bank and country).
+          <strong>Bank processing:</strong> Refunds appear on your card within 5 to 10
+          business days after processing (varies by bank and country).
         </li>
       </ul>
       <p>
-        Total time from request to money back in your account: typically 7-17 business days.
+        Total time from request to money back in your account: typically 7 to 17 business days.
       </p>
 
       <h2>11. Exceptions and Edge Cases</h2>
@@ -168,7 +160,7 @@ export default function RefundPage() {
         <li>
           <strong>Upgrade / downgrade mid-cycle:</strong> If you upgrade mid-cycle, we
           prorate the difference and charge immediately. If you downgrade mid-cycle, no
-          refund is issued — you keep the higher tier until the end of the period.
+          refund is issued. You keep the higher tier until the end of the period.
         </li>
         <li>
           <strong>Duplicate charges:</strong> If you are accidentally charged twice for the
@@ -201,7 +193,7 @@ export default function RefundPage() {
       </ul>
       <p>
         We will respond within 2 business days. If you do not hear from us, check your spam
-        folder, then email again — we reply to every legitimate refund request.
+        folder, then email again. We reply to every legitimate refund request.
       </p>
     </LegalLayout>
   );

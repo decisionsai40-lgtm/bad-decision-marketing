@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Cookie Policy",
-  description:
-    "How Bad Decision uses cookies and similar technologies. Essential cookies for authentication, optional analytics cookies, no advertising cookies. Opt out of analytics at any time.",
-  alternates: { canonical: "/cookie-policy" },
-};
 
 export default function CookiePolicyPage() {
   return (
@@ -23,7 +15,7 @@ export default function CookiePolicyPage() {
       <h2>1. What Are Cookies?</h2>
       <p>
         Cookies are small text files placed on your device when you visit a website. They
-        allow the website to remember your actions and preferences over time, so you don't
+        allow the website to remember your actions and preferences over time, so you do not
         have to re-enter information every time you visit.
       </p>
       <p>
@@ -35,7 +27,7 @@ export default function CookiePolicyPage() {
         </li>
         <li>
           <strong>Local storage and session storage:</strong> Browser storage for things
-          like your current theme (light/dark) and in-progress form data.
+          like your current theme (light or dark) and in-progress form data.
         </li>
         <li>
           <strong>Pixel tags and web beacons:</strong> Tiny transparent images used to
@@ -53,8 +45,9 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>Authentication cookies:</strong> Set when you log in. Used by WorkOS to
-          maintain your session across pages. Duration: 7 days (refreshed on each login).
+          <strong>Authentication cookies:</strong> Set when you log in. Used by our
+          authentication provider to maintain your session across pages. Duration: 7 days
+          (refreshed on each login).
         </li>
         <li>
           <strong>CSRF token cookies:</strong> Used to prevent cross-site request forgery
@@ -72,12 +65,12 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>Theme preference:</strong> Remembers your light/dark theme choice.
+          <strong>Theme preference:</strong> Remembers your light or dark theme choice.
           Duration: 12 months.
         </li>
         <li>
-          <strong>Language preference:</strong> Remembers your selected language (if we
-          offer multi-language support in the future). Duration: 12 months.
+          <strong>Language preference:</strong> Remembers your selected language. Duration:
+          12 months.
         </li>
         <li>
           <strong>Recently viewed leads:</strong> Stores IDs of leads you recently viewed
@@ -92,11 +85,11 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>PostHog analytics:</strong> Tracks page views, feature usage, and
+          <strong>Product analytics:</strong> Tracks page views, feature usage, and
           conversion funnels. Duration: 12 months. Opt-out available.
         </li>
         <li>
-          <strong>Sentry error tracking:</strong> Captures JavaScript errors for debugging.
+          <strong>Error tracking:</strong> Captures JavaScript errors for debugging.
           Anonymized. Duration: session.
         </li>
       </ul>
@@ -109,8 +102,8 @@ export default function CookiePolicyPage() {
         image loading in their email client to opt out.
       </p>
       <p>
-        <strong>Note:</strong> Plain-text cold emails (the recommended format for cold
-        outreach) do not include tracking pixels. Open tracking is only available on HTML
+        <strong>Note:</strong> Plain-text cold emails, the recommended format for cold
+        outreach, do not include tracking pixels. Open tracking is only available on HTML
         emails, which are not recommended for cold outreach due to deliverability concerns.
       </p>
 
@@ -122,7 +115,7 @@ export default function CookiePolicyPage() {
         </li>
         <li>
           <strong>Third-party social media cookies:</strong> We do not embed social media
-          widgets that set tracking cookies (no Twitter embeds, no Facebook Like buttons).
+          widgets that set tracking cookies. No Twitter embeds, no Facebook Like buttons.
         </li>
         <li>
           <strong>Cross-site tracking cookies:</strong> We do not track you across other
@@ -133,44 +126,26 @@ export default function CookiePolicyPage() {
       <h2>3. Third-Party Cookies</h2>
       <p>
         Some third-party services we use may set their own cookies when you interact with
-        them:
+        them. We list these here for transparency, but we do not control their cookies.
+        Review their privacy policies for details:
       </p>
       <ul>
         <li>
-          <strong>WorkOS:</strong> Sets authentication cookies when you log in. See{" "}
-          <a href="https://workos.com/privacy" target="_blank" rel="noopener noreferrer">
-            WorkOS Privacy Policy
-          </a>
-          .
+          <strong>Authentication provider:</strong> Sets authentication cookies when you
+          log in.
         </li>
         <li>
-          <strong>Flutterwave:</strong> Sets session cookies during checkout. See{" "}
-          <a href="https://flutterwave.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-            Flutterwave Privacy Policy
-          </a>
-          .
+          <strong>Payment processor:</strong> Sets session cookies during checkout.
         </li>
         <li>
-          <strong>Vercel:</strong> May set analytics cookies on our marketing site (if
-          enabled). See{" "}
-          <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-            Vercel Privacy Policy
-          </a>
-          .
+          <strong>Frontend hosting provider:</strong> May set analytics cookies on our
+          marketing site, if enabled.
         </li>
         <li>
-          <strong>Cloudflare:</strong> Sets a security cookie (__cfduid) for bot detection.
-          See{" "}
-          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
-            Cloudflare Privacy Policy
-          </a>
-          .
+          <strong>CDN and security provider:</strong> Sets a security cookie for bot
+          detection.
         </li>
       </ul>
-      <p>
-        We do not control these third-party cookies. Review their privacy policies for
-        details.
-      </p>
 
       <h2>4. Cookie Duration</h2>
       <ul>
@@ -179,7 +154,7 @@ export default function CookiePolicyPage() {
         </li>
         <li>
           <strong>Persistent cookies:</strong> Remain on your device for the duration
-          listed above (typically 7 days to 12 months).
+          listed above, typically 7 days to 12 months.
         </li>
       </ul>
 
@@ -190,7 +165,7 @@ export default function CookiePolicyPage() {
         On your first visit to dashboard.{SITE_CONFIG.domain}, we show a cookie consent
         banner. You can choose to accept all cookies, accept only strictly necessary
         cookies, or customize your preferences. You can change your preferences at any time
-        in Settings → Privacy → Cookie Preferences.
+        in Settings, then Privacy, then Cookie Preferences.
       </p>
 
       <h3>5.2 Browser Controls</h3>
@@ -240,9 +215,9 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>Reject analytics cookies in the cookie consent banner.</li>
-        <li>Disable analytics in Settings → Privacy → Cookie Preferences.</li>
+        <li>Disable analytics in Settings, then Privacy, then Cookie Preferences.</li>
         <li>Install a content blocker like uBlock Origin or Privacy Badger in your browser.</li>
-        <li>Enable "Do Not Track" (DNT) in your browser — we respect this signal.</li>
+        <li>Enable "Do Not Track" (DNT) in your browser. We respect this signal.</li>
       </ul>
 
       <h2>6. Cookie List</h2>
@@ -258,8 +233,8 @@ export default function CookiePolicyPage() {
         </thead>
         <tbody>
           <tr>
-            <td><code>wos-session</code></td>
-            <td>Authentication session (WorkOS)</td>
+            <td><code>auth-session</code></td>
+            <td>Authentication session</td>
             <td>Strictly necessary</td>
             <td>7 days</td>
           </tr>
@@ -277,7 +252,7 @@ export default function CookiePolicyPage() {
           </tr>
           <tr>
             <td><code>theme</code></td>
-            <td>Light/dark theme choice</td>
+            <td>Light or dark theme choice</td>
             <td>Functional</td>
             <td>12 months</td>
           </tr>
@@ -294,7 +269,7 @@ export default function CookiePolicyPage() {
             <td>30 days</td>
           </tr>
           <tr>
-            <td><code>ph_* (PostHog)</code></td>
+            <td><code>ph_* (analytics)</code></td>
             <td>Analytics</td>
             <td>Analytics (opt-in)</td>
             <td>12 months</td>

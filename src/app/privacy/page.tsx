@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How Bad Decision collects, uses, and protects your data. We never sell your data. We never send emails on your behalf. We're GDPR-compliant and transparent about every data practice.",
-  alternates: { canonical: "/privacy" },
-};
 
 export default function PrivacyPage() {
   return (
@@ -40,9 +32,9 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Payment information:</strong> When you subscribe to a paid plan, our
-          payment processor (Flutterwave) collects and processes your card details. We
-          never see or store your full card number — only the last 4 digits, card brand,
-          and expiration date for display purposes.
+          payment processor collects and processes your card details. We never see
+          or store your full card number. We only see the last 4 digits, the card
+          brand, and the expiration date for display purposes.
         </li>
         <li>
           <strong>Communication:</strong> Emails you send to our support team, and any
@@ -85,7 +77,7 @@ export default function PrivacyPage() {
         <strong>You are the data controller for this lead data.</strong> You are responsible
         for ensuring you have a lawful basis (consent, legitimate interest, etc.) to process
         this data under GDPR, CCPA, NDPA, and any other applicable law. We are your data
-        processor — we process lead data only on your instructions and only to provide the
+        processor. We process lead data only on your instructions and only to provide the
         Service to you.
       </p>
 
@@ -153,44 +145,46 @@ export default function PrivacyPage() {
       <p>We use third-party service providers to operate the Service. Each is contractually bound to protect your data:</p>
       <ul>
         <li>
-          <strong>WorkOS:</strong> Authentication and user identity management. Processes
-          your email, name, and login credentials. (United States)
+          <strong>Authentication provider:</strong> Handles user identity and login.
+          Processes your email, name, and login credentials. (United States)
         </li>
         <li>
-          <strong>Supabase:</strong> Database hosting. Stores your account data, lead data,
-          and campaign data. (United States / EU regions available)
+          <strong>Database provider:</strong> Stores your account data, lead data,
+          and campaign data. (United States and EU regions available)
         </li>
         <li>
-          <strong>Flutterwave:</strong> Payment processing. Processes your card details
-          and billing information. (United States / global)
+          <strong>Payment processor:</strong> Processes your card details and billing
+          information. (United States and global)
         </li>
         <li>
-          <strong>Amazon Web Services (AWS):</strong> Cloud infrastructure. Hosts our
-          backend API, scraping workers, and email-sending workers. (Multiple regions)
+          <strong>Cloud infrastructure provider:</strong> Hosts our backend workers
+          and email-sending workers. (Multiple regions)
         </li>
         <li>
-          <strong>Vercel:</strong> Frontend hosting. Serves the marketing site and
+          <strong>Frontend hosting provider:</strong> Serves the marketing site and
           dashboard. (Global edge network)
         </li>
         <li>
-          <strong>Resend:</strong> Transactional email delivery. Sends welcome emails,
+          <strong>Transactional email provider:</strong> Sends welcome emails,
           payment receipts, and password resets. (United States)
         </li>
         <li>
-          <strong>Cloudflare:</strong> CDN, DDoS protection, DNS. (Global edge network)
+          <strong>CDN and security provider:</strong> Provides content delivery,
+          DDoS protection, and DNS. (Global edge network)
         </li>
         <li>
-          <strong>DeepSeek:</strong> AI copywriting for outreach message generation.
-          Processes lead names, company names, and outreach context. (China — see Section
+          <strong>AI provider:</strong> Handles outreach message drafting.
+          Processes lead names, company names, and outreach context. (See Section
           4.3 for transfer safeguards)
         </li>
         <li>
-          <strong>MyEmailVerifier / BillionVerify / Reoon / MailboxValidator:</strong> Email
-          verification. Processes email addresses only. (Various jurisdictions)
+          <strong>Email verification providers:</strong> Check whether email
+          addresses are valid. They process email addresses only. (Various
+          jurisdictions)
         </li>
         <li>
-          <strong>Sentry:</strong> Error tracking. Processes anonymized error data and
-          (optionally) user IDs. (United States)
+          <strong>Error tracking provider:</strong> Captures anonymized error data
+          and, optionally, user IDs. (United States)
         </li>
       </ul>
 
@@ -210,12 +204,12 @@ export default function PrivacyPage() {
         we rely on the EU-U.S. Data Privacy Framework where applicable.
       </p>
       <p>
-        <strong>Note on DeepSeek:</strong> We use DeepSeek (a Chinese AI provider) for
-        outreach message drafting. DeepSeek only receives the lead's name, company name, and
-        your chosen copywriting style — never email addresses, never phone numbers, never
-        full lead profiles. If you do not want any data sent to DeepSeek, you can disable AI
-        drafting in your settings or supply your own DeepSeek API key (community members
-        only).
+        <strong>Note on our AI provider:</strong> We use an AI provider for outreach
+        message drafting. It only receives the lead's name, company name, and your
+        chosen writing style. It never receives email addresses, phone numbers, or
+        full lead profiles. If you do not want any data sent to the AI provider, you
+        can disable AI drafting in your settings or supply your own AI key
+        (community members only).
       </p>
 
       <h3>4.4 Legal Disclosures</h3>
@@ -318,9 +312,9 @@ export default function PrivacyPage() {
           with AES-256.
         </li>
         <li>
-          <strong>Secrets management:</strong> API keys, SMTP passwords, and other secrets
-          are encrypted with AES-256-GCM at the application layer and stored separately
-          from the data they protect.
+          <strong>Secrets management:</strong> Connection keys, email account
+          passwords, and other secrets are encrypted with AES-256-GCM at the
+          application layer and stored separately from the data they protect.
         </li>
         <li>
           <strong>Access controls:</strong> Role-based access control (RBAC) with the
@@ -364,10 +358,10 @@ export default function PrivacyPage() {
 
       <h2>10. Third-Party Links and Services</h2>
       <p>
-        The Service may contain links to third-party websites or integrate with third-party
-        services (e.g. Apollo, Hunter, MyEmailVerifier when you supply your own API keys).
-        We are not responsible for the privacy practices of these third parties. We
-        encourage you to review their privacy policies.
+        The Service may contain links to third-party websites or integrate with
+        third-party services, like email verification services when you supply your
+        own account keys. We are not responsible for the privacy practices of these
+        third parties. We encourage you to review their privacy policies.
       </p>
 
       <h2>11. Your Responsibilities (Lead Data)</h2>

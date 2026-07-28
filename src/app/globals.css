@@ -2,87 +2,84 @@
 @import "tw-animate-css";
 
 /* ============================================================
-   BAD DECISION — Refined Teal Design System
-   (mirrors the dashboard brand exactly)
-   ============================================================
-   Design philosophy:
-   - Light, airy backgrounds (white + soft teal tint)
-   - Teal as the BRAND accent, not the dominant surface color
-   - Dark teal reserved for footer + hero overlays (purposeful contrast)
-   - Card-first layout: white cards on tinted background
-   - Mobile-first: every breakpoint tuned for thumb reach
+   BAD DECISION : High-Contrast Gray Design System
+   Matches the pricing page exactly.
+   - White surfaces, gray-900 ink, visible gray-200 borders
+   - Cards: rounded-2xl, border-2, white bg, shadow-sm
+   - Primary action: gray-900 background, white text
+   - Section backgrounds alternate white / gray-50
    - Accessible: WCAG AA contrast on all text
    ============================================================ */
 
 @theme {
-  /* === Brand Palette === */
-  --color-teal-vibrant: #00a8cc;
-  --color-teal-bright: #00bcd4;
-  --color-teal-deep: #003d4d;
-  --color-teal-darker: #002a36;
-
-  /* === Page Surfaces (light, airy) === */
-  --color-background: #f4fafb;
+  /* === Page Surfaces === */
+  --color-background: #ffffff;
   --color-surface: #ffffff;
   --color-surface-raised: #ffffff;
-  --color-surface-hover: #f0f7f7;
+  --color-surface-hover: #f9fafb;
 
-  /* === Foreground === */
-  --color-foreground: #0f1f24;
-  --color-text: #0f1f24;
-  --color-text-secondary: #2a3a40;
-  --color-text-muted: #5a6a70;
-  --color-text-dim: #8a9aa0;
+  /* === Foreground : bold, high-contrast === */
+  --color-foreground: #111827;       /* gray-900 */
+  --color-text: #111827;
+  --color-text-secondary: #374151;   /* gray-700 */
+  --color-text-muted: #6b7280;       /* gray-500 */
+  --color-text-dim: #9ca3af;         /* gray-400 */
 
-  /* === Borders === */
-  --color-border: #d4e5e8;
-  --color-border-light: #e4eef0;
-  --color-border-bright: #00a8cc;
+  /* === Borders : visible, not faint === */
+  --color-border: #e5e7eb;           /* gray-200 */
+  --color-border-light: #f3f4f6;     /* gray-100 */
+  --color-border-bright: #111827;    /* gray-900 */
 
-  /* === Brand Accent (vibrant teal) === */
-  --color-primary: #00a8cc;
+  /* === Brand palette (kept for back-compat with existing classes) === */
+  --color-teal-vibrant: #111827;
+  --color-teal-bright: #111827;
+  --color-teal-deep: #111827;
+  --color-teal-darker: #1f2937;
+
+  /* === Primary : dark gray (not teal) === */
+  --color-primary: #111827;          /* gray-900 */
   --color-primary-foreground: #ffffff;
-  --color-primary-hover: #0094b8;
-  --color-violet: #00a8cc;
-  --color-violet-hover: #0094b8;
-  --color-violet-soft: #e0f7fa;
-  --color-violet-glow: rgba(0, 168, 204, 0.15);
+  --color-primary-hover: #1f2937;    /* gray-800 */
+  --color-violet: #111827;
+  --color-violet-hover: #1f2937;
+  --color-violet-soft: #f3f4f6;
+  --color-violet-glow: rgba(17, 24, 39, 0.10);
 
-  /* === Secondary (deep teal — for footer, hero overlays) === */
-  --color-secondary: #003d4d;
-  --color-secondary-foreground: #f5f5f5;
-  --color-card: #003d4d;
-  --color-card-foreground: #f5f5f5;
+  /* === Secondary : for dark sections (enterprise strip, footer) === */
+  --color-secondary: #111827;
+  --color-secondary-foreground: #ffffff;
+  --color-card: #111827;
+  --color-card-foreground: #ffffff;
 
   /* === Neutral Muted === */
-  --color-muted: #f0f7f7;
-  --color-muted-foreground: #5a6a70;
+  --color-muted: #f9fafb;            /* gray-50 */
+  --color-muted-foreground: #6b7280;
 
   /* === Accent === */
-  --color-accent: #00a8cc;
+  --color-accent: #111827;
   --color-accent-foreground: #ffffff;
 
   /* === Semantic === */
-  --color-success: #1a8a5a;
-  --color-success-soft: #e8f5ed;
-  --color-warning: #d4a017;
-  --color-warning-soft: #fef9e7;
-  --color-destructive: #c0392b;
+  --color-success: #22c55e;          /* green-500 */
+  --color-success-soft: #f0fdf4;
+  --color-warning: #f59e0b;
+  --color-warning-soft: #fffbeb;
+  --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
-  --color-danger: #c0392b;
-  --color-danger-soft: #fbeae8;
+  --color-danger: #ef4444;
+  --color-danger-soft: #fef2f2;
 
-  /* === Secondary accent (links) === */
-  --color-azure: #007bff;
-  --color-azure-soft: #e7f0ff;
+  /* === Subtle brand accent for links (kept as dark gray for consistency) === */
+  --color-azure: #111827;
+  --color-azure-soft: #f3f4f6;
 
   /* === Popover === */
   --color-popover: #ffffff;
-  --color-popover-foreground: #0f1f24;
+  --color-popover-foreground: #111827;
 
   /* === Input === */
   --color-input: #ffffff;
-  --color-ring: #00a8cc;
+  --color-ring: #111827;
 
   /* === Radius === */
   --radius-lg: 0.75rem;
@@ -118,7 +115,7 @@
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
     line-height: 1.15;
-    font-weight: 700;
+    font-weight: 800;
     color: inherit;
   }
 
@@ -127,7 +124,7 @@
   }
 
   ::selection {
-    background: rgba(0, 168, 204, 0.2);
+    background: rgba(17, 24, 39, 0.15);
     color: var(--color-text);
   }
 
@@ -152,14 +149,14 @@
    ============================================================ */
 @layer components {
   .text-gradient {
-    background: linear-gradient(135deg, #003d4d 0%, #00a8cc 100%);
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-violet {
-    background: linear-gradient(135deg, #00a8cc 0%, #007bff 100%);
+    background: linear-gradient(135deg, #111827 0%, #6b7280 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -170,38 +167,39 @@
   }
 
   .glow-violet-sm {
-    box-shadow: 0 0 20px rgba(0, 168, 204, 0.1);
+    box-shadow: 0 0 20px rgba(17, 24, 39, 0.08);
   }
 
+  /* Premium card : matches pricing page: rounded-2xl, border-2, white */
   .card-premium {
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
     border-radius: 1rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 61, 77, 0.04), 0 1px 2px rgba(0, 61, 77, 0.06);
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
   }
 
   .card-premium:hover {
-    border-color: var(--color-border-bright);
-    box-shadow: 0 4px 16px rgba(0, 168, 204, 0.1), 0 2px 4px rgba(0, 61, 77, 0.06);
+    border-color: #d1d5db;
+    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(0, 168, 204, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 168, 204, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(17, 24, 39, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
   .bg-radial-glow {
-    background: radial-gradient(ellipse at top, rgba(0, 168, 204, 0.12) 0%, transparent 60%);
+    background: radial-gradient(ellipse at top, rgba(17, 24, 39, 0.04) 0%, transparent 60%);
   }
 
   .scrollbar-hide {
@@ -212,25 +210,24 @@
     display: none;
   }
 
-  /* === Buttons === */
-  /* Note: --color-primary (#00a8cc) is too light for white text (2.8:1 contrast).
-     .btn-primary uses --color-teal-deep for background to achieve 11.8:1 contrast. */
+  /* === Buttons ===
+     .btn-primary uses gray-900 background with white text (matches pricing page CTA). */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--color-teal-deep);
+    background: #111827;
     color: #ffffff;
-    font-weight: 600;
-    border-radius: 0.625rem;
+    font-weight: 700;
+    border-radius: 0.5rem;
     transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 61, 77, 0.2);
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.15);
   }
   .btn-primary:hover {
-    background: var(--color-teal-darker);
-    box-shadow: 0 4px 12px rgba(0, 61, 77, 0.3);
+    background: #1f2937;
+    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.25);
   }
   .btn-primary:active {
     transform: translateY(1px);
@@ -242,16 +239,16 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--color-surface);
-    color: var(--color-foreground);
-    font-weight: 600;
+    background: #f3f4f6;
+    color: #111827;
+    font-weight: 700;
     border: 1px solid var(--color-border);
-    border-radius: 0.625rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
   .btn-secondary:hover {
-    border-color: var(--color-border-bright);
-    background: var(--color-surface-hover);
+    background: #e5e7eb;
+    border-color: #d1d5db;
   }
 
   .btn-ghost {
@@ -265,8 +262,8 @@
     transition: color 0.2s ease, background 0.2s ease;
   }
   .btn-ghost:hover {
-    color: var(--color-primary);
-    background: var(--color-violet-soft);
+    color: #111827;
+    background: var(--color-muted);
   }
 
   /* === Badge === */
@@ -275,12 +272,12 @@
     align-items: center;
     gap: 0.375rem;
     padding: 0.25rem 0.75rem;
-    background: var(--color-violet-soft);
-    color: var(--color-teal-deep);
+    background: var(--color-muted);
+    color: #111827;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 999px;
-    border: 1px solid rgba(0, 168, 204, 0.2);
+    border: 1px solid var(--color-border);
   }
 
   /* === Prose (legal pages) === */
@@ -322,22 +319,23 @@
     margin-bottom: 0.5rem;
   }
   .prose-legal a {
-    color: var(--color-primary);
+    color: #111827;
     text-decoration: underline;
     text-underline-offset: 2px;
+    font-weight: 600;
   }
   .prose-legal a:hover {
-    color: var(--color-primary-hover);
+    color: #1f2937;
   }
   .prose-legal strong {
     color: var(--color-foreground);
-    font-weight: 600;
+    font-weight: 700;
   }
   .prose-legal blockquote {
-    border-left: 3px solid var(--color-primary);
+    border-left: 3px solid var(--color-foreground);
     padding-left: 1rem;
     margin: 1.5rem 0;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     font-style: italic;
   }
   .prose-legal code {
@@ -359,7 +357,7 @@
   }
   .prose-legal th {
     background: var(--color-muted);
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -384,29 +382,28 @@
     100% { background-position: 200% 0; }
   }
   .shimmer {
-    background: linear-gradient(90deg, #f0f7f7 0%, #e0f7fa 50%, #f0f7f7 100%);
+    background: linear-gradient(90deg, #f9fafb 0%, #f3f4f6 50%, #f9fafb 100%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
 }
 
 /* ============================================================
-   READABILITY — context-aware muted text
+   READABILITY : context-aware muted text
    ============================================================ */
 .bg-card .text-muted-foreground {
-  color: rgba(245, 245, 245, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 .card-premium .text-muted-foreground {
-  color: #5a6a70;
+  color: #6b7280;
 }
 
-/* On dark teal backgrounds, brighten the primary accent color for readability.
-   #00a8cc on #003d4d gives only 4.2:1 — brighten to #5ee5ff for 7:1+ on dark sections. */
+/* On dark sections, brighten primary accent color for readability. */
 .bg-card .text-\[var\(--color-primary\)\] {
-  color: #5ee5ff;
+  color: #ffffff;
 }
 .bg-card .text-primary {
-  color: #5ee5ff;
+  color: #ffffff;
 }
 
 /* ============================================================
@@ -420,16 +417,16 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 61, 77, 0.2);
+  background: rgba(17, 24, 39, 0.15);
   border-radius: 5px;
   border: 2px solid var(--color-background);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 168, 204, 0.4);
+  background: rgba(17, 24, 39, 0.3);
 }
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 61, 77, 0.2) transparent;
+  scrollbar-color: rgba(17, 24, 39, 0.15) transparent;
 }
 
 /* ============================================================

@@ -35,16 +35,16 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "glass shadow-sm" : "bg-transparent"
+        scrolled ? "glass shadow-sm" : "bg-white"
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Bad Decision home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--color-primary)] text-white font-bold shadow-md">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900 text-white font-bold shadow-md">
             BD
           </div>
-          <span className="text-lg font-bold tracking-tight text-[var(--color-foreground)]">
+          <span className="text-lg font-extrabold tracking-tight text-gray-900">
             Bad Decision
           </span>
         </Link>
@@ -55,7 +55,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-[var(--color-violet-soft)] hover:text-[var(--color-primary)]"
+              className="rounded-md px-3 py-2 text-sm font-bold text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
               {link.label}
             </Link>
@@ -66,18 +66,21 @@ export function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href={SITE_CONFIG.dashboardUrl}
-            className="text-sm font-semibold text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-primary)]"
+            className="text-sm font-bold text-gray-700 transition-colors hover:text-gray-900"
           >
             Sign in
           </Link>
-          <Link href={`${SITE_CONFIG.dashboardUrl}/sign-up`} className="btn-primary text-sm">
+          <Link
+            href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
+          >
             Get started free
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden rounded-md p-2 text-[var(--color-foreground)]"
+          className="md:hidden rounded-md p-2 text-gray-900"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -88,29 +91,29 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden glass border-t border-[var(--color-border-light)]">
+        <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="space-y-1 px-4 py-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-violet-soft)] hover:text-[var(--color-primary)]"
+                className="block rounded-md px-3 py-2 text-base font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 mt-3 border-t border-[var(--color-border-light)] space-y-2">
+            <div className="mt-3 space-y-2 border-t border-gray-200 pt-3">
               <Link
                 href={SITE_CONFIG.dashboardUrl}
-                className="block w-full rounded-md px-3 py-2 text-base font-medium text-[var(--color-text-secondary)]"
+                className="block w-full rounded-md px-3 py-2 text-base font-bold text-gray-700"
                 onClick={() => setOpen(false)}
               >
                 Sign in
               </Link>
               <Link
                 href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-                className="btn-primary w-full text-sm"
+                className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
                 onClick={() => setOpen(false)}
               >
                 Get started free

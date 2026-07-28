@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-import { SITE_CONFIG } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -23,29 +21,6 @@ async function getPost(slug: string) {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const data = await getPost(slug);
-  if (!data || !data.post) {
-    return { title: "Post Not Found" };
-  }
-  const post = data.post;
-  return {
-    title: post.meta_title || post.title,
-    description: post.meta_description || post.excerpt || post.title,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      title: post.meta_title || post.title,
-      description: post.meta_description || post.excerpt || post.title,
-      images: post.og_image || post.cover_image ? [{ url: post.og_image || post.cover_image }] : undefined,
-    },
-  };
-}
-
 export default async function BlogPostPage({
   params,
 }: {
@@ -67,7 +42,7 @@ export default async function BlogPostPage({
           {/* Back link */}
           <Link
             href="/blog"
-            className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] hover:underline"
+            className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-900 hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to blog
@@ -76,27 +51,27 @@ export default async function BlogPostPage({
           {/* Header */}
           <div className="mb-8">
             <div className="mb-3 flex items-center gap-3">
-              <span className="rounded-full bg-[var(--color-muted)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
+              <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-gray-700">
                 {post.category}
               </span>
-              <span className="flex items-center gap-1 text-sm text-[var(--color-text-dim)]">
+              <span className="flex items-center gap-1 text-sm font-medium text-gray-500">
                 <Clock className="h-3.5 w-3.5" />
                 {post.reading_time_minutes} min read
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-[var(--color-foreground)] sm:text-4xl">
+            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
+              <p className="mt-4 text-lg font-medium text-gray-600">
                 {post.excerpt}
               </p>
             )}
-            <div className="mt-4 flex items-center gap-3 text-sm text-[var(--color-text-dim)]">
+            <div className="mt-4 flex items-center gap-3 text-sm font-medium text-gray-500">
               <span>By {post.author_name}</span>
               {post.published_at && (
                 <>
-                  <span>·</span>
+                  <span>&middot;</span>
                   <span>
                     {new Date(post.published_at).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -111,7 +86,7 @@ export default async function BlogPostPage({
 
           {/* Cover image */}
           {post.cover_image && (
-            <div className="mb-8 overflow-hidden rounded-xl">
+            <div className="mb-8 overflow-hidden rounded-xl border-2 border-gray-200">
               <img
                 src={post.cover_image}
                 alt={post.title}
@@ -136,7 +111,7 @@ export default async function BlogPostPage({
               {post.tags.map((tag: string) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium text-[var(--color-text-muted)]"
+                  className="inline-flex items-center gap-1 rounded-full border-2 border-gray-200 px-3 py-1 text-xs font-bold text-gray-700"
                 >
                   <Tag className="h-3 w-3" />
                   {tag}
@@ -149,9 +124,9 @@ export default async function BlogPostPage({
 
       {/* Related posts */}
       {related && related.length > 0 && (
-        <section className="border-t border-[var(--color-border)] py-12">
+        <section className="border-t-2 border-gray-200 py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="mb-6 text-2xl font-bold text-[var(--color-foreground)]">
+            <h2 className="mb-6 text-2xl font-extrabold text-gray-900">
               Related articles
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -161,14 +136,14 @@ export default async function BlogPostPage({
                   href={`/blog/${rel.slug}`}
                   className="card-premium group p-5"
                 >
-                  <span className="mb-2 inline-block rounded-full bg-[var(--color-muted)] px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
+                  <span className="mb-2 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-gray-700">
                     {rel.category}
                   </span>
-                  <h3 className="text-lg font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)]">
+                  <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-gray-700">
                     {rel.title}
                   </h3>
                   {rel.excerpt && (
-                    <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2">
+                    <p className="mt-2 text-sm font-medium text-gray-600 line-clamp-2">
                       {rel.excerpt}
                     </p>
                   )}

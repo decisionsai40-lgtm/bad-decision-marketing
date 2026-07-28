@@ -27,21 +27,21 @@ const FOOTER_LINKS = {
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-card)] text-[var(--color-card-foreground)]">
+    <footer className="bg-gray-900 text-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--color-primary)] text-white font-bold">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white font-bold text-gray-900">
                 BD
               </div>
-              <span className="text-lg font-bold">Bad Decision</span>
+              <span className="text-lg font-extrabold">Bad Decision</span>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-[var(--color-card-foreground)]/75 max-w-xs">
-              Find real buyers. Skip the ghost towns. The all-in-one platform for lead
-              generation, email verification, and cold outreach — built for founders and
-              agencies who actually need to close deals.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-300">
+              Bad Decision is one platform that finds your next customers, reaches
+              out across email and messaging, follows up for you, and shows you who
+              is ready to talk. One subscription instead of five tools.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
@@ -86,7 +86,7 @@ export function Footer() {
           {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-card-foreground)]/90">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-white">
                 {category}
               </h3>
               <ul className="mt-4 space-y-3">
@@ -94,7 +94,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--color-card-foreground)]/75 transition-colors hover:text-[var(--color-primary)]"
+                      className="text-sm text-gray-300 transition-colors hover:text-white"
                     >
                       {link.label}
                     </Link>
@@ -107,11 +107,11 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
-          <p className="text-xs text-[var(--color-card-foreground)]/75">
-            © {new Date().getFullYear()} {SITE_CONFIG.legalEntityName}. All rights reserved.
+          <p className="text-xs text-gray-300">
+            &copy; {new Date().getFullYear()} {SITE_CONFIG.legalEntityName}. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--color-card-foreground)]/75">
-            Built for founders who refuse to waste another dollar on dead lead lists.
+          <p className="text-xs text-gray-300">
+            One subscription that finds customers, reaches out, and books more meetings.
           </p>
         </div>
       </div>

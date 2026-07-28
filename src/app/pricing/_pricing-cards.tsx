@@ -300,7 +300,7 @@ export function PricingCards() {
             </h2>
             <p className="mt-2 text-sm font-medium text-gray-600">
               1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
-              Credits never expire. Buy anytime — no subscription needed.
+              Credits never expire. Buy anytime, no subscription needed.
             </p>
           </div>
 

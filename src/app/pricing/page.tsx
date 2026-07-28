@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, Sparkles, X } from "lucide-react";
@@ -8,26 +7,18 @@ import {
   ENTERPRISE_PLAN,
   SITE_CONFIG,
 } from "@/lib/utils";
-import { PricingJsonLd } from "@/components/seo/json-ld";
 import { PricingCards } from "./_pricing-cards";
-
-export const metadata: Metadata = {
-  title: "Pricing — Simple and clear",
-  description:
-    "Bad Decision pricing: Free forever, Starter, Growth, and Pro plans. Pay monthly or yearly (get 2 months free). Cancel anytime. 7-day money-back promise. No setup fees and no contracts.",
-  alternates: { canonical: "/pricing" },
-};
 
 const COMPARISON_FEATURES = [
   {
     category: "Email sending",
     rows: [
-      { feature: "Email sends / month", values: ["—", "15,000", "Unlimited", "Unlimited"] },
+      { feature: "Email sends / month", values: ["-", "15,000", "Unlimited", "Unlimited"] },
       { feature: "Email inboxes", values: ["1", "Unlimited", "Unlimited", "Unlimited"] },
-      { feature: "Warmup emails", values: ["—", "100,000", "Unlimited", "Unlimited"] },
-      { feature: "Campaigns", values: ["—", "Unlimited", "Unlimited", "Unlimited"] },
-      { feature: "Contact uploads", values: ["—", "50,000", "100,000", "250,000"] },
-      { feature: "Campaign sequence steps", values: ["—", "3", "Unlimited", "Unlimited"] },
+      { feature: "Warmup emails", values: ["-", "100,000", "Unlimited", "Unlimited"] },
+      { feature: "Campaigns", values: ["-", "Unlimited", "Unlimited", "Unlimited"] },
+      { feature: "Contact uploads", values: ["-", "50,000", "100,000", "250,000"] },
+      { feature: "Campaign sequence steps", values: ["-", "3", "Unlimited", "Unlimited"] },
       { feature: "A/B testing", values: [false, false, true, true] },
       { feature: "One inbox for all replies", values: [false, true, true, true] },
       { feature: "Inbox trust building", values: [false, true, true, true] },
@@ -47,7 +38,7 @@ const COMPARISON_FEATURES = [
   {
     category: "Email checking & AI",
     rows: [
-      { feature: "Email verifications / month", values: ["—", "1,000", "5,000", "25,000"] },
+      { feature: "Email verifications / month", values: ["-", "1,000", "5,000", "25,000"] },
       { feature: "AI message drafts / month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "6 writing styles", values: [true, true, true, true] },
       { feature: "Personal message for each lead", values: [true, true, true, true] },
@@ -67,7 +58,7 @@ const COMPARISON_FEATURES = [
     category: "Team & extras",
     rows: [
       { feature: "Workspace + team members", values: [false, false, true, true] },
-      { feature: "Webhooks + API access", values: [false, false, false, true] },
+      { feature: "Developer access and webhooks", values: [false, false, false, true] },
       { feature: "CRM sync (HubSpot, Pipedrive, Salesforce)", values: [false, false, false, true] },
       { feature: "Dedicated success manager", values: [false, false, false, true] },
       { feature: "Priority support", values: [false, false, true, true] },
@@ -77,16 +68,16 @@ const COMPARISON_FEATURES = [
 
 const PRICING_FAQS = [
   {
-    q: "What's included in the unlimited email sends?",
-    a: "On Growth and Pro, you can send as many cold emails as you want from your connected inboxes. You bring your own SMTP (Gmail, Outlook, or custom). We don't charge per email — we only meter lead discoveries, email verifications, and AI message drafts.",
+    q: "What is included in the unlimited email sends?",
+    a: "On Growth and Pro, you can send as many cold emails as you want from your connected inboxes. You bring your own email account, like Gmail, Outlook, or a custom email. We do not charge per email. We only meter lead discoveries, email verifications, and AI message drafts.",
   },
   {
     q: "How do add-ons work?",
-    a: "Add-ons are separate monthly subscriptions you bundle with your plan. SMS Campaigns ($39/mo) is available on Starter, Growth, and Pro. WhatsApp Campaigns ($49/mo) is available on Growth and Pro. AI Voice Calling ($49/mo + $0.20/min) is Pro only. Each add-on can be cancelled independently without affecting your base plan.",
+    a: "Add-ons are separate monthly subscriptions you bundle with your plan. SMS Campaigns ($39/mo) is available on Starter, Growth, and Pro. WhatsApp Campaigns ($49/mo) is available on Growth and Pro. Each add-on can be cancelled on its own without affecting your base plan.",
   },
   {
-    q: "Do my monthly quotas roll over if I don't use them?",
-    a: "No — quotas reset on your billing date each month. This keeps things fair for everyone and lets us keep prices low. Credits you purchase separately never expire.",
+    q: "Do my monthly quotas roll over if I do not use them?",
+    a: "No. Quotas reset on your billing date each month. This keeps things fair for everyone and lets us keep prices low. Credits you purchase separately never expire.",
   },
   {
     q: "What happens if I hit my limit mid-month?",
@@ -94,26 +85,25 @@ const PRICING_FAQS = [
   },
   {
     q: "How does yearly billing work?",
-    a: "Pay upfront for 10 months, get 12 months of access (2 months free) on your plan. Add-ons on yearly billing get 1 month free (11 months charged). Your quotas still reset monthly. If you cancel mid-year, you keep access until the end of your prepaid period — no refunds for unused months.",
+    a: "Pay upfront for 10 months, get 12 months of access, so 2 months free, on your plan. Add-ons on yearly billing get 1 month free, so 11 months charged. Your quotas still reset monthly. If you cancel mid-year, you keep access until the end of your prepaid period. We do not refund unused months.",
   },
   {
     q: "Can I switch between monthly and yearly?",
-    a: "Yes — you can switch from monthly to yearly at any time from your billing settings. Switching from yearly back to monthly takes effect at the end of your current yearly period.",
+    a: "Yes. You can switch from monthly to yearly at any time from your billing settings. Switching from yearly back to monthly takes effect at the end of your current yearly period.",
   },
   {
     q: "What payment methods do you accept?",
-    a: "Visa, Mastercard, American Express, and local cards via Flutterwave. All prices are in USD.",
+    a: "Visa, Mastercard, American Express, and local cards through our payment processor. All prices are in USD.",
   },
   {
     q: "Do you offer refunds?",
-    a: "Yes — if you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. No questions asked. See our full refund policy for details.",
+    a: "Yes. If you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. No questions asked. See our full refund policy for details.",
   },
 ];
 
 export default function PricingPage() {
   return (
     <>
-      <PricingJsonLd />
       <PageHeader
         title="One subscription. Everything you need."
         subtitle="Cancel anytime with a 7-day money-back promise on your first paid plan. There are no setup fees, no contracts, and no hidden costs."

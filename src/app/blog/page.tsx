@@ -1,22 +1,9 @@
-import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 
 export const revalidate = 3600; // ISR: revalidate every hour
-
-export const metadata: Metadata = {
-  title: "Blog — Cold Email, Lead Generation & Outbound Sales Guides",
-  description:
-    "Guides, comparisons, and tutorials on cold email, lead generation, email verification, and outbound sales. Learn how Bad Decision compares to Instantly and Smartlead.",
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title: "Blog — Cold Email, Lead Generation & Outbound Sales Guides",
-    description:
-      "Guides, comparisons, and tutorials on cold email, lead generation, email verification, and outbound sales.",
-  },
-};
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
@@ -62,7 +49,7 @@ export default async function BlogPage({
     <>
       <PageHeader
         title="Blog"
-        subtitle="Guides, comparisons, and tutorials on cold email, lead generation, and outbound sales."
+        subtitle="Guides and tutorials on cold email, lead generation, and reaching out to customers."
       />
 
       <section className="py-12 sm:py-16">
@@ -72,10 +59,10 @@ export default async function BlogPage({
             <div className="mb-10 flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                className={`rounded-full px-4 py-2 text-sm font-bold ${
                   !category
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                    ? "bg-gray-900 text-white"
+                    : "border-2 border-gray-200 bg-white text-gray-700 hover:border-gray-400"
                 }`}
               >
                 All
@@ -84,10 +71,10 @@ export default async function BlogPage({
                 <Link
                   key={cat.name}
                   href={`/blog?category=${encodeURIComponent(cat.name)}`}
-                  className={`rounded-full border px-4 py-2 text-sm font-semibold ${
+                  className={`rounded-full border-2 px-4 py-2 text-sm font-bold ${
                     category === cat.name
-                      ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
-                      : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)]/50"
+                      ? "border-gray-900 bg-gray-900 text-white"
+                      : "border-gray-200 bg-white text-gray-700 hover:border-gray-400"
                   }`}
                 >
                   {cat.name} ({cat.count})
@@ -99,11 +86,12 @@ export default async function BlogPage({
           {/* Posts grid */}
           {posts.length === 0 ? (
             <div className="card-premium p-12 text-center">
-              <p className="text-lg font-semibold text-[var(--color-foreground)]">
+              <p className="text-lg font-extrabold text-gray-900">
                 Check back for new articles every week.
               </p>
-              <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-                We are writing guides on cold email, lead generation, and outbound sales. Come back soon for fresh reads.
+              <p className="mt-2 text-sm font-medium text-gray-500">
+                We are writing guides on cold email, lead generation, and reaching
+                out to customers. Come back soon for fresh reads.
               </p>
             </div>
           ) : (
@@ -125,27 +113,27 @@ export default async function BlogPage({
                   )}
                   <div className="flex flex-1 flex-col p-5">
                     <div className="mb-2 flex items-center gap-3">
-                      <span className="rounded-full bg-[var(--color-muted)] px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
+                      <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-gray-700">
                         {post.category}
                       </span>
-                      <span className="flex items-center gap-1 text-xs text-[var(--color-text-dim)]">
+                      <span className="flex items-center gap-1 text-xs font-medium text-gray-500">
                         <Clock className="h-3 w-3" />
                         {post.reading_time_minutes} min
                       </span>
                     </div>
-                    <h3 className="mb-2 text-lg font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)]">
+                    <h3 className="mb-2 text-lg font-extrabold text-gray-900 group-hover:text-gray-700">
                       {post.title}
                     </h3>
                     {post.excerpt && (
-                      <p className="mb-4 flex-1 text-sm text-[var(--color-text-secondary)] line-clamp-3">
+                      <p className="mb-4 flex-1 text-sm font-medium text-gray-600 line-clamp-3">
                         {post.excerpt}
                       </p>
                     )}
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-[var(--color-text-dim)]">
+                      <span className="text-xs font-medium text-gray-500">
                         {post.author_name}
                       </span>
-                      <ArrowRight className="h-4 w-4 text-[var(--color-primary)] transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 text-gray-900 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
                 </Link>
