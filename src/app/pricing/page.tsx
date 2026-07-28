@@ -52,6 +52,7 @@ const COMPARISON_FEATURES = [
       { feature: "SMS Campaigns ($39/mo)", values: [false, true, true, true] },
       { feature: "WhatsApp Campaigns ($49/mo)", values: [false, false, true, true] },
       { feature: "AI Voice Calling ($49/mo + $0.20/min)", values: [false, false, false, true] },
+      { feature: "Line Verification ($19/mo)", values: [false, false, true, true] },
     ],
   },
   {
@@ -191,7 +192,7 @@ export default function PricingPage() {
           {/* Add-ons explanation */}
           <div className="mt-8 rounded-xl border-2 border-gray-200 bg-white p-6">
             <h3 className="text-sm font-extrabold text-gray-900">Add-ons at a glance</h3>
-            <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-lg bg-gray-50 p-4">
                 <p className="font-bold text-gray-900">SMS Campaigns</p>
                 <p className="text-sm text-gray-600">$39/mo · 1,000 msgs included, then $0.015/msg</p>
@@ -206,6 +207,11 @@ export default function PricingPage() {
                 <p className="font-bold text-gray-900">AI Voice Calling</p>
                 <p className="text-sm text-gray-600">$49/mo · 100 min included, then $0.20/min</p>
                 <p className="mt-1 text-xs font-bold text-gray-700">Pro only</p>
+              </div>
+              <div className="rounded-lg bg-gray-50 p-4">
+                <p className="font-bold text-gray-900">Line Verification</p>
+                <p className="text-sm text-gray-600">$19/mo · 5,000 checks included, then $0.005/check</p>
+                <p className="mt-1 text-xs font-bold text-gray-700">Growth · Pro</p>
               </div>
             </div>
           </div>

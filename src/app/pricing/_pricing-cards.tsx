@@ -8,6 +8,7 @@ import {
   MessageSquare,
   Phone,
   Mic,
+  ShieldCheck,
   Zap,
   TrendingDown,
 } from "lucide-react";
@@ -236,6 +237,9 @@ export function PricingCards() {
                                 )}
                                 {addon.slug === "ai_voice" && (
                                   <Mic className="h-3.5 w-3.5 text-gray-500" />
+                                )}
+                                {addon.slug === "line_verification" && (
+                                  <ShieldCheck className="h-3.5 w-3.5 text-gray-500" />
                                 )}
                                 <span className="text-sm font-bold text-gray-900">
                                   {addon.name}

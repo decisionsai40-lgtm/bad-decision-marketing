@@ -154,10 +154,15 @@ export const ENTERPRISE_PLAN = {
 // Feature-unlock add-ons : separate monthly payments, bundled with the plan
 // at checkout, but each can be cancelled independently without affecting the base plan.
 // Eligibility:
-//   SMS:        Starter, Growth, Pro
-//   WhatsApp:   Growth, Pro
-//   AI Voice:   Pro only (high per-minute cost, requires compliance)
-export type AddonSlug = "sms_campaign" | "whatsapp_campaign" | "ai_voice";
+//   SMS:               Starter, Growth, Pro
+//   WhatsApp:          Growth, Pro
+//   AI Voice:          Pro only (high per-minute cost, requires compliance)
+//   Line Verification: Growth, Pro
+export type AddonSlug =
+  | "sms_campaign"
+  | "whatsapp_campaign"
+  | "ai_voice"
+  | "line_verification";
 
 export interface Addon {
   slug: AddonSlug;
@@ -195,6 +200,15 @@ export const ADDONS: Addon[] = [
     price: 49,
     eligiblePlans: ["pro"],
     meteredNote: "100 minutes/mo included, then $0.20/min",
+  },
+  {
+    slug: "line_verification",
+    name: "Line Verification",
+    description:
+      "Check if phone numbers are on WhatsApp and can receive SMS before you send. Skip landlines and invalid numbers automatically.",
+    price: 19,
+    eligiblePlans: ["growth", "pro"],
+    meteredNote: "5,000 checks/mo included, then $0.005/check",
   },
 ];
 
