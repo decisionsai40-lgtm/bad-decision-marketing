@@ -149,7 +149,7 @@ export function PricingCards() {
                       Add-ons (optional)
                     </p>
                     <div className="space-y-3">
-                      {ADDONS.map((addon) => {
+                      {ADDONS.filter((a) => a.eligiblePlans.includes(plan.planId)).map((addon) => {
                         const checked = selectedAddons.has(addon.slug);
                         return (
                           <label
@@ -181,6 +181,11 @@ export function PricingCards() {
                               <p className="mt-0.5 text-xs text-[var(--color-text-muted)]">
                                 {addon.description}
                               </p>
+                              {addon.meteredNote && (
+                                <p className="mt-0.5 text-[11px] font-medium text-[var(--color-primary)]">
+                                  {addon.meteredNote}
+                                </p>
+                              )}
                             </div>
                           </label>
                         );

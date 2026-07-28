@@ -33,11 +33,11 @@ export const PRICING_PLANS = [
     description: "Try it out. No credit card.",
     features: [
       "50 lead discoveries / month",
-      "100 email verifications / month",
       "50 AI message drafts / month",
       "1 email inbox",
       "Save your searches",
-      "Community support + 50 credits",
+      "Community support",
+      "+ 50 credits",
     ],
     cta: "Start free",
     ctaHref: "/sign-up?plan=free",
@@ -51,11 +51,13 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For people running their first outreach.",
     features: [
+      "15,000 email sends / month",
+      "Unlimited email inboxes",
+      "Unlimited warmups (100,000 emails/mo)",
+      "Unlimited campaigns",
       "1,000 lead discoveries / month",
-      "1,500 email campaign sends / month",
       "1,000 email verifications / month",
       "1,000 AI message drafts / month",
-      "3 email inboxes with trust building",
       "3-step campaign sequences",
       "One inbox for all replies + tracking",
       "Email support",
@@ -72,11 +74,14 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For small teams doing more outreach.",
     features: [
+      "Unlimited email sends",
+      "Unlimited email inboxes",
+      "Unlimited warmups",
+      "Unlimited campaigns",
+      "Unlimited contact uploads",
       "5,000 lead discoveries / month",
-      "10,000 email campaign sends / month",
       "5,000 email verifications / month",
       "5,000 AI message drafts / month",
-      "10 email inboxes with trust building",
       "Unlimited campaign sequences",
       "A/B testing per step",
       "Workspace + team members",
@@ -94,11 +99,15 @@ export const PRICING_PLANS = [
     period: "month",
     description: "For agencies running lots of campaigns.",
     features: [
+      "Unlimited email sends",
+      "Unlimited email inboxes",
+      "Unlimited warmups",
+      "Unlimited campaigns",
+      "Unlimited contact uploads",
       "25,000 lead discoveries / month",
-      "50,000 email campaign sends / month",
       "25,000 email verifications / month",
       "25,000 AI message drafts / month",
-      "30 email inboxes with trust building",
+      "500 AI voice minutes included",
       "Advanced analytics + deliverability",
       "Webhooks + API access",
       "CRM sync (HubSpot, Pipedrive, Salesforce)",
@@ -116,10 +125,14 @@ export const ENTERPRISE_PLAN = {
   price: "Custom",
   description: "For high-volume teams that need a custom deal.",
   features: [
-    "100,000+ leads / month",
-    "500,000+ campaign sends / month",
+    "Everything in Pro, unlimited",
+    "Unlimited lead discoveries",
+    "Unlimited email verifications",
+    "Unlimited AI voice minutes",
+    "WhatsApp + SMS included",
     "Dedicated infrastructure",
-    "SLA + priority support",
+    "SSO/SAML + RBAC",
+    "99.9% uptime SLA",
     "Custom integrations",
     "Invoiced billing",
   ],
@@ -127,17 +140,19 @@ export const ENTERPRISE_PLAN = {
   ctaHref: "/contact?topic=enterprise",
 } as const;
 
-// Feature-unlock add-ons — available on Growth + Pro ONLY.
-// Separate monthly payment, bundled with the plan at checkout,
-// but each can be cancelled independently without affecting the base plan.
-export type AddonSlug = "whatsapp_campaign" | "sms_campaign";
+// Feature-unlock add-ons — separate monthly payments, bundled with the plan
+// at checkout, but each can be cancelled independently without affecting the base plan.
+// WhatsApp + SMS: Growth and Pro only.
+// AI Voice: Pro only (high per-minute cost, requires compliance).
+export type AddonSlug = "whatsapp_campaign" | "sms_campaign" | "ai_voice";
 
 export interface Addon {
   slug: AddonSlug;
   name: string;
   description: string;
-  price: number; // USD / month
+  price: number; // USD / month base fee
   eligiblePlans: string[];
+  meteredNote?: string; // shown as a small note on the card
 }
 
 export const ADDONS: Addon[] = [
@@ -148,6 +163,7 @@ export const ADDONS: Addon[] = [
       "Connect a WhatsApp Business number, import contacts, send template campaigns with delivery + reply analytics.",
     price: 49,
     eligiblePlans: ["growth", "pro"],
+    meteredNote: "1,000 messages/mo included, then $0.10/msg",
   },
   {
     slug: "sms_campaign",
@@ -156,6 +172,16 @@ export const ADDONS: Addon[] = [
       "Brand registration, sender number purchase, campaign dispatch with delivery tracking.",
     price: 39,
     eligiblePlans: ["growth", "pro"],
+    meteredNote: "1,000 messages/mo included, then $0.015/msg",
+  },
+  {
+    slug: "ai_voice",
+    name: "AI Voice Calling",
+    description:
+      "AI cold calling via the Native Voice Engine — in-call booking, callbacks, DNC handling, and post-call disposition.",
+    price: 49,
+    eligiblePlans: ["pro"],
+    meteredNote: "100 minutes/mo included, then $0.20/min",
   },
 ];
 
