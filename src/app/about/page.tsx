@@ -1,131 +1,49 @@
 import { PageHeader } from "@/components/sections/page-header";
-import { Globe, Users, Target, Heart, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/utils";
 
 export default function AboutPage() {
   return (
     <>
       <PageHeader
         title="We got tired of making bad decisions"
-        subtitle="Bad Decision was born after one too many wasted dollars on stale lead lists and tools that did not talk to each other. We are building the outreach platform we wished existed, for sales people, agencies, freelancers, recruiters, coaches, and small business owners in any country."
+        subtitle="Bad Decision is one platform to find, reach, and book customers. We built what we wished existed."
       />
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="prose-legal">
-            <h2>The problem we kept hitting</h2>
             <p>
-              Every sales person we know has the same story. You buy a lead
-              list. You pay for an email checker. You pay for a sending tool.
-              You pay for AI to write the messages. You pay for a WhatsApp tool.
-              You pay for a scheduler. Five or six subscriptions later, you send
-              your first campaign. And 30 percent of the emails bounce. Your
-              inbox gets flagged as spam. Your sender reputation is dead before
-              you have booked a single meeting.
+              Every sales person we know pays five companies to find one
+              customer. The lists bounce, the tools do not talk to each other,
+              and the emails land in spam. We lived this. We bought the lists.
+              We paid for the tools. We kept making the same bad decision.
             </p>
             <p>
-              We lived this. We bought the lists. We paid for the tools. We
-              watched our campaigns fail. And we kept making the same bad
-              decision: paying more money for the same broken pipeline.
+              So we built the opposite. Bad Decision finds the businesses who
+              need what you sell, checks every email, writes the message, sends
+              it across email and WhatsApp and SMS and phone, and books the
+              meeting. One subscription instead of five tools. Priced for any
+              country, with global payments and lead sources that work
+              everywhere.
             </p>
+            <p>
+              We will never sell your data. We will never send from our
+              servers. We will always be honest about what works and what does
+              not in cold outreach. If you are tired of paying for scattered
+              tools, we built this for you.
+            </p>
+          </div>
 
-            <h2>So we built the opposite</h2>
-            <p>
-              Bad Decision is one platform that finds the businesses who need
-              what you sell, checks every email before you send, writes your
-              outreach messages, sends them across email, WhatsApp, text, and
-              phone, and books meetings when people are ready. Everything lives
-              in one place, for one price, under one credit meter that shows you
-              the cost before every action.
-            </p>
-            <p>
-              We replaced the pile of scattered tools with one subscription. And
-              we priced it for everyone: free to start, and a fair monthly price
-              when you are ready to send real campaigns. No lock-in, no hidden
-              fees, no surprise charges at the end of the month.
-            </p>
-
-            <h2>Built for everyone, not just founders</h2>
-            <p>
-              Most outreach tools are built for one kind of buyer in one part of
-              the world. They charge in one currency, support one set of payment
-              methods, and ignore everyone else. We are changing that.
-            </p>
-            <p>
-              Bad Decision is for sales teams, agencies, freelancers, small
-              business owners, consultants, recruiters, real estate agents, and
-              coaches. We accept payments from anywhere in the world. We support
-              lead sources that work for emerging markets, not just established
-              ones. We built engines that find businesses without websites, find
-              local pros by industry, and find businesses already paying for
-              ads. And we priced the platform so a person in any country can
-              afford the same tools as a person anywhere else.
-            </p>
-
-            <h2>What we believe</h2>
-            <div className="not-prose mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {[
-                {
-                  icon: Target,
-                  title: "Leads should be fresh, not stale",
-                  body: "A lead list from 6 months ago is dead weight. We search the live web on every search. Your leads are minutes old, not months old.",
-                },
-                {
-                  icon: Users,
-                  title: "You should not need five tools",
-                  body: "Find, check, write, send, track, and book. One subscription. Stop paying for tools that do not talk to each other.",
-                },
-                {
-                  icon: Globe,
-                  title: "People everywhere deserve the same tools",
-                  body: "Pricing should work for any country, not just one. We support global payments and lead sources that work everywhere.",
-                },
-                {
-                  icon: Heart,
-                  title: "Your reputation is yours",
-                  body: "We never send from our servers. Your inboxes, your domains, your sender reputation. We just help you send safely.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Honesty over hype",
-                  body: "We will not promise 85 percent reply rates or magical AI agents. We will tell you what works, what does not, and what it costs before you click.",
-                },
-                {
-                  icon: Target,
-                  title: "You should see the price first",
-                  body: "Every metered action shows its cost before it runs. If you do not have enough credits, the action is blocked. No surprises.",
-                },
-              ].map((v) => (
-                <div key={v.title} className="card-premium p-6">
-                  <v.icon className="h-8 w-8 text-gray-900" />
-                  <h3 className="mt-3 text-lg font-extrabold text-gray-900">
-                    {v.title}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-gray-600">{v.body}</p>
-                </div>
-              ))}
-            </div>
-
-            <h2>The team</h2>
-            <p>
-              We are a small, focused team. We have been building software for
-              years, and we have felt the pain of every tool we are replacing.
-              Bad Decision is the product we wished existed when we started our
-              own companies and tried to find our first customers.
-            </p>
-
-            <h2>Our commitment to you</h2>
-            <p>
-              We will never sell your data. We will never send emails from our
-              servers on your behalf. We will never lock you into a contract.
-              We will always offer a free tier so people with zero budget can
-              test the platform. And we will always be honest about what works
-              and what does not in cold outreach, even when it is not flattering
-              to us.
-            </p>
-            <p>
-              If you are tired of making bad decisions with how you reach out to
-              customers, we built this for you. Welcome aboard.
-            </p>
+          <div className="mt-12 text-center">
+            <Link
+              href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
+              className="btn-primary inline-flex"
+            >
+              Start free
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

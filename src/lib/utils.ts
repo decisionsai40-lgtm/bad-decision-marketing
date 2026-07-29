@@ -279,51 +279,51 @@ export const CREDIT_PACKS: CreditPack[] = [
 
 export const FAQS = [
   {
-    q: "Why is it called Bad Decision?",
-    a: "Because every other way of finding customers is a bad decision. Buying a stale lead list is a bad decision. Paying for five tools that do not talk to each other is a bad decision. Burning your domain with a hundred thousand cold emails is a bad decision. We built the opposite of all that. The name is a reminder to stop making bad decisions with how you find customers, and a promise that we will not let you make one with us.",
+    q: "What is Bad Decision?",
+    a: "One platform to find leads, reach out across email and messaging and phone, and book meetings. You stop paying for five tools.",
   },
   {
-    q: "What does Bad Decision actually do?",
-    a: "Bad Decision is one platform that finds the businesses who need what you sell, checks every email before you send, writes your messages for you, sends them across email, WhatsApp, text, and phone, and books meetings when people are ready to talk. You can also control all of it from ChatGPT, Claude, or Gemini if that is where you work. One subscription instead of five tools that do not talk to each other.",
+    q: "How much does it cost?",
+    a: "Free forever. Starter is $39, Growth is $97, Pro is $297. Add-ons for WhatsApp, SMS, and AI voice are extra.",
   },
   {
-    q: "Do I need to bring my own leads?",
-    a: "No. That is the whole point. You tell us who you want to reach, like real estate agents in Lagos or skincare stores in the United States, and our four search engines find them on the live web. Every lead comes with company name, website, email, phone, and social links. You can also bring your own list if you have one, and we will check every email before you send.",
+    q: "Do I need my own email?",
+    a: "Yes. You connect your Gmail, Outlook, or custom email. We never send from our servers.",
   },
   {
-    q: "How does the email checking work?",
-    a: "Every email gets a careful check before you send. We look at the format, the domain, the mail server, and the actual mailbox to see if it is real. We also catch throwaway email addresses and role addresses like info@ and sales@. You get a clear answer for each email: safe to send, risky, or will bounce. Skip the risky ones to keep your inbox trusted, or include them if you want to reach as many people as you can.",
-  },
-  {
-    q: "Can I use my own accounts to save money?",
-    a: "Yes, if you are part of our community. Community members can connect their own accounts for finding leads, checking emails, and writing messages. When you use your own accounts, you pay nothing for those tasks. This is invite-only to keep it fair. Join our community to ask for an invite code.",
-  },
-  {
-    q: "Do you send emails from your own servers?",
-    a: "No. We never send cold emails from our own servers. You connect your own email inbox, like Gmail, Outlook, or any custom email. Our system slowly builds trust for it, sends at the right times, switches between your inboxes, and pulls replies back into one place. Your email stays trusted because it stays in your hands, which is exactly how it should be for cold outreach.",
-  },
-  {
-    q: "How long does it take to build trust for a new email inbox?",
-    a: "Usually 7 to 15 days. We start slow, with just a few emails per day, and slowly send more over time. Other inboxes in our network send and reply to these early messages, rescue any which land in spam, and build your good name with email providers. You can start a real campaign once your inbox shows it is ready.",
-  },
-  {
-    q: "What about spam laws and compliance?",
-    a: "Every email you send includes a one-click unsubscribe link, your physical mailing address, and proper email signing. Bounces and complaints are tracked in real time. Anyone who bounces, complains, or asks to unsubscribe is automatically added to your block list and never contacted again. AI voice calls only run with prior written consent, respect calling hours, and skip anyone on the do-not-call list. You stay on the right side of every spam and calling law.",
+    q: "Will my emails land in spam?",
+    a: "No. Every inbox gets warmed up, every email is checked, and we send at the right times across your inboxes.",
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Cancel from your billing portal with one click. Your subscription stays active until the end of the current billing period, then drops to the Free plan. Add-ons can be cancelled on their own without touching your base plan. No contracts, no cancellation fees, no lock-in.",
+    a: "Yes. One click in your billing settings. Your plan runs until the end of the period.",
   },
   {
     q: "Do you offer refunds?",
-    a: "If you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. After that, subscriptions are non-refundable but you keep access until the end of the period. Credit packs are non-refundable once you use them. See our refund policy for full details.",
+    a: "Yes. Cancel within 7 days and we refund 100 percent. No questions.",
   },
   {
-    q: "Is there a free plan?",
-    a: "Yes, free forever. You get 50 lead discoveries per month, 50 email verifications per month, 50 AI message drafts per month, and 1 email inbox. You cannot start live email campaigns on Free, but you can draft them and try the whole find, check, and write process without paying. Upgrade only when you are ready to actually send.",
+    q: "What channels can I use?",
+    a: "Email on every plan. WhatsApp and SMS are add-ons on Growth and Pro. AI voice calling is a Pro add-on.",
   },
   {
-    q: "What makes this different from other outreach tools?",
-    a: "Most outreach tools assume you already have a list of leads, and they just send emails. We find the leads for you first, then check them, then write the message, then send across email, WhatsApp, text, and phone, then book the meeting and pause the rest of your campaign. You also get six ways to write messages, an AI voice engine that books meetings on the call, a drag-and-drop automation canvas, a pre-flight cost estimate before every action, and an invite-only way to use your own accounts and cut your costs to zero. Nobody else puts all of that in one subscription.",
+    q: "Is AI calling legal?",
+    a: "Yes, when done right. We check consent, the do-not-call list, and calling hours before every call. You stay compliant.",
+  },
+  {
+    q: "Can I control it from ChatGPT or Claude?",
+    a: "Yes. Connect ChatGPT, Claude, or Gemini and ask them to find leads, start campaigns, or book meetings.",
+  },
+  {
+    q: "Do credits roll over?",
+    a: "No. Monthly credits reset on your billing date. Credits you buy separately never expire.",
+  },
+  {
+    q: "Can I bring my own leads?",
+    a: "Yes. Upload a CSV and we check every email before you send.",
+  },
+  {
+    q: "What makes this different?",
+    a: "You get lead finding, email, WhatsApp, SMS, AI voice, scheduling, and automations in one tool. Everyone else makes you buy five.",
   },
 ] as const;

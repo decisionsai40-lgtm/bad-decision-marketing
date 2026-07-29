@@ -4,78 +4,45 @@ import { PageHeader } from "@/components/sections/page-header";
 import { FAQS, SITE_CONFIG } from "@/lib/utils";
 
 export default function FAQPage() {
-  const categories = [
-    {
-      name: "About Bad Decision",
-      items: FAQS.slice(0, 2),
-    },
-    {
-      name: "Finding leads and checking emails",
-      items: FAQS.slice(2, 5),
-    },
-    {
-      name: "Sending and deliverability",
-      items: FAQS.slice(5, 8),
-    },
-    {
-      name: "Billing and refunds",
-      items: FAQS.slice(8, 11),
-    },
-    {
-      name: "How we compare",
-      items: FAQS.slice(11, 12),
-    },
-  ];
-
   return (
     <>
       <PageHeader
         title="Questions, answered straight"
-        subtitle="No soft-pedalling, no retention scripts. If you cannot find your answer here, email us at support@baddecision.app and a real human will reply, usually within 24 hours."
+        subtitle="Short answers. No fluff, no soft-pedalling."
       />
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          {categories.map((cat) => (
-            <div key={cat.name} className="mb-12">
-              <h2 className="text-xl font-extrabold text-gray-900">{cat.name}</h2>
-              <div className="mt-4 space-y-3">
-                {cat.items.map((faq) => (
-                  <details
-                    key={faq.q}
-                    className="card-premium group cursor-pointer p-6 [&_summary]:list-none"
-                  >
-                    <summary className="flex items-center justify-between">
-                      <span className="font-bold text-gray-900">{faq.q}</span>
-                      <span className="ml-4 font-bold text-gray-900 transition-transform group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <p className="mt-3 font-medium text-gray-600">{faq.a}</p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="space-y-3">
+            {FAQS.map((faq) => (
+              <details
+                key={faq.q}
+                className="card-premium group cursor-pointer p-6 [&_summary]:list-none"
+              >
+                <summary className="flex items-center justify-between">
+                  <span className="font-bold text-gray-900">{faq.q}</span>
+                  <span className="ml-4 font-bold text-gray-900 transition-transform group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 font-medium text-gray-600">{faq.a}</p>
+              </details>
+            ))}
+          </div>
 
-          {/* Contact CTA */}
           <div className="card-premium mt-12 p-8 text-center">
             <h2 className="text-2xl font-extrabold text-gray-900">
               Still have questions?
             </h2>
             <p className="mt-2 font-medium text-gray-600">
-              We are a small team that reads every email. Send us a note and a
-              real human will reply, usually within a day.
+              A real human reads every email. Most replies come back within a day.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/contact" className="btn-primary">
                 Talk to us
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <a
-                href={`mailto:${SITE_CONFIG.supportEmail}`}
-                className="btn-secondary"
-              >
+              <a href={`mailto:${SITE_CONFIG.supportEmail}`} className="btn-secondary">
                 {SITE_CONFIG.supportEmail}
               </a>
             </div>

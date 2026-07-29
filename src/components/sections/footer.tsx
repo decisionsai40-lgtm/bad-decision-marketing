@@ -39,10 +39,7 @@ export function Footer() {
               <span className="text-lg font-extrabold">Bad Decision</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-300">
-              Every other way of finding customers is a bad decision. One
-              platform finds your next customers, reaches out across email,
-              WhatsApp, text, and phone, and books meetings when people are
-              ready. One subscription instead of five tools.
+              One platform to find, reach, and book.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
@@ -112,7 +109,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {SITE_CONFIG.legalEntityName}. All rights reserved.
           </p>
           <p className="text-xs text-gray-300">
-            Stop making bad decisions with how you find customers.
+            One platform to find, reach, and book.
           </p>
         </div>
       </div>

@@ -8,10 +8,9 @@ const CASES = [
   {
     company: "Lagos Realty Co.",
     location: "Lagos, Nigeria",
-    industry: "Real estate",
-    headline: "Booked 12 meetings in 30 days with the Companies and Professionals engine",
+    headline: "Booked 12 meetings in 30 days",
     quote:
-      "We were paying for lead lists that bounced 40 percent of the time. With Bad Decision, we pulled 800 verified agents in Lagos in one afternoon. 12 of them booked a call. Three signed. We made our money back in the first week.",
+      "We pulled 800 verified agents in Lagos in one afternoon. 12 booked a call. Three signed. We made our money back in the first week.",
     author: "Adaeze O.",
     role: "Founder, Lagos Realty Co.",
     stats: [
@@ -24,10 +23,9 @@ const CASES = [
   {
     company: "Glow Skin Co.",
     location: "Brooklyn, NY",
-    industry: "Online skincare store",
-    headline: "Replaced four tools with one subscription",
+    headline: "Replaced four tools with one",
     quote:
-      "I was paying for a lead finder, an email checker, a message writer, and a sending tool. Four subscriptions, four logins, four bills. Bad Decision does all four jobs in one place. The AI writing alone was worth it. My reply rate went from 3 percent to 8 percent.",
+      "I was paying for a lead finder, an email checker, a message writer, and a sending tool. Bad Decision does all four in one place. My reply rate went from 3 percent to 8 percent.",
     author: "Marcus T.",
     role: "Founder, Glow Skin Co.",
     stats: [
@@ -40,10 +38,9 @@ const CASES = [
   {
     company: "Zenith Agency",
     location: "Austin, TX",
-    industry: "Marketing agency",
     headline: "Runs outreach for 12 clients from one workspace",
     quote:
-      "We manage cold outreach for 12 clients. Before Bad Decision, we had 12 separate workspaces and a spreadsheet to track them. Now everything is in one workspace, we plug in each client's inboxes, and the warmup engine keeps every domain healthy. Our client churn dropped to zero.",
+      "We had 12 separate workspaces and a spreadsheet to track them. Now everything is in one place, and our client churn dropped to zero.",
     author: "Priya K.",
     role: "Operations Lead, Zenith Agency",
     stats: [
@@ -56,10 +53,9 @@ const CASES = [
   {
     company: "Bright Path Coaching",
     location: "Manchester, UK",
-    industry: "Business coaching",
-    headline: "Books calls with the AI voice engine while she sleeps",
+    headline: "Books calls with AI voice while she sleeps",
     quote:
-      "I am a solo coach. I cannot afford to cold call all day. I set up an AI voice agent on Bad Decision, gave it my booking page, and let it run during business hours. It books 4 to 6 calls a week for me, and I just show up to the meetings. I should have done this a year ago.",
+      "I set up an AI voice agent on Bad Decision, gave it my booking page, and let it run during business hours. It books 4 to 6 calls a week for me. I just show up.",
     author: "Helen B.",
     role: "Founder, Bright Path Coaching",
     stats: [
@@ -76,12 +72,12 @@ export default function CaseStudiesPage() {
     <>
       <PageHeader
         title="Stories from people who stopped making bad decisions"
-        subtitle="Real numbers from real users who switched from scattered tools to one platform. They are not paid testimonials. They are people who found a better way to reach customers."
+        subtitle="Real numbers from real users. Not paid testimonials."
       />
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
+          <div className="space-y-10">
             {CASES.map((c) => (
               <div key={c.company} className="card-premium overflow-hidden">
                 <div className="bg-gray-900 p-8 text-white">
@@ -90,7 +86,7 @@ export default function CaseStudiesPage() {
                     <div>
                       <h2 className="text-2xl font-extrabold text-white">{c.headline}</h2>
                       <p className="mt-1 text-sm font-medium text-gray-300">
-                        {c.company} &middot; {c.location} &middot; {c.industry}
+                        {c.company} &middot; {c.location}
                       </p>
                     </div>
                   </div>
@@ -103,21 +99,15 @@ export default function CaseStudiesPage() {
                     </div>
                     <div>
                       <div className="text-sm font-bold">{c.author}</div>
-                      <div className="text-xs font-medium text-gray-300">
-                        {c.role}
-                      </div>
+                      <div className="text-xs font-medium text-gray-300">{c.role}</div>
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 p-8 sm:grid-cols-4">
                   {c.stats.map((s) => (
                     <div key={s.label} className="text-center">
-                      <div className="text-3xl font-extrabold text-gray-900">
-                        {s.value}
-                      </div>
-                      <div className="mt-1 text-xs font-bold text-gray-500">
-                        {s.label}
-                      </div>
+                      <div className="text-3xl font-extrabold text-gray-900">{s.value}</div>
+                      <div className="mt-1 text-xs font-bold text-gray-500">{s.label}</div>
                     </div>
                   ))}
                 </div>
@@ -125,7 +115,6 @@ export default function CaseStudiesPage() {
             ))}
           </div>
 
-          {/* Trust badges */}
           <div className="mt-16 text-center">
             <div className="flex items-center justify-center gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
@@ -133,24 +122,18 @@ export default function CaseStudiesPage() {
               ))}
             </div>
             <p className="mt-2 text-sm font-medium text-gray-500">
-              Used by sales teams, agencies, freelancers, recruiters, and
-              coaches in over 20 countries.
+              Used by sales teams, agencies, and coaches in over 20 countries.
             </p>
           </div>
 
-          {/* CTA */}
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-extrabold text-gray-900">
-              Want to be the next story?
-            </h2>
-            <p className="mt-2 font-medium text-gray-600">
-              Start free, find your first lead today, and tell us how it goes.
-            </p>
+            <h2 className="text-2xl font-extrabold text-gray-900">Want to be the next story?</h2>
+            <p className="mt-2 font-medium text-gray-600">Start free. Find your first lead today.</p>
             <Link
               href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
               className="btn-primary mt-6 inline-flex"
             >
-              Find your first lead
+              Start free
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

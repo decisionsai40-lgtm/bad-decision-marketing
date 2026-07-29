@@ -49,7 +49,7 @@ export default async function BlogPage({
     <>
       <PageHeader
         title="The Bad Decision blog"
-        subtitle="Honest guides on cold email, lead generation, and reaching out to customers without burning your domain or your budget."
+        subtitle="Honest guides on cold outreach, lead generation, and booking more meetings."
       />
 
       <section className="py-12 sm:py-16">
@@ -90,8 +90,7 @@ export default async function BlogPage({
                 New articles drop every week.
               </p>
               <p className="mt-2 text-sm font-medium text-gray-500">
-                We are writing honest guides on cold email, lead generation, and
-                reaching out to customers. Come back soon for fresh reads.
+                Come back soon for fresh reads on cold outreach and lead generation.
               </p>
             </div>
           ) : (
