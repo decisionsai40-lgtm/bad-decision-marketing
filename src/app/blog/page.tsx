@@ -48,8 +48,8 @@ export default async function BlogPage({
   return (
     <>
       <PageHeader
-        title="Blog"
-        subtitle="Guides and tutorials on cold email, lead generation, and reaching out to customers."
+        title="The Bad Decision blog"
+        subtitle="Honest guides on cold email, lead generation, and reaching out to customers without burning your domain or your budget."
       />
 
       <section className="py-12 sm:py-16">
@@ -87,11 +87,11 @@ export default async function BlogPage({
           {posts.length === 0 ? (
             <div className="card-premium p-12 text-center">
               <p className="text-lg font-extrabold text-gray-900">
-                Check back for new articles every week.
+                New articles drop every week.
               </p>
               <p className="mt-2 text-sm font-medium text-gray-500">
-                We are writing guides on cold email, lead generation, and reaching
-                out to customers. Come back soon for fresh reads.
+                We are writing honest guides on cold email, lead generation, and
+                reaching out to customers. Come back soon for fresh reads.
               </p>
             </div>
           ) : (

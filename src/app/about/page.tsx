@@ -1,12 +1,12 @@
 import { PageHeader } from "@/components/sections/page-header";
-import { Globe, Users, Target, Heart } from "lucide-react";
+import { Globe, Users, Target, Heart, ShieldCheck } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <>
       <PageHeader
         title="We got tired of making bad decisions"
-        subtitle="Bad Decision was born after one too many wasted dollars on stale lead lists. We are building the all-in-one outreach platform we wished existed, for people in any country."
+        subtitle="Bad Decision was born after one too many wasted dollars on stale lead lists and tools that did not talk to each other. We are building the outreach platform we wished existed, for sales people, agencies, freelancers, recruiters, coaches, and small business owners in any country."
       />
 
       <section className="py-16 sm:py-24">
@@ -14,46 +14,51 @@ export default function AboutPage() {
           <div className="prose-legal">
             <h2>The problem we kept hitting</h2>
             <p>
-              Every sales person we know has the same story. You buy a lead list.
-              You pay for an email checker. You pay for a sending tool. You pay for
-              AI to write the messages. Three or four subscriptions later, you send
-              your first campaign. And 30 percent of the emails bounce. Your inbox
-              gets flagged as spam. Your sender reputation is dead before you have
-              booked a single meeting.
+              Every sales person we know has the same story. You buy a lead
+              list. You pay for an email checker. You pay for a sending tool.
+              You pay for AI to write the messages. You pay for a WhatsApp tool.
+              You pay for a scheduler. Five or six subscriptions later, you send
+              your first campaign. And 30 percent of the emails bounce. Your
+              inbox gets flagged as spam. Your sender reputation is dead before
+              you have booked a single meeting.
             </p>
             <p>
-              We lived this. We bought the lists. We paid for the tools. We watched
-              our campaigns fail. And we kept making the same bad decision: paying
-              more money for the same broken pipeline.
+              We lived this. We bought the lists. We paid for the tools. We
+              watched our campaigns fail. And we kept making the same bad
+              decision: paying more money for the same broken pipeline.
             </p>
 
             <h2>So we built the opposite</h2>
             <p>
-              Bad Decision is one platform that does four things. It finds the
-              businesses who need what you sell. It checks every email before you
-              send. It writes your outreach messages. It sends them from your own
-              warmed-up inboxes with full tracking. Everything in one place, for
-              one price.
+              Bad Decision is one platform that finds the businesses who need
+              what you sell, checks every email before you send, writes your
+              outreach messages, sends them across email, WhatsApp, text, and
+              phone, and books meetings when people are ready. Everything lives
+              in one place, for one price, under one credit meter that shows you
+              the cost before every action.
             </p>
             <p>
-              We replaced the pile of scattered tools with one subscription. And we
-              priced it for everyone: free to start, and a fair monthly price when
-              you are ready to send real campaigns.
+              We replaced the pile of scattered tools with one subscription. And
+              we priced it for everyone: free to start, and a fair monthly price
+              when you are ready to send real campaigns. No lock-in, no hidden
+              fees, no surprise charges at the end of the month.
             </p>
 
-            <h2>Built for the world, not just one country</h2>
+            <h2>Built for everyone, not just founders</h2>
             <p>
-              Most outreach tools are built in one part of the world and priced for
-              that market. They charge in one currency, support one set of payment
+              Most outreach tools are built for one kind of buyer in one part of
+              the world. They charge in one currency, support one set of payment
               methods, and ignore everyone else. We are changing that.
             </p>
             <p>
-              We accept payments from anywhere in the world. We support lead
-              sources that work for emerging markets, not just established ones. We
-              built engines that find businesses without websites, find local
-              professionals by radius, and find businesses already paying for ads.
-              And we priced the platform so a person in any country can afford the
-              same tools as a person anywhere else.
+              Bad Decision is for sales teams, agencies, freelancers, small
+              business owners, consultants, recruiters, real estate agents, and
+              coaches. We accept payments from anywhere in the world. We support
+              lead sources that work for emerging markets, not just established
+              ones. We built engines that find businesses without websites, find
+              local pros by industry, and find businesses already paying for
+              ads. And we priced the platform so a person in any country can
+              afford the same tools as a person anywhere else.
             </p>
 
             <h2>What we believe</h2>
@@ -62,12 +67,12 @@ export default function AboutPage() {
                 {
                   icon: Target,
                   title: "Leads should be fresh, not stale",
-                  body: "A lead list from 6 months ago is garbage. We search the live internet on every search. Your leads are minutes old, not months.",
+                  body: "A lead list from 6 months ago is dead weight. We search the live web on every search. Your leads are minutes old, not months old.",
                 },
                 {
                   icon: Users,
                   title: "You should not need five tools",
-                  body: "Find, check, write, send, track. One subscription. Stop duct-taping four or five tools together.",
+                  body: "Find, check, write, send, track, and book. One subscription. Stop paying for tools that do not talk to each other.",
                 },
                 {
                   icon: Globe,
@@ -78,6 +83,16 @@ export default function AboutPage() {
                   icon: Heart,
                   title: "Your reputation is yours",
                   body: "We never send from our servers. Your inboxes, your domains, your sender reputation. We just help you send safely.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Honesty over hype",
+                  body: "We will not promise 85 percent reply rates or magical AI agents. We will tell you what works, what does not, and what it costs before you click.",
+                },
+                {
+                  icon: Target,
+                  title: "You should see the price first",
+                  body: "Every metered action shows its cost before it runs. If you do not have enough credits, the action is blocked. No surprises.",
                 },
               ].map((v) => (
                 <div key={v.title} className="card-premium p-6">
@@ -93,18 +108,19 @@ export default function AboutPage() {
             <h2>The team</h2>
             <p>
               We are a small, focused team. We have been building software for
-              years, and we have felt the pain of every tool we are replacing. Bad
-              Decision is the product we wished existed when we started our own
-              companies.
+              years, and we have felt the pain of every tool we are replacing.
+              Bad Decision is the product we wished existed when we started our
+              own companies and tried to find our first customers.
             </p>
 
             <h2>Our commitment to you</h2>
             <p>
               We will never sell your data. We will never send emails from our
-              servers on your behalf. We will never lock you into a contract. We
-              will always offer a free tier so people with zero budget can test the
-              platform. And we will always be honest about what works and what does
-              not in cold outreach, even when it is not flattering to us.
+              servers on your behalf. We will never lock you into a contract.
+              We will always offer a free tier so people with zero budget can
+              test the platform. And we will always be honest about what works
+              and what does not in cold outreach, even when it is not flattering
+              to us.
             </p>
             <p>
               If you are tired of making bad decisions with how you reach out to

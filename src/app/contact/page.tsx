@@ -1,13 +1,13 @@
 import { ContactForm } from "./contact-form";
 import { PageHeader } from "@/components/sections/page-header";
-import { Mail, MessageSquare, Clock } from "lucide-react";
+import { Mail, MessageSquare, Clock, ShieldCheck } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
 
 const TOPICS = [
   { value: "general", label: "General question" },
-  { value: "sales", label: "Sales inquiry" },
+  { value: "sales", label: "Sales question" },
   { value: "support", label: "Technical support" },
-  { value: "enterprise", label: "Enterprise / custom plan" },
+  { value: "enterprise", label: "Enterprise or custom plan" },
   { value: "partnership", label: "Partnership" },
   { value: "feedback", label: "Feedback" },
 ];
@@ -16,8 +16,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        title="Talk to a human"
-        subtitle="We are a small team that actually reads every email. Most replies come within 24 hours. No bots, no tiers, no escalation queues."
+        title="Talk to us"
+        subtitle="We are a small team that actually reads every email. Most replies come within 24 hours, Monday through Friday. No bots, no tiers, no escalation queues."
       />
 
       <section className="py-16 sm:py-24">
@@ -47,8 +47,8 @@ export default function ContactPage() {
                 <h3 className="mt-3 font-extrabold text-gray-900">Response time</h3>
                 <p className="mt-1 text-sm font-medium text-gray-600">
                   Most emails answered within 24 hours, Monday through Friday.
-                  Enterprise sales inquiries get priority, and we usually reply the
-                  same day.
+                  Enterprise sales questions get priority, and we usually reply
+                  the same day.
                 </p>
               </div>
 
@@ -57,12 +57,14 @@ export default function ContactPage() {
                 <h3 className="mt-3 font-extrabold text-gray-900">Already a user?</h3>
                 <p className="mt-1 text-sm font-medium text-gray-600">
                   The fastest way to get help is inside the dashboard. Click the
-                  chat icon in the bottom-right. Our team sees those messages first.
+                  chat icon in the bottom-right corner. Our team sees those
+                  messages first.
                 </p>
               </div>
 
               <div className="card-premium border-gray-900 p-6">
-                <h3 className="font-extrabold text-gray-900">
+                <ShieldCheck className="h-6 w-6 text-gray-900" />
+                <h3 className="mt-3 font-extrabold text-gray-900">
                   Looking for enterprise?
                 </h3>
                 <p className="mt-1 text-sm font-medium text-gray-600">

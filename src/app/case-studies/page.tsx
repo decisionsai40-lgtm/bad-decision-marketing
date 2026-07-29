@@ -1,12 +1,15 @@
 import { PageHeader } from "@/components/sections/page-header";
 import { Star, Quote } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/utils";
 
 const CASES = [
   {
     company: "Lagos Realty Co.",
     location: "Lagos, Nigeria",
     industry: "Real estate",
-    headline: "Booked 12 meetings in 30 days using the Companies & Professionals engine",
+    headline: "Booked 12 meetings in 30 days with the Companies and Professionals engine",
     quote:
       "We were paying for lead lists that bounced 40 percent of the time. With Bad Decision, we pulled 800 verified agents in Lagos in one afternoon. 12 of them booked a call. Three signed. We made our money back in the first week.",
     author: "Adaeze O.",
@@ -21,8 +24,8 @@ const CASES = [
   {
     company: "Glow Skin Co.",
     location: "Brooklyn, NY",
-    industry: "DTC skincare",
-    headline: "Replaced four different tools with one Bad Decision subscription",
+    industry: "Online skincare store",
+    headline: "Replaced four tools with one subscription",
     quote:
       "I was paying for a lead finder, an email checker, a message writer, and a sending tool. Four subscriptions, four logins, four bills. Bad Decision does all four jobs in one place. The AI writing alone was worth it. My reply rate went from 3 percent to 8 percent.",
     author: "Marcus T.",
@@ -38,7 +41,7 @@ const CASES = [
     company: "Zenith Agency",
     location: "Austin, TX",
     industry: "Marketing agency",
-    headline: "Scaled to 50,000 sends per month across 30 client inboxes",
+    headline: "Runs outreach for 12 clients from one workspace",
     quote:
       "We manage cold outreach for 12 clients. Before Bad Decision, we had 12 separate workspaces and a spreadsheet to track them. Now everything is in one workspace, we plug in each client's inboxes, and the warmup engine keeps every domain healthy. Our client churn dropped to zero.",
     author: "Priya K.",
@@ -50,14 +53,30 @@ const CASES = [
       { label: "Client churn", value: "0%" },
     ],
   },
+  {
+    company: "Bright Path Coaching",
+    location: "Manchester, UK",
+    industry: "Business coaching",
+    headline: "Books calls with the AI voice engine while she sleeps",
+    quote:
+      "I am a solo coach. I cannot afford to cold call all day. I set up an AI voice agent on Bad Decision, gave it my booking page, and let it run during business hours. It books 4 to 6 calls a week for me, and I just show up to the meetings. I should have done this a year ago.",
+    author: "Helen B.",
+    role: "Founder, Bright Path Coaching",
+    stats: [
+      { label: "Calls per week", value: "40+" },
+      { label: "Meetings booked", value: "5/wk" },
+      { label: "Hours saved", value: "20/wk" },
+      { label: "Cost vs SDR", value: "-95%" },
+    ],
+  },
 ];
 
 export default function CaseStudiesPage() {
   return (
     <>
       <PageHeader
-        title="People using Bad Decision to close deals"
-        subtitle="Real numbers from real users. Not paid testimonials. These are people who switched from scattered tools to one platform and never looked back."
+        title="Stories from people who stopped making bad decisions"
+        subtitle="Real numbers from real users who switched from scattered tools to one platform. They are not paid testimonials. They are people who found a better way to reach customers."
       />
 
       <section className="py-16 sm:py-24">
@@ -114,8 +133,26 @@ export default function CaseStudiesPage() {
               ))}
             </div>
             <p className="mt-2 text-sm font-medium text-gray-500">
-              Loved by sales teams and agencies in over 20 countries
+              Used by sales teams, agencies, freelancers, recruiters, and
+              coaches in over 20 countries.
             </p>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-extrabold text-gray-900">
+              Want to be the next story?
+            </h2>
+            <p className="mt-2 font-medium text-gray-600">
+              Start free, find your first lead today, and tell us how it goes.
+            </p>
+            <Link
+              href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
+              className="btn-primary mt-6 inline-flex"
+            >
+              Find your first lead
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

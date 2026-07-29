@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   dashboardUrl: process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://dashboard.baddecision.app",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@baddecision.app",
   description:
-    "Bad Decision helps you find the right people to sell to. We search the web for leads, check every email so you know it works before you send, write your messages for you, and send them from your own inbox. One simple tool that costs less than paying for four separate ones.",
+    "Every other way of finding customers is a bad decision. Bad Decision is one platform that finds the right people, checks every email, writes your messages, sends them across email, WhatsApp, text, and phone, and books meetings when people are ready. One subscription instead of five tools that do not talk to each other.",
   social: {
     twitter: "@baddecisionapp",
     github: "https://github.com/decisionsai40-lgtm",
@@ -196,10 +196,10 @@ export const ADDONS: Addon[] = [
     slug: "ai_voice",
     name: "AI Voice Calling",
     description:
-      "AI cold calling via the Native Voice Engine. Handles in-call booking, callbacks, do-not-call lists, and post-call notes.",
+      "AI cold calling via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call.",
     price: 49,
     eligiblePlans: ["pro"],
-    meteredNote: "100 minutes/mo included, then $0.20/min",
+    meteredNote: "500 minutes/mo included, then $0.20/min",
   },
   {
     slug: "line_verification",
@@ -280,19 +280,19 @@ export const CREDIT_PACKS: CreditPack[] = [
 export const FAQS = [
   {
     q: "Why is it called Bad Decision?",
-    a: "Because every other way of finding customers is a bad decision. Buying a stale lead list is a bad decision. Paying for five different tools that do not talk to each other is a bad decision. Blasting ten thousand emails from a cold domain is a bad decision. We built the opposite of all that. The name is a reminder to stop making bad decisions with how you find new customers, and a promise that we will not let you make one with us.",
+    a: "Because every other way of finding customers is a bad decision. Buying a stale lead list is a bad decision. Paying for five tools that do not talk to each other is a bad decision. Burning your domain with a hundred thousand cold emails is a bad decision. We built the opposite of all that. The name is a reminder to stop making bad decisions with how you find customers, and a promise that we will not let you make one with us.",
   },
   {
     q: "What does Bad Decision actually do?",
-    a: "Bad Decision is one platform that does four things. It finds the businesses who need what you sell. It checks every email before you send. It writes your messages for you. It sends them from your own email inbox with full tracking. You get everything in one place instead of paying for four or five different tools.",
+    a: "Bad Decision is one platform that finds the businesses who need what you sell, checks every email before you send, writes your messages for you, sends them across email, WhatsApp, text, and phone, and books meetings when people are ready to talk. You can also control all of it from ChatGPT, Claude, or Gemini if that is where you work. One subscription instead of five tools that do not talk to each other.",
   },
   {
     q: "Do I need to bring my own leads?",
-    a: "No. That is the whole point. You tell us who you want to reach, like real estate agents in Lagos or skincare stores in the US, and our search finds them for you. Every lead comes with company name, website, email, phone, and social links. You can also bring your own list if you already have one, and we will check every email before you send.",
+    a: "No. That is the whole point. You tell us who you want to reach, like real estate agents in Lagos or skincare stores in the United States, and our four search engines find them on the live web. Every lead comes with company name, website, email, phone, and social links. You can also bring your own list if you have one, and we will check every email before you send.",
   },
   {
     q: "How does the email checking work?",
-    a: "Every email gets a careful check. We look at the email format, the domain name, the mail server, and the actual mailbox to see if it is real. You get a clear answer for each email: safe to send, risky, or will bounce. You can skip the risky ones to keep your email trusted, or include them if you want to reach as many people as you can.",
+    a: "Every email gets a careful check before you send. We look at the format, the domain, the mail server, and the actual mailbox to see if it is real. We also catch throwaway email addresses and role addresses like info@ and sales@. You get a clear answer for each email: safe to send, risky, or will bounce. Skip the risky ones to keep your inbox trusted, or include them if you want to reach as many people as you can.",
   },
   {
     q: "Can I use my own accounts to save money?",
@@ -304,26 +304,26 @@ export const FAQS = [
   },
   {
     q: "How long does it take to build trust for a new email inbox?",
-    a: "Usually 7 to 15 days. We start slow, with just a few emails per day, and slowly send more over time. Other inboxes in our network send and reply to these early messages, help any that land in spam, and build your good name with email providers. You can start a real campaign once your inbox shows it is ready.",
+    a: "Usually 7 to 15 days. We start slow, with just a few emails per day, and slowly send more over time. Other inboxes in our network send and reply to these early messages, rescue any which land in spam, and build your good name with email providers. You can start a real campaign once your inbox shows it is ready.",
   },
   {
-    q: "What about spam laws and email compliance?",
-    a: "Every email sent through Bad Decision includes a one-click unsubscribe link, your physical mailing address, and proper email signing. Bounces and complaints are tracked in real time. Anyone who bounces, complains, or asks to unsubscribe is automatically added to your block list and never contacted again. You stay on the right side of every spam law.",
+    q: "What about spam laws and compliance?",
+    a: "Every email you send includes a one-click unsubscribe link, your physical mailing address, and proper email signing. Bounces and complaints are tracked in real time. Anyone who bounces, complains, or asks to unsubscribe is automatically added to your block list and never contacted again. AI voice calls only run with prior written consent, respect calling hours, and skip anyone on the do-not-call list. You stay on the right side of every spam and calling law.",
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Cancel from your billing portal with one click. Your subscription stays active until the end of the current billing period, then drops to the Free plan. No contracts, no cancellation fees, no lock-in.",
+    a: "Yes. Cancel from your billing portal with one click. Your subscription stays active until the end of the current billing period, then drops to the Free plan. Add-ons can be cancelled on their own without touching your base plan. No contracts, no cancellation fees, no lock-in.",
   },
   {
     q: "Do you offer refunds?",
-    a: "If you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. After that, subscriptions are non-refundable but you keep access until the end of the period. See our refund policy for full details.",
+    a: "If you cancel within 7 days of your first paid subscription and have not sent more than 100 campaign emails, we will refund 100 percent. After that, subscriptions are non-refundable but you keep access until the end of the period. Credit packs are non-refundable once you use them. See our refund policy for full details.",
   },
   {
     q: "Is there a free plan?",
-    a: "Yes, free forever. You get 50 leads per search, 100 email checks per month, 50 message drafts per month, and 1 email inbox. You cannot start live campaigns on Free, but you can draft them. You can test the full find, check, and write process without paying. Upgrade only when you are ready to actually send.",
+    a: "Yes, free forever. You get 50 lead discoveries per month, 50 email verifications per month, 50 AI message drafts per month, and 1 email inbox. You cannot start live email campaigns on Free, but you can draft them and try the whole find, check, and write process without paying. Upgrade only when you are ready to actually send.",
   },
   {
     q: "What makes this different from other outreach tools?",
-    a: "Most outreach tools assume you already have a list of leads. They just send emails. Bad Decision finds the leads for you first, then checks them, then writes the message, then sends. It is four tools in one. You also get six ways to write messages that work, an invite-only way to use your own accounts and cut your costs to zero, and pricing that works for people in any country.",
+    a: "Most outreach tools assume you already have a list of leads, and they just send emails. We find the leads for you first, then check them, then write the message, then send across email, WhatsApp, text, and phone, then book the meeting and pause the rest of your campaign. You also get six ways to write messages, an AI voice engine that books meetings on the call, a drag-and-drop automation canvas, a pre-flight cost estimate before every action, and an invite-only way to use your own accounts and cut your costs to zero. Nobody else puts all of that in one subscription.",
   },
 ] as const;

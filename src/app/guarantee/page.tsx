@@ -7,8 +7,8 @@ export default function GuaranteePage() {
   return (
     <>
       <PageHeader
-        title="7-day money-back. No questions asked."
-        subtitle="We are confident Bad Decision works. But if it does not work for you in the first week, you should not pay. Here is our promise in plain English."
+        title="7-day money-back. No questions, no friction."
+        subtitle="We are confident Bad Decision works. But if it does not work for you in the first week, you should not pay. Here is our promise in plain English, with no fine print buried at the bottom."
       />
 
       <section className="py-16 sm:py-24">
@@ -19,10 +19,10 @@ export default function GuaranteePage() {
               The Bad Decision Guarantee
             </h2>
             <p className="mt-3 text-lg font-medium text-gray-600">
-              If you cancel within 7 days of your first paid subscription and have
-              not sent more than 100 campaign emails, we will refund 100 percent.
-              No questions, no friction, no retention scripts, and no "are you
-              sure?" pop-ups.
+              If you cancel within 7 days of your first paid subscription and
+              have not sent more than 100 campaign emails, we will refund 100
+              percent. No questions, no friction, no retention scripts, and no
+              "are you sure?" pop-ups.
             </p>
           </div>
 
@@ -30,13 +30,13 @@ export default function GuaranteePage() {
             <h2>The fine print (we kept it short)</h2>
             <ul>
               <li>
-                <strong>Who qualifies:</strong> Any new paid subscriber on Starter,
-                Growth, or Pro plans.
+                <strong>Who qualifies:</strong> Any new paid subscriber on
+                Starter, Growth, or Pro plans.
               </li>
               <li>
-                <strong>Time window:</strong> Within 7 calendar days of your first
-                subscription charge. The clock starts the moment your payment is
-                processed.
+                <strong>Time window:</strong> Within 7 calendar days of your
+                first subscription charge. The clock starts the moment your
+                payment is processed.
               </li>
               <li>
                 <strong>Usage cap:</strong> You must have sent fewer than 100
@@ -52,15 +52,15 @@ export default function GuaranteePage() {
               </li>
               <li>
                 <strong>What gets refunded:</strong> Your first subscription
-                charge, in full. Credit top-up purchases are non-refundable once
+                charge, in full. Credit pack purchases are non-refundable once
                 consumed. See our{" "}
                 <Link href="/refund">refund policy</Link> for details.
               </li>
               <li>
                 <strong>What happens to your account:</strong> Your subscription
                 cancels immediately, your workspace downgrades to the Free tier,
-                and your data stays accessible for 30 days in case you change your
-                mind.
+                and your data stays accessible for 30 days in case you change
+                your mind.
               </li>
             </ul>
 
@@ -68,25 +68,26 @@ export default function GuaranteePage() {
             <p>
               We have all bought software that promised the world and delivered
               nothing. The only way to know if Bad Decision works for your use
-              case is to try it with real leads and real campaigns. If it does not
-              work, we do not deserve your money.
+              case is to try it with real leads and real campaigns. If it does
+              not work, we do not deserve your money.
             </p>
             <p>
               The 100-email cap is the only limit. We need it because every send
-              costs us money in sending, verification, and warmup. But 100 emails
-              is enough to know if the platform fits your workflow. If you have
-              sent 100 and it is not working, we refund. Simple.
+              costs us money in sending, verification, and warmup. But 100
+              emails is enough to know if the platform fits your workflow. If you
+              have sent 100 and it is not working, we refund. Simple.
             </p>
 
             <h2>What is not covered</h2>
             <ul>
               <li>
-                Subscriptions past the 7-day window. You can still cancel anytime.
-                Your subscription ends at the end of the billing period, but no
-                refund.
+                Subscriptions past the 7-day window. You can still cancel
+                anytime. Your subscription ends at the end of the billing period,
+                but no refund.
               </li>
               <li>
-                Credit top-up purchases that have been partially or fully consumed.
+                Credit pack purchases that have been partially or fully
+                consumed.
               </li>
               <li>
                 Accounts terminated for abuse, spam, fraud, or Terms of Service
@@ -100,9 +101,9 @@ export default function GuaranteePage() {
 
             <h2>Ready to try?</h2>
             <p>
-              Start on the Free plan, no credit card needed. When you are ready to
-              send real campaigns, upgrade. If it does not work in the first week,
-              you get your money back.
+              Start on the Free plan, no credit card needed. When you are ready
+              to send real campaigns, upgrade. If it does not work in the first
+              week, you get your money back.
             </p>
           </div>
 
@@ -111,7 +112,7 @@ export default function GuaranteePage() {
               href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
               className="btn-primary inline-flex"
             >
-              Get started free
+              Find your first lead
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

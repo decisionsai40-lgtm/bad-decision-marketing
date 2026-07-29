@@ -13,6 +13,12 @@ import {
   Phone,
   MessageSquare,
   CheckCircle2,
+  Calendar,
+  Bot,
+  AlertTriangle,
+  DollarSign,
+  Clock,
+  XCircle,
 } from "lucide-react";
 import { SITE_CONFIG, PRICING_PLANS, FAQS } from "@/lib/utils";
 
@@ -20,11 +26,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SocialProof />
-      <TheProblem />
-      <Engines />
-      <HowItWorks />
+      <CostOfBadOutreach />
       <WhatYouGet />
+      <WhatYouAvoid />
+      <HowItWorks />
+      <SocialProof />
       <PlansPreview />
       <FAQPreview />
       <FinalCTA />
@@ -33,7 +39,7 @@ export default function HomePage() {
 }
 
 /* ============================================================
-   HERO : Problem, Solution, Benefit
+   HERO : honest, outcome-focused
    ============================================================ */
 function Hero() {
   return (
@@ -43,24 +49,26 @@ function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-gray-200 bg-white px-4 py-1.5 text-xs font-bold text-gray-700">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-            One platform for finding customers and reaching out
+            One platform finds, reaches, and books. Five tools gone.
           </span>
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Find your next customers and reach out, all in one place.
+            Every other way of finding customers is a bad decision.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-600 sm:text-xl">
-            Finding customers is slow when you juggle five different tools. Bad
-            Decision finds the right people, checks every email before you send,
-            writes your messages with AI, sends them from your inbox, and shows you
-            who is ready to talk. You get more meetings with less work, and you only
-            pay one subscription.
+            You are paying five companies to find one customer. Their lists
+            bounce, their tools do not talk to each other, and your emails still
+            land in spam. Bad Decision is one platform that finds the right
+            people, checks every email, writes your messages, sends them across
+            email and messaging and phone, and books meetings when people are
+            ready. You get more meetings with less work, and you only pay one
+            bill.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
               className="btn-primary w-full sm:w-auto"
             >
-              Get started free
+              Find your first lead
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/how-it-works" className="btn-secondary w-full sm:w-auto">
@@ -68,7 +76,7 @@ function Hero() {
             </Link>
           </div>
           <p className="mt-4 text-sm font-medium text-gray-500">
-            Free forever. No credit card needed.
+            Free forever. No credit card needed. 7-day money-back on paid plans.
           </p>
         </div>
 
@@ -84,9 +92,9 @@ function Hero() {
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Leads found", value: "1,247", icon: Search },
+                  { label: "Leads found this week", value: "1,247", icon: Search },
                   { label: "Verified emails", value: "1,089", icon: ShieldCheck },
-                  { label: "Replies this week", value: "83", icon: Inbox },
+                  { label: "Meetings booked", value: "23", icon: Calendar },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-lg bg-white/5 p-4">
                     <stat.icon className="h-5 w-5 text-white" />
@@ -98,8 +106,8 @@ function Hero() {
               <div className="mt-3 space-y-2">
                 {[
                   { name: "Acme Realty, Lagos", status: "Replied", color: "bg-green-500/20 text-green-300" },
-                  { name: "Glow Skin Co, Brooklyn", status: "Opened", color: "bg-blue-500/20 text-blue-300" },
-                  { name: "Zen Coaching, Austin", status: "Sent", color: "bg-white/10 text-gray-300" },
+                  { name: "Glow Skin Co, Brooklyn", status: "Meeting booked", color: "bg-blue-500/20 text-blue-300" },
+                  { name: "Zen Coaching, Austin", status: "Called, callback set", color: "bg-white/10 text-gray-300" },
                 ].map((row) => (
                   <div
                     key={row.name}
@@ -121,76 +129,63 @@ function Hero() {
 }
 
 /* ============================================================
-   SOCIAL PROOF
+   COST OF BAD OUTREACH : the dollars and hours you are losing
    ============================================================ */
-function SocialProof() {
-  return (
-    <section className="border-b-2 border-gray-200 bg-white py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
-          {[
-            { value: "4 engines", label: "Ways to find buyers" },
-            { value: "6 styles", label: "Message writing styles" },
-            { value: "99.2%", label: "Email check accuracy" },
-            { value: "7 days", label: "Money-back guarantee" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <div className="text-3xl font-extrabold text-gray-900">{stat.value}</div>
-              <div className="mt-1 text-sm font-medium text-gray-500">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+function CostOfBadOutreach() {
+  const costs = [
+    {
+      icon: DollarSign,
+      title: "$330 to $400 a month, gone",
+      body: "A lead database, an email checker, a sending tool, a WhatsApp tool, an AI writer, a scheduler. Five to seven subscriptions that add up to $330, $400, sometimes more. And most of them still do not talk to each other.",
+    },
+    {
+      icon: Clock,
+      title: "Hours lost juggling tools",
+      body: "You log into one tool to find leads, another to check emails, a third to write messages, a fourth to send, a fifth to track replies. Half your outreach time goes into copy-paste between tabs that should not need to exist.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Bounced emails burn your domain",
+      body: "Send to a stale list and 30 percent bounce. Your inbox gets flagged. Your sender reputation drops. The next campaign lands in spam. Every domain you burn is a market you can never email again.",
+    },
+    {
+      icon: XCircle,
+      title: "Cold calls without consent risk lawsuits",
+      body: "Call someone who never asked to be called, or skip the do-not-call list, and you are one complaint away from a fine. Most dialers do not check. You carry the risk, they collect the per-minute fee.",
+    },
+  ];
 
-/* ============================================================
-   THE PROBLEM : emotional hook + logical pain
-   ============================================================ */
-function TheProblem() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="border-b-2 border-gray-200 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Finding customers should not be this hard.
+          <span className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1.5 text-xs font-bold text-red-600">
+            <AlertTriangle className="h-3.5 w-3.5" />
+            What bad outreach is costing you right now
+          </span>
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            You are losing money, hours, and domains.
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            You buy a lead list, and half the emails bounce. You pay for an email
-            checker, a sending tool, an AI writer, and a reply tracker. You juggle
-            four logins, four bills, and four tools that do not talk to each other.
-            By the time your first campaign goes out, you have spent weeks and you
-            still do not know if anyone will reply.
+            Every other tool will tell you what you could gain. Nobody tells you
+            what you are already losing. Here is the honest version.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[
-            {
-              icon: Search,
-              title: "Stop guessing who to contact",
-              body: "Tell us who you want to reach and we search the live web to bring back real businesses with real contact info. You get fresh leads in minutes, not stale lists full of dead ends.",
-            },
-            {
-              icon: ShieldCheck,
-              title: "Know every email works before you send",
-              body: "Every email is checked before you send. You see which ones are safe, which are risky, and which will bounce. You only pay for the safe ones, so your inbox stays trusted.",
-            },
-            {
-              icon: Inbox,
-              title: "See every reply in one place",
-              body: "We write the message, send it from your inbox at the right time, and pull every reply into one place. You spend your time talking to people who said yes, not chasing a scattered inbox.",
-            },
-          ].map((item) => (
-            <div key={item.title} className="card-premium p-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100">
-                <item.icon className="h-6 w-6 text-gray-900" />
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {costs.map((c) => (
+            <div key={c.title} className="card-premium p-8">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-50">
+                  <c.icon className="h-6 w-6 text-red-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-extrabold text-gray-900">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 font-medium text-gray-600">{c.body}</p>
+                </div>
               </div>
-              <h3 className="mt-4 text-xl font-extrabold text-gray-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 font-medium text-gray-600">{item.body}</p>
             </div>
           ))}
         </div>
@@ -200,37 +195,54 @@ function TheProblem() {
 }
 
 /* ============================================================
-   ENGINES : the four ways to find leads (all live today)
+   WHAT YOU GET : outcomes, not features
    ============================================================ */
-function Engines() {
-  const engines = [
+function WhatYouGet() {
+  const outcomes = [
     {
-      name: "Companies & Professionals",
-      icon: Users,
-      description:
-        "Find local businesses and pros by industry and location. Every lead comes with name, website, email, phone, and social links.",
-      examples: ["Real estate agents in Lagos", "Dentists in Brooklyn", "Coaches in Austin"],
-    },
-    {
-      name: "Ads Running",
-      icon: BarChart3,
-      description:
-        "Find businesses already paying for ads. If they spend money on ads, they have money to spend on what you sell too.",
-      examples: ["Stores running social ads", "Software companies on search ads"],
-    },
-    {
-      name: "Ecommerce",
-      icon: Globe,
-      description:
-        "Find online stores by the tools and platforms they use. Know what runs their shop before you reach out.",
-      examples: ["Skincare stores online", "Coffee shops selling online"],
-    },
-    {
-      name: "Web Absent",
       icon: Search,
-      description:
-        "Find businesses with no website. Perfect if you sell web design, marketing, or branding services.",
-      examples: ["Plumbers with no site", "Caterers only on review sites"],
+      title: "Fresh leads in minutes",
+      body: "Four search engines pull live businesses off the web, with names, websites, emails, phones, and social links. Not a stale list that bounces half the time, and not a CSV someone scraped six months ago.",
+    },
+    {
+      icon: Sparkles,
+      title: "Messages that sound like you wrote them",
+      body: "Pick from six proven writing styles. Each lead gets a unique email, social message, and call script that fits their business. Short, personal, and ready to send. No robot copy, no blank page.",
+    },
+    {
+      icon: Send,
+      title: "Emails that land in the inbox",
+      body: "You send from your own inbox, and we slowly build its trust over 7 to 15 days. We send at the right times, switch between your inboxes, and pull replies into one place. Your email lands where people actually look.",
+    },
+    {
+      icon: Inbox,
+      title: "Replies in one place",
+      body: "Every reply across every inbox shows up in one view, sorted by who is interested, who is out of office, and who asked to leave. You spend your time talking to people who said yes, not chasing a scattered inbox.",
+    },
+    {
+      icon: Calendar,
+      title: "Meetings booked for you",
+      body: "When someone is ready to talk, they pick a time on your booking page. The moment they book, every email and message for that lead pauses on its own. No more back-and-forth, no more emailing someone who already said yes.",
+    },
+    {
+      icon: Phone,
+      title: "Calls made for you",
+      body: "An AI voice engine picks up the phone, has a real conversation, books the meeting on the call, schedules a callback when the time is wrong, and stops calling the moment someone says no. You get a transcript and a recording of every call.",
+    },
+    {
+      icon: MessageSquare,
+      title: "Reach people on WhatsApp and text",
+      body: "Email is the start. Add WhatsApp and SMS campaigns on the channels your leads actually check. We skip landlines and numbers that are not on WhatsApp, so you never pay for a message that cannot be read.",
+    },
+    {
+      icon: Bot,
+      title: "Control it all from your AI assistant",
+      body: "Connect ChatGPT, Claude, or Gemini to your workspace. Ask your AI to find leads, check emails, launch a campaign, book a meeting, or pull your numbers. One API key, three assistants, and a full audit log of every call they make.",
+    },
+    {
+      icon: BarChart3,
+      title: "Numbers that tell the truth",
+      body: "Open rate, reply rate, bounce rate, bookings, calls answered, calls booked. Every send and every reply is tracked so you know what is working and what to rewrite. No vanity metrics, just the numbers that move pipeline.",
     },
   ];
 
@@ -239,38 +251,22 @@ function Engines() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Four ways to find your next customer
+            What you actually get
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            Pick the one that fits who you are looking for. Each one searches the
-            live web and brings back fresh leads in minutes.
+            These are outcomes, not a feature checklist. Each one is something
+            that saves you money, saves you time, or books you a meeting.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {engines.map((engine) => (
-            <div
-              key={engine.name}
-              className="card-premium relative overflow-hidden p-8"
-            >
-              <span className="absolute right-4 top-4 rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-green-600">
-                Live
-              </span>
-              <engine.icon className="h-10 w-10 text-gray-900" />
-              <h3 className="mt-4 text-xl font-extrabold text-gray-900">
-                {engine.name}
-              </h3>
-              <p className="mt-2 font-medium text-gray-600">{engine.description}</p>
-              <div className="mt-4 space-y-1.5">
-                {engine.examples.map((ex) => (
-                  <div
-                    key={ex}
-                    className="rounded-md bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700"
-                  >
-                    &ldquo;{ex}&rdquo;
-                  </div>
-                ))}
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {outcomes.map((o) => (
+            <div key={o.title} className="card-premium p-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <o.icon className="h-5 w-5 text-gray-900" />
               </div>
+              <h3 className="mt-4 text-lg font-extrabold text-gray-900">{o.title}</h3>
+              <p className="mt-2 text-sm font-medium text-gray-600">{o.body}</p>
             </div>
           ))}
         </div>
@@ -280,46 +276,93 @@ function Engines() {
 }
 
 /* ============================================================
-   HOW IT WORKS : preview
+   WHAT YOU AVOID : pains prevented
+   ============================================================ */
+function WhatYouAvoid() {
+  const avoided = [
+    "Paying for five tools that do not talk to each other.",
+    "Sending emails that bounce and ruin your sender reputation.",
+    "Calling people who never asked to be called.",
+    "Messaging numbers that are not on WhatsApp or are landlines.",
+    "Continuing to email someone who already booked a meeting with you.",
+    "Guessing what things cost. You see the price before every action.",
+    "Staring at a blank page trying to write the first email.",
+    "Losing track of which lead is in which step of the follow-up.",
+    "Surprise charges at the end of the month.",
+    "Lock-in to a yearly contract you cannot leave.",
+  ];
+
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            What you avoid
+          </h2>
+          <p className="mt-4 text-lg font-medium text-gray-600">
+            Every item below is a pain the other tools quietly drop in your lap.
+            We built Bad Decision to make sure none of them happen to you.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {avoided.map((item) => (
+            <div
+              key={item}
+              className="flex items-start gap-3 rounded-2xl border-2 border-gray-200 bg-white p-5"
+            >
+              <XCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" />
+              <span className="font-medium text-gray-700">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   HOW IT WORKS : simple 4-step (find, check, reach, book)
    ============================================================ */
 function HowItWorks() {
   const steps = [
     {
       icon: Search,
-      title: "1. Find leads",
+      title: "1. Find",
       description:
-        "Pick a search method, type who you want to reach, and we search the live web. Every lead comes with contact info and company details.",
+        "Pick a search engine, type who you want to reach, and we pull fresh businesses off the live web with full contact info. No stale lists, no scraping by hand.",
     },
     {
       icon: ShieldCheck,
-      title: "2. Check emails",
+      title: "2. Check",
       description:
-        "Every email goes through a careful check. You see which are safe, which are risky, and which will bounce. You only pay for the safe ones.",
-    },
-    {
-      icon: Sparkles,
-      title: "3. Write messages",
-      description:
-        "Pick a writing style. We write a short, personal message for each lead. Edit it, or send it as is. No more staring at a blank screen.",
+        "Every email goes through a careful check. You see which are safe, which are risky, and which will bounce. You only send to the safe ones, so your inbox stays trusted.",
     },
     {
       icon: Send,
-      title: "4. Send and track",
+      title: "3. Reach",
       description:
-        "Connect your email inbox. We slowly build its trust, send at the right time, and tell you the moment someone opens, clicks, or replies.",
+        "We write a personal message in your chosen style, then send it from your own inbox at the right time. Add WhatsApp, text, or an AI voice call to reach people on more channels.",
+    },
+    {
+      icon: Calendar,
+      title: "4. Book",
+      description:
+        "When someone is ready, they pick a time on your booking page. The moment they book, every other message for that lead pauses. You show up to the meeting, not to a pile of follow-ups.",
     },
   ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="bg-gray-50 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Four steps. One subscription.
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            Go from wondering who to contact to seeing real replies in about 14
-            days, with no setup, no extra tools, and no guessing.
+            Find the right people, check their emails, reach out across the
+            channels they use, and book the meeting. Everything happens inside
+            one dashboard, with no extra tools and no guessing.
           </p>
         </div>
 
@@ -351,63 +394,22 @@ function HowItWorks() {
 }
 
 /* ============================================================
-   WHAT YOU GET : value outcomes
+   SOCIAL PROOF : atypical stats
    ============================================================ */
-function WhatYouGet() {
-  const outcomes = [
-    {
-      icon: ShieldCheck,
-      title: "Your email stays trusted",
-      body: "Every email is checked before you send. Bad emails are caught and removed. Your inbox stays healthy, your messages land in the main inbox instead of spam, and your good name with email providers stays safe.",
-    },
-    {
-      icon: Sparkles,
-      title: "Messages that sound like you wrote them",
-      body: "Pick from six ways to write messages that work. Each lead gets a unique message that fits their business. Short, personal, and ready to send. No cookie-cutter templates and no robot-sounding copy.",
-    },
-    {
-      icon: Send,
-      title: "Send from your own inbox the safe way",
-      body: "Connect your email account and we slowly build trust for it. We send at the right times and switch between your inboxes so no single one gets overused. Your email stays trusted because it stays in your hands.",
-    },
-    {
-      icon: Inbox,
-      title: "Never miss a reply",
-      body: "Every reply lands in one inbox. We sort them into groups so you can see who is interested, who is out of office, and who asked to unsubscribe. You see the interested ones first and reach back before they go cold.",
-    },
-    {
-      icon: BarChart3,
-      title: "Know what is working",
-      body: "See your open rate, reply rate, and bounce rate at a glance. Know which messages get replies and which need a rewrite. Make better choices with real numbers instead of guesses.",
-    },
-    {
-      icon: Globe,
-      title: "Reach people on more channels",
-      body: "Email is just the start. You can also send campaigns through WhatsApp and SMS as add-ons, so you can connect with customers on the channels they actually use.",
-    },
-  ];
-
+function SocialProof() {
   return (
-    <section className="bg-gray-50 py-20 sm:py-28">
+    <section className="border-y-2 border-gray-200 bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            What you actually get
-          </h2>
-          <p className="mt-4 text-lg font-medium text-gray-600">
-            These are real outcomes that help you book more meetings and waste less
-            money, not just a list of features.
-          </p>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {outcomes.map((o) => (
-            <div key={o.title} className="card-premium p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
-                <o.icon className="h-5 w-5 text-gray-900" />
-              </div>
-              <h3 className="mt-4 text-lg font-extrabold text-gray-900">{o.title}</h3>
-              <p className="mt-2 text-sm font-medium text-gray-600">{o.body}</p>
+        <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+          {[
+            { value: "4 engines", label: "Ways to find buyers" },
+            { value: "6 styles", label: "Proven message frameworks" },
+            { value: "1 subscription", label: "Replaces five tools" },
+            { value: "7 days", label: "Money-back guarantee" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <div className="text-3xl font-extrabold text-gray-900">{stat.value}</div>
+              <div className="mt-1 text-sm font-medium text-gray-500">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -417,7 +419,7 @@ function WhatYouGet() {
 }
 
 /* ============================================================
-   PLANS PREVIEW : plan names only, no prices
+   PLANS PREVIEW : plan names only, link to pricing
    ============================================================ */
 function PlansPreview() {
   return (
@@ -425,11 +427,12 @@ function PlansPreview() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            One subscription. Everything you need.
+            One subscription. Everything included.
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            Start free and upgrade when you are ready to send real campaigns. You
-            can cancel anytime.
+            Start free and upgrade only when you are ready to send real
+            campaigns. Cancel anytime, and add-ons can be cancelled on their own
+            without touching your base plan.
           </p>
         </div>
 
@@ -470,7 +473,7 @@ function PlansPreview() {
 }
 
 /* ============================================================
-   FAQ PREVIEW
+   FAQ PREVIEW : 4 key questions
    ============================================================ */
 function FAQPreview() {
   return (
@@ -478,15 +481,16 @@ function FAQPreview() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Questions, answered
+            Questions, answered straight
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            Here is the short version. See the full page for more answers.
+            Here are the four questions we hear most. See the full page for the
+            rest, with no soft-pedalling.
           </p>
         </div>
 
         <div className="mt-12 space-y-3">
-          {FAQS.slice(0, 5).map((faq) => (
+          {FAQS.slice(0, 4).map((faq) => (
             <details
               key={faq.q}
               className="card-premium group cursor-pointer p-6 [&_summary]:list-none"
@@ -514,27 +518,28 @@ function FAQPreview() {
 }
 
 /* ============================================================
-   FINAL CTA
+   FINAL CTA : outcome-focused
    ============================================================ */
 function FinalCTA() {
   return (
     <section className="bg-gray-900 py-20 text-white sm:py-28">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-          Stop guessing
+          Stop making bad decisions
           <br />
-          and start finding real buyers.
+          with how you find customers.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-300">
-          Start with a free forever plan that needs no credit card. Upgrade only
-          when you are ready to send real campaigns.
+          Start free, find your first lead today, and book a meeting this week.
+          If it does not work in the first 7 days, you get your money back. No
+          questions, no friction, no retention scripts.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-gray-900 hover:bg-gray-100 sm:w-auto"
           >
-            Get started free
+            Find your first lead
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
@@ -546,7 +551,7 @@ function FinalCTA() {
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-gray-300">
           <span className="flex items-center gap-1.5">
-            <Mail className="h-3.5 w-3.5" /> Money-back guarantee
+            <Mail className="h-3.5 w-3.5" /> 7-day money-back
           </span>
           <span className="flex items-center gap-1.5">
             <Phone className="h-3.5 w-3.5" /> Cancel anytime

@@ -10,15 +10,15 @@ export default function FAQPage() {
       items: FAQS.slice(0, 2),
     },
     {
-      name: "Finding leads & checking emails",
+      name: "Finding leads and checking emails",
       items: FAQS.slice(2, 5),
     },
     {
-      name: "Sending & deliverability",
+      name: "Sending and deliverability",
       items: FAQS.slice(5, 8),
     },
     {
-      name: "Billing & refunds",
+      name: "Billing and refunds",
       items: FAQS.slice(8, 11),
     },
     {
@@ -30,8 +30,8 @@ export default function FAQPage() {
   return (
     <>
       <PageHeader
-        title="Questions, answered"
-        subtitle="Could not find what you are looking for? Email us at support@baddecision.app. We usually reply within 24 hours."
+        title="Questions, answered straight"
+        subtitle="No soft-pedalling, no retention scripts. If you cannot find your answer here, email us at support@baddecision.app and a real human will reply, usually within 24 hours."
       />
 
       <section className="py-16 sm:py-24">
@@ -64,11 +64,12 @@ export default function FAQPage() {
               Still have questions?
             </h2>
             <p className="mt-2 font-medium text-gray-600">
-              We are a small team that actually cares. Email us and a real human will reply.
+              We are a small team that reads every email. Send us a note and a
+              real human will reply, usually within a day.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/contact" className="btn-primary">
-                Contact us
+                Talk to us
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a

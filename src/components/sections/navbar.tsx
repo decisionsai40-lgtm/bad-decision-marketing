@@ -74,7 +74,7 @@ export function Navbar() {
             href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
           >
-            Get started free
+            Find your first lead
           </Link>
         </div>
 
@@ -116,7 +116,7 @@ export function Navbar() {
                 className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
                 onClick={() => setOpen(false)}
               >
-                Get started free
+                Find your first lead
               </Link>
             </div>
           </div>

@@ -1,5 +1,18 @@
 import Link from "next/link";
-import { Search, ShieldCheck, Sparkles, Send, Inbox, ArrowRight } from "lucide-react";
+import {
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Send,
+  Inbox,
+  ArrowRight,
+  Calendar,
+  Phone,
+  MessageSquare,
+  Bot,
+  Workflow,
+  BarChart3,
+} from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
 
@@ -7,8 +20,8 @@ export default function HowItWorksPage() {
   return (
     <>
       <PageHeader
-        title="From zero to first reply in 14 days"
-        subtitle="There is no setup and you need no extra tools. Just sign up, search, check, write, and send. The full process runs inside one dashboard."
+        title="From I need customers to meetings booked"
+        subtitle="The whole journey lives in one dashboard. You search for the right people, check their emails, write the message, send it across the channels they use, and book the meeting when they are ready. No extra tools, no guessing, no copy-paste between tabs."
       />
 
       {/* The 4 steps in detail */}
@@ -18,56 +31,56 @@ export default function HowItWorksPage() {
             <StepBlock
               number="01"
               icon={Search}
-              title="Find leads"
-              description="Pick a search method, type who you want to reach, and we search the live web. Every lead comes with company name, website, email, phone, and social links."
+              title="Find the right people"
+              description="You tell us who you want to reach and we search the live web. Every lead comes with company name, website, email, phone, and social links, ready to use the moment you find them."
               bullets={[
-                "Four search methods you can use today: Companies & Professionals, Ads Running, Ecommerce, and Web Absent.",
-                "Each search knows where to look for that type of business.",
-                "Up to 2,000 leads per search on the Pro plan.",
-                "No repeat results from your past searches.",
-                "30-day memory: if you search the same thing twice, the second search is free.",
+                "Four search engines cover different kinds of businesses: companies and pros, businesses running ads, online stores, and businesses with no website.",
+                "Type a query like real estate agents in Lagos or skincare stores in the United States, pick a country, and we bring back fresh leads in minutes.",
+                "Every lead includes email, phone, website, industry, city, and tech stack, so you know who you are reaching before you reach out.",
+                "Re-run the same search within 30 days and it is free, because we cache the results for you.",
+                "Export any search to a spreadsheet and take your leads anywhere you want.",
               ]}
               example={{
-                query: "\"Skincare stores in the US using a known ecommerce platform\"",
-                result: "Returns 1,247 leads with email, social links, and shop platform details",
+                query: '"Skincare stores in the United States using a known online store platform"',
+                result: "1,247 leads with email, social links, and the shop platform each one runs on.",
               }}
             />
 
             <StepBlock
               number="02"
               icon={ShieldCheck}
-              title="Check emails"
-              description="Every email gets a careful check. You only pay for the good ones. Risky emails are flagged instead of being silently included."
+              title="Check every email before you send"
+              description="Every email gets a careful check so you know it is real. You only pay for the good ones, and risky addresses are flagged instead of being silently included."
               bullets={[
-                "Format check to catch typos and fake addresses.",
-                "Domain and mail server check to make sure the email can receive mail.",
-                "Live mailbox check to confirm the address is real and active.",
+                "Format check catches typos and obvious fakes.",
+                "Domain and mail server check confirms the address can actually receive mail.",
+                "Live mailbox check confirms the inbox is real and active, not a dead end.",
                 "Throwaway email blocking, because we know which domains are temporary.",
-                "Catch-all detection, because some servers say yes to everything.",
-                "Role address detection for info@, sales@, support@, and more.",
-                "Clear score for each email: Safe, Risky, or Will Bounce.",
+                "Role address detection for info@, sales@, support@, and other shared inboxes.",
+                "A clear answer for every email: safe to send, risky, or will bounce.",
+                "Anyone who bounces is auto-added to your block list and never contacted again.",
               ]}
               example={{
-                query: "Check 1,247 emails from the previous step",
-                result: "1,089 Safe, 87 Risky, 71 Will Bounce. You only pay for the 1,089 safe ones.",
+                query: "Check 1,247 emails from the previous step.",
+                result: "1,089 safe, 87 risky, 71 will bounce. You only send to the 1,089 safe ones.",
               }}
             />
 
             <StepBlock
               number="03"
               icon={Sparkles}
-              title="Write messages"
-              description="Pick a writing style and we write a short, personal message for each lead. We keep every message short so it looks like you wrote it by hand, not like a computer made it."
+              title="Write the message in your voice"
+              description="Pick a writing style and we draft a short, personal message for each lead. We keep every message short so it looks like you wrote it by hand, not like a computer made it."
               bullets={[
-                "Six ways to write messages that work, so you can pick the one that fits your voice.",
-                "Each lead gets a unique message that fits their business.",
+                "Six proven writing styles to choose from, each based on a famous copywriter.",
+                "Every lead gets a unique email, social message, and call script that fits their business.",
                 "Short enough to look hand-written, long enough to say something real.",
-                "Write one at a time, or write messages for your whole campaign at once.",
-                "Edit any message before sending, or click to rewrite it.",
-                "You get four versions per lead: email subject, email body, social message, and call script.",
+                "Draft one lead at a time, or write messages for your whole list in one click.",
+                "Edit any message before sending, or click to rewrite it if the first try is not right.",
+                "Reply sentiment tagging tells you which inbound reply is interested, negative, out of office, or a meeting booked.",
               ]}
               example={{
-                query: "Write messages for 1,089 leads using one of our six styles",
+                query: "Write messages for 1,089 leads using one of our six styles.",
                 result: "1,089 personal emails ready to send, in about 3 minutes.",
               }}
             />
@@ -75,82 +88,97 @@ export default function HowItWorksPage() {
             <StepBlock
               number="04"
               icon={Send}
-              title="Send and track"
-              description="Connect your email inbox and we slowly build trust for it. We send at the right time and tell you the moment someone replies. Campaigns stop on their own when a person responds."
+              title="Reach out and book the meeting"
+              description="You send from your own inbox and we slowly build its trust. When someone is ready to talk, they pick a time on your booking page and every other message for that lead pauses on its own."
               bullets={[
-                "Trust building for your inbox: it goes from cold to trusted in 7 to 15 days.",
+                "Trust building takes your inbox from cold to trusted in 7 to 15 days.",
+                "We send only during the hours you choose, in the lead's time zone.",
                 "Smart switching between all your inboxes so no single one gets overworked.",
-                "We never send too many emails from one address in a single day.",
-                "Sending windows: we send only during business hours in the lead's time zone.",
-                "Reply tracking: every reply is pulled into one inbox for you.",
-                "Reply sorting: Interested, Not Interested, Out of Office, Unsubscribe, Bounce.",
-                "Auto-stop: any reply stops the rest of the campaign for that lead.",
-                "Block list: bounced emails and unsubscribes are never contacted again.",
+                "Every reply lands in one inbox, sorted by who is interested and who asked to leave.",
+                "Any reply stops the rest of the campaign for that lead automatically.",
+                "When a meeting is booked, every email, WhatsApp, text, and voice sequence for that lead pauses.",
+                "If the meeting is cancelled, the paused sequences resume on their own so you can re-engage a no-show.",
               ]}
               example={{
-                query: "Start a 3-step campaign to 1,000 leads from 5 trusted inboxes",
-                result: "Day 1: first emails go out. Day 3: follow-ups. Day 7: final touches. Replies flow into your inbox.",
+                query: "Start a 3-step campaign to 1,000 leads from 5 trusted inboxes.",
+                result: "Day 1: first emails go out. Day 3: follow-ups. Day 7: final touch. Replies flow into one inbox, and bookings pause the rest.",
               }}
             />
           </div>
         </div>
       </section>
 
-      {/* Additional channels */}
-      <section className="py-16 sm:py-20">
+      {/* More channels */}
+      <section className="bg-gray-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">Reach people wherever they are</h2>
-            <p className="mt-4 font-medium text-gray-600">
-              Email is just the start. Bad Decision also lets you send campaigns
-              through WhatsApp and text message, so you can connect with customers
-              on the channels they actually use.
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Reach people on the channels they actually use
+            </h2>
+            <p className="mt-4 text-lg font-medium text-gray-600">
+              Email is the start. Bad Decision also sends WhatsApp campaigns,
+              text message campaigns, and AI voice calls, so you meet your
+              leads where they already are instead of hoping they check their
+              inbox.
             </p>
           </div>
-          <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="card-premium p-6">
-              <h3 className="text-lg font-extrabold text-gray-900">WhatsApp campaigns</h3>
-              <p className="mt-2 text-sm font-medium text-gray-600">
-                Connect your WhatsApp Business number and send template messages to
-                contacts. Track who received, read, and replied to every message,
-                all from your dashboard.
-              </p>
-            </div>
-            <div className="card-premium p-6">
-              <h3 className="text-lg font-extrabold text-gray-900">Text message campaigns</h3>
-              <p className="mt-2 text-sm font-medium text-gray-600">
-                Send SMS campaigns to mobile numbers with automatic sender rotation
-                for better delivery. Every number is checked before sending, so you
-                never pay for invalid contacts.
-              </p>
-            </div>
+          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: MessageSquare,
+                title: "WhatsApp campaigns",
+                body: "Connect a WhatsApp Business number, pick a template, and send bulk campaigns with delivery and reply tracking. Numbers that are not on WhatsApp are skipped before you pay for them.",
+              },
+              {
+                icon: Phone,
+                title: "Text message campaigns",
+                body: "Register your brand, buy a sender number, and send SMS campaigns with delivery tracking. Landlines are skipped automatically so you never pay for a text that cannot be read.",
+              },
+              {
+                icon: Phone,
+                title: "AI voice calling",
+                body: "An AI voice engine picks up the phone and has a real conversation. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call.",
+              },
+              {
+                icon: Bot,
+                title: "Control from your AI assistant",
+                body: "Connect ChatGPT, Claude, or Gemini. Ask your assistant to find leads, verify emails, launch a campaign, book a meeting, or pull your numbers. Every call is logged for you to review.",
+              },
+            ].map((c) => (
+              <div key={c.title} className="card-premium p-6">
+                <c.icon className="h-8 w-8 text-gray-900" />
+                <h3 className="mt-3 text-lg font-extrabold text-gray-900">{c.title}</h3>
+                <p className="mt-2 text-sm font-medium text-gray-600">{c.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Analytics */}
+      {/* Automation + Analytics */}
       <section className="bg-gray-900 py-20 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-3xl font-extrabold sm:text-4xl">
-                Know exactly what is working
+                Build follow-up flows without code
               </h2>
               <p className="mt-4 text-lg font-medium text-gray-300">
-                Every send, every reply, and every bounce is tracked so you can see
-                your open rate, reply rate, and bounce rate at a glance. No more
-                guessing if your campaign is healthy.
+                A drag-and-drop canvas lets you chain steps together: when a
+                lead is added, send an email, wait two days, then call them. Or
+                describe the flow in plain English and let our AI build the
+                graph for you. Every run is logged step by step.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  "Full view of every step: total sent, opened, clicked, replied.",
-                  "Quick cards: open rate, reply rate, bounce rate.",
-                  "Reply sorting: interested, not interested, out of office, unsubscribe.",
-                  "Per-inbox health: trust building status, daily progress, trouble alerts.",
-                  "Lead status: pending, step 1 sent, replied, bounced, unsubscribed.",
+                  "Trigger on lead added, email opened, SMS replied, call completed, booking made, or manually.",
+                  "Send email, WhatsApp, text, or trigger a voice call from any step.",
+                  "Branch with if-else logic or split by percentage for A/B tests.",
+                  "Watch every execution step by step, with logs and per-node analytics.",
+                  "Pause, resume, or archive a flow without losing its history.",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <Inbox className="mt-1 h-4 w-4 flex-shrink-0 text-white" />
+                    <Workflow className="mt-1 h-4 w-4 flex-shrink-0 text-white" />
                     <span className="font-medium text-gray-200">{item}</span>
                   </li>
                 ))}
@@ -162,7 +190,7 @@ export default function HowItWorksPage() {
                   { label: "Open rate", value: "62%" },
                   { label: "Reply rate", value: "8.4%" },
                   { label: "Bounce rate", value: "0.3%" },
-                  { label: "Interested", value: "23" },
+                  { label: "Meetings booked", value: "23" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-lg bg-white/5 p-4">
                     <div className="text-3xl font-extrabold text-white">{stat.value}</div>
@@ -171,13 +199,16 @@ export default function HowItWorksPage() {
                 ))}
               </div>
               <div className="mt-4 rounded-lg bg-white/5 p-4">
-                <div className="text-sm font-bold text-white">Campaign: Q3 Skincare Outreach</div>
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="h-4 w-4 text-white" />
+                  <div className="text-sm font-bold text-white">Campaign: Q3 Skincare Outreach</div>
+                </div>
                 <div className="mt-3 space-y-2">
                   {[
                     { stage: "Sent", pct: 100 },
                     { stage: "Opened", pct: 62 },
                     { stage: "Replied", pct: 8 },
-                    { stage: "Interested", pct: 3 },
+                    { stage: "Booked", pct: 3 },
                   ].map((s) => (
                     <div key={s.stage}>
                       <div className="flex justify-between text-xs font-medium text-gray-300">
@@ -203,17 +234,18 @@ export default function HowItWorksPage() {
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Ready to try the full process?
+            Ready to find your first lead?
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600">
-            Start with a free forever plan that needs no credit card. You get 50
-            leads, 100 email checks, and 50 message drafts included.
+            Start free, no credit card needed. You get 50 lead discoveries, 50
+            email checks, and 50 AI message drafts to try the whole flow. Upgrade
+            only when you are ready to send real campaigns.
           </p>
           <Link
             href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
             className="btn-primary mt-8 inline-flex"
           >
-            Get started free
+            Find your first lead
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
