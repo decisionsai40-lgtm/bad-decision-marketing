@@ -1,95 +1,8 @@
 import Link from "next/link";
-import {
-  Search,
-  Send,
-  MessageSquare,
-  Smartphone,
-  Phone,
-  Calendar,
-  Workflow,
-  ShieldCheck,
-  Bot,
-  Check,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
-
-type ProductModule = {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  bullets: string[];
-  screenshot?: string;
-  alt?: string;
-};
-
-const MODULES: ProductModule[] = [
-  {
-    icon: Search,
-    title: "Lead Discovery",
-    description: "Find fresh leads with four search engines.",
-    bullets: ["Companies", "E-commerce", "Ads running", "No website"],
-    screenshot: "/screenshots/discover-dashboard.png",
-    alt: "Lead discovery dashboard",
-  },
-  {
-    icon: Send,
-    title: "Email Outreach",
-    description: "Send unlimited emails from unlimited inboxes.",
-    bullets: ["Campaigns", "Warmup", "Reply tracking"],
-    screenshot: "/screenshots/email-campaign.png",
-    alt: "Email campaign builder",
-  },
-  {
-    icon: MessageSquare,
-    title: "WhatsApp Campaigns",
-    description: "Send template campaigns on WhatsApp.",
-    bullets: ["Templates", "Contact import", "Delivery analytics"],
-  },
-  {
-    icon: Smartphone,
-    title: "SMS Campaigns",
-    description: "Send text messages with number rotation.",
-    bullets: ["Brand registration", "Number purchase", "Delivery tracking"],
-  },
-  {
-    icon: Phone,
-    title: "AI Voice Calling",
-    description: "Let AI call prospects and book meetings.",
-    bullets: ["In-call booking", "Post-call disposition", "Recording and transcript"],
-    screenshot: "/screenshots/voice-history.png",
-    alt: "AI voice call history",
-  },
-  {
-    icon: Calendar,
-    title: "Smart Scheduler",
-    description: "Let prospects book meetings with you.",
-    bullets: ["Calendar sync", "Auto-pause campaigns", "Embeddable link"],
-    screenshot: "/screenshots/scheduling-page.png",
-    alt: "Scheduling page",
-  },
-  {
-    icon: Workflow,
-    title: "Automation Engine",
-    description: "Build multi-step flows visually or with AI.",
-    bullets: ["Drag-and-drop canvas", "If/else logic", "AI prompt-to-workflow"],
-    screenshot: "/screenshots/automation-canvas.png",
-    alt: "Automation builder canvas",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Line Verification",
-    description: "Check numbers before you send.",
-    bullets: ["WhatsApp status", "SMS capability", "Auto-skip bad numbers"],
-  },
-  {
-    icon: Bot,
-    title: "External AI",
-    description: "Control everything from ChatGPT, Claude, or Gemini.",
-    bullets: ["MCP server", "OpenAPI spec", "Audit logged"],
-  },
-];
+import { PRODUCTS, type Product } from "@/lib/products";
 
 export default function ProductsPage() {
   return (
@@ -102,8 +15,8 @@ export default function ProductsPage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {MODULES.map((m) => (
-              <ProductCard key={m.title} module={m} />
+            {PRODUCTS.map((p) => (
+              <ProductCard key={p.slug} product={p} />
             ))}
           </div>
         </div>
@@ -156,16 +69,19 @@ export default function ProductsPage() {
   );
 }
 
-function ProductCard({ module: m }: { module: ProductModule }) {
-  const Icon = m.icon;
+function ProductCard({ product: p }: { product: Product }) {
+  const Icon: LucideIcon = p.icon;
   return (
-    <div className="card-premium flex flex-col overflow-hidden">
-      {m.screenshot ? (
+    <Link
+      href={`/products/${p.slug}`}
+      className="card-premium group flex flex-col overflow-hidden"
+    >
+      {p.screenshot ? (
         <div className="aspect-[16/9] overflow-hidden border-b-2 border-gray-100 bg-gray-50">
           <img
-            src={m.screenshot}
-            alt={m.alt ?? m.title}
-            className="h-full w-full object-cover object-top"
+            src={p.screenshot}
+            alt={p.screenshotAlt ?? p.name}
+            className="h-full w-full object-cover object-top transition-transform group-hover:scale-[1.02]"
             loading="lazy"
           />
         </div>
@@ -176,21 +92,27 @@ function ProductCard({ module: m }: { module: ProductModule }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#18B0D1]">
             <Icon className="h-4 w-4 text-white" />
           </div>
-          <h3 className="text-lg font-extrabold text-gray-900">{m.title}</h3>
+          <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-[#18B0D1]">
+            {p.name}
+          </h3>
         </div>
-        <p className="mt-3 text-sm font-medium text-gray-600">{m.description}</p>
+        <p className="mt-3 text-sm font-medium text-gray-600">{p.tagline}</p>
         <ul className="mt-4 space-y-2">
-          {m.bullets.map((b) => (
+          {p.features.slice(0, 4).map((b) => (
             <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
-              <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#18B0D1]" />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#18B0D1]" />
               <span className="font-medium">{b}</span>
             </li>
           ))}
         </ul>
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#18B0D1]">
+          Learn more
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -41,7 +41,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Bad Decision home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900 text-white font-bold shadow-md">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#18B0D1] text-white font-bold shadow-md">
             BD
           </div>
           <span className="text-lg font-extrabold tracking-tight text-gray-900">

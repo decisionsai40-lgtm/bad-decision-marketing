@@ -112,12 +112,12 @@ export function PricingCards() {
                 key={plan.planId}
                 className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 transition-all ${
                   plan.highlight
-                    ? "border-gray-900 shadow-xl lg:-mt-4 lg:mb-4"
+                    ? "border-[#18B0D1] shadow-xl lg:-mt-4 lg:mb-4"
                     : "border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md"
                 }`}
               >
                 {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-3 py-1 text-[11px] font-bold text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#18B0D1] px-3 py-1 text-[11px] font-bold text-white">
                     Most popular
                   </span>
                 )}
@@ -188,7 +188,7 @@ export function PricingCards() {
                       key={i}
                       className="flex items-start gap-2 text-sm text-gray-700"
                     >
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#18B0D1]" />
                       <span className="font-medium">
                         {f.text}
                         {isYearly && f.quota ? " / month" : ""}
@@ -225,7 +225,7 @@ export function PricingCards() {
                               id={`addon-${addon.slug}-${plan.planId}`}
                               checked={checked}
                               onChange={() => toggleAddon(plan.planId, addon.slug)}
-                              className="mt-0.5 h-3.5 w-3.5 cursor-pointer rounded border-gray-300 accent-gray-900"
+                              className="mt-0.5 h-3.5 w-3.5 cursor-pointer rounded border-gray-300 accent-[#18B0D1]"
                             />
                             <div className="flex-1">
                               <div className="flex items-center gap-1.5">

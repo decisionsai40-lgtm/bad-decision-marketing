@@ -1,93 +1,28 @@
 import Link from "next/link";
-import {
-  Mail,
-  Inbox,
-  Server,
-  MessageSquare,
-  Smartphone,
-  PhoneCall,
-  Users,
-  TrendingUp,
-  Cloud,
-  Calendar,
-  Bot,
-  ShieldCheck,
-  MailCheck,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG, cn } from "@/lib/utils";
+import {
+  INTEGRATIONS,
+  STATUS_LABELS,
+  STATUS_CLASSES,
+  type Integration,
+} from "@/lib/integrations";
 
-type Status = "available" | "addon" | "pro" | "pro_addon";
-
-type Integration = {
-  icon: React.ElementType;
-  name: string;
-  description: string;
-  status: Status;
-};
-
-const CATEGORIES: { name: string; integrations: Integration[] }[] = [
-  {
-    name: "Email",
-    integrations: [
-      { icon: Mail, name: "Gmail", description: "Send emails from your Gmail account.", status: "available" },
-      { icon: Inbox, name: "Outlook", description: "Send emails from your Outlook account.", status: "available" },
-      { icon: Server, name: "Custom SMTP", description: "Connect any email provider with SMTP.", status: "available" },
-    ],
-  },
-  {
-    name: "Messaging",
-    integrations: [
-      { icon: MessageSquare, name: "WhatsApp Business", description: "Send template campaigns on WhatsApp.", status: "addon" },
-      { icon: Smartphone, name: "SMS Provider", description: "Send text messages with number rotation.", status: "addon" },
-      { icon: PhoneCall, name: "AI Voice", description: "AI cold calling that books meetings.", status: "pro_addon" },
-    ],
-  },
-  {
-    name: "CRM",
-    integrations: [
-      { icon: Users, name: "HubSpot", description: "Sync contacts and deals to HubSpot.", status: "pro" },
-      { icon: TrendingUp, name: "Pipedrive", description: "Sync contacts to Pipedrive.", status: "pro" },
-      { icon: Cloud, name: "Salesforce", description: "Sync contacts to Salesforce.", status: "pro" },
-    ],
-  },
-  {
-    name: "Scheduling",
-    integrations: [
-      { icon: Calendar, name: "Smart Scheduler", description: "Connect your scheduling tool. Cal.com compatible.", status: "available" },
-    ],
-  },
-  {
-    name: "AI Assistants",
-    integrations: [
-      { icon: Bot, name: "ChatGPT", description: "Control your account from ChatGPT.", status: "available" },
-      { icon: Bot, name: "Claude", description: "Control your account from Claude.", status: "available" },
-      { icon: Bot, name: "Gemini", description: "Control your account from Gemini.", status: "available" },
-    ],
-  },
-  {
-    name: "Verification",
-    integrations: [
-      { icon: ShieldCheck, name: "Line Verification", description: "Check numbers before you send.", status: "addon" },
-      { icon: MailCheck, name: "Email Verification", description: "Verify emails before you send.", status: "available" },
-    ],
-  },
+const CATEGORY_ORDER = [
+  "Email",
+  "Messaging",
+  "CRM",
+  "Scheduling",
+  "AI Assistants",
+  "Verification",
 ];
 
-const STATUS_LABELS: Record<Status, string> = {
-  available: "Available",
-  addon: "Add-on",
-  pro: "Pro",
-  pro_addon: "Pro add-on",
-};
-
-const STATUS_CLASSES: Record<Status, string> = {
-  available: "bg-green-100 text-green-700 border-green-200",
-  addon: "bg-[#18B0D1]/10 text-[#18B0D1] border-[#18B0D1]/30",
-  pro: "bg-gray-900 text-white border-gray-900",
-  pro_addon: "bg-[#003D4D] text-white border-[#003D4D]",
-};
+const CATEGORIES: { name: string; integrations: Integration[] }[] =
+  CATEGORY_ORDER.map((name) => ({
+    name,
+    integrations: INTEGRATIONS.filter((i) => i.category === name),
+  })).filter((c) => c.integrations.length > 0);
 
 export default function IntegrationsPage() {
   return (
@@ -104,32 +39,9 @@ export default function IntegrationsPage() {
               <div key={cat.name}>
                 <h2 className="text-2xl font-extrabold text-gray-900">{cat.name}</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {cat.integrations.map((i) => {
-                    const Icon = i.icon;
-                    return (
-                      <div key={i.name} className="card-premium p-5">
-                        <div className="flex items-start justify-between">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-900">
-                            <Icon className="h-5 w-5 text-white" />
-                          </div>
-                          <span
-                            className={cn(
-                              "rounded-full border px-3 py-1 text-xs font-bold",
-                              STATUS_CLASSES[i.status]
-                            )}
-                          >
-                            {STATUS_LABELS[i.status]}
-                          </span>
-                        </div>
-                        <h3 className="mt-4 text-base font-extrabold text-gray-900">
-                          {i.name}
-                        </h3>
-                        <p className="mt-1 text-sm font-medium text-gray-600">
-                          {i.description}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  {cat.integrations.map((i) => (
+                    <IntegrationCard key={i.slug} integration={i} />
+                  ))}
                 </div>
               </div>
             ))}
@@ -161,5 +73,37 @@ export default function IntegrationsPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function IntegrationCard({ integration: i }: { integration: Integration }) {
+  const Icon: LucideIcon = i.icon;
+  return (
+    <Link
+      href={`/integrations/${i.slug}`}
+      className="card-premium group flex flex-col p-5"
+    >
+      <div className="flex items-start justify-between">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#18B0D1]">
+          <Icon className="h-5 w-5 text-white" />
+        </div>
+        <span
+          className={cn(
+            "rounded-full border px-3 py-1 text-xs font-bold",
+            STATUS_CLASSES[i.status],
+          )}
+        >
+          {STATUS_LABELS[i.status]}
+        </span>
+      </div>
+      <h3 className="mt-4 text-base font-extrabold text-gray-900 group-hover:text-[#18B0D1]">
+        {i.name}
+      </h3>
+      <p className="mt-1 text-sm font-medium text-gray-600">{i.description}</p>
+      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#18B0D1]">
+        Learn more
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      </span>
+    </Link>
   );
 }

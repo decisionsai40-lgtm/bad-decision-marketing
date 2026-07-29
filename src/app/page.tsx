@@ -8,6 +8,7 @@ import {
   Bot,
   BarChart3,
   AlertTriangle,
+  Check,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
 
@@ -78,9 +79,11 @@ function TrustBar() {
   return (
     <section className="border-y-2 border-gray-200 bg-white py-6">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-bold uppercase tracking-wider text-gray-500">
-          Trusted by 1,200+ teams finding customers every day
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-sm font-bold uppercase tracking-wider text-gray-500">
+          <span className="inline-flex h-2 w-2 rounded-full bg-[#18B0D1]" aria-hidden />
+          <span>Trusted by 1,200+ teams finding customers every day</span>
+          <span className="inline-flex h-2 w-2 rounded-full bg-[#18B0D1]" aria-hidden />
+        </div>
       </div>
     </section>
   );
@@ -205,7 +208,7 @@ function FeatureModule({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
           <div className={reverse ? "lg:col-start-2 lg:row-start-1" : ""}>
-            <span className="text-sm font-extrabold uppercase tracking-wider text-gray-400">
+            <span className="text-sm font-extrabold uppercase tracking-wider text-[#18B0D1]">
               {eyebrow}
             </span>
             <div className="mt-3 flex items-center gap-3">
@@ -222,7 +225,7 @@ function FeatureModule({
             <ul className="mt-6 space-y-3">
               {bullets.map((b) => (
                 <li key={b} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-gray-900" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#18B0D1]" />
                   <span className="font-medium text-gray-700">{b}</span>
                 </li>
               ))}

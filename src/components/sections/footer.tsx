@@ -35,7 +35,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white font-bold text-gray-900">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#18B0D1] font-bold text-white">
                 BD
               </div>
               <span className="text-lg font-extrabold">Bad Decision</span>

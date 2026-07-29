@@ -138,6 +138,14 @@
     outline-offset: 2px;
   }
 
+  /* Default link hover : bright teal accent (overridden by Tailwind hover utilities where applied) */
+  a {
+    transition: color 0.15s ease;
+  }
+  a:hover {
+    color: #18B0D1;
+  }
+
   button {
     -webkit-tap-highlight-color: transparent;
   }
@@ -185,8 +193,8 @@
   }
 
   .card-premium:hover {
-    border-color: #d1d5db;
-    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+    border-color: #18B0D1;
+    box-shadow: 0 4px 12px rgba(24, 176, 209, 0.18);
   }
 
   .glass {
@@ -232,10 +240,14 @@
   }
   .btn-primary:hover {
     background: #005066;
-    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.25);
+    box-shadow: 0 4px 12px rgba(24, 176, 209, 0.45);
   }
   .btn-primary:active {
     transform: translateY(1px);
+  }
+  .btn-primary:focus-visible {
+    outline: 3px solid #18B0D1;
+    outline-offset: 2px;
   }
 
   .btn-secondary {
