@@ -49,10 +49,10 @@ export function PricingCards() {
   const fmt = (n: number) => n.toLocaleString("en-US");
 
   return (
-    <section className="py-12 sm:py-16">
+    <section className="py-10 sm:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Billing period toggle */}
-        <div className="mb-12 flex items-center justify-center gap-3">
+        <div className="mb-10 flex items-center justify-center gap-3">
           <button
             onClick={() => setBilling("monthly")}
             className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
@@ -79,7 +79,7 @@ export function PricingCards() {
         </div>
 
         {/* Plan cards */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
           {PRICING_PLANS.map((plan) => {
             const isYearly = billing === "yearly" && plan.priceYearly > 0;
             const displayPrice = isYearly ? plan.priceYearly : plan.price;
@@ -110,38 +110,38 @@ export function PricingCards() {
             return (
               <div
                 key={plan.planId}
-                className={`relative flex flex-col rounded-2xl border-2 bg-white p-6 transition-all ${
+                className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 transition-all ${
                   plan.highlight
                     ? "border-gray-900 shadow-xl lg:-mt-4 lg:mb-4"
                     : "border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md"
                 }`}
               >
                 {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-4 py-1 text-xs font-bold text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-3 py-1 text-[11px] font-bold text-white">
                     Most popular
                   </span>
                 )}
 
                 {/* Plan name + description */}
-                <h3 className="text-lg font-extrabold text-gray-900">
+                <h3 className="text-base font-extrabold text-gray-900">
                   {plan.name}
                 </h3>
-                <p className="mt-1 text-sm font-medium text-gray-600">
+                <p className="mt-1 text-xs font-medium text-gray-600">
                   {plan.description}
                 </p>
 
                 {/* Price */}
-                <div className="mt-4 flex items-baseline gap-1">
+                <div className="mt-3 flex items-baseline gap-1">
                   {plan.price === 0 ? (
-                    <span className="text-4xl font-extrabold text-gray-900">
+                    <span className="text-3xl font-extrabold text-gray-900">
                       Free
                     </span>
                   ) : (
                     <>
-                      <span className="text-4xl font-extrabold text-gray-900">
+                      <span className="text-3xl font-extrabold text-gray-900">
                         ${fmt(displayPrice)}
                       </span>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-xs font-medium text-gray-500">
                         /{periodLabel}
                       </span>
                     </>
@@ -151,7 +151,7 @@ export function PricingCards() {
                 {/* Addon total (if any selected) */}
                 {planAddons.size > 0 && (
                   <div
-                    className="mt-2 rounded-lg bg-gray-900 px-3 py-1.5 text-sm font-bold text-white"
+                    className="mt-2 rounded-lg bg-gray-900 px-3 py-1.5 text-xs font-bold text-white"
                     aria-live="polite"
                   >
                     Total: ${fmt(totalPrice)}/{periodLabel}
@@ -167,7 +167,7 @@ export function PricingCards() {
                 {/* CTA */}
                 <Link
                   href={ctaHref}
-                  className={`mt-5 block w-full rounded-lg py-2.5 text-center text-sm font-bold transition-all ${
+                  className={`mt-4 block w-full rounded-lg py-2 text-center text-sm font-bold transition-all ${
                     plan.highlight
                       ? "bg-gray-900 text-white hover:bg-gray-800"
                       : "bg-gray-100 text-gray-900 hover:bg-gray-200"
@@ -177,10 +177,10 @@ export function PricingCards() {
                 </Link>
 
                 {/* Divider */}
-                <div className="my-5 border-t border-gray-100" />
+                <div className="my-4 border-t border-gray-100" />
 
                 {/* Features */}
-                <ul className="flex-1 space-y-2.5">
+                <ul className="flex-1 space-y-2">
                   {plan.features.map((feat, i) => {
                     const f = feat as { text: string; quota?: boolean };
                     return (
@@ -200,11 +200,11 @@ export function PricingCards() {
 
                 {/* Inline add-on checkboxes (per-plan) */}
                 {eligibleAddons.length > 0 && (
-                  <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 p-4">
-                    <p className="mb-3 text-xs font-bold uppercase tracking-wide text-gray-500">
+                  <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-3">
+                    <p className="mb-2 text-[11px] font-bold uppercase tracking-wide text-gray-500">
                       Add-ons (optional)
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       {eligibleAddons.map((addon) => {
                         const checked = planAddons.has(addon.slug);
                         const addonPrice = isYearly
@@ -214,7 +214,7 @@ export function PricingCards() {
                           <label
                             key={addon.slug}
                             htmlFor={`addon-${addon.slug}-${plan.planId}`}
-                            className={`flex cursor-pointer items-start gap-3 rounded-lg border p-2.5 transition-all ${
+                            className={`flex cursor-pointer items-start gap-2.5 rounded-lg border p-2 transition-all ${
                               checked
                                 ? "border-gray-900 bg-white shadow-sm"
                                 : "border-transparent hover:bg-white hover:shadow-sm"
@@ -225,37 +225,37 @@ export function PricingCards() {
                               id={`addon-${addon.slug}-${plan.planId}`}
                               checked={checked}
                               onChange={() => toggleAddon(plan.planId, addon.slug)}
-                              className="mt-0.5 h-4 w-4 cursor-pointer rounded border-gray-300 accent-gray-900"
+                              className="mt-0.5 h-3.5 w-3.5 cursor-pointer rounded border-gray-300 accent-gray-900"
                             />
                             <div className="flex-1">
                               <div className="flex items-center gap-1.5">
                                 {addon.slug === "whatsapp_campaign" && (
-                                  <MessageSquare className="h-3.5 w-3.5 text-gray-500" />
+                                  <MessageSquare className="h-3 w-3 text-gray-500" />
                                 )}
                                 {addon.slug === "sms_campaign" && (
-                                  <Phone className="h-3.5 w-3.5 text-gray-500" />
+                                  <Phone className="h-3 w-3 text-gray-500" />
                                 )}
                                 {addon.slug === "ai_voice" && (
-                                  <Mic className="h-3.5 w-3.5 text-gray-500" />
+                                  <Mic className="h-3 w-3 text-gray-500" />
                                 )}
                                 {addon.slug === "line_verification" && (
-                                  <ShieldCheck className="h-3.5 w-3.5 text-gray-500" />
+                                  <ShieldCheck className="h-3 w-3 text-gray-500" />
                                 )}
-                                <span className="text-sm font-bold text-gray-900">
+                                <span className="text-xs font-bold text-gray-900">
                                   {addon.name}
                                 </span>
-                                <span className="ml-auto text-sm font-extrabold text-gray-900">
+                                <span className="ml-auto text-xs font-extrabold text-gray-900">
                                   +${fmt(addonPrice)}
-                                  <span className="text-xs font-medium text-gray-500">
+                                  <span className="text-[10px] font-medium text-gray-500">
                                     /{isYearly ? "year" : "mo"}
                                   </span>
                                 </span>
                               </div>
-                              <p className="mt-0.5 text-xs text-gray-600">
+                              <p className="mt-0.5 text-[11px] text-gray-600">
                                 {addon.description}
                               </p>
                               {addon.meteredNote && (
-                                <p className="mt-0.5 text-[11px] font-bold text-gray-900">
+                                <p className="mt-0.5 text-[10px] font-bold text-gray-900">
                                   {addon.meteredNote}
                                 </p>
                               )}
@@ -269,7 +269,7 @@ export function PricingCards() {
 
                 {/* Plans with no addons: note */}
                 {eligibleAddons.length === 0 && plan.price > 0 && (
-                  <p className="mt-4 text-xs font-medium text-gray-500">
+                  <p className="mt-3 text-[11px] font-medium text-gray-500">
                     Add-ons available on higher plans
                   </p>
                 )}
@@ -279,7 +279,7 @@ export function PricingCards() {
         </div>
 
         {/* Enterprise strip */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-gray-200 bg-gray-900 p-6 sm:flex-row">
+        <div className="mt-5 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-gray-200 bg-gray-900 p-5 sm:flex-row">
           <div>
             <h3 className="text-lg font-extrabold text-white">
               {ENTERPRISE_PLAN.name}
@@ -297,7 +297,7 @@ export function PricingCards() {
         </div>
 
         {/* Credit packs section */}
-        <div className="mt-16">
+        <div className="mt-12">
           <div className="text-center">
             <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
               Need more credits?
@@ -308,60 +308,60 @@ export function PricingCards() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {CREDIT_PACKS.map((pack) => (
               <div
                 key={pack.id}
-                className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 transition-all ${
+                className={`relative flex flex-col rounded-2xl border-2 bg-white p-4 transition-all ${
                   pack.popular
                     ? "border-gray-900 shadow-lg"
                     : "border-gray-200 shadow-sm hover:border-gray-300"
                 }`}
               >
                 {pack.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-3 py-0.5 text-[10px] font-bold text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 px-2.5 py-0.5 text-[10px] font-bold text-white">
                     MOST POPULAR
                   </span>
                 )}
                 <div className="flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-amber-500" />
+                  <Zap className="h-3.5 w-3.5 text-amber-500" />
                   <span className="text-sm font-bold text-gray-900">
                     {pack.name}
                   </span>
                 </div>
                 {pack.note && (
-                  <p className="mt-0.5 text-xs font-medium text-gray-500">
+                  <p className="mt-0.5 text-[11px] font-medium text-gray-500">
                     {pack.note}
                   </p>
                 )}
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-3xl font-extrabold text-gray-900">
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="text-2xl font-extrabold text-gray-900">
                     {fmt(pack.credits)}
                   </span>
-                  <span className="text-sm font-medium text-gray-600">
+                  <span className="text-xs font-medium text-gray-600">
                     credits
                   </span>
                 </div>
                 <div className="mt-1 flex items-baseline gap-1">
-                  <span className="text-2xl font-extrabold text-gray-900">
+                  <span className="text-xl font-extrabold text-gray-900">
                     ${fmt(pack.price)}
                   </span>
-                  <span className="text-xs font-medium text-gray-500">
+                  <span className="text-[11px] font-medium text-gray-500">
                     one-time
                   </span>
                 </div>
-                <div className="mt-1 text-xs font-bold text-gray-700">
+                <div className="mt-1 text-[11px] font-bold text-gray-700">
                   ${pack.perCredit.toFixed(4)} per credit
                 </div>
                 {pack.savingsPct > 0 && (
-                  <div className="mt-1 flex items-center gap-1 text-xs font-bold text-green-600">
+                  <div className="mt-1 flex items-center gap-1 text-[11px] font-bold text-green-600">
                     <TrendingDown className="h-3 w-3" />
                     Save {pack.savingsPct}%
                   </div>
                 )}
                 <Link
                   href={`${SITE_CONFIG.dashboardUrl}/dashboard/credits?pack=${pack.id}`}
-                  className={`mt-4 block w-full rounded-lg py-2 text-center text-sm font-bold transition-all ${
+                  className={`mt-3 block w-full rounded-lg py-1.5 text-center text-xs font-bold transition-all ${
                     pack.popular
                       ? "bg-gray-900 text-white hover:bg-gray-800"
                       : "bg-gray-100 text-gray-900 hover:bg-gray-200"
@@ -373,7 +373,7 @@ export function PricingCards() {
             ))}
           </div>
 
-          <p className="mt-6 text-center text-xs font-medium text-gray-500">
+          <p className="mt-4 text-center text-[11px] font-medium text-gray-500">
             Credits are used for lead discoveries, email verifications, and AI message
             drafts. Unused credits never expire. Add-ons can be cancelled anytime without
             affecting your base plan.

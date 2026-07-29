@@ -12,6 +12,11 @@
    ============================================================ */
 
 @theme {
+  /* === Override default Tailwind dark grays so text-gray-900 / bg-gray-900
+        pick up the new teal primary color sitewide. === */
+  --color-gray-900: #003D4D;
+  --color-gray-800: #005066;
+
   /* === Page Surfaces === */
   --color-background: #ffffff;
   --color-surface: #ffffff;
@@ -19,8 +24,8 @@
   --color-surface-hover: #f9fafb;
 
   /* === Foreground : bold, high-contrast === */
-  --color-foreground: #111827;       /* gray-900 */
-  --color-text: #111827;
+  --color-foreground: #003D4D;       /* gray-900 */
+  --color-text: #003D4D;
   --color-text-secondary: #374151;   /* gray-700 */
   --color-text-muted: #6b7280;       /* gray-500 */
   --color-text-dim: #9ca3af;         /* gray-400 */
@@ -28,27 +33,27 @@
   /* === Borders : visible, not faint === */
   --color-border: #e5e7eb;           /* gray-200 */
   --color-border-light: #f3f4f6;     /* gray-100 */
-  --color-border-bright: #111827;    /* gray-900 */
+  --color-border-bright: #18B0D1;    /* accent */
 
   /* === Brand palette (kept for back-compat with existing classes) === */
-  --color-teal-vibrant: #111827;
-  --color-teal-bright: #111827;
-  --color-teal-deep: #111827;
+  --color-teal-vibrant: #18B0D1;
+  --color-teal-bright: #18B0D1;
+  --color-teal-deep: #003D4D;
   --color-teal-darker: #1f2937;
 
   /* === Primary : dark gray (not teal) === */
-  --color-primary: #111827;          /* gray-900 */
+  --color-primary: #003D4D;          /* gray-900 */
   --color-primary-foreground: #ffffff;
-  --color-primary-hover: #1f2937;    /* gray-800 */
-  --color-violet: #111827;
+  --color-primary-hover: #005066;    /* lighter teal */
+  --color-violet: #003D4D;
   --color-violet-hover: #1f2937;
   --color-violet-soft: #f3f4f6;
   --color-violet-glow: rgba(17, 24, 39, 0.10);
 
   /* === Secondary : for dark sections (enterprise strip, footer) === */
-  --color-secondary: #111827;
+  --color-secondary: #003D4D;
   --color-secondary-foreground: #ffffff;
-  --color-card: #111827;
+  --color-card: #003D4D;
   --color-card-foreground: #ffffff;
 
   /* === Neutral Muted === */
@@ -56,7 +61,7 @@
   --color-muted-foreground: #6b7280;
 
   /* === Accent === */
-  --color-accent: #111827;
+  --color-accent: #18B0D1;
   --color-accent-foreground: #ffffff;
 
   /* === Semantic === */
@@ -70,16 +75,16 @@
   --color-danger-soft: #fef2f2;
 
   /* === Subtle brand accent for links (kept as dark gray for consistency) === */
-  --color-azure: #111827;
+  --color-azure: #003D4D;
   --color-azure-soft: #f3f4f6;
 
   /* === Popover === */
   --color-popover: #ffffff;
-  --color-popover-foreground: #111827;
+  --color-popover-foreground: #003D4D;
 
   /* === Input === */
   --color-input: #ffffff;
-  --color-ring: #111827;
+  --color-ring: #003D4D;
 
   /* === Radius === */
   --radius-lg: 0.75rem;
@@ -149,14 +154,14 @@
    ============================================================ */
 @layer components {
   .text-gradient {
-    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    background: linear-gradient(135deg, #003D4D 0%, #374151 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-violet {
-    background: linear-gradient(135deg, #111827 0%, #6b7280 100%);
+    background: linear-gradient(135deg, #003D4D 0%, #6b7280 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -218,7 +223,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: #111827;
+    background: #003D4D;
     color: #ffffff;
     font-weight: 700;
     border-radius: 0.5rem;
@@ -226,7 +231,7 @@
     box-shadow: 0 1px 2px rgba(17, 24, 39, 0.15);
   }
   .btn-primary:hover {
-    background: #1f2937;
+    background: #005066;
     box-shadow: 0 4px 12px rgba(17, 24, 39, 0.25);
   }
   .btn-primary:active {
@@ -240,7 +245,7 @@
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: #f3f4f6;
-    color: #111827;
+    color: #003D4D;
     font-weight: 700;
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
@@ -262,7 +267,7 @@
     transition: color 0.2s ease, background 0.2s ease;
   }
   .btn-ghost:hover {
-    color: #111827;
+    color: #003D4D;
     background: var(--color-muted);
   }
 
@@ -273,7 +278,7 @@
     gap: 0.375rem;
     padding: 0.25rem 0.75rem;
     background: var(--color-muted);
-    color: #111827;
+    color: #003D4D;
     font-size: 0.75rem;
     font-weight: 700;
     border-radius: 999px;
@@ -319,13 +324,13 @@
     margin-bottom: 0.5rem;
   }
   .prose-legal a {
-    color: #111827;
+    color: #003D4D;
     text-decoration: underline;
     text-underline-offset: 2px;
     font-weight: 600;
   }
   .prose-legal a:hover {
-    color: #1f2937;
+    color: #005066;
   }
   .prose-legal strong {
     color: var(--color-foreground);

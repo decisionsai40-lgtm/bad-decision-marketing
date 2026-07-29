@@ -5,6 +5,8 @@ import { SITE_CONFIG } from "@/lib/utils";
 const FOOTER_LINKS = {
   Product: [
     { href: "/how-it-works", label: "How it works" },
+    { href: "/products", label: "Products" },
+    { href: "/integrations", label: "Integrations" },
     { href: "/pricing", label: "Pricing" },
     { href: "/case-studies", label: "Case studies" },
     { href: "/blog", label: "Blog" },

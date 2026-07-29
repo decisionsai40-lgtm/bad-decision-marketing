@@ -7,10 +7,10 @@ import { SITE_CONFIG, cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/how-it-works", label: "How it works" },
+  { href: "/products", label: "Products" },
+  { href: "/integrations", label: "Integrations" },
   { href: "/pricing", label: "Pricing" },
   { href: "/case-studies", label: "Case studies" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {

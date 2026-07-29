@@ -33,10 +33,10 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pb-20 lg:pt-32">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Send cold outreach that actually works.
+            Let AI find leads, reach out, and follow up so you focus on closing.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-600 sm:text-xl">
-            Find verified leads, send email and WhatsApp and SMS and AI calls, and book meetings in one place.
+            BadDecision discovers verified prospects and automates multi-channel outreach across Email, WhatsApp, SMS, and Voice, all from one unified dashboard.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
