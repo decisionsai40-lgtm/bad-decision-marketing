@@ -4,13 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Check,
-  CheckCircle2,
   MessageSquare,
   Phone,
   Mic,
   ShieldCheck,
   Zap,
   TrendingDown,
+  type LucideIcon,
 } from "lucide-react";
 import {
   PRICING_PLANS,
@@ -23,30 +23,92 @@ import {
 
 type BillingPeriod = "monthly" | "yearly";
 
-// Per-plan addon selection (each plan tracks its own checkboxes independently)
-type AddonState = Record<string, Set<AddonSlug>>;
+// Short, scannable top-5 features shown on each plan card.
+// The full feature list lives in the comparison table on the pricing page.
+const CARD_FEATURES: Record<string, string[]> = {
+  free: [
+    "50 lead searches",
+    "50 AI drafts",
+    "1 inbox",
+    "Save searches",
+    "Community support",
+  ],
+  starter: [
+    "15K email sends",
+    "Unlimited inboxes",
+    "1K lead searches",
+    "Unified inbox",
+    "Email support",
+  ],
+  growth: [
+    "Unlimited email sends",
+    "Unlimited inboxes",
+    "5K lead searches",
+    "A/B testing",
+    "Team workspace",
+  ],
+  pro: [
+    "Unlimited email sends",
+    "25K lead searches",
+    "500 AI voice min",
+    "API + CRM sync",
+    "Dedicated manager",
+  ],
+};
+
+const ADDON_ICON: Record<AddonSlug, LucideIcon> = {
+  sms_campaign: Phone,
+  whatsapp_campaign: MessageSquare,
+  ai_voice: Mic,
+  line_verification: ShieldCheck,
+};
+
+const PLAN_LABEL: Record<string, string> = {
+  starter: "Starter",
+  growth: "Growth",
+  pro: "Pro",
+  enterprise: "Enterprise",
+};
 
 export function PricingCards() {
   const [billing, setBilling] = useState<BillingPeriod>("monthly");
-  const [addonsByPlan, setAddonsByPlan] = useState<AddonState>({});
+  const [selectedAddons, setSelectedAddons] = useState<Set<AddonSlug>>(
+    new Set()
+  );
 
-  const toggleAddon = (planId: string, slug: AddonSlug) => {
-    setAddonsByPlan((prev) => {
-      const next = { ...prev };
-      const current = new Set(next[planId] ?? []);
-      if (current.has(slug)) current.delete(slug);
-      else current.add(slug);
-      next[planId] = current;
+  const toggleAddon = (slug: AddonSlug) => {
+    setSelectedAddons((prev) => {
+      const next = new Set(prev);
+      if (next.has(slug)) next.delete(slug);
+      else next.add(slug);
       return next;
     });
   };
 
   // Addon yearly multiplier: 11 months (1 month free)
   const ADDON_YEARLY_MULT = 11;
-  // Plan yearly multiplier: 10 months (2 months free)
-  const PLAN_YEARLY_MULT = 10;
 
   const fmt = (n: number) => n.toLocaleString("en-US");
+
+  // Build the addon query string for a given plan (only eligible addons).
+  const addonParamFor = (planId: string) => {
+    const eligible = [...selectedAddons].filter((slug) => {
+      const addon = ADDONS.find((a) => a.slug === slug);
+      return addon?.eligiblePlans.includes(planId);
+    });
+    return eligible.length > 0 ? `&addons=${eligible.join(",")}` : "";
+  };
+
+  // Total addon price for display in the addon section.
+  const addonMonthlyTotal = [...selectedAddons].reduce(
+    (sum, slug) => sum + (ADDONS.find((a) => a.slug === slug)?.price ?? 0),
+    0
+  );
+  const addonTotal =
+    billing === "yearly"
+      ? addonMonthlyTotal * ADDON_YEARLY_MULT
+      : addonMonthlyTotal;
+  const addonPeriodLabel = billing === "yearly" ? "year" : "mo";
 
   return (
     <section className="py-10 sm:py-12">
@@ -79,29 +141,14 @@ export function PricingCards() {
         </div>
 
         {/* Plan cards */}
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {PRICING_PLANS.map((plan) => {
             const isYearly = billing === "yearly" && plan.priceYearly > 0;
             const displayPrice = isYearly ? plan.priceYearly : plan.price;
-            const periodLabel = plan.price === 0 ? "" : isYearly ? "year" : "month";
-
-            const planAddons = addonsByPlan[plan.planId] ?? new Set<AddonSlug>();
-            const eligibleAddons = ADDONS.filter((a) =>
-              a.eligiblePlans.includes(plan.planId)
-            );
-            const addonMonthlyTotal = [...planAddons].reduce(
-              (sum, slug) => sum + (ADDONS.find((a) => a.slug === slug)?.price ?? 0),
-              0
-            );
-            const addonYearlyTotal = addonMonthlyTotal * ADDON_YEARLY_MULT;
-            const addonTotal = isYearly ? addonYearlyTotal : addonMonthlyTotal;
-            const totalPrice = displayPrice + addonTotal;
-
-            // Build CTA href with this plan's addons
-            const addonParam =
-              planAddons.size > 0
-                ? `&addons=${[...planAddons].join(",")}`
-                : "";
+            const periodLabel =
+              plan.price === 0 ? "" : isYearly ? "year" : "month";
+            const cardFeats = CARD_FEATURES[plan.planId] ?? [];
+            const addonParam = addonParamFor(plan.planId);
             const ctaHref =
               plan.price === 0
                 ? `${SITE_CONFIG.dashboardUrl}${plan.ctaHref}`
@@ -110,7 +157,7 @@ export function PricingCards() {
             return (
               <div
                 key={plan.planId}
-                className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 transition-all ${
+                className={`relative flex flex-col rounded-2xl border-2 bg-white p-6 sm:p-8 transition-all ${
                   plan.highlight
                     ? "border-[#18B0D1] shadow-xl lg:-mt-4 lg:mb-4"
                     : "border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md"
@@ -122,156 +169,85 @@ export function PricingCards() {
                   </span>
                 )}
 
-                {/* Plan name + description */}
-                <h3 className="text-base font-extrabold text-gray-900">
+                {/* Plan name */}
+                <h3 className="text-xl font-extrabold text-gray-900">
                   {plan.name}
                 </h3>
-                <p className="mt-1 text-xs font-medium text-gray-600">
-                  {plan.description}
-                </p>
 
                 {/* Price */}
                 <div className="mt-3 flex items-baseline gap-1">
                   {plan.price === 0 ? (
-                    <span className="text-3xl font-extrabold text-gray-900">
+                    <span className="text-4xl font-extrabold text-gray-900">
                       Free
                     </span>
                   ) : (
                     <>
-                      <span className="text-3xl font-extrabold text-gray-900">
+                      <span className="text-4xl font-extrabold text-gray-900">
                         ${fmt(displayPrice)}
                       </span>
-                      <span className="text-xs font-medium text-gray-500">
+                      <span className="text-sm font-medium text-gray-500">
                         /{periodLabel}
                       </span>
                     </>
                   )}
                 </div>
 
-                {/* Addon total (if any selected) */}
-                {planAddons.size > 0 && (
-                  <div
-                    className="mt-2 rounded-lg bg-gray-900 px-3 py-1.5 text-xs font-bold text-white"
-                    aria-live="polite"
-                  >
-                    Total: ${fmt(totalPrice)}/{periodLabel}
-                  </div>
-                )}
-
-                {isYearly && plan.price > 0 && planAddons.size === 0 && (
-                  <p className="mt-2 text-xs font-bold text-green-600">
-                    Save ${(plan.price * 12 - plan.priceYearly).toLocaleString()} per year
-                  </p>
-                )}
+                {/* Description */}
+                <p className="mt-2 text-sm font-medium text-gray-500">
+                  {plan.description}
+                </p>
 
                 {/* CTA */}
                 <Link
                   href={ctaHref}
-                  className={`mt-4 block w-full rounded-lg py-2 text-center text-sm font-bold transition-all ${
+                  className={`mt-5 block w-full rounded-lg py-3 text-center text-sm font-bold transition-all ${
                     plan.highlight
-                      ? "bg-gray-900 text-white hover:bg-gray-800"
-                      : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                      ? "bg-[#18B0D1] text-white hover:bg-[#1593b0]"
+                      : "bg-gray-900 text-white hover:bg-gray-800"
                   }`}
                 >
                   {plan.cta}
                 </Link>
 
-                {/* Divider */}
-                <div className="my-4 border-t border-gray-100" />
-
-                {/* Features */}
-                <ul className="flex-1 space-y-2">
-                  {plan.features.map((feat, i) => {
-                    const f = feat as { text: string; quota?: boolean };
-                    return (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2 text-sm text-gray-700"
-                    >
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#18B0D1]" />
-                      <span className="font-medium">
-                        {f.text}
-                        {isYearly && f.quota ? " / month" : ""}
-                      </span>
-                    </li>
-                    );
-                  })}
-                </ul>
-
-                {/* Inline add-on checkboxes (per-plan) */}
-                {eligibleAddons.length > 0 && (
-                  <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-3">
-                    <p className="mb-2 text-[11px] font-bold uppercase tracking-wide text-gray-500">
-                      Add-ons (optional)
-                    </p>
-                    <div className="space-y-1.5">
-                      {eligibleAddons.map((addon) => {
-                        const checked = planAddons.has(addon.slug);
-                        const addonPrice = isYearly
-                          ? addon.price * ADDON_YEARLY_MULT
-                          : addon.price;
-                        return (
-                          <label
-                            key={addon.slug}
-                            htmlFor={`addon-${addon.slug}-${plan.planId}`}
-                            className={`flex cursor-pointer items-start gap-2.5 rounded-lg border p-2 transition-all ${
-                              checked
-                                ? "border-gray-900 bg-white shadow-sm"
-                                : "border-transparent hover:bg-white hover:shadow-sm"
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              id={`addon-${addon.slug}-${plan.planId}`}
-                              checked={checked}
-                              onChange={() => toggleAddon(plan.planId, addon.slug)}
-                              className="mt-0.5 h-3.5 w-3.5 cursor-pointer rounded border-gray-300 accent-[#18B0D1]"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-center gap-1.5">
-                                {addon.slug === "whatsapp_campaign" && (
-                                  <MessageSquare className="h-3 w-3 text-gray-500" />
-                                )}
-                                {addon.slug === "sms_campaign" && (
-                                  <Phone className="h-3 w-3 text-gray-500" />
-                                )}
-                                {addon.slug === "ai_voice" && (
-                                  <Mic className="h-3 w-3 text-gray-500" />
-                                )}
-                                {addon.slug === "line_verification" && (
-                                  <ShieldCheck className="h-3 w-3 text-gray-500" />
-                                )}
-                                <span className="text-xs font-bold text-gray-900">
-                                  {addon.name}
-                                </span>
-                                <span className="ml-auto text-xs font-extrabold text-gray-900">
-                                  +${fmt(addonPrice)}
-                                  <span className="text-[10px] font-medium text-gray-500">
-                                    /{isYearly ? "year" : "mo"}
-                                  </span>
-                                </span>
-                              </div>
-                              <p className="mt-0.5 text-[11px] text-gray-600">
-                                {addon.description}
-                              </p>
-                              {addon.meteredNote && (
-                                <p className="mt-0.5 text-[10px] font-bold text-gray-900">
-                                  {addon.meteredNote}
-                                </p>
-                              )}
-                            </div>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
+                {/* Yearly savings note */}
+                {isYearly && plan.price > 0 && (
+                  <p className="mt-2 text-center text-xs font-bold text-green-600">
+                    Save ${(plan.price * 12 - plan.priceYearly).toLocaleString()} per year
+                  </p>
                 )}
 
-                {/* Plans with no addons: note */}
-                {eligibleAddons.length === 0 && plan.price > 0 && (
-                  <p className="mt-3 text-[11px] font-medium text-gray-500">
-                    Add-ons available on higher plans
+                {/* Divider */}
+                <div className="my-5 border-t border-gray-100" />
+
+                {/* Top 5 features (short, scannable) */}
+                <ul className="flex-1 space-y-3">
+                  {cardFeats.map((feat) => (
+                    <li
+                      key={feat}
+                      className="flex items-start gap-2.5 text-sm text-gray-700"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#18B0D1]" />
+                      <span className="font-medium">{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Add-on availability badge / note */}
+                {plan.planId === "free" && (
+                  <p className="mt-6 text-xs font-medium text-gray-400">
+                    Add-ons available on paid plans
                   </p>
+                )}
+                {plan.planId === "starter" && (
+                  <p className="mt-6 text-xs font-medium text-gray-400">
+                    More add-ons on Growth &amp; Pro
+                  </p>
+                )}
+                {(plan.planId === "growth" || plan.planId === "pro") && (
+                  <span className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#18B0D1]/10 px-3 py-1 text-xs font-bold text-[#18B0D1]">
+                    <Check className="h-3 w-3" />
+                    Add-ons available
+                  </span>
                 )}
               </div>
             );
@@ -279,7 +255,7 @@ export function PricingCards() {
         </div>
 
         {/* Enterprise strip */}
-        <div className="mt-5 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-gray-200 bg-gray-900 p-5 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-gray-200 bg-gray-900 p-5 sm:flex-row">
           <div>
             <h3 className="text-lg font-extrabold text-white">
               {ENTERPRISE_PLAN.name}
@@ -296,8 +272,96 @@ export function PricingCards() {
           </Link>
         </div>
 
+        {/* Add-ons section */}
+        <div className="mt-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              Add-ons
+            </h2>
+            <p className="mt-2 text-sm font-medium text-gray-600">
+              Available on Growth and Pro plans. SMS also works on Starter.
+            </p>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ADDONS.map((addon) => {
+              const checked = selectedAddons.has(addon.slug);
+              const addonPrice =
+                billing === "yearly"
+                  ? addon.price * ADDON_YEARLY_MULT
+                  : addon.price;
+              const Icon = ADDON_ICON[addon.slug];
+              const planLabels = addon.eligiblePlans
+                .map((p) => PLAN_LABEL[p] ?? p)
+                .join(" \u00b7 ");
+
+              return (
+                <label
+                  key={addon.slug}
+                  className={`flex cursor-pointer flex-col rounded-2xl border-2 p-5 transition-all ${
+                    checked
+                      ? "border-[#18B0D1] bg-[#18B0D1]/5 shadow-sm"
+                      : "border-gray-200 bg-white hover:border-gray-300"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggleAddon(addon.slug)}
+                      className="h-4 w-4 cursor-pointer rounded border-gray-300 accent-[#18B0D1]"
+                    />
+                    <Icon className="h-4 w-4 text-gray-500" />
+                    <span className="text-sm font-bold text-gray-900">
+                      {addon.name}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-xs text-gray-600">
+                    {addon.description}
+                  </p>
+                  <div className="mt-4 flex items-baseline gap-1">
+                    <span className="text-lg font-extrabold text-gray-900">
+                      +${fmt(addonPrice)}
+                    </span>
+                    <span className="text-xs font-medium text-gray-500">
+                      /{billing === "yearly" ? "year" : "mo"}
+                    </span>
+                  </div>
+                  {addon.meteredNote && (
+                    <p className="mt-1 text-[11px] font-bold text-gray-700">
+                      {addon.meteredNote}
+                    </p>
+                  )}
+                  <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-gray-400">
+                    {planLabels}
+                  </p>
+                </label>
+              );
+            })}
+          </div>
+
+          {/* Add-on total + hint */}
+          <div className="mt-6 flex flex-col items-center gap-2 text-center">
+            {selectedAddons.size > 0 ? (
+              <p className="text-sm font-bold text-gray-900">
+                Add-on total: ${fmt(addonTotal)}/{addonPeriodLabel}{" "}
+                <span className="font-medium text-gray-500">
+                  added to your plan at checkout
+                </span>
+              </p>
+            ) : (
+              <p className="text-sm font-medium text-gray-500">
+                Select add-ons here, then pick a plan above to start.
+              </p>
+            )}
+            <p className="text-xs font-medium text-gray-400">
+              Only add-ons that match your plan are added at checkout.
+            </p>
+          </div>
+        </div>
+
         {/* Credit packs section */}
-        <div className="mt-12">
+        <div className="mt-16">
           <div className="text-center">
             <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
               Need more credits?

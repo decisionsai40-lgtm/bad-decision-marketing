@@ -1,4 +1,5 @@
 import {
+  Sparkles,
   Search,
   Send,
   MessageSquare,
@@ -26,13 +27,35 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
+    slug: "steady-ai",
+    name: "Steady AI",
+    tagline: "Your AI assistant for finding and closing customers",
+    description:
+      "Steady AI helps you find leads, write messages, build automations, and book meetings. Ask it in plain English and it does the work for you. It also powers the automation builder and post-call disposition.",
+    icon: Sparkles,
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "Steady AI assistant dashboard",
+    features: [
+      "Find leads by describing who you want to reach",
+      "Write email campaigns in six proven styles",
+      "Build multi-step automations from a prompt",
+      "Summarize calls and route outcomes automatically",
+    ],
+    howItWorks: [
+      "Open the assistant from your dashboard",
+      "Type what you want in plain English",
+      "Steady AI does the work and shows you the result",
+    ],
+    plans: ["Pro"],
+  },
+  {
     slug: "lead-discovery",
     name: "Lead Discovery",
     tagline: "Find fresh leads with four search engines.",
     description:
       "Pull live businesses off the web from four sources at once. Save lists and start reaching out in minutes.",
     icon: Search,
-    screenshot: "/screenshots/discover-dashboard.png",
+    screenshot: "/screenshots/discover.png",
     screenshotAlt: "Lead discovery dashboard",
     features: [
       "Search companies and professionals by role and industry.",
@@ -54,8 +77,8 @@ export const PRODUCTS: Product[] = [
     description:
       "Connect as many inboxes as you want. Warm them up, write with AI, and land in the inbox.",
     icon: Send,
-    screenshot: "/screenshots/email-campaign.png",
-    screenshotAlt: "Email campaign builder",
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "Email outreach overview",
     features: [
       "Unlimited campaigns and unlimited inboxes.",
       "Warmup that builds sender trust for you.",
@@ -76,6 +99,8 @@ export const PRODUCTS: Product[] = [
     description:
       "Connect a WhatsApp Business number, import contacts, and send approved template campaigns.",
     icon: MessageSquare,
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "WhatsApp campaigns overview",
     features: [
       "Approved template campaigns.",
       "Bulk contact import.",
@@ -96,6 +121,8 @@ export const PRODUCTS: Product[] = [
     description:
       "Register your brand, buy sender numbers, and send SMS campaigns with delivery tracking.",
     icon: Smartphone,
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "SMS campaigns overview",
     features: [
       "Brand registration handled for you.",
       "Buy and rotate sender numbers.",
@@ -116,7 +143,7 @@ export const PRODUCTS: Product[] = [
     description:
       "AI cold calls your prospects, books meetings on the call, and writes a note after every call.",
     icon: Phone,
-    screenshot: "/screenshots/voice-history.png",
+    screenshot: "/screenshots/voice.png",
     screenshotAlt: "AI voice call history",
     features: [
       "In-call meeting booking.",
@@ -138,7 +165,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Share one booking link. When someone books, every campaign for that person pauses.",
     icon: Calendar,
-    screenshot: "/screenshots/scheduling-page.png",
+    screenshot: "/screenshots/scheduling.png",
     screenshotAlt: "Scheduling and booking page",
     features: [
       "Calendar sync with Google and Outlook.",
@@ -160,7 +187,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Drag and drop to build sequences. Or describe it in English and let AI build it for you.",
     icon: Workflow,
-    screenshot: "/screenshots/automation-canvas.png",
+    screenshot: "/screenshots/automations.png",
     screenshotAlt: "Automation builder canvas",
     features: [
       "Multi-step sequences across channels.",
@@ -182,6 +209,8 @@ export const PRODUCTS: Product[] = [
     description:
       "Verify if a number is on WhatsApp and can receive SMS before you spend a credit sending.",
     icon: ShieldCheck,
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "Line verification overview",
     features: [
       "WhatsApp status check.",
       "SMS capability check.",
@@ -202,6 +231,8 @@ export const PRODUCTS: Product[] = [
     description:
       "Connect an external AI assistant and ask it to find leads, start campaigns, or book meetings.",
     icon: Bot,
+    screenshot: "/screenshots/overview.png",
+    screenshotAlt: "External AI overview",
     features: [
       "MCP server for ChatGPT, Claude, and Gemini.",
       "OpenAPI spec for any tool.",

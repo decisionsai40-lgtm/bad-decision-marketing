@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
             <img
-              src="/screenshots/analytics-dashboard.png"
+              src="/screenshots/overview.png"
               alt="Bad Decision analytics dashboard"
               className="w-full rounded-lg"
               loading="lazy"

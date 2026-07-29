@@ -33,7 +33,7 @@ export default function ProductsPage() {
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
             <img
-              src="/screenshots/analytics-dashboard.png"
+              src="/screenshots/overview.png"
               alt="Bad Decision analytics dashboard"
               className="w-full rounded-lg"
               loading="lazy"
@@ -46,7 +46,7 @@ export default function ProductsPage() {
       <section className="bg-gray-900 py-20 text-white sm:py-28">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-            One platform. Nine modules. Zero copy-paste.
+            One platform. Ten modules. Zero copy-paste.
           </h2>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -71,11 +71,19 @@ export default function ProductsPage() {
 
 function ProductCard({ product: p }: { product: Product }) {
   const Icon: LucideIcon = p.icon;
+  const isNew = p.slug === "steady-ai";
   return (
     <Link
       href={`/products/${p.slug}`}
-      className="card-premium group flex flex-col overflow-hidden"
+      className={`card-premium group relative flex flex-col overflow-hidden ${
+        isNew ? "ring-2 ring-[#18B0D1]" : ""
+      }`}
     >
+      {isNew && (
+        <span className="absolute right-3 top-3 z-10 rounded-full bg-[#18B0D1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow">
+          New
+        </span>
+      )}
       {p.screenshot ? (
         <div className="aspect-[16/9] overflow-hidden border-b-2 border-gray-100 bg-gray-50">
           <img

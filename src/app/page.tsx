@@ -60,7 +60,7 @@ function Hero() {
         <div className="mx-auto mt-16 max-w-5xl">
           <div className="overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
             <img
-              src="/screenshots/discover-dashboard.png"
+              src="/screenshots/overview.png"
               alt="Bad Decision lead generation dashboard"
               className="w-full rounded-lg"
               loading="eager"
@@ -100,7 +100,7 @@ function WhatYouGet() {
         icon={Search}
         title="Find fresh leads"
         description="Four search engines pull live businesses off the web."
-        screenshot="/screenshots/discover-dashboard.png"
+        screenshot="/screenshots/discover.png"
         alt="Lead discovery dashboard"
         bullets={[
           "Companies and professionals.",
@@ -115,7 +115,7 @@ function WhatYouGet() {
         icon={Send}
         title="Send email that lands"
         description="Unlimited inboxes, warmup, and smart sending keep you out of spam."
-        screenshot="/screenshots/email-campaign.png"
+        screenshot="/screenshots/overview.png"
         alt="Email campaign builder"
         bullets={[
           "Unlimited campaigns and inboxes.",
@@ -129,7 +129,7 @@ function WhatYouGet() {
         icon={Phone}
         title="Reach them on every channel"
         description="WhatsApp, SMS, and AI voice calls from one dashboard."
-        screenshot="/screenshots/voice-history.png"
+        screenshot="/screenshots/voice.png"
         alt="Voice call history"
         bullets={[
           "WhatsApp template campaigns.",
@@ -143,7 +143,7 @@ function WhatYouGet() {
         icon={Calendar}
         title="Book meetings automatically"
         description="When someone books, we pause every campaign for them."
-        screenshot="/screenshots/scheduling-page.png"
+        screenshot="/screenshots/scheduling.png"
         alt="Scheduling and booking page"
         bullets={[
           "Connect your scheduler.",
@@ -157,7 +157,7 @@ function WhatYouGet() {
         icon={Bot}
         title="Build flows visually"
         description="Drag and drop, or describe it in English and AI builds it."
-        screenshot="/screenshots/automation-canvas.png"
+        screenshot="/screenshots/automations.png"
         alt="Automation builder canvas"
         bullets={[
           "Multi-step sequences.",
@@ -171,7 +171,7 @@ function WhatYouGet() {
         icon={BarChart3}
         title="See what works"
         description="Track every lead, email, call, and booking in one place."
-        screenshot="/screenshots/analytics-dashboard.png"
+        screenshot="/screenshots/overview.png"
         alt="Analytics dashboard"
         bullets={[
           "Reply rates and open rates.",
