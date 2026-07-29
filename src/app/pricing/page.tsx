@@ -37,8 +37,9 @@ const COMPARISON_FEATURES = [
   {
     category: "Email checking & AI",
     rows: [
-      { feature: "Email verifications / month", values: ["-", "1,000", "5,000", "25,000"] },
+      { feature: "Email verifications / month", values: ["40", "750", "3,750", "18,750"] },
       { feature: "AI message drafts / month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "Steady AI assistant", values: [false, true, true, true] },
       { feature: "6 writing styles", values: [true, true, true, true] },
       { feature: "Personal message for each lead", values: [true, true, true, true] },
       { feature: "Write many messages at once", values: [false, true, true, true] },

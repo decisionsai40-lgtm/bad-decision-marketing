@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Check,
+  Plus,
   MessageSquare,
   Phone,
   Mic,
@@ -28,31 +29,31 @@ type BillingPeriod = "monthly" | "yearly";
 const CARD_FEATURES: Record<string, string[]> = {
   free: [
     "50 lead searches",
+    "40 email verifications",
     "50 AI drafts",
     "1 inbox",
-    "Save searches",
     "Community support",
   ],
   starter: [
     "15K email sends",
     "Unlimited inboxes",
     "1K lead searches",
-    "Unified inbox",
-    "Email support",
+    "750 email verifications",
+    "Steady AI assistant",
   ],
   growth: [
-    "Unlimited email sends",
-    "Unlimited inboxes",
+    "50K contact uploads",
     "5K lead searches",
+    "3,750 email verifications",
     "A/B testing",
-    "Team workspace",
+    "Steady AI assistant",
   ],
   pro: [
-    "Unlimited email sends",
+    "100K contact uploads",
     "25K lead searches",
-    "500 AI voice min",
+    "18,750 email verifications",
     "API + CRM sync",
-    "Dedicated manager",
+    "Steady AI assistant",
   ],
 };
 
@@ -74,6 +75,7 @@ export function PricingCards() {
   const [selectedAddons, setSelectedAddons] = useState<Set<AddonSlug>>(
     new Set()
   );
+  const [showCreditPacks, setShowCreditPacks] = useState(false);
 
   const toggleAddon = (slug: AddonSlug) => {
     setSelectedAddons((prev) => {
@@ -282,7 +284,7 @@ export function PricingCards() {
             </p>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto mt-6 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {ADDONS.map((addon) => {
               const checked = selectedAddons.has(addon.slug);
               const addonPrice =
@@ -295,46 +297,56 @@ export function PricingCards() {
                 .join(" \u00b7 ");
 
               return (
-                <label
+                <div
                   key={addon.slug}
-                  className={`flex cursor-pointer flex-col rounded-2xl border-2 p-5 transition-all ${
+                  className={`flex flex-col rounded-2xl border-2 p-6 transition-all ${
                     checked
-                      ? "border-[#18B0D1] bg-[#18B0D1]/5 shadow-sm"
-                      : "border-gray-200 bg-white hover:border-gray-300"
+                      ? "border-[#18B0D1] bg-[#18B0D1]/5 shadow-md"
+                      : "border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md"
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleAddon(addon.slug)}
-                      className="h-4 w-4 cursor-pointer rounded border-gray-300 accent-[#18B0D1]"
-                    />
-                    <Icon className="h-4 w-4 text-gray-500" />
-                    <span className="text-sm font-bold text-gray-900">
+                  <div className="flex items-center gap-2">
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${checked ? "bg-[#18B0D1]" : "bg-gray-100"}`}>
+                      <Icon className={`h-4 w-4 ${checked ? "text-white" : "text-gray-500"}`} />
+                    </div>
+                    <span className="text-base font-extrabold text-gray-900">
                       {addon.name}
                     </span>
                   </div>
-                  <p className="mt-3 text-xs text-gray-600">
+                  <p className="mt-3 text-sm text-gray-600">
                     {addon.description}
                   </p>
                   <div className="mt-4 flex items-baseline gap-1">
-                    <span className="text-lg font-extrabold text-gray-900">
+                    <span className="text-2xl font-extrabold text-gray-900">
                       +${fmt(addonPrice)}
                     </span>
-                    <span className="text-xs font-medium text-gray-500">
+                    <span className="text-sm font-medium text-gray-500">
                       /{billing === "yearly" ? "year" : "mo"}
                     </span>
                   </div>
                   {addon.meteredNote && (
-                    <p className="mt-1 text-[11px] font-bold text-gray-700">
+                    <p className="mt-1 text-xs font-bold text-[#003D4D]">
                       {addon.meteredNote}
                     </p>
                   )}
-                  <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-gray-400">
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wide text-gray-400">
                     {planLabels}
                   </p>
-                </label>
+                  <button
+                    onClick={() => toggleAddon(addon.slug)}
+                    className={`mt-4 flex w-full items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-bold transition-all ${
+                      checked
+                        ? "bg-[#18B0D1] text-white hover:bg-[#15a0be]"
+                        : "bg-[#003D4D] text-white hover:bg-[#005066]"
+                    }`}
+                  >
+                    {checked ? (
+                      <><Check className="h-4 w-4" /> Added</>
+                    ) : (
+                      <><Plus className="h-4 w-4" /> Add to plan</>
+                    )}
+                  </button>
+                </div>
               );
             })}
           </div>
@@ -359,19 +371,26 @@ export function PricingCards() {
           </div>
         </div>
 
-        {/* Credit packs section */}
-        <div className="mt-16">
-          <div className="text-center">
-            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-              Need more credits?
-            </h2>
-            <p className="mt-2 text-sm font-medium text-gray-600">
-              1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft.
-              Credits never expire. Buy anytime, no subscription needed.
-            </p>
-          </div>
+        {/* Credit packs section (hidden behind a button) */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => setShowCreditPacks(!showCreditPacks)}
+            className={`inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold transition-all ${
+              showCreditPacks
+                ? "bg-gray-100 text-gray-900"
+                : "bg-[#003D4D] text-white hover:bg-[#005066]"
+            }`}
+          >
+            <Zap className="h-4 w-4" />
+            {showCreditPacks ? "Hide credit packs" : "Buy more credits"}
+          </button>
+          <p className="mt-2 text-xs font-medium text-gray-500">
+            1 credit = 1 lead discovery, 1 email verification, or 1 AI message draft. Credits never expire.
+          </p>
 
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {showCreditPacks && (
+            <>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {CREDIT_PACKS.map((pack) => (
               <div
                 key={pack.id}
@@ -441,6 +460,8 @@ export function PricingCards() {
             drafts. Unused credits never expire. Add-ons can be cancelled anytime without
             affecting your base plan.
           </p>
+            </>
+          )}
         </div>
       </div>
     </section>
