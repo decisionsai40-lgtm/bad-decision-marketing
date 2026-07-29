@@ -16,7 +16,7 @@ const COMPARISON_FEATURES = [
       { feature: "Email inboxes", values: ["1", "Unlimited", "Unlimited", "Unlimited"] },
       { feature: "Warmup emails", values: ["-", "100,000", "Unlimited", "Unlimited"] },
       { feature: "Campaigns", values: ["-", "Unlimited", "Unlimited", "Unlimited"] },
-      { feature: "Contact uploads", values: ["-", "50,000", "100,000", "250,000"] },
+      { feature: "Contact uploads", values: ["-", "15,000", "50,000", "100,000"] },
       { feature: "Campaign sequence steps", values: ["-", "3", "Unlimited", "Unlimited"] },
       { feature: "A/B testing", values: [false, false, true, true] },
       { feature: "One inbox for all replies", values: [false, true, true, true] },
@@ -51,7 +51,6 @@ const COMPARISON_FEATURES = [
       { feature: "SMS Campaigns ($39/mo)", values: [false, true, true, true] },
       { feature: "WhatsApp Campaigns ($49/mo)", values: [false, false, true, true] },
       { feature: "AI Voice Calling ($49/mo + $0.20/min)", values: [false, false, false, true] },
-      { feature: "Line Verification ($19/mo)", values: [false, false, true, true] },
     ],
   },
   {
@@ -171,11 +170,6 @@ export default function PricingPage() {
                 <p className="text-sm font-bold text-gray-900">AI Voice Calling</p>
                 <p className="mt-0.5 text-xs text-gray-600">$49/mo · 100 min included</p>
                 <p className="mt-1 text-[11px] font-bold text-gray-700">Pro only</p>
-              </div>
-              <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-sm font-bold text-gray-900">Line Verification</p>
-                <p className="mt-0.5 text-xs text-gray-600">$19/mo · 5,000 checks included</p>
-                <p className="mt-1 text-[11px] font-bold text-gray-700">Growth · Pro</p>
               </div>
             </div>
           </div>

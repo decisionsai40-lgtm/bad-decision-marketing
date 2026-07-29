@@ -57,13 +57,13 @@ export const PRICING_PLANS = [
     priceYearly: 390,
     period: "month",
     description: "For people running their first outreach.",
-    contactUploads: 50000,
+    contactUploads: 15000,
     features: [
       { text: "15,000 email sends", quota: true },
       { text: "Unlimited email inboxes" },
       { text: "Unlimited warmups (100,000 emails/mo)" },
       { text: "Unlimited campaigns" },
-      { text: "50,000 contact uploads" },
+      { text: "15,000 contact uploads" },
       { text: "1,000 lead discoveries", quota: true },
       { text: "1,000 email verifications", quota: true },
       { text: "1,000 AI message drafts", quota: true },
@@ -82,13 +82,13 @@ export const PRICING_PLANS = [
     priceYearly: 970,
     period: "month",
     description: "For small teams doing more outreach.",
-    contactUploads: 100000,
+    contactUploads: 50000,
     features: [
       { text: "Unlimited email sends" },
       { text: "Unlimited email inboxes" },
       { text: "Unlimited warmups" },
       { text: "Unlimited campaigns" },
-      { text: "100,000 contact uploads" },
+      { text: "50,000 contact uploads" },
       { text: "5,000 lead discoveries", quota: true },
       { text: "5,000 email verifications", quota: true },
       { text: "5,000 AI message drafts", quota: true },
@@ -108,17 +108,16 @@ export const PRICING_PLANS = [
     priceYearly: 2970,
     period: "month",
     description: "For agencies running lots of campaigns.",
-    contactUploads: 250000,
+    contactUploads: 100000,
     features: [
       { text: "Unlimited email sends" },
       { text: "Unlimited email inboxes" },
       { text: "Unlimited warmups" },
       { text: "Unlimited campaigns" },
-      { text: "250,000 contact uploads" },
+      { text: "100,000 contact uploads" },
       { text: "25,000 lead discoveries", quota: true },
       { text: "25,000 email verifications", quota: true },
       { text: "25,000 AI message drafts", quota: true },
-      { text: "500 AI voice minutes included" },
       { text: "Advanced analytics + deliverability" },
       { text: "Webhooks + API access" },
       { text: "CRM sync (HubSpot, Pipedrive, Salesforce)" },
@@ -157,12 +156,10 @@ export const ENTERPRISE_PLAN = {
 //   SMS:               Starter, Growth, Pro
 //   WhatsApp:          Growth, Pro
 //   AI Voice:          Pro only (high per-minute cost, requires compliance)
-//   Line Verification: Growth, Pro
 export type AddonSlug =
   | "sms_campaign"
   | "whatsapp_campaign"
-  | "ai_voice"
-  | "line_verification";
+  | "ai_voice";
 
 export interface Addon {
   slug: AddonSlug;
@@ -200,15 +197,6 @@ export const ADDONS: Addon[] = [
     price: 49,
     eligiblePlans: ["pro"],
     meteredNote: "500 minutes/mo included, then $0.20/min",
-  },
-  {
-    slug: "line_verification",
-    name: "Line Verification",
-    description:
-      "Check if phone numbers are on WhatsApp and can receive SMS before you send. Skip landlines and invalid numbers automatically.",
-    price: 19,
-    eligiblePlans: ["growth", "pro"],
-    meteredNote: "5,000 checks/mo included, then $0.005/check",
   },
 ];
 

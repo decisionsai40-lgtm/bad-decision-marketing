@@ -60,7 +60,6 @@ const ADDON_ICON: Record<AddonSlug, LucideIcon> = {
   sms_campaign: Phone,
   whatsapp_campaign: MessageSquare,
   ai_voice: Mic,
-  line_verification: ShieldCheck,
 };
 
 const PLAN_LABEL: Record<string, string> = {
