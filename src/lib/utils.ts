@@ -174,7 +174,7 @@ export const ADDONS: Addon[] = [
       "Brand registration, sender number purchase, campaign dispatch with delivery tracking.",
     price: 39,
     eligiblePlans: ["starter", "growth", "pro"],
-    meteredNote: "1,000 messages/mo included, then $0.015/msg",
+    meteredNote: "1,000 messages/mo included, then 1 credit per message",
   },
   {
     slug: "whatsapp_campaign",
@@ -183,7 +183,7 @@ export const ADDONS: Addon[] = [
       "Connect a WhatsApp Business number, import contacts, send template campaigns with delivery + reply analytics.",
     price: 49,
     eligiblePlans: ["growth", "pro"],
-    meteredNote: "1,000 messages/mo included, then $0.10/msg",
+    meteredNote: "1,000 messages/mo included, then 1 credit per message",
   },
   {
     slug: "ai_voice",
@@ -192,7 +192,7 @@ export const ADDONS: Addon[] = [
       "AI cold calling via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call.",
     price: 49,
     eligiblePlans: ["pro"],
-    meteredNote: "500 minutes/mo included, then $0.20/min",
+    meteredNote: "100 minutes/mo included, then 5 credits per minute",
   },
 ];
 

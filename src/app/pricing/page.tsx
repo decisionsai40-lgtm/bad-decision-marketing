@@ -49,9 +49,9 @@ const COMPARISON_FEATURES = [
   {
     category: "Add-ons (separate payment)",
     rows: [
-      { feature: "SMS Campaigns ($39/mo)", values: [false, true, true, true] },
-      { feature: "WhatsApp Campaigns ($49/mo)", values: [false, false, true, true] },
-      { feature: "AI Voice Calling ($49/mo + $0.20/min)", values: [false, false, false, true] },
+      { feature: "SMS Campaigns ($39/mo · 1 credit/msg over 1K)", values: [false, true, true, true] },
+      { feature: "WhatsApp Campaigns ($49/mo · 1 credit/msg over 1K)", values: [false, false, true, true] },
+      { feature: "AI Voice Calling ($49/mo · 5 credits/min over 100)", values: [false, false, false, true] },
     ],
   },
   {
@@ -160,16 +160,19 @@ export default function PricingPage() {
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-sm font-bold text-gray-900">SMS Campaigns</p>
                 <p className="mt-0.5 text-xs text-gray-600">$39/mo · 1,000 msgs included</p>
+                <p className="mt-1 text-[11px] font-bold text-gray-700">1 credit per msg over 1,000</p>
                 <p className="mt-1 text-[11px] font-bold text-gray-700">Starter · Growth · Pro</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-sm font-bold text-gray-900">WhatsApp Campaigns</p>
                 <p className="mt-0.5 text-xs text-gray-600">$49/mo · 1,000 msgs included</p>
+                <p className="mt-1 text-[11px] font-bold text-gray-700">1 credit per msg over 1,000</p>
                 <p className="mt-1 text-[11px] font-bold text-gray-700">Growth · Pro</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-sm font-bold text-gray-900">AI Voice Calling</p>
                 <p className="mt-0.5 text-xs text-gray-600">$49/mo · 100 min included</p>
+                <p className="mt-1 text-[11px] font-bold text-gray-700">5 credits per min over 100</p>
                 <p className="mt-1 text-[11px] font-bold text-gray-700">Pro only</p>
               </div>
             </div>
