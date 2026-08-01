@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Refund Policy",
+  description:
+    "When and how we issue refunds. Includes the 7-day money-back guarantee, plan changes, and chargeback guidance.",
+  alternates: { canonical: "/refund" },
+};
 
 export default function RefundPage() {
   return (

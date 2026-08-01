@@ -1,19 +1,32 @@
+import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const revalidate = 3600; // ISR: revalidate every hour
 
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Honest guides on cold outreach, lead generation, multi-channel sending, AI voice, and booking more meetings.",
+  alternates: { canonical: "/blog" },
+};
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
-async function getPosts(category?: string) {
+const POSTS_PER_PAGE = 10;
+
+async function getPosts(category?: string, page = 1) {
   try {
-    const url = category
-      ? `${API_URL}/api/v1/blog/posts?limit=24&category=${encodeURIComponent(category)}`
-      : `${API_URL}/api/v1/blog/posts?limit=24`;
-    const res = await fetch(url, {
+    const offset = (page - 1) * POSTS_PER_PAGE;
+    const params = new URLSearchParams({
+      limit: String(POSTS_PER_PAGE),
+      offset: String(offset),
+    });
+    if (category) params.set("category", category);
+    const res = await fetch(`${API_URL}/api/v1/blog/posts?${params.toString()}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return { posts: [], total: 0 };
@@ -35,16 +48,40 @@ async function getCategories() {
   }
 }
 
+function parsePage(value: string | undefined): number {
+  const n = Number.parseInt(value ?? "1", 10);
+  return Number.isFinite(n) && n > 0 ? n : 1;
+}
+
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; page?: string }>;
 }) {
-  const { category } = await searchParams;
+  const { category, page: pageParam } = await searchParams;
+  const page = parsePage(pageParam);
   const [{ posts, total }, { categories }] = await Promise.all([
-    getPosts(category),
+    getPosts(category, page),
     getCategories(),
   ]);
+
+  const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
+  const hasPrev = page > 1;
+  const hasNext = page < totalPages;
+
+  // Build a URL for pagination links, preserving the active category filter.
+  const pageHref = (n: number) => {
+    const params = new URLSearchParams();
+    if (category) params.set("category", category);
+    if (n > 1) params.set("page", String(n));
+    const qs = params.toString();
+    return qs ? `/blog?${qs}` : "/blog";
+  };
+
+  // Only render the pagination bar when there are enough posts to justify it.
+  // The blog index is the marketing-site entry point — for small catalogues
+  // (<20 posts) a single page reads better than numbered pagination.
+  const showPagination = total > POSTS_PER_PAGE;
 
   return (
     <>
@@ -141,6 +178,46 @@ export default async function BlogPage({
                 </Link>
               ))}
             </div>
+          )}
+
+          {/* Pagination — 10 posts per page. Only rendered when the catalogue
+              has more than one page of posts; the prev/next links use plain
+              <Link> so ISR caches each page independently. */}
+          {showPagination && (
+            <nav
+              aria-label="Blog pagination"
+              className="mt-12 flex items-center justify-center gap-4"
+            >
+              <Link
+                href={pageHref(page - 1)}
+                aria-disabled={!hasPrev}
+                aria-label="Previous page"
+                className={`inline-flex items-center gap-1 rounded-lg border-2 px-4 py-2 text-sm font-bold ${
+                  hasPrev
+                    ? "border-gray-200 bg-white text-gray-900 hover:border-gray-400"
+                    : "pointer-events-none border-gray-100 bg-gray-50 text-gray-300"
+                }`}
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </Link>
+              <span className="text-sm font-medium text-gray-500">
+                Page {page} of {totalPages}
+              </span>
+              <Link
+                href={pageHref(page + 1)}
+                aria-disabled={!hasNext}
+                aria-label="Next page"
+                className={`inline-flex items-center gap-1 rounded-lg border-2 px-4 py-2 text-sm font-bold ${
+                  hasNext
+                    ? "border-gray-200 bg-white text-gray-900 hover:border-gray-400"
+                    : "pointer-events-none border-gray-100 bg-gray-50 text-gray-300"
+                }`}
+              >
+                Next
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </nav>
           )}
         </div>
       </section>

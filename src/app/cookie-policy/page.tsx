@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Cookie Policy",
+  description:
+    "How we use cookies and similar technologies on our website and dashboard. Part of our Privacy Policy.",
+  alternates: { canonical: "/cookie-policy" },
+};
 
 export default function CookiePolicyPage() {
   return (

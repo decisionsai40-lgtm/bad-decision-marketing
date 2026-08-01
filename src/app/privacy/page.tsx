@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How we collect, use, and share your information when you use our website, dashboard, and services.",
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
   return (

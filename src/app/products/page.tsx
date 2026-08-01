@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
 import { PRODUCTS, type Product } from "@/lib/products";
+
+export const metadata: Metadata = {
+  title: "Products",
+  description:
+    "Lead finder, email verifier, multi-channel sender, AI voice agent, scheduler, and automations — all in one platform.",
+  alternates: { canonical: "/products" },
+};
 
 export default function ProductsPage() {
   return (

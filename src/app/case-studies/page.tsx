@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/page-header";
 import { Star, Quote } from "lucide-react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Case studies",
+  description:
+    "Real numbers from real users. See how teams in 20+ countries find leads, send outreach, and book meetings.",
+  alternates: { canonical: "/case-studies" },
+};
 
 const CASES = [
   {

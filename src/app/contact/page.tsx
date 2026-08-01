@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { ContactForm } from "./contact-form";
 import { PageHeader } from "@/components/sections/page-header";
 import { Mail, Clock, MessageSquare } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Talk to us. A real human reads every email — sales, support, enterprise, partnerships, feedback. Most replies in 24h.",
+  alternates: { canonical: "/contact" },
+};
 
 const TOPICS = [
   { value: "general", label: "General question" },

@@ -1,6 +1,22 @@
 import Link from "next/link";
-import { Mail, Twitter, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+// X (formerly Twitter) logo — the bird icon was retired when Twitter rebranded
+// to X in July 2023. lucide-react only ships the old `Twitter` bird glyph, so
+// we inline the official X SVG path here.
+function XLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 const FOOTER_LINKS = {
   Product: [
@@ -17,6 +33,7 @@ const FOOTER_LINKS = {
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
     { href: "/affiliates", label: "Affiliates" },
+    { href: "/security", label: "Security" },
   ],
   Legal: [
     { href: "/privacy", label: "Privacy Policy" },
@@ -52,13 +69,13 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
               </a>
               <a
-                href={`https://twitter.com/${SITE_CONFIG.social.twitter.replace("@", "")}`}
+                href={`https://x.com/${SITE_CONFIG.social.twitter.replace("@", "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow on Twitter"
+                aria-label="Follow on X"
                 className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 transition-colors hover:bg-white/20"
               >
-                <Twitter className="h-4 w-4" />
+                <XLogo className="h-4 w-4" />
               </a>
               <a
                 href={SITE_CONFIG.social.github}
