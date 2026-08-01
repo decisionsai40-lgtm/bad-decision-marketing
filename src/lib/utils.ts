@@ -24,8 +24,8 @@ export function cn(...inputs: ClassValue[]) {
 
 // Re-export everything that previously lived here. Tree-shaking still works —
 // `import { SITE_CONFIG } from "@/lib/utils"` pulls only site-config.ts code.
-export { SITE_CONFIG } from "./site-config.js";
-export type { SiteConfig } from "./site-config.js";
+export { SITE_CONFIG } from "./site-config";
+export type { SiteConfig } from "./site-config";
 
 export {
   PRICING_PLANS,
@@ -34,13 +34,13 @@ export {
   ADDON_BY_SLUG,
   addonsTotal,
   CREDIT_PACKS,
-} from "./pricing.js";
+} from "./pricing";
 export type {
   PlanFeature,
   AddonSlug,
   Addon,
   CreditPack,
-} from "./pricing.js";
+} from "./pricing";
 
-export { FAQS } from "./faqs.js";
-export type { Faq } from "./faqs.js";
+export { FAQS } from "./faqs";
+export type { Faq } from "./faqs";
