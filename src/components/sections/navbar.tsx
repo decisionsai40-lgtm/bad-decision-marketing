@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { SITE_CONFIG, cn } from "@/lib/utils";
 
@@ -13,9 +13,13 @@ const NAV_LINKS = [
   { href: "/case-studies", label: "Case studies" },
 ];
 
+const MOBILE_MENU_ID = "mobile-nav-menu";
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,6 +34,73 @@ export function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Focus trap: when the menu opens, move focus to the first focusable element
+  // inside it. When it closes, restore focus to the toggle button.
+  useEffect(() => {
+    if (!open) return;
+
+    const menu = menuRef.current;
+    if (!menu) return;
+
+    // Collect focusable elements (links, buttons) in DOM order.
+    const getFocusable = (): HTMLElement[] => {
+      const sel = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      return Array.from(menu.querySelectorAll<HTMLElement>(sel)).filter(
+        (el) => el.offsetParent !== null || el === document.activeElement,
+      );
+    };
+
+    // Move focus into the menu on open.
+    const focusables = getFocusable();
+    if (focusables.length > 0) {
+      focusables[0].focus();
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      // Escape closes the menu.
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      // Tab cycles within the menu.
+      if (e.key === "Tab") {
+        const items = getFocusable();
+        if (items.length === 0) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+
+        if (e.shiftKey) {
+          // Shift+Tab from first → wrap to last.
+          if (active === first || !menu.contains(active)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          // Tab from last → wrap to first.
+          if (active === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // When the menu closes, restore focus to the toggle button (so keyboard
+  // users land back where they were).
+  useEffect(() => {
+    if (!open && toggleRef.current) {
+      toggleRef.current.focus();
+    }
+  }, [open]);
+
+  const close = useCallback(() => setOpen(false), []);
 
   return (
     <header
@@ -80,10 +151,12 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
+          ref={toggleRef}
           className="md:hidden rounded-md p-2 text-gray-900"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
+          aria-controls={MOBILE_MENU_ID}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -91,14 +164,21 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-gray-200 bg-white">
+        <div
+          id={MOBILE_MENU_ID}
+          ref={menuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="md:hidden border-t border-gray-200 bg-white"
+        >
           <div className="space-y-1 px-4 py-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className="block rounded-md px-3 py-2 text-base font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                onClick={() => setOpen(false)}
+                onClick={close}
               >
                 {link.label}
               </Link>
@@ -107,14 +187,14 @@ export function Navbar() {
               <Link
                 href={SITE_CONFIG.dashboardUrl}
                 className="block w-full rounded-md px-3 py-2 text-base font-bold text-gray-700"
-                onClick={() => setOpen(false)}
+                onClick={close}
               >
                 Sign in
               </Link>
               <Link
                 href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
                 className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
-                onClick={() => setOpen(false)}
+                onClick={close}
               >
                 Start free
               </Link>

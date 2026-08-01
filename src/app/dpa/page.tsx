@@ -47,25 +47,32 @@ export default function DPAPage() {
       <p>
         We use the following sub-processors to deliver the Service. Each is
         bound by a written agreement with equivalent data protection
-        obligations.
+        obligations. This list is current as of the last-updated date above; we
+        maintain a live list at <a href="/subprocessors">/subprocessors</a> and
+        notify customers at least 30 days before engaging any new sub-processor.
       </p>
       <table>
         <thead>
           <tr>
-            <th>Provider</th>
+            <th>Sub-processor</th>
             <th>Purpose</th>
             <th>Location</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Our voice provider</td><td>AI voice calling</td><td>Global</td></tr>
-          <tr><td>Our scheduler</td><td>Meeting bookings</td><td>Global</td></tr>
-          <tr><td>Our payment processor</td><td>Subscription and add-on charges</td><td>Global</td></tr>
-          <tr><td>Our auth provider</td><td>User sign-in</td><td>United States</td></tr>
-          <tr><td>Our database provider</td><td>Data storage</td><td>United States / EU</td></tr>
-          <tr><td>Our email and messaging providers</td><td>Email, WhatsApp, SMS delivery</td><td>Global</td></tr>
-          <tr><td>Our cloud and CDN providers</td><td>Hosting and security</td><td>Global edge</td></tr>
-          <tr><td>Our AI provider</td><td>Message drafting and sentiment</td><td>Global</td></tr>
+          <tr><td>WorkOS, Inc.</td><td>Authentication and sign-in</td><td>United States</td></tr>
+          <tr><td>Supabase, Inc.</td><td>Postgres database and file storage</td><td>United States / EU</td></tr>
+          <tr><td>Flutterwave</td><td>Subscription and add-on payment processing</td><td>Global</td></tr>
+          <tr><td>Telnyx LC</td><td>SMS and AI voice calling</td><td>Global</td></tr>
+          <tr><td>Meta Platforms, Inc.</td><td>WhatsApp Business API message delivery</td><td>Global</td></tr>
+          <tr><td>Vercel, Inc.</td><td>Web application hosting</td><td>Global edge</td></tr>
+          <tr><td>Cloudflare, Inc.</td><td>CDN, DNS, and DDoS protection</td><td>Global edge</td></tr>
+          <tr><td>OpenAI, L.L.C.</td><td>AI message drafting and conversation</td><td>United States</td></tr>
+          <tr><td>Anthropic PBC</td><td>AI message drafting and conversation</td><td>United States</td></tr>
+          <tr><td>Google LLC (Gemini)</td><td>AI message drafting and conversation</td><td>Global</td></tr>
+          <tr><td>Resend, Inc.</td><td>Transactional and campaign email delivery</td><td>United States</td></tr>
+          <tr><td>Minimax (Hailuo)</td><td>Text-to-speech for AI voice calls</td><td>Global</td></tr>
+          <tr><td>Cal.com</td><td>Meeting scheduling and booking</td><td>Global</td></tr>
         </tbody>
       </table>
       <p>
@@ -78,9 +85,11 @@ export default function DPAPage() {
       <p>
         Your data is stored with our database provider in the United States or
         EU, depending on your region. Backups are kept for 30 days. Your data
-        may be transferred to other countries for processing. We use Standard
-        Contractual Clauses and the EU-U.S. Data Privacy Framework where
-        applicable.
+        may be transferred to other countries for processing. We comply with
+        applicable data protection laws including NDPR (Nigeria) and GDPR
+        (EU) for EU residents' data, and use Standard Contractual Clauses (or
+        other appropriate transfer mechanisms) where personal data is
+        transferred outside its region of origin.
       </p>
 
       <h2>5. Data Subject Rights</h2>

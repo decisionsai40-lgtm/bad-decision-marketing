@@ -139,9 +139,9 @@ export const PRODUCTS: Product[] = [
   {
     slug: "ai-voice-calling",
     name: "AI Voice Calling",
-    tagline: "Let AI call prospects and book meetings.",
+    tagline: "Let AI call your consented leads and book meetings.",
     description:
-      "AI cold calls your prospects, books meetings on the call, and writes a note after every call.",
+      "AI voice outreach to your verified contacts — books meetings on the call and writes a note after every call. TCPA-compliant: requires prior express consent from every contact before dialing.",
     icon: Phone,
     screenshot: "/screenshots/voice.png",
     screenshotAlt: "AI voice call history",
@@ -150,9 +150,10 @@ export const PRODUCTS: Product[] = [
       "Post-call disposition and notes.",
       "Recording and transcript for every call.",
       "Respects calling hours and the do-not-call list.",
+      "TCPA-compliant — requires prior express consent for every contact.",
     ],
     howItWorks: [
-      "Pick the list you want to call.",
+      "Import your consented lead list.",
       "Set your script and booking rules.",
       "AI dials, talks, and books meetings for you.",
     ],

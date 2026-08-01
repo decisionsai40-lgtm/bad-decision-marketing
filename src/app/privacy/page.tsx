@@ -114,9 +114,11 @@ export default function PrivacyPage() {
       <h2>10. International Users</h2>
       <p>
         Your data may be processed in countries other than your own, including
-        the United States and Nigeria. We use Standard Contractual Clauses and
-        the EU-U.S. Data Privacy Framework where applicable to protect
-        transfers.
+        the United States and Nigeria. We comply with applicable data
+        protection laws including NDPR (Nigeria) and GDPR (EU) for EU
+        residents' data. Where personal data is transferred outside its
+        region of origin, we use Standard Contractual Clauses (or other
+        appropriate transfer mechanisms) to protect it.
       </p>
 
       <h2>11. Changes to This Policy</h2>

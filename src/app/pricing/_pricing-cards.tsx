@@ -266,7 +266,7 @@ export function PricingCards() {
             </p>
           </div>
           <Link
-            href={`${SITE_CONFIG.dashboardUrl}${ENTERPRISE_PLAN.ctaHref}`}
+            href={`${ENTERPRISE_PLAN.ctaHref}`}
             className="rounded-lg bg-white px-6 py-2.5 text-sm font-bold text-gray-900 hover:bg-gray-100"
           >
             {ENTERPRISE_PLAN.cta}

@@ -189,7 +189,7 @@ export const ADDONS: Addon[] = [
     slug: "ai_voice",
     name: "AI Voice Calling",
     description:
-      "AI cold calling via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call.",
+      "AI voice outreach to your consented lead lists via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call. TCPA-compliant — requires prior express consent from every contact before dialing.",
     price: 49,
     eligiblePlans: ["pro"],
     meteredNote: "100 minutes/mo included, then 5 credits per minute",

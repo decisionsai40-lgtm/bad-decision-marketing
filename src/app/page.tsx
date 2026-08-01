@@ -131,13 +131,13 @@ function WhatYouGet() {
         eyebrow="03"
         icon={Phone}
         title="Reach them on every channel"
-        description="WhatsApp, SMS, and AI voice calls from one dashboard."
+        description="WhatsApp, SMS, and AI voice outreach from one dashboard."
         screenshot="/screenshots/voice.png"
         alt="Voice call history"
         bullets={[
           "WhatsApp template campaigns.",
           "SMS with number purchase.",
-          "AI voice calls that book meetings.",
+          "AI voice calls to your consented leads that book meetings.",
         ]}
         reverse={false}
       />
