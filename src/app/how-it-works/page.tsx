@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Search, ShieldCheck, Send, Calendar, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
@@ -68,11 +69,12 @@ export default function HowItWorksPage() {
             Every lead, email, call, and booking tracked end to end.
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
-            <img
+            <Image
               src="/screenshots/overview.png"
               alt="Bad Decision analytics dashboard"
-              className="w-full rounded-lg"
-              loading="lazy"
+              width={1440}
+              height={900}
+              className="h-auto w-full rounded-lg"
             />
           </div>
         </div>

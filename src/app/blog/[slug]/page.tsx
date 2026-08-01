@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -86,11 +87,14 @@ export default async function BlogPostPage({
 
           {/* Cover image */}
           {post.cover_image && (
-            <div className="mb-8 overflow-hidden rounded-xl border-2 border-gray-200">
-              <img
+            <div className="relative mb-8 aspect-video overflow-hidden rounded-xl border-2 border-gray-200">
+              <Image
                 src={post.cover_image}
                 alt={post.title}
-                className="w-full"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
               />
             </div>
           )}

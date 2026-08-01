@@ -1,6 +1,7 @@
 import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 
 export const revalidate = 3600; // ISR: revalidate every hour
@@ -102,11 +103,13 @@ export default async function BlogPage({
                   className="card-premium group flex flex-col overflow-hidden"
                 >
                   {post.cover_image && (
-                    <div className="aspect-video overflow-hidden rounded-t-xl">
-                      <img
+                    <div className="relative aspect-video overflow-hidden rounded-t-xl">
+                      <Image
                         src={post.cover_image}
                         alt={post.title}
-                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform group-hover:scale-105"
                       />
                     </div>
                   )}

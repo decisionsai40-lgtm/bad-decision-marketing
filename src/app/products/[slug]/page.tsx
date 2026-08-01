@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -99,11 +100,13 @@ export default async function ProductDetailPage({
         <section className="bg-white py-12 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
-              <img
+              <Image
                 src={product.screenshot}
                 alt={product.screenshotAlt ?? product.name}
-                className="w-full rounded-lg"
-                loading="eager"
+                width={1440}
+                height={900}
+                priority
+                className="h-auto w-full rounded-lg"
               />
             </div>
           </div>

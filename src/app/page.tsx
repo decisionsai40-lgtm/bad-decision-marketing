@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Search,
@@ -59,11 +60,13 @@ function Hero() {
         {/* Product screenshot */}
         <div className="mx-auto mt-16 max-w-5xl">
           <div className="overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
-            <img
+            <Image
               src="/screenshots/overview.png"
               alt="Bad Decision lead generation dashboard"
-              className="w-full rounded-lg"
-              loading="eager"
+              width={1440}
+              height={900}
+              priority
+              className="h-auto w-full rounded-lg"
             />
           </div>
         </div>
@@ -233,11 +236,12 @@ function FeatureModule({
           </div>
           <div className={reverse ? "lg:col-start-1 lg:row-start-1" : ""}>
             <div className="overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-lg">
-              <img
+              <Image
                 src={screenshot}
                 alt={alt}
-                className="w-full rounded-lg"
-                loading="lazy"
+                width={1440}
+                height={900}
+                className="h-auto w-full rounded-lg"
               />
             </div>
           </div>

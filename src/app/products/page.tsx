@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
@@ -32,11 +33,12 @@ export default function ProductsPage() {
             Live numbers. No spreadsheets. No guesswork.
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-2 shadow-xl">
-            <img
+            <Image
               src="/screenshots/overview.png"
               alt="Bad Decision analytics dashboard"
-              className="w-full rounded-lg"
-              loading="lazy"
+              width={1440}
+              height={900}
+              className="h-auto w-full rounded-lg"
             />
           </div>
         </div>
@@ -85,12 +87,13 @@ function ProductCard({ product: p }: { product: Product }) {
         </span>
       )}
       {p.screenshot ? (
-        <div className="aspect-[16/9] overflow-hidden border-b-2 border-gray-100 bg-gray-50">
-          <img
+        <div className="relative aspect-[16/9] overflow-hidden border-b-2 border-gray-100 bg-gray-50">
+          <Image
             src={p.screenshot}
             alt={p.screenshotAlt ?? p.name}
-            className="h-full w-full object-cover object-top transition-transform group-hover:scale-[1.02]"
-            loading="lazy"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover object-top transition-transform group-hover:scale-[1.02]"
           />
         </div>
       ) : (
