@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 
 export default function RefundPage() {
   return (
-    <LegalLayout title="Refund Policy" lastUpdated="July 28, 2026">
+    <LegalLayout title="Refund Policy" lastUpdated="January 1, 2025">
       <p>
         We want you to be happy with Bad Decision. This Refund Policy explains
         when and how we issue refunds. It supplements our{" "}

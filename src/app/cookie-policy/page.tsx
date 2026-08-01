@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 
 export default function CookiePolicyPage() {
   return (
-    <LegalLayout title="Cookie Policy" lastUpdated="July 28, 2026">
+    <LegalLayout title="Cookie Policy" lastUpdated="January 1, 2025">
       <p>
         This Cookie Policy explains how {SITE_CONFIG.legalEntityName} ("Bad
         Decision", "we") uses cookies and similar technologies on our website

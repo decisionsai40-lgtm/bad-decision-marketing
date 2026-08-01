@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 
 export default function DPAPage() {
   return (
-    <LegalLayout title="Data Processing Addendum (DPA)" lastUpdated="July 28, 2026">
+    <LegalLayout title="Data Processing Addendum (DPA)" lastUpdated="January 1, 2025">
       <p>
         This Data Processing Addendum ("DPA") forms part of the{" "}
         {SITE_CONFIG.legalEntityName} ("Bad Decision", "Processor") Terms of

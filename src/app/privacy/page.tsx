@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 
 export default function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" lastUpdated="July 28, 2026">
+    <LegalLayout title="Privacy Policy" lastUpdated="January 1, 2025">
       <p>
         This Privacy Policy explains how {SITE_CONFIG.legalEntityName} ("Bad
         Decision", "we", "us") collects, uses, and shares your information when

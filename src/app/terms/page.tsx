@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 
 export default function TermsPage() {
   return (
-    <LegalLayout title="Terms of Service" lastUpdated="July 28, 2026">
+    <LegalLayout title="Terms of Service" lastUpdated="January 1, 2025">
       <p>
         These Terms of Service govern your use of Bad Decision, operated by{" "}
         {SITE_CONFIG.legalEntityName}. By creating an account or using the
