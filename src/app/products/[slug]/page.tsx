@@ -31,7 +31,7 @@ export function generateMetadata({ params }: { params: Promise<Params> }) {
       return { title: "Product not found" };
     }
     return {
-      title: `${product.name} | Bad Decision`,
+      title: product.name,
       description: product.tagline,
     };
   });

@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
+import {
+  ArticleJsonLd,
+  BreadcrumbJsonLd,
+} from "@/components/seo/json-ld";
 
 export const revalidate = 3600; // ISR: revalidate every hour
 
@@ -38,6 +42,24 @@ export default async function BlogPostPage({
 
   return (
     <>
+      {/* SEO structured data: breadcrumb + article. Renders a
+          <script type="application/ld+json"> for Google Rich Results. */}
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${slug}` },
+        ]}
+      />
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt}
+        slug={slug}
+        image={post.cover_image}
+        datePublished={post.published_at}
+        authorName={post.author_name}
+      />
+
       <article className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {/* Back link */}

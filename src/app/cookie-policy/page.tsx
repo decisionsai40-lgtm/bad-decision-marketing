@@ -39,15 +39,53 @@ export default function CookiePolicyPage() {
         improve it. They are optional and only set with your consent.
       </p>
       <ul>
-        <li><strong>Product analytics:</strong> tracks page views and feature usage. Duration: 12 months.</li>
-        <li><strong>Error tracking:</strong> captures JavaScript errors for debugging. Anonymized. Duration: session.</li>
+        <li>
+          <strong>Product analytics (PostHog):</strong> tracks page views,
+          feature usage, and inbound traffic sources. Anonymized. Duration:
+          12 months. (PostHog session recording is explicitly disabled on
+          this site — we do not record your screen, mouse movements, or
+          keystrokes.)
+        </li>
       </ul>
       <p>
         We do not use advertising cookies, social media cookies, or
         cross-site tracking cookies.
       </p>
 
-      <h2>4. How to Disable Cookies</h2>
+      <h2>4. Cookies We Do NOT Use</h2>
+      <p>
+        For the avoidance of doubt, the following third-party analytics and
+        error-tracking tools are <strong>not installed</strong> on this
+        site, do not run on your device when you visit, and therefore set
+        no cookies:
+      </p>
+      <ul>
+        <li>
+          <strong>Sentry</strong> — we do not ship the Sentry browser SDK.
+          JavaScript errors on this site are surfaced only through
+          PostHog's autocapture, which is included above.
+        </li>
+        <li>
+          <strong>Vercel Analytics</strong> &amp; <strong>Vercel Speed
+          Insights</strong> — neither the Web Analytics nor the Speed
+          Insights script is loaded. The <code>x-vercel-ip-*</code>
+          request headers visible on the edge are used only for
+          geo-routing and never persisted as cookies on your device.
+        </li>
+        <li>
+          <strong>Google Analytics</strong> (Universal Analytics or GA4),
+          <strong> Google Tag Manager</strong>, <strong>Facebook
+          Pixel</strong>, <strong>Hotjar</strong>, <strong>FullStory</strong>,
+          <strong> LogRocket</strong>, and <strong>Mixpanel</strong> — none
+          of these scripts are loaded.
+        </li>
+      </ul>
+      <p>
+        If we ever add one of these tools, we will update this section
+        before the script goes live and surface it in the cookie banner.
+      </p>
+
+      <h2>5. How to Disable Cookies</h2>
       <p>
         On your first visit to the dashboard, we show a cookie banner. You can
         accept all, accept only essential, or customize. Change your choice any
@@ -65,7 +103,7 @@ export default function CookiePolicyPage() {
         the Service.
       </p>
 
-      <h2>5. Third-Party Cookies</h2>
+      <h2>6. Third-Party Cookies</h2>
       <p>
         Some of our providers set their own cookies when you interact with
         them. We do not control their cookies. Review their policies for
@@ -77,14 +115,14 @@ export default function CookiePolicyPage() {
         <li><strong>CDN and security provider:</strong> sets a security cookie for bot detection.</li>
       </ul>
 
-      <h2>6. Updates to This Policy</h2>
+      <h2>7. Updates to This Policy</h2>
       <p>
         We may update this Cookie Policy from time to time. If we add new
         cookies or change how we use existing ones, we will update this page
         and notify you by email if the change is material.
       </p>
 
-      <h2>7. Contact</h2>
+      <h2>8. Contact</h2>
       <p>
         Questions about cookies? Email{" "}
         <a href={`mailto:${SITE_CONFIG.supportEmail}`}>{SITE_CONFIG.supportEmail}</a>.

@@ -26,6 +26,11 @@ export const viewport = {
 // Twitter cards for every route. Individual pages can override `title` (the
 // `%s` template suffix is appended automatically) and any other field by
 // exporting their own `metadata` object.
+//
+// The template uses an EM DASH separator (`%s — Bad Decision`) instead of a
+// pipe. Combined with the convention that page-level titles MUST NOT include
+// the brand name, this guarantees we never render a duplicate like
+// "Bad Decision | Bad Decision" in the browser tab.
 // ───────────────────────────────────────────────────────────────────────────
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://baddecision.app";
@@ -38,7 +43,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE_DEFAULT,
-    template: "%s | Bad Decision",
+    template: "%s — Bad Decision",
   },
   description: DESCRIPTION,
   applicationName: "Bad Decision",

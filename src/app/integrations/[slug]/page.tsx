@@ -32,7 +32,7 @@ export function generateMetadata({ params }: { params: Promise<Params> }) {
       return { title: "Integration not found" };
     }
     return {
-      title: `${integration.name} integration | Bad Decision`,
+      title: `${integration.name} integration`,
       description: integration.description,
     };
   });
