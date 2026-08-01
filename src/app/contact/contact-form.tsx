@@ -55,11 +55,14 @@ export function ContactForm({ topics }: ContactFormProps) {
     <div className="card-premium p-8">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-bold text-gray-900">
+          <label htmlFor="contact-name" className="block text-sm font-bold text-gray-900">
             Your name
           </label>
           <input
+            id="contact-name"
+            name="name"
             type="text"
+            autoComplete="name"
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -68,11 +71,14 @@ export function ContactForm({ topics }: ContactFormProps) {
           />
         </div>
         <div>
-          <label className="block text-sm font-bold text-gray-900">
+          <label htmlFor="contact-email" className="block text-sm font-bold text-gray-900">
             Email
           </label>
           <input
+            id="contact-email"
+            name="email"
             type="email"
+            autoComplete="email"
             required
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -81,10 +87,12 @@ export function ContactForm({ topics }: ContactFormProps) {
           />
         </div>
         <div>
-          <label className="block text-sm font-bold text-gray-900">
+          <label htmlFor="contact-topic" className="block text-sm font-bold text-gray-900">
             Topic
           </label>
           <select
+            id="contact-topic"
+            name="topic"
             value={form.topic}
             onChange={(e) => setForm({ ...form, topic: e.target.value })}
             className="mt-1 block w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus:border-gray-900 focus:outline-none"
@@ -97,10 +105,12 @@ export function ContactForm({ topics }: ContactFormProps) {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-bold text-gray-900">
+          <label htmlFor="contact-message" className="block text-sm font-bold text-gray-900">
             Message
           </label>
           <textarea
+            id="contact-message"
+            name="message"
             required
             rows={5}
             value={form.message}
