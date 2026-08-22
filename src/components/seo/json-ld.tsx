@@ -35,9 +35,14 @@ function JsonLdScript({ data }: { data: Record<string, unknown> }) {
   return (
     <script
       type="application/ld+json"
-      // JSON.stringify is safe here — we control the inputs and they are
-      // plain JSON-serializable objects (no React nodes, no functions).
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      // SECURITY (H2): JSON.stringify does NOT escape "<". Blog titles,
+      // excerpts, and author names come from the CMS — a title containing
+      // `</script><script>…` would break out of this tag and execute on
+      // the public page. Escaping "<" as \u003c is inert inside JSON
+      // strings but kills the script-tag breakout.
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }
