@@ -260,9 +260,12 @@ export function PricingCards() {
           <div>
             <h3 className="text-lg font-extrabold text-white">
               {ENTERPRISE_PLAN.name}
+              {" · "}
+              {ENTERPRISE_PLAN.price}
             </h3>
             <p className="mt-1 text-sm font-medium text-gray-300">
-              {ENTERPRISE_PLAN.description}
+              {ENTERPRISE_PLAN.description}{" "}
+              {ENTERPRISE_PLAN.priceNote}
             </p>
           </div>
           <Link

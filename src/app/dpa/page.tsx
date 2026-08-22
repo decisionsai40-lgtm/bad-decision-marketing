@@ -55,8 +55,8 @@ export default function DPAPage() {
       <p>
         We use the following sub-processors to deliver the Service. Each is
         bound by a written agreement with equivalent data protection
-        obligations. This list is current as of the last-updated date above; we
-        maintain a live list at <a href="/subprocessors">/subprocessors</a> and
+        obligations. This list is current as of the last-updated date above; an
+        updated list is available on request at privacy@baddecision.app, and we
         notify customers at least 30 days before engaging any new sub-processor.
       </p>
       <table>
