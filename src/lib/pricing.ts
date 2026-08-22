@@ -5,8 +5,14 @@
  * everything below for backwards compatibility with existing imports.
  *
  * Base prices are in USD. Yearly prices are the per-year total (i.e. the
- * monthly price * 11 — the "save 2 months" deal). Add-on prices are a
+ * monthly price × 10 — the "save 2 months" deal). Add-on prices are a
  * separate monthly fee on top of the base plan.
+ *
+ * SOURCE OF TRUTH: these values mirror the backend catalog
+ * (bad-decision-api PLAN_PRICES_USD_CENTS + the addon_catalog seed
+ * migrations). Keep them in sync — the 2026-08-20 re-audit found the
+ * WhatsApp/Voice quotas, the missing Line Verification add-on, and the
+ * $997 Enterprise price drifting from the backend here.
  */
 
 // Feature type: `quota: true` means it's a monthly quota : show "/ month" on yearly view
@@ -111,10 +117,13 @@ export const PRICING_PLANS = [
   },
 ] as const;
 
-// Enterprise : sales-led, shown in a separate strip below the 4-plan grid
+// Enterprise : sales-led, shown in a separate strip below the 4-plan grid.
+// The backend has a concrete $997/mo tier (PLAN_PRICES_USD_CENTS) — show it
+// so buyers can see the real entry price; larger deals remain sales-led.
 export const ENTERPRISE_PLAN = {
   name: "Enterprise",
-  price: "Custom",
+  price: "$997/mo",
+  priceNote: "starting price — larger volumes are custom-quoted",
   description: "For high-volume teams that need a custom deal.",
   features: [
     "Everything in Pro, unlimited",
@@ -138,10 +147,12 @@ export const ENTERPRISE_PLAN = {
 //   SMS:               Starter, Growth, Pro
 //   WhatsApp:          Growth, Pro
 //   AI Voice:          Pro only (high per-minute cost, requires compliance)
+//   Line Verification: Growth, Pro
 export type AddonSlug =
   | "sms_campaign"
   | "whatsapp_campaign"
-  | "ai_voice";
+  | "ai_voice"
+  | "line_verification";
 
 export interface Addon {
   slug: AddonSlug;
@@ -169,7 +180,7 @@ export const ADDONS: Addon[] = [
       "Connect a WhatsApp Business number, import contacts, send template campaigns with delivery + reply analytics.",
     price: 49,
     eligiblePlans: ["growth", "pro"],
-    meteredNote: "1,000 messages/mo included, then 1 credit per message",
+    meteredNote: "1,500 messages/mo included, then 1 credit per message",
   },
   {
     slug: "ai_voice",
@@ -178,7 +189,16 @@ export const ADDONS: Addon[] = [
       "AI voice outreach to your consented lead lists via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call. TCPA-compliant — requires prior express consent from every contact before dialing.",
     price: 49,
     eligiblePlans: ["pro"],
-    meteredNote: "100 minutes/mo included, then 5 credits per minute",
+    meteredNote: "500 minutes/mo included, then $0.20 per minute",
+  },
+  {
+    slug: "line_verification",
+    name: "Line Verification",
+    description:
+      "Check if phone numbers are on WhatsApp and can receive SMS before you send. Skip landlines and invalid numbers automatically.",
+    price: 19,
+    eligiblePlans: ["growth", "pro"],
+    meteredNote: "5,000 checks/mo included, then 1 credit per check",
   },
 ];
 
