@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/sections/legal-layout";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Data Processing Addendum (DPA)",
+  description:
+    "DPA forming part of the Terms of Service. Reflects Article 28 of the GDPR, UK GDPR, and Nigeria Data Protection Act.",
+  alternates: { canonical: "/dpa" },
+};
 
 export default function DPAPage() {
   return (

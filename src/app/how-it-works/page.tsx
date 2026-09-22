@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, ShieldCheck, Send, Calendar, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "How it works",
+  description:
+    "Find, check, reach, and book — in one dashboard. Search four engines, verify every email, send across channels, book meetings.",
+  alternates: { canonical: "/how-it-works" },
+};
 
 const STEPS = [
   {

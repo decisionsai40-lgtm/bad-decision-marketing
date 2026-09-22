@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
@@ -8,6 +9,13 @@ import {
   STATUS_CLASSES,
   type Integration,
 } from "@/lib/integrations";
+
+export const metadata: Metadata = {
+  title: "Integrations",
+  description:
+    "Connect the tools you already use — Gmail, Outlook, WhatsApp, SMS, CRMs, schedulers. No manual data entry, no copy-paste.",
+  alternates: { canonical: "/integrations" },
+};
 
 const CATEGORY_ORDER = [
   "Email",

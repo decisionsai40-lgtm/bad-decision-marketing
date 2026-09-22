@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";
 import { FAQS, SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Short, straight answers to common questions about pricing, leads, sending, AI voice, integrations, and cancellations.",
+  alternates: { canonical: "/faq" },
+};
 
 export default function FAQPage() {
   return (

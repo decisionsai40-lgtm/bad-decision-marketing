@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
@@ -24,6 +25,42 @@ async function getPost(slug: string) {
   } catch {
     return null;
   }
+}
+
+// Per-post metadata: title + description come from the API response so each
+// article has its own card in search results and social shares. The layout
+// template appends "— Bad Decision" automatically, so we deliberately do NOT
+// include the brand name in the returned title (LOW 1).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const data = await getPost(slug);
+  if (!data || !data.post) {
+    return { title: "Article not found" };
+  }
+  const { post } = data;
+  return {
+    title: post.title,
+    description: post.excerpt ?? "Honest guides on cold outreach and lead generation.",
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt ?? "",
+      publishedTime: post.published_at,
+      authors: post.author_name ? [post.author_name] : undefined,
+      images: post.cover_image ? [{ url: post.cover_image }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt ?? "",
+      images: post.cover_image ? [post.cover_image] : undefined,
+    },
+  };
 }
 
 export default async function BlogPostPage({

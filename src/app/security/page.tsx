@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/sections/page-header";
 import { ShieldCheck, Lock, Database, KeyRound, Eye, FileCheck } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Security",
+  description:
+    "Encryption at rest and in transit, tenant isolation, per-workspace keys, SOC 2-aligned controls. Your data stays yours.",
+  alternates: { canonical: "/security" },
+};
 
 export default function SecurityPage() {
   return (

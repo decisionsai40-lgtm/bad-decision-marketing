@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, X } from "lucide-react";
@@ -7,6 +8,13 @@ import {
   SITE_CONFIG,
 } from "@/lib/utils";
 import { PricingCards } from "./_pricing-cards";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "One subscription, everything included. Four plans, cancel anytime, 7-day money-back on first paid plan. No setup fees.",
+  alternates: { canonical: "/pricing" },
+};
 
 const COMPARISON_FEATURES = [
   {

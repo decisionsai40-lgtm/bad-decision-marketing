@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/page-header";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "We built one platform to find, reach, and book customers — replacing five tools that do not talk to each other.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (

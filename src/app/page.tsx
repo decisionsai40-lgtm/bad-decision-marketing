@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   Search,
@@ -12,6 +13,13 @@ import {
   Check,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Find, reach, and book customers with AI",
+  description:
+    "One platform to find leads, verify emails, send multi-channel outreach, and book meetings — powered by AI.",
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (

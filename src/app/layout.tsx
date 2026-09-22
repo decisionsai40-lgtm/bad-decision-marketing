@@ -93,6 +93,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={plusJakarta.variable}>
+      <head>
+        {/* iOS home-screen icon. SVG is supported on iOS 16+; older iOS
+            versions fall back to the favicon. PNG versions (180×180) should
+            be added as a follow-up for older iOS — see manifest.ts note. */}
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
       <body className="font-sans antialiased min-h-screen flex flex-col">
         <PostHogProvider>
           <Navbar />
