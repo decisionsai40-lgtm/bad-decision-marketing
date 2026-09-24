@@ -11,14 +11,17 @@ import {
   BreadcrumbJsonLd,
 } from "@/components/seo/json-ld";
 
-export const revalidate = 3600; // ISR: revalidate every hour
+// ISR: revalidate every 60s so edits/publishes propagate within a minute.
+export const revalidate = 60;
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://bad-decision-api-933906758268.europe-west1.run.app";
 
 async function getPost(slug: string) {
   try {
     const res = await fetch(`${API_URL}/api/v1/blog/posts/${slug}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     });
     if (!res.ok) return null;
     return res.json();
