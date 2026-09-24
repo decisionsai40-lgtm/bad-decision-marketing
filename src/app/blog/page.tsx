@@ -5,7 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 
-export const revalidate = 3600; // ISR: revalidate every hour
+// ISR: revalidate every 60s so newly published posts appear on
+// baddecision.app/blog within a minute without a redeploy.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -13,8 +15,8 @@ export const metadata: Metadata = {
     "Honest guides on cold outreach, lead generation, multi-channel sending, AI voice, and booking more meetings.",
   alternates: { canonical: "/blog" },
 };
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://api.baddecision.app";
 
 const POSTS_PER_PAGE = 10;
 
@@ -27,7 +29,7 @@ async function getPosts(category?: string, page = 1) {
     });
     if (category) params.set("category", category);
     const res = await fetch(`${API_URL}/api/v1/blog/posts?${params.toString()}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     });
     if (!res.ok) return { posts: [], total: 0 };
     return res.json();
@@ -39,7 +41,7 @@ async function getPosts(category?: string, page = 1) {
 async function getCategories() {
   try {
     const res = await fetch(`${API_URL}/api/v1/blog/categories`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     if (!res.ok) return { categories: [] };
     return res.json();
