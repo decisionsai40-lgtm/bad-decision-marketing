@@ -10,18 +10,16 @@ import {
   ArticleJsonLd,
   BreadcrumbJsonLd,
 } from "@/components/seo/json-ld";
+import { apiBaseUrl, originVerificationHeaders } from "@/lib/origin-guard";
 
 // ISR: revalidate every 60s so edits/publishes propagate within a minute.
 export const revalidate = 60;
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://bad-decision-api-933906758268.europe-west1.run.app";
-
 async function getPost(slug: string) {
   try {
-    const res = await fetch(`${API_URL}/api/v1/blog/posts/${slug}`, {
+    const res = await fetch(`${apiBaseUrl()}/api/v1/blog/posts/${slug}`, {
       next: { revalidate: 60 },
+      headers: originVerificationHeaders(),
     });
     if (!res.ok) return null;
     return res.json();

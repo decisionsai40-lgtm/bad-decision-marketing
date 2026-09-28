@@ -2,10 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://bad-decision-api-933906758268.europe-west1.run.app";
-
 interface Announcement {
   id: string;
   title: string;
@@ -41,7 +37,10 @@ export function AnnouncementBanner() {
     }
 
     let cancelled = false;
-    fetch(`${API_URL}/api/v1/announcements/active?surface=marketing`, {
+    // Same-origin proxy: /api/announcements fetches the API server-side with
+    // the edge origin-verification secret. A direct browser call to the raw
+    // API origin is rejected with HTTP 403 by the API's origin defense.
+    fetch("/api/announcements?surface=marketing", {
       cache: "no-store",
     })
       .then((res) => (res.ok ? res.json() : { announcements: [] }))

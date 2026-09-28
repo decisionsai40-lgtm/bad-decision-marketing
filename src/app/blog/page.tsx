@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/utils";
 import { PageHeader } from "@/components/sections/page-header";
+import { apiBaseUrl, originVerificationHeaders } from "@/lib/origin-guard";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://bad-decision-api-933906758268.europe-west1.run.app";
-
 const POSTS_PER_PAGE = 10;
 
 async function getPosts(category?: string, page = 1) {
@@ -30,8 +27,9 @@ async function getPosts(category?: string, page = 1) {
       offset: String(offset),
     });
     if (category) params.set("category", category);
-    const res = await fetch(`${API_URL}/api/v1/blog/posts?${params.toString()}`, {
+    const res = await fetch(`${apiBaseUrl()}/api/v1/blog/posts?${params.toString()}`, {
       next: { revalidate: 60 },
+      headers: originVerificationHeaders(),
     });
     if (!res.ok) return { posts: [], total: 0 };
     return res.json();
@@ -42,8 +40,9 @@ async function getPosts(category?: string, page = 1) {
 
 async function getCategories() {
   try {
-    const res = await fetch(`${API_URL}/api/v1/blog/categories`, {
+    const res = await fetch(`${apiBaseUrl()}/api/v1/blog/categories`, {
       next: { revalidate: 60 },
+      headers: originVerificationHeaders(),
     });
     if (!res.ok) return { categories: [] };
     return res.json();

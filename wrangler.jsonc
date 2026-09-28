@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bad-decision-marketing",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // Worker routes for the marketing apex + www hostnames. NOTE: both DNS
+  // records are currently DNS-only (grey cloud) at Vercel, so traffic only
+  // flows through this Worker once the records are switched to Proxied —
+  // which requires a Cloudflare credential with DNS:Edit.
+  "routes": [
+    {
+      "pattern": "baddecision.app/*",
+      "zone_name": "baddecision.app"
+    },
+    {
+      "pattern": "www.baddecision.app/*",
+      "zone_name": "baddecision.app"
+    }
+  ],
+  // Runtime environment for the Worker. ORIGIN_VERIFICATION_SECRET is stored
+  // with `wrangler secret put`.
+  //
+  // CUTOVER NOTE (2026-09-28): `api.baddecision.app` has no DNS record yet —
+  // creating it requires a Cloudflare credential with DNS:Edit. Until then
+  // API_URL points at the raw Cloud Run origin; every API call is server-side
+  // and carries X-Origin-Verification-Secret, and the API rejects direct
+  // browser traffic to *.run.app. Once the record exists, set
+  //   "API_URL": "https://api.baddecision.app"
+  // and re-run `npm run cf-deploy` (no rebuild needed).
+  "vars": {
+    "NEXT_PUBLIC_GCP_API_URL": "https://api.baddecision.app",
+    "NEXT_PUBLIC_API_URL": "https://api.baddecision.app",
+    "API_URL": "https://bad-decision-api-933906758268.europe-west1.run.app",
+    "NEXT_PUBLIC_SITE_URL": "https://www.baddecision.app",
+    "NEXT_PUBLIC_DASHBOARD_URL": "https://dashboard.baddecision.app",
+    "NEXT_PUBLIC_SUPPORT_EMAIL": "support@baddecision.app"
+  }
+}
