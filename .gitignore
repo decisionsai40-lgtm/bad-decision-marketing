@@ -11,3 +11,6 @@ vertex-key.json
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+cf-build.log
+cf-deploy.log
+cf-*.log
