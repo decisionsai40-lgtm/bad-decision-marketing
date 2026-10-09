@@ -18,6 +18,7 @@ const MOBILE_MENU_ID = "mobile-nav-menu";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hasSession, setHasSession] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +27,25 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Active dashboard session? Swap the Sign in / Start free CTAs for a
+  // Dashboard button. The AuthKit cookie is scoped to `.baddecision.app`, so
+  // this credentialed cross-origin probe succeeds for signed-in visitors.
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`${SITE_CONFIG.dashboardUrl}/api/auth/session-status`, {
+      credentials: "include",
+      signal: controller.signal,
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.authenticated) setHasSession(true);
+      })
+      .catch(() => {
+        /* signed out or offline — keep the default CTAs */
+      });
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -135,18 +155,29 @@ export function Navbar() {
 
         {/* Desktop CTAs */}
         <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href={SITE_CONFIG.dashboardUrl}
-            className="text-sm font-bold text-gray-700 transition-colors hover:text-gray-900"
-          >
-            Sign in
-          </Link>
-          <Link
-            href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
-          >
-            Start free
-          </Link>
+          {hasSession ? (
+            <Link
+              href={`${SITE_CONFIG.dashboardUrl}/dashboard`}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <>
+              <Link
+                href={`${SITE_CONFIG.dashboardUrl}/sign-in`}
+                className="text-sm font-bold text-gray-700 transition-colors hover:text-gray-900"
+              >
+                Sign in
+              </Link>
+              <Link
+                href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
+              >
+                Start free
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -184,20 +215,32 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-3 space-y-2 border-t border-gray-200 pt-3">
-              <Link
-                href={SITE_CONFIG.dashboardUrl}
-                className="block w-full rounded-md px-3 py-2 text-base font-bold text-gray-700"
-                onClick={close}
-              >
-                Sign in
-              </Link>
-              <Link
-                href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-                className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
-                onClick={close}
-              >
-                Start free
-              </Link>
+              {hasSession ? (
+                <Link
+                  href={`${SITE_CONFIG.dashboardUrl}/dashboard`}
+                  className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
+                  onClick={close}
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href={`${SITE_CONFIG.dashboardUrl}/sign-in`}
+                    className="block w-full rounded-md px-3 py-2 text-base font-bold text-gray-700"
+                    onClick={close}
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
+                    className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
+                    onClick={close}
+                  >
+                    Start free
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ const COMPARISON_FEATURES = [
   {
     category: "Finding leads",
     rows: [
-      { feature: "Lead discoveries / month", values: ["50", "1,000", "5,000", "25,000"] },
+      { feature: "Credits / month (leads, verification, drafts, AI)", values: ["50", "1,350", "2,900", "5,200"] },
       { feature: "Companies & Professionals engine", values: [true, true, true, true] },
       { feature: "Ads Running engine", values: [false, true, true, true] },
       { feature: "Ecommerce engine", values: [false, true, true, true] },
@@ -45,8 +45,6 @@ const COMPARISON_FEATURES = [
   {
     category: "Email checking & AI",
     rows: [
-      { feature: "Email verifications / month", values: ["40", "750", "3,750", "18,750"] },
-      { feature: "AI message drafts / month", values: ["50", "1,000", "5,000", "25,000"] },
       { feature: "Steady AI assistant", values: [false, true, true, true] },
       { feature: "6 writing styles", values: [true, true, true, true] },
       { feature: "Personal message for each lead", values: [true, true, true, true] },
@@ -65,10 +63,9 @@ const COMPARISON_FEATURES = [
   {
     category: "Team & extras",
     rows: [
-      { feature: "Workspace + team members", values: [false, false, true, true] },
+      { feature: "Email, WhatsApp and voice notifications", values: [false, false, true, true] },
       { feature: "Developer access and webhooks", values: [false, false, false, true] },
       { feature: "CRM sync (HubSpot, Pipedrive, Salesforce)", values: [false, false, false, true] },
-      { feature: "Dedicated success manager", values: [false, false, false, true] },
       { feature: "Priority support", values: [false, false, true, true] },
     ],
   },

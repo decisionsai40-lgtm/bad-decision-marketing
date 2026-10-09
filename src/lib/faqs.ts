@@ -12,7 +12,7 @@ export const FAQS = [
   },
   {
     q: "How much does it cost?",
-    a: "Free forever. Starter is $39, Growth is $97, Pro is $297. Add-ons for WhatsApp, SMS, and AI voice are extra.",
+    a: "Free forever. Starter is $39, Growth is $69, Pro is $149. Add-ons for WhatsApp, SMS, and AI voice are extra.",
   },
   {
     q: "Do I need my own email?",
