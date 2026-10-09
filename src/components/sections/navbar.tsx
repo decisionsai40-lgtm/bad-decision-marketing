@@ -30,9 +30,13 @@ export function Navbar() {
   }, []);
 
   // Active dashboard session? Swap the Sign in / Start free CTAs for a
-  // Dashboard button. The AuthKit cookie is scoped to `.baddecision.app`, so
-  // this credentialed cross-origin probe succeeds for signed-in visitors.
+  // Dashboard button. Primary signal: the edge middleware mirrors the
+  // `.baddecision.app` session cookie into a JS-readable hint; the
+  // credentialed probe against the dashboard corroborates it.
   useEffect(() => {
+    if (document.cookie.includes("bd_session_hint=1")) {
+      setHasSession(true);
+    }
     const controller = new AbortController();
     fetch(`${SITE_CONFIG.dashboardUrl}/api/auth/session-status`, {
       credentials: "include",
