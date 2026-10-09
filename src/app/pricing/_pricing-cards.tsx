@@ -37,21 +37,21 @@ const CARD_FEATURES: Record<string, string[]> = {
   starter: [
     "15K email sends",
     "Unlimited inboxes",
-    "1K lead searches",
-    "750 email verifications",
+    "1,350 credits / month",
     "Steady AI assistant",
+    "Email support",
   ],
   growth: [
     "50K contact uploads",
-    "5K lead searches",
-    "3,750 email verifications",
+    "2,900 credits / month",
+    "Email, WhatsApp and voice notifications",
     "A/B testing",
     "Steady AI assistant",
   ],
   pro: [
     "100K contact uploads",
-    "25K lead searches",
-    "18,750 email verifications",
+    "5,200 credits / month",
+    "Email, WhatsApp and voice notifications",
     "API + CRM sync",
     "Steady AI assistant",
   ],
@@ -61,6 +61,7 @@ const ADDON_ICON: Record<AddonSlug, LucideIcon> = {
   sms_campaign: Phone,
   whatsapp_campaign: MessageSquare,
   ai_voice: Mic,
+  line_verification: ShieldCheck,
 };
 
 const PLAN_LABEL: Record<string, string> = {
