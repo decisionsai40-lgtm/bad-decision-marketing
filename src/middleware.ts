@@ -44,6 +44,10 @@ export function middleware(request: NextRequest) {
     url.host = CANONICAL_HOST;
     url.protocol = "https:";
     const redirect = NextResponse.redirect(url, 308);
+    // Permanently redirecting, but never let a client pin a stale decision:
+    // browsers cache 308s by default, and an old pre-cutover apex response
+    // must not outlive it.
+    redirect.headers.set("Cache-Control", "no-store");
     applySecurityHeaders(redirect);
     return redirect;
   }

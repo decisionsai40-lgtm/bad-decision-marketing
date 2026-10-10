@@ -27,11 +27,22 @@ Copy `.env.example` to `.env.local`. All vars are optional for the marketing sit
 - `NEXT_PUBLIC_DASHBOARD_URL` — dashboard URL for CTAs (default: https://dashboard.baddecision.app)
 - `NEXT_PUBLIC_SUPPORT_EMAIL` — support email shown in footer/contact (default: support@baddecision.app)
 
-## Deployment (Vercel)
+## Deployment (Cloudflare Workers)
+
+Served by the `bad-decision-marketing` Cloudflare Worker (OpenNext) on
+`baddecision.app` and `www.baddecision.app`; the apex permanently redirects
+to www, and edge middleware mirrors the dashboard session cookie into the
+nav CTA state. Vercel is no longer in the serving path.
 
 1. Push to `main` branch on GitHub
-2. Vercel auto-deploys to `baddecision.app`
-3. Set environment variables in Vercel dashboard (Project Settings → Environment Variables)
+2. Build and deploy from the repo root:
+
+   ```bash
+   npm run cf-build
+   npm run cf-deploy
+   ```
+
+3. Secrets (`ORIGIN_VERIFICATION_SECRET`) are set with `wrangler secret put`
 
 ## Brand
 
