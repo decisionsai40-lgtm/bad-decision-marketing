@@ -25,13 +25,19 @@
   // Runtime environment for the Worker. ORIGIN_VERIFICATION_SECRET is stored
   // with `wrangler secret put`.
   //
-  // 2026-10-09: api.baddecision.app (record + edge Worker) is live, so every
-  // server-side API call uses the dedicated backend domain. Direct browser
-  // traffic to *.run.app is rejected with 403 by the API origin middleware.
+  // 2026-10-09: api.baddecision.app (record + edge Worker) is live for public
+  // clients. Direct browser traffic to *.run.app is rejected with 403 by the
+  // API origin middleware.
+  //
+  // 2026-10-10: server-side `API_URL` points at the raw run.app origin again.
+  // Worker subrequests from this zone to its own proxied hostname
+  // (api.baddecision.app) bypass that hostname's Worker route and hit the
+  // 192.0.2.1 placeholder origin, failing with 522/523. Server-side RPC
+  // injects X-Origin-Verification-Secret itself (see origin-guard.ts).
   "vars": {
     "NEXT_PUBLIC_GCP_API_URL": "https://api.baddecision.app",
     "NEXT_PUBLIC_API_URL": "https://api.baddecision.app",
-    "API_URL": "https://api.baddecision.app",
+    "API_URL": "https://bad-decision-api-933906758268.europe-west1.run.app",
     "NEXT_PUBLIC_SITE_URL": "https://www.baddecision.app",
     "NEXT_PUBLIC_DASHBOARD_URL": "https://dashboard.baddecision.app",
     "NEXT_PUBLIC_SUPPORT_EMAIL": "support@baddecision.app"

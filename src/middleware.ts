@@ -55,7 +55,10 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   applySecurityHeaders(response);
 
-  const desired = request.cookies.has(SESSION_COOKIE) ? "1" : "0";
+  const hasSessionCookie =
+    request.cookies.has(SESSION_COOKIE) ||
+    request.cookies.has("bd-session-token");
+  const desired = hasSessionCookie ? "1" : "0";
   if (request.cookies.get(HINT_COOKIE)?.value !== desired) {
     response.cookies.set(HINT_COOKIE, desired, {
       path: "/",

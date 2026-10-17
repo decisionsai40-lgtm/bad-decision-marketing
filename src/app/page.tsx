@@ -17,7 +17,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Find, reach, and book customers with AI",
   description:
-    "One platform to find leads, verify emails, send multi-channel outreach, and book meetings — powered by AI.",
+    "One platform to find leads, verify emails, send multi-channel outreach, and book meetings - powered by AI.",
   alternates: { canonical: "/" },
 };
 

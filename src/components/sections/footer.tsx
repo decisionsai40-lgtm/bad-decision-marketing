@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/utils";
 
-// X (formerly Twitter) logo — the bird icon was retired when Twitter rebranded
+// X (formerly Twitter) logo - the bird icon was retired when Twitter rebranded
 // to X in July 2023. lucide-react only ships the old `Twitter` bird glyph, so
 // we inline the official X SVG path here.
 function XLogo({ className }: { className?: string }) {

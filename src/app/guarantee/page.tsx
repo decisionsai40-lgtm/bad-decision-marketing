@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "7-day money-back guarantee",
   description:
-    "If it does not work for you in the first week, you should not pay. No questions, no friction — full refund within 7 days.",
+    "If it does not work for you in the first week, you should not pay. No questions, no friction - full refund within 7 days.",
   alternates: { canonical: "/guarantee" },
 };
 

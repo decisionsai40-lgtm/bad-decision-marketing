@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "We built one platform to find, reach, and book customers — replacing five tools that do not talk to each other.",
+    "We built one platform to find, reach, and book customers - replacing five tools that do not talk to each other.",
   alternates: { canonical: "/about" },
 };
 

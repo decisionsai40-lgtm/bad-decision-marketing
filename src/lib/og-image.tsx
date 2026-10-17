@@ -8,7 +8,7 @@ import { ImageResponse } from "next/og";
  *
  * `next/og`'s `ImageResponse` renders JSX to a PNG using Satori. The runtime
  * is the Edge runtime by default, which is why callers must declare
- * `export const runtime = "edge"` if they need edge-only APIs — but the
+ * `export const runtime = "edge"` if they need edge-only APIs - but the
  * default Node runtime also works for static OG images.
  */
 

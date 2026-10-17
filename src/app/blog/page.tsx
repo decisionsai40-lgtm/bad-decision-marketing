@@ -82,7 +82,7 @@ export default async function BlogPage({
   };
 
   // Only render the pagination bar when there are enough posts to justify it.
-  // The blog index is the marketing-site entry point — for small catalogues
+  // The blog index is the marketing-site entry point - for small catalogues
   // (<20 posts) a single page reads better than numbered pagination.
   const showPagination = total > POSTS_PER_PAGE;
 
@@ -183,7 +183,7 @@ export default async function BlogPage({
             </div>
           )}
 
-          {/* Pagination — 10 posts per page. Only rendered when the catalogue
+          {/* Pagination - 10 posts per page. Only rendered when the catalogue
               has more than one page of posts; the prev/next links use plain
               <Link> so ISR caches each page independently. */}
           {showPagination && (

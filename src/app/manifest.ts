@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-// Web App Manifest — powers PWA install prompts and the home-screen icon on
+// Web App Manifest - powers PWA install prompts and the home-screen icon on
 // Android / iOS. Icons reference /icon.svg (the same favicon used in
 // <link rel="icon">).
 //
@@ -9,7 +9,7 @@ import type { MetadataRoute } from "next";
 // (LOW 4). We declare both SVG (modern) and a 192/512 PNG fallback for
 // browsers that do not render SVG icons.
 //
-// FOLLOW-UP — PNG icons for full Android PWA support:
+// FOLLOW-UP - PNG icons for full Android PWA support:
 //   The current icons array only references /icon.svg for all sizes. Modern
 //   Android (Chrome 76+) renders SVG icons fine, but older Android versions
 //   and some launchers require PNG fallbacks at 192×192 and 512×512. To
@@ -28,7 +28,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Bad Decision",
     short_name: "Bad Decision",
     description:
-      "One platform to find leads, verify emails, send multi-channel outreach, and book meetings — powered by AI.",
+      "One platform to find leads, verify emails, send multi-channel outreach, and book meetings - powered by AI.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

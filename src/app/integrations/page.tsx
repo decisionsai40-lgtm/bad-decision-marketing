@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Integrations",
   description:
-    "Connect the tools you already use — Gmail, Outlook, WhatsApp, SMS, CRMs, schedulers. No manual data entry, no copy-paste.",
+    "Connect the tools you already use - Gmail, Outlook, WhatsApp, SMS, CRMs, schedulers. No manual data entry, no copy-paste.",
   alternates: { canonical: "/integrations" },
 };
 

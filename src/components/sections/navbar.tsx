@@ -47,7 +47,7 @@ export function Navbar() {
         if (data?.authenticated) setHasSession(true);
       })
       .catch(() => {
-        /* signed out or offline — keep the default CTAs */
+        /* signed out or offline - keep the default CTAs */
       });
     return () => controller.abort();
   }, []);
@@ -135,12 +135,12 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="Bad Decision home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#18B0D1] text-white font-bold shadow-md">
+        <Link href="/" className="flex items-center gap-2" aria-label="BadDecision home">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#003D4D] text-white font-bold shadow-md">
             BD
           </div>
           <span className="text-lg font-extrabold tracking-tight text-gray-900">
-            Bad Decision
+            BadDecision
           </span>
         </Link>
 
@@ -169,14 +169,14 @@ export function Navbar() {
           ) : (
             <>
               <Link
-                href={`${SITE_CONFIG.dashboardUrl}/sign-in`}
+                href="/sign-in"
                 className="text-sm font-bold text-gray-700 transition-colors hover:text-gray-900"
               >
                 Sign in
               </Link>
               <Link
-                href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800"
+                href="/sign-up"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#003D4D] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#005066]"
               >
                 Start free
               </Link>
@@ -230,15 +230,15 @@ export function Navbar() {
               ) : (
                 <>
                   <Link
-                    href={`${SITE_CONFIG.dashboardUrl}/sign-in`}
+                    href="/sign-in"
                     className="block w-full rounded-md px-3 py-2 text-base font-bold text-gray-700"
                     onClick={close}
                   >
                     Sign in
                   </Link>
                   <Link
-                    href={`${SITE_CONFIG.dashboardUrl}/sign-up`}
-                    className="block w-full rounded-lg bg-gray-900 px-3 py-3 text-center text-sm font-bold text-white"
+                    href="/sign-up"
+                    className="block w-full rounded-lg bg-[#003D4D] px-3 py-3 text-center text-sm font-bold text-white"
                     onClick={close}
                   >
                     Start free

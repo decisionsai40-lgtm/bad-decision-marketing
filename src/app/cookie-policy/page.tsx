@@ -51,7 +51,7 @@ export default function CookiePolicyPage() {
           <strong>Product analytics (PostHog):</strong> tracks page views,
           feature usage, and inbound traffic sources. Anonymized. Duration:
           12 months. (PostHog session recording is explicitly disabled on
-          this site — we do not record your screen, mouse movements, or
+          this site - we do not record your screen, mouse movements, or
           keystrokes.)
         </li>
       </ul>
@@ -69,13 +69,13 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>Sentry</strong> — we do not ship the Sentry browser SDK.
+          <strong>Sentry</strong> - we do not ship the Sentry browser SDK.
           JavaScript errors on this site are surfaced only through
           PostHog's autocapture, which is included above.
         </li>
         <li>
           <strong>Vercel Analytics</strong> &amp; <strong>Vercel Speed
-          Insights</strong> — neither the Web Analytics nor the Speed
+          Insights</strong> - neither the Web Analytics nor the Speed
           Insights script is loaded. The <code>x-vercel-ip-*</code>
           request headers visible on the edge are used only for
           geo-routing and never persisted as cookies on your device.
@@ -84,7 +84,7 @@ export default function CookiePolicyPage() {
           <strong>Google Analytics</strong> (Universal Analytics or GA4),
           <strong> Google Tag Manager</strong>, <strong>Facebook
           Pixel</strong>, <strong>Hotjar</strong>, <strong>FullStory</strong>,
-          <strong> LogRocket</strong>, and <strong>Mixpanel</strong> — none
+          <strong> LogRocket</strong>, and <strong>Mixpanel</strong> - none
           of these scripts are loaded.
         </li>
       </ul>

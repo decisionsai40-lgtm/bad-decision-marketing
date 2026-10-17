@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to us. A real human reads every email — sales, support, enterprise, partnerships, feedback. Most replies in 24h.",
+    "Talk to us. A real human reads every email - sales, support, enterprise, partnerships, feedback. Most replies in 24h.",
   alternates: { canonical: "/contact" },
 };
 

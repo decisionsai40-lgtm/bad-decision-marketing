@@ -4,7 +4,7 @@
  * Pulled out of `lib/utils.ts` (MEDIUM 4 cleanup) so that pages that only need
  * the brand metadata don't pull in the whole pricing / FAQ / addon catalogue.
  *
- * `lib/utils.ts` still re-exports SITE_CONFIG for backwards compatibility —
+ * `lib/utils.ts` still re-exports SITE_CONFIG for backwards compatibility -
  * existing `import { SITE_CONFIG } from "@/lib/utils"` calls keep working.
  */
 

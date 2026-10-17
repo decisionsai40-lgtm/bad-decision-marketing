@@ -48,7 +48,7 @@ export function AnnouncementBanner() {
         if (!cancelled) setAnnouncements(data.announcements ?? []);
       })
       .catch(() => {
-        /* banners are best-effort — never break the page */
+        /* banners are best-effort - never break the page */
       });
     return () => {
       cancelled = true;

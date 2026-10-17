@@ -9,7 +9,7 @@ import { PRODUCTS, type Product } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Lead finder, email verifier, multi-channel sender, AI voice agent, scheduler, and automations — all in one platform.",
+    "Lead finder, email verifier, multi-channel sender, AI voice agent, scheduler, and automations - all in one platform.",
   alternates: { canonical: "/products" },
 };
 

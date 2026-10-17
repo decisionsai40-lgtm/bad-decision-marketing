@@ -28,7 +28,7 @@ export const viewport = {
 // `%s` template suffix is appended automatically) and any other field by
 // exporting their own `metadata` object.
 //
-// The template uses an EM DASH separator (`%s — Bad Decision`) instead of a
+// The template uses an EM DASH separator (`%s - Bad Decision`) instead of a
 // pipe. Combined with the convention that page-level titles MUST NOT include
 // the brand name, this guarantees we never render a duplicate like
 // "Bad Decision | Bad Decision" in the browser tab.
@@ -36,15 +36,15 @@ export const viewport = {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://baddecision.app";
 const TITLE_DEFAULT =
-  "Bad Decision — Find, reach, and book customers with AI";
+  "Bad Decision - Find, reach, and book customers with AI";
 const DESCRIPTION =
-  "One platform to find leads, verify emails, send multi-channel outreach, and book meetings — powered by AI.";
+  "One platform to find leads, verify emails, send multi-channel outreach, and book meetings - powered by AI.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE_DEFAULT,
-    template: "%s — Bad Decision",
+    template: "%s - Bad Decision",
   },
   description: DESCRIPTION,
   applicationName: "Bad Decision",
@@ -97,7 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* iOS home-screen icon. SVG is supported on iOS 16+; older iOS
             versions fall back to the favicon. PNG versions (180×180) should
-            be added as a follow-up for older iOS — see manifest.ts note. */}
+            be added as a follow-up for older iOS - see manifest.ts note. */}
         <link rel="apple-touch-icon" href="/icon.svg" />
       </head>
       <body className="font-sans antialiased min-h-screen flex flex-col">

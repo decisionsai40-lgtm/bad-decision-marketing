@@ -23,7 +23,7 @@ const STATIC_ROUTES: { path: string; lastModified?: string }[] = [
   { path: "/affiliates" },
   { path: "/security" },
   { path: "/guarantee" },
-  // Legal pages — keep lastModified in sync with the lastUpdated strings on
+  // Legal pages - keep lastModified in sync with the lastUpdated strings on
   // each legal page (see terms/page.tsx, privacy/page.tsx, etc).
   { path: "/terms", lastModified: "2025-01-01" },
   { path: "/privacy", lastModified: "2025-01-01" },
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  // Dynamic product pages — static list from lib/products.ts
+  // Dynamic product pages - static list from lib/products.ts
   const productEntries: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
     url: `${SITE_URL}/products/${p.slug}`,
     lastModified: now,
@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Dynamic integration pages — static list from lib/integrations.ts
+  // Dynamic integration pages - static list from lib/integrations.ts
   const integrationEntries: MetadataRoute.Sitemap = INTEGRATIONS.map((i) => ({
     url: `${SITE_URL}/integrations/${i.slug}`,
     lastModified: now,

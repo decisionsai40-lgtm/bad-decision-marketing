@@ -5,12 +5,12 @@
  * everything below for backwards compatibility with existing imports.
  *
  * Base prices are in USD. Yearly prices are the per-year total (i.e. the
- * monthly price × 10 — the "save 2 months" deal). Add-on prices are a
+ * monthly price × 10 - the "save 2 months" deal). Add-on prices are a
  * separate monthly fee on top of the base plan.
  *
  * SOURCE OF TRUTH: these values mirror the backend catalog
  * (bad-decision-api PLAN_PRICES_USD_CENTS + the addon_catalog seed
- * migrations). Keep them in sync — the 2026-08-20 re-audit found the
+ * migrations). Keep them in sync - the 2026-08-20 re-audit found the
  * WhatsApp/Voice quotas, the missing Line Verification add-on, and the
  * $997 Enterprise price drifting from the backend here.
  */
@@ -57,7 +57,7 @@ export const PRICING_PLANS = [
       { text: "Unlimited warmups (100,000 emails/mo)" },
       { text: "Unlimited campaigns" },
       { text: "15,000 contact uploads" },
-      { text: "1,350 credits / month — leads, verification, drafts and AI", quota: true },
+      { text: "1,350 credits / month - leads, verification, drafts and AI", quota: true },
       { text: "Steady AI assistant" },
       { text: "3-step campaign sequences" },
       { text: "One inbox for all replies + tracking" },
@@ -77,7 +77,7 @@ export const PRICING_PLANS = [
     contactUploads: 50000,
     features: [
       { text: "50,000 contact uploads" },
-      { text: "2,900 credits / month — leads, verification, drafts and AI", quota: true },
+      { text: "2,900 credits / month - leads, verification, drafts and AI", quota: true },
       { text: "Steady AI assistant" },
       { text: "Unlimited campaign sequences" },
       { text: "A/B testing per step" },
@@ -98,7 +98,7 @@ export const PRICING_PLANS = [
     contactUploads: 100000,
     features: [
       { text: "100,000 contact uploads" },
-      { text: "5,200 credits / month — leads, verification, drafts and AI", quota: true },
+      { text: "5,200 credits / month - leads, verification, drafts and AI", quota: true },
       { text: "Steady AI assistant" },
       { text: "Advanced analytics + deliverability" },
       { text: "Email, WhatsApp and voice notifications" },
@@ -112,12 +112,12 @@ export const PRICING_PLANS = [
 ] as const;
 
 // Enterprise : sales-led, shown in a separate strip below the 4-plan grid.
-// The backend has a concrete $997/mo tier (PLAN_PRICES_USD_CENTS) — show it
+// The backend has a concrete $997/mo tier (PLAN_PRICES_USD_CENTS) - show it
 // so buyers can see the real entry price; larger deals remain sales-led.
 export const ENTERPRISE_PLAN = {
   name: "Enterprise",
   price: "$997/mo",
-  priceNote: "starting price — larger volumes are custom-quoted",
+  priceNote: "starting price - larger volumes are custom-quoted",
   description: "For high-volume teams that need a custom deal.",
   features: [
     "Everything in Pro, unlimited",
@@ -180,7 +180,7 @@ export const ADDONS: Addon[] = [
     slug: "ai_voice",
     name: "AI Voice Calling",
     description:
-      "AI voice outreach to your consented lead lists via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call. TCPA-compliant — requires prior express consent from every contact before dialing.",
+      "AI voice outreach to your consented lead lists via the Voice Engine. It books meetings on the call, schedules callbacks, respects do-not-call lists, and writes a note after every call. TCPA-compliant - requires prior express consent from every contact before dialing.",
     price: 49,
     eligiblePlans: ["pro"],
     meteredNote: "500 minutes/mo included, then $0.20 per minute",

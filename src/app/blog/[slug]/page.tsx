@@ -30,7 +30,7 @@ async function getPost(slug: string) {
 
 // Per-post metadata: title + description come from the API response so each
 // article has its own card in search results and social shares. The layout
-// template appends "— Bad Decision" automatically, so we deliberately do NOT
+// template appends "- Bad Decision" automatically, so we deliberately do NOT
 // include the brand name in the returned title (LOW 1).
 export async function generateMetadata({
   params,

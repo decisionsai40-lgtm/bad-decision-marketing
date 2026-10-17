@@ -5,7 +5,7 @@ import React from "react";
  *
  * Each component renders a `<script type="application/ld+json">` tag with the
  * schema.org payload for that type. Next.js App Router supports emitting
- * these from any Server Component — they end up in the rendered HTML and are
+ * these from any Server Component - they end up in the rendered HTML and are
  * picked up by Google's Rich Results parser.
  *
  * Usage:
@@ -36,7 +36,7 @@ function JsonLdScript({ data }: { data: Record<string, unknown> }) {
     <script
       type="application/ld+json"
       // SECURITY (H2): JSON.stringify does NOT escape "<". Blog titles,
-      // excerpts, and author names come from the CMS — a title containing
+      // excerpts, and author names come from the CMS - a title containing
       // `</script><script>…` would break out of this tag and execute on
       // the public page. Escaping "<" as \u003c is inert inside JSON
       // strings but kills the script-tag breakout.

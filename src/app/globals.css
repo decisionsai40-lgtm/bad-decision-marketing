@@ -495,7 +495,7 @@
     font-weight: 700;
     color: var(--color-foreground);
   }
-  /* Larger variant used on blog post pages — 1.125rem body, roomier rhythm. */
+  /* Larger variant used on blog post pages - 1.125rem body, roomier rhythm. */
   .prose-lg {
     font-size: 1.125rem;
     line-height: 1.8;

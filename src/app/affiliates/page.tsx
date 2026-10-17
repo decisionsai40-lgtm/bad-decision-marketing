@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/sections/page-header";
 import { DollarSign, Users, ShieldCheck, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Affiliates — earn 20% recurring commission",
+  title: "Affiliates - earn 20% recurring commission",
   description:
     "Refer once, get paid every month your referrals stay. 20% recurring commission, no minimums, paid monthly.",
   alternates: { canonical: "/affiliates" },

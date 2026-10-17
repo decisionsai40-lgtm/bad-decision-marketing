@@ -139,7 +139,7 @@ export const INTEGRATIONS: Integration[] = [
     slug: "ai-voice",
     name: "AI Voice",
     category: "Messaging",
-    description: "AI voice outreach to your consented lead lists — books meetings.",
+    description: "AI voice outreach to your consented lead lists - books meetings.",
     icon: PhoneCall,
     status: "pro_addon",
     features: [
@@ -147,7 +147,7 @@ export const INTEGRATIONS: Integration[] = [
       "In-call booking with your scheduler.",
       "Post-call notes and disposition.",
       "Recording and transcript for every call.",
-      "TCPA-compliant — requires prior express consent for every contact.",
+      "TCPA-compliant - requires prior express consent for every contact.",
     ],
     setupSteps: [
       "Add the AI Voice add-on to your Pro plan.",

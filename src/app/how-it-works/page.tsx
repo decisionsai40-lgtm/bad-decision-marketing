@@ -8,7 +8,7 @@ import { SITE_CONFIG } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Find, check, reach, and book — in one dashboard. Search four engines, verify every email, send across channels, book meetings.",
+    "Find, check, reach, and book - in one dashboard. Search four engines, verify every email, send across channels, book meetings.",
   alternates: { canonical: "/how-it-works" },
 };
 
