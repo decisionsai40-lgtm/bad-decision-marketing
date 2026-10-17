@@ -9,7 +9,7 @@
     "binding": "ASSETS"
   },
   // Worker routes for the marketing apex + www hostnames. NOTE: both DNS
-  // records are currently DNS-only (grey cloud) at Vercel, so traffic only
+  // records are currently DNS-only (grey cloud), so traffic only
   // flows through this Worker once the records are switched to Proxied —
   // which requires a Cloudflare credential with DNS:Edit.
   "routes": [

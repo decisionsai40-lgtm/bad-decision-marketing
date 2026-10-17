@@ -76,9 +76,9 @@ export default function CookiePolicyPage() {
         <li>
           <strong>Vercel Analytics</strong> &amp; <strong>Vercel Speed
           Insights</strong> - neither the Web Analytics nor the Speed
-          Insights script is loaded. The <code>x-vercel-ip-*</code>
-          request headers visible on the edge are used only for
-          geo-routing and never persisted as cookies on your device.
+          Insights script is loaded. The <code>cf-ipcountry</code> edge
+          request header (Cloudflare) is used only for geo-routing and is
+          never persisted as a cookie on your device.
         </li>
         <li>
           <strong>Google Analytics</strong> (Universal Analytics or GA4),

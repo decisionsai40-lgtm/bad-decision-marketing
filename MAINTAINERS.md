@@ -2,7 +2,7 @@
 
 ## Main Branches
 
-- **`main`** — Production. Only merged from `develop` via PR. Deploys to production (Vercel).
+- **`main`** — Production. Only merged from `develop` via PR. Deploys to production (Cloudflare Workers).
 - **`develop`** — Integration branch. All feature/fix branches merge here first.
 
 ## Supporting Branches
@@ -30,6 +30,6 @@ Use conventional commits:
 
 ## Environment
 
-- Production: https://baddecision.app (Vercel, from `main`)
+- Production: https://baddecision.app (Cloudflare Workers, from `main`)
 - Dashboard: https://dashboard.baddecision.app (separate app)
 - API: https://api.baddecision.app (separate app)

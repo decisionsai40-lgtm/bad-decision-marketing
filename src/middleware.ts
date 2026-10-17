@@ -12,8 +12,8 @@ import { NextRequest, NextResponse } from "next/server";
  *    (`bd_session_hint=1|0`) so the navbar can render the Dashboard CTA for
  *    signed-in visitors. The hint carries no identity and refreshes on every
  *    navigation (including after sign-out).
- * 3. Security headers: mirrors vercel.json so the same CSP / HSTS / frame
- *    protections apply when the site is served from the Cloudflare Worker.
+ * 3. Security headers: CSP / HSTS / frame protections applied to every
+ *    response served from the Cloudflare Worker.
  */
 const SESSION_COOKIE = "wos-app-session";
 const HINT_COOKIE = "bd_session_hint";

@@ -73,8 +73,7 @@ export default function DPAPage() {
           <tr><td>Flutterwave</td><td>Subscription and add-on payment processing</td><td>Global</td></tr>
           <tr><td>Telnyx LC</td><td>SMS and AI voice calling</td><td>Global</td></tr>
           <tr><td>Meta Platforms, Inc.</td><td>WhatsApp Business API message delivery</td><td>Global</td></tr>
-          <tr><td>Vercel, Inc.</td><td>Web application hosting</td><td>Global edge</td></tr>
-          <tr><td>Cloudflare, Inc.</td><td>CDN, DNS, and DDoS protection</td><td>Global edge</td></tr>
+          <tr><td>Cloudflare, Inc.</td><td>Web application hosting, CDN, DNS, and DDoS protection</td><td>Global edge</td></tr>
           <tr><td>OpenAI, L.L.C.</td><td>AI message drafting and conversation</td><td>United States</td></tr>
           <tr><td>Anthropic PBC</td><td>AI message drafting and conversation</td><td>United States</td></tr>
           <tr><td>Google LLC (Gemini)</td><td>AI message drafting and conversation</td><td>Global</td></tr>

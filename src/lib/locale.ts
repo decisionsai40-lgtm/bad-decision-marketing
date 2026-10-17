@@ -67,9 +67,8 @@ const DEFAULT_LOCALE: UserLocale = {
  *
  * Detection order:
  *   1. CF-IPCountry header (Cloudflare)
- *   2. X-Vercel-IP-Country header (Vercel)
- *   3. Accept-Language header
- *   4. Default: US / USD
+ *   2. Accept-Language header
+ *   3. Default: US / USD
  */
 export function detectLocale(request: Request): UserLocale {
   const headers = request.headers;
@@ -77,11 +76,6 @@ export function detectLocale(request: Request): UserLocale {
   const cfCountry = headers.get("cf-ipcountry");
   if (cfCountry) {
     return buildLocale(cfCountry.toUpperCase());
-  }
-
-  const vercelCountry = headers.get("x-vercel-ip-country");
-  if (vercelCountry) {
-    return buildLocale(vercelCountry.toUpperCase());
   }
 
   const acceptLang = headers.get("accept-language");

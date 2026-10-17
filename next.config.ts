@@ -3,10 +3,8 @@ import type { NextConfig } from "next";
 // ───────────────────────────────────────────────────────────────────────────
 // Security headers / CSP
 // ───────────────────────────────────────────────────────────────────────────
-// The marketing site ships on BOTH Vercel (legacy) and Cloudflare Workers
-// (OpenNext, primary). vercel.json is read by Vercel; `headers()` is read by
-// Next/OpenNext. Both emit the SAME values, so the browser's policy
-// intersection is identical and no directive becomes stricter.
+// The marketing site ships on Cloudflare Workers (OpenNext). `headers()` is
+// read by Next/OpenNext and applied by the Worker; there is no Vercel config.
 //
 // The CSP keeps `'unsafe-inline'` in `script-src` and `style-src` because
 // Next.js (App Router) injects inline runtime chunks (the RSC payload,
